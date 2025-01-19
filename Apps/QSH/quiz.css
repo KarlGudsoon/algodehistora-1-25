@@ -1,0 +1,108 @@
+@font-face {
+    font-family: BreeSerif;
+    src: url("/fonts/BreeSerif-Regular.ttf")
+      format("truetype");
+  }
+  
+  @font-face {
+    font-family: Roboto;
+    src: url("/fonts/RobotoSlab-Regular.ttf")
+      format("truetype");
+  }
+  quiz {
+    background: transparent;
+}
+
+#pregunta {
+    background: #e92a41;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    color: white;
+    font-family: Roboto;
+    padding: 0.5vw;
+    margin-top: 0.5vw;
+}
+
+#opciones {
+    background-color: #e92a41;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 1vw;
+    padding: 0.5vw;
+    margin-top: 0.5vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0.5vw;
+    grid-row-gap: 0.5vw;
+}
+
+.opcion {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-family: Roboto;
+    font-size: 1.25vw;
+    color: white;
+    border-radius: 0.8vw;
+    background-color: #ca2539;
+    transition: 0.2s ease;
+    box-shadow: 0 4px #bb2234;
+    
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px #bb2234;
+    }
+    
+}
+
+.opcion input {
+    display: none;
+}
+
+label {
+    width: 100%;  /* Ocupa todo el ancho del contenedor */ 
+    padding: 0.5vw;
+    text-align: left;  /* Alineación del texto */
+    cursor: pointer;
+    border-radius: 0.8vw;
+    
+}
+
+label.seleccionada {
+    background-color: white;
+    box-shadow: 0 4px rgb(158, 158, 158);
+    color: #e92a41;
+    transition: 0.2s ease;
+
+    &:hover {
+        box-shadow: 0 8px rgb(158, 158, 158);
+    }
+}
+
+/* Estilo para las respuestas correctas */
+.correcta {
+    background-color: green;
+    box-shadow: 0 4px rgb(1, 78, 1);
+    color: white;
+}
+
+/* Estilo para las respuestas incorrectas */
+.incorrecta {
+    background-color: red;
+    box-shadow: 0 4px rgb(177, 2, 2);
+    color: white;
+}
+
+.comodintimer {
+    background: #e92a41;
+    font-size: 1.25vw;
+    font-family: Roboto;
+    border: 0;
+    color: white;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 100%;
+    
+}
+

@@ -1,0 +1,270 @@
+:root {
+  --blue: #1e90ff;
+  --red2: #780618;
+  --red: #e92a41;
+  --yellow: #ffa218;
+}
+
+html {
+  background: var(--red);
+}
+
+body {
+  background-color: #e92a41;
+  margin: 0;
+  padding: 0;
+  animation: viewtransition-entrada 2s ease;
+}
+
+@keyframes viewtransition-entrada {
+  from {
+    clip-path: circle(0% at 50% 0);
+  }
+  to {
+    clip-path: circle(100% at 50% 0);
+  }
+}
+
+.clip-transition {
+  animation: viewtransition-salida 1s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes viewtransition-salida {
+  from {
+    clip-path: circle(100% at 50% 0);
+  }
+  to {
+    clip-path: circle(0% at 50% 0);
+  }
+}
+
+@font-face {
+  font-family: HatschSans;
+  src: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/HatschSans.otf?v=1679725680887")
+    format("truetype");
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/RobotoSlab-Regular.ttf?v=1699503789327")
+    format("truetype");
+}
+
+.visor3D {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  user-select: none;
+}
+
+.container-widgets3D {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.container-widget-seleccionador {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 15px;
+  transition: .2s ease;
+}
+
+.widget-seleccionador {
+  width: fit-content;
+  height: fit-content;
+  padding: 15px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px rgb(0, 0, 0, 0.5);
+  background: #cd1c38;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.seleccionador {
+  background:  #cd1c38;
+  width: fit-content;
+  height: 35px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  border-radius: 20px;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: .2s ease;
+  box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.2);
+  position: relative;
+  border: 1px solid #cd1c38;
+  z-index: 3;
+}
+
+.seleccionador p {
+  font: 300 18px Roboto;
+  color: white;
+  margin: 0;
+  user-select: none;
+}
+
+.widget-seleccionador:hover {
+  background: #cd1c38;
+}
+
+.seleccionador:hover {
+  transform: translateY(-10%);
+  background:  var(--red);
+  border: 1px solid var(--yellow);
+}
+
+.menu {
+  width: 900px;
+  height: 0px;
+  background: #cd1c38;
+  position: absolute;
+  bottom: 10px;
+  z-index: -1;
+  border-radius: 50px 50px 0px 0px;
+  box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: .5s ease;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 15px;
+  pointer-events: auto;
+  overflow-y: clip;
+  overflow-x: auto;
+  user-select: none;
+  padding: 25px;
+  cursor: grab;
+}
+
+.abrir-menu {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0px 0px;
+  background: #cd1c38;
+  color: white;
+  width: 100px;
+  height: 40px;
+  font: 600 20px Roboto;
+  pointer-events: auto;
+  cursor: pointer;
+  position: absolute;
+  top: -40px;
+}
+
+.card-menu {
+  width: 200px;
+  height: 200px;
+  background: var(--red);
+  overflow: hidden;
+  border-radius: 40px;
+  transition: .2s ease;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.3);
+}
+
+.card-menu img {
+  height: 100%;
+  pointer-events: none;
+}
+
+.card-menu h1 {
+  width: 100%;
+  background: #cd1c38;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  font: 600 20px Roboto;
+  padding: 5px;
+  color: white;
+  text-align: center;
+}
+
+.card-menu:hover {
+  scale: 1.05;
+}
+
+.card-menu-seleccionada {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+  scale: 1.05;
+}
+
+.card-menu-seleccionada::after {
+  content: "";
+  background: linear-gradient(300deg,rgb(0, 0, 0, 0), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0), rgb(255, 255, 255, 0.3), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0), rgb(0, 0, 0, 0));
+  background-size: 350% 350%;
+  animation: gradient-animation 5s ease infinite;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 0%;
+  }
+  
+  100% {
+    background-position: 120% 50%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+.abrir-menu {
+  display: flex;  
+  user-select: none;
+}
+  
+.menu {
+  width: 90%;
+  bottom: 60px;
+}
+  
+.card-menu {
+  width: 150px;
+  height: 150px;
+}
+  
+.container-widget-seleccionador {
+  bottom: -100px;  
+}
+  
+.seleccionador p {
+  font-size: 16px;
+    
+}
+  
+}
+
+@media screen and (max-width: 460px) {
+
+
+  
+.container-widget-seleccionador {
+  bottom: -160px;  
+}
+  
+
+  
+}
+
+

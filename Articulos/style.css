@@ -1,0 +1,755 @@
+@import "transition-style";
+
+body {
+  background-color: #e92a41;
+}
+
+@font-face {
+  font-family: HatschSans;
+  src: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/HatschSans.otf?v=1679725680887")
+    format("truetype");
+}
+
+.dropdownmenu ul,
+.dropdownmenu li {
+  margin-top: 10;
+  padding: 0;
+}
+.dropdownmenu ul {
+  background: gray;
+  list-style: none;
+  width: 100%;
+}
+.dropdownmenu li {
+  float: left;
+  position: relative;
+  width: auto;
+}
+.dropdownmenu a {
+  background: ;
+  color: white;
+  display: block;
+  font: 900 16px/20px Century;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.dropdownmenu li:hover a {
+  background: yellow;
+  color: #e92a41;
+}
+#submenu {
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 35px;
+  visibility: hidden;
+  z-index: 1;
+}
+li:hover ul#submenu {
+  opacity: 1;
+  top: 40px; /* adjust this as per top nav padding top & bottom comes */
+  visibility: visible;
+}
+#submenu li {
+  float: none;
+  width: 100%;
+}
+#submenu a:hover {
+  background: #e92a41;
+  color: white;
+}
+#submenu a {
+  background-color: yellow;
+}
+
+.link {
+  color: white;
+}
+.link:hover {
+  color: white;
+}
+
+.oscuro {
+  background-color: #780618;
+}
+
+.cover {
+  font-family: arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  height: 1000px;
+  color: white;
+  background-size: cover;
+  background-position: center;
+}
+
+.contenedor {
+  height: ;
+  width: 100%;
+  max-width: ;
+}
+
+.titulo {
+  position: relative;
+  width: 100%;
+  padding-right: 0px;
+  font-size: 80px;
+  font-family: HatschSans;
+  text-align: right;
+  color: yellow;
+  top: 30px;
+  margin-bottom: 30px;
+}
+
+.contenedortextoizq {
+  font-weight: 900;
+  font-family: courier new;
+  font-size: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: ;
+  width: 100%;
+  text-align: left;
+  margin-left: 30px;
+  color: white;
+}
+
+.contenedortextoder {
+  position: relative;
+  background-color: ;
+  padding: 30px;
+  right: 0;
+  font-size: 25px;
+  font-weight: 900;
+  font-family: century;
+  margin-top: 20px;
+  width: 100%;
+  text-align: right;
+  color: yellow;
+}
+
+.header {
+  position: relative;
+  background-color: ;
+  height: 60px;
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 10px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  word-spacing: 100px;
+}
+
+.imgheader {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: px;
+  max-height: px;
+  opacity: 70%;
+  transition: all 0.5s ease-out;
+}
+
+.imgheader:hover {
+  animation: vibrate 0.5s linear both;
+}
+@keyframes vibrate {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-4px, 4px);
+  }
+  40% {
+    transform: translate(-4px, -4px);
+  }
+  60% {
+    transform: translate(4px, 4px);
+  }
+  80% {
+    transform: translate(4px, -4px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.vibrate {
+  animation: vibrate 0.5s linear both;
+}
+@keyframes vibrate {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-4px, 4px);
+  }
+  40% {
+    transform: translate(-4px, -4px);
+  }
+  60% {
+    transform: translate(4px, 4px);
+  }
+  80% {
+    transform: translate(4px, -4px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.bounce-top {
+  animation: bounce-top 1s linear both;
+}
+@keyframes bounce-top {
+  0% {
+    transform: translateY(-45px);
+    animation-timing-function: ease-in;
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-24px);
+    animation-timing-function: ease-in;
+  }
+  65% {
+    transform: translateY(-12px);
+    animation-timing-function: ease-in;
+  }
+  82% {
+    transform: translateY(-6px);
+    animation-timing-function: ease-in;
+  }
+  93% {
+    transform: translateY(-4px);
+    animation-timing-function: ease-in;
+  }
+  25%,
+  55%,
+  75%,
+  87% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(0);
+    animation-timing-function: ease-out;
+    opacity: 1;
+  }
+}
+
+.tracking-in-contract {
+  animation: tracking-in-contract 0.8s linear both;
+}
+@keyframes tracking-in-contract {
+  0% {
+    letter-spacing: 0.6em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    letter-spacing: normal;
+    opacity: 1;
+  }
+}
+
+.slide-top {
+  animation: slide-top 0.4s linear both;
+}
+@keyframes slide-top {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
+}
+
+.scale-up-bottom {
+  animation: scale-up-bottom 1.5s;
+}
+@keyframes scale-up-bottom {
+  0% {
+    transform: scale(0.5);
+    transform-origin: center bottom;
+  }
+  100% {
+    transform: scale(1);
+    transform-origin: center bottom;
+  }
+}
+
+.a {
+  color: yellow;
+  text-decoration: none;
+  font-family: courier new;
+}
+
+.contenedor1 {
+  position: relative;
+  width: 100%;
+  height: px;
+  font-family: two cens;
+  color: white;
+  font-size: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+
+.logochico {
+  margin-top: -230px;
+  margin-right: -300px;
+}
+
+.logoizq {
+  background: yellow;
+  width: 190px;
+  height: 100px;
+  margin-top: 10px;
+  margin-left: -360px;
+  border-right: solid;
+  border-right: 0px;
+  border-left: solid;
+  border-left-width: 0px;
+  border-color: yellow;
+  padding-left: 0px;
+  transition: all 2s;
+  animation: logo1 4s ease infinite;
+}
+
+
+
+@keyframes logo1 {
+  0%{
+    border-left-width: 0px;
+  }
+  
+   50%{
+      border-left-width: 160px;
+    }
+  
+  100%{
+    border-left-width: 0px;
+  }
+}
+
+.title {
+  position: relative;
+  right: 110px;
+  font-family: Century;
+  font-size: 100px;
+  font-weight: bold;
+  color: yellow;
+  line-height: 120px;
+}
+
+.item {
+  background: yellow;
+  width: 190px;
+  height: 100px;
+  margin-left: 180px;
+  border-left: solid;
+  border-left-width: 160px;
+  border-color: yellow;
+  transition: all 2s;
+  animation: logo1 4s ease infinite;
+  animation-delay: 2s;
+}
+
+.item:hover {
+  background: yellow;
+  border-color: yellow;
+  border-left-width: 0px;
+  transition: all 1s;
+}
+
+.square {
+  position: relative;
+  background-color: #d11e34;
+  height: 800px;
+  width: 100%;
+  padding-top: 0px;
+}
+
+.title1 {
+  position: relative;
+  left: 100px;
+  bottom: 15px;
+  font-family: Century;
+  font-size: 100px;
+  font-weight: bold;
+  color: yellow;
+  line-height: 120px;
+}
+
+.image2 {
+  max-width: 200%;
+  margin-left: 265mm;
+  margin-top: 60mm;
+}
+
+.square2 {
+  background-color: #e92a41;
+  height: 100px;
+  width: 10px;
+  margin-left: 10px;
+}
+
+.square3 {
+  background-color: black;
+  height: 500px;
+  width: 500px;
+}
+
+.text1 {
+  color: white;
+  font-family: two cens;
+  text-align: center;
+  margin: 10px;
+  padding: 50px;
+}
+
+.img {
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  margin-left: 900px;
+  margin-top: 60px;
+}
+
+.img:hover {
+  width: 40%;
+  height: 40%;
+  transition: width 1s height 1s;
+}
+
+.squarewhite {
+  margin-bottom: 0px;
+  margin-top: 0mm;
+  margin-left: 30mm;
+}
+
+.separador1 {
+  background-color: yellow;
+  background: linear-gradient(0deg, #b4192c, #e92a41);
+  height: 50px;
+  width: 100%;
+  opacity: 100%;
+  padding-bottom: 0px;
+  transition: all 1s;
+}
+
+.separador2 {
+  background-color: yellow;
+  height: 1px;
+  width: 100%;
+  opacity: 100%;
+  padding-bottom: 0px;
+  transition: all 1s;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.textoizq {
+  width: 40%;
+  position: relative;
+  top: 30px;
+  margin-left: 35px;
+  color: white;
+  text-align: left;
+}
+
+.contenedor2 {
+  top: 20px;
+  position: relative;
+  width: 100%;
+  display: grid;
+}
+
+.contenedor3 {
+  position: relative;
+  opacity: 100%;
+  height: 50vh;
+  background-color: #e92a41;
+  padding: 1%;
+  padding-left: 45%;
+  clip-path: circle(75% at right);
+  border: 0px solid #780618;
+  transition: all 1s;
+  overflow: hidden;
+}
+
+.contenedor3 img {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+}
+
+.contenedor3 h1 {
+  text-align: right;
+  font-family: HatschSans;
+  font-size: 10vh;
+  color: yellow;
+}
+
+.contenedor3 p {
+  text-align: right;
+  font-family: century;
+  font-size: 3vh;
+  font-weight: 900;
+  margin-left: 50%;
+  color: yellow;
+}
+
+.contenedor3:hover {
+  background-color: ;
+  border: 10px solid white;
+  transition: all 1s;
+  opacity: 100%;
+  clip-path: circle(100% at center);
+  padding-left: 0%;
+}
+
+.tituloder {
+  position: relative;
+  width: 100%;
+  padding-right: 0px;
+  font-size: 80px;
+  font-family: HatschSans;
+  text-align: left;
+  color: yellow;
+  top: 30px;
+  margin-bottom: 30px;
+}
+
+.contenedor4 {
+  position: relative;
+  opacity: 100%;
+  width:  ;
+  height: 50vh;
+  background-color: #e92a41;
+  display:;
+  padding: 1%;
+  clip-path: circle(75% at left);
+  border: 0px solid #780618;
+  transition: all 1s;
+  overflow: hidden;
+}
+
+.contenedor4 img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: ;
+  height: 100%;
+}
+
+.contenedor4 h1 {
+  text-align: left;
+  font-family: HatschSans;
+  font-size: 10vh;
+  color: yellow;
+}
+
+.contenedor4 p {
+  text-align: left;
+  font-family: century;
+  font-size: 3vh;
+  font-weight: 900;
+  margin-right: 50%;
+  color: yellow;
+}
+
+.contenedor4:hover {
+  transition: all 1s;
+  background-color:; 
+  border: 10px solid white;
+  opacity: 100%;
+  clip-path: circle(100% at center)
+}
+  
+.rojoclaro {
+  background-color: #780618;
+}
+
+.azulclaro {
+  background-color: #3969af; 
+}
+
+.amarillo {
+  background-color: yellow;
+}
+
+.bodytransition {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/fotografia-de-las-tres-grandes-piramides-en-la-llanura-de-giza_56999db0_230308100940_1280x831.jpg?v=1687541816134);
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  animation: circle-in-hesitate 2.5s;
+ 
+  
+}
+
+@keyframes circle-in-hesitate {
+  0% {
+    clip-path: circle(0%);
+  }
+  40% {
+    clip-path: circle(40%);
+  }
+  100% {
+    clip-path: circle(125%);
+  }
+}
+
+.banner {
+  min-height: 500px;
+  width: 100%;
+  background-color: white; 
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+
+.banner p {
+  font-family: century;
+  text-align: justify;
+  font-size: 1.3vw;
+  color: #2d538a;
+  margin: 2rem;
+  font-weight: 900;
+}
+
+.stexto {
+  object-fit: cover;
+  background-color: #2d538a;
+  width: 600px;
+  min-height: 500px;
+  margin: 5rem;
+  box-shadow: 15px 15px 0px 0px white;
+  z-index: 1;
+  
+  
+  
+}
+
+.stexto p {
+  font-family: century;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 2rem;
+  color: white;
+  
+}
+
+.stexto h1 {
+  font-family: HatschSans;
+  font-size: 72px;
+  text-align: left;
+  margin: 2rem;
+  margin-bottom: -1rem;
+  color: white;
+  line-height: 1;
+}
+
+.simg {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  animation: slide 4.5s ease;
+  object-fit: cover;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(250px);
+    opacity: 0%;
+  }
+  
+  10% {
+    opacity: 100%;
+  }
+  
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+}
+
+#hero {
+  position: relative;
+}
+
+
+.bannervideo {
+  position: absolute;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.capa {
+  position: relative;
+  background-color: black;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+}
+
+.textoverlay {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  font-family: HatschSans;
+  font-size: 8vw;
+  text-align: left;
+  color: white;
+  line-height: 1;
+}
+
+.fulloverlay {
+  position: ;
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+@media (max-width: 650px) {
+  .title {
+    font-size: 50px;
+  }
+  }
+}
+
