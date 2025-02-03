@@ -45,10 +45,10 @@ header {
     top: 0;
     gap: 2rem;
     z-index: 99999999999999;
+}
 
-    & img {
-        height: 50%;
-    }
+header img {
+    height: 50px;
 }
 
 nav ul {
@@ -100,48 +100,48 @@ a:hover {
 }
 
 .contenedor-logo {
-    display: flex;
-    width: 100%;
-    height: 150px;
-    flex-direction: column;
-    align-items: center;
-    pointer-events: auto;
-    margin-top: 3rem;
-    margin-bottom: 3;
-  
-    & span {
-      position: relative;
-      height: 100%;
+  width: 100%;
+  height: 150px;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  margin-top: 3rem;
+  margin-bottom: 3;  
+  display: flex;
+}
 
-      & img {
-        height: 100%;
-      }
-  
-      &::before {
-        content: "";
-        width: 1%;
-        height: 37%;
-        background-color: #e92a41;
-        position: absolute;
-        bottom: 14%;
-        left: 8%;
-        z-index: 99999;
-        animation: square1 4s ease infinite;
-      }
-  
-      &::after {
-        content: "";
-        width: 1%;
-        height: 37%;
-        background-color: #e92a41;
-        position: absolute;
-        top: 11%;
-        right: 13%;
-        z-index: 99999;
-        animation: square2 4s ease infinite;
-      }
-    }
-  }
+.contenedor-logo span{
+  position: relative;
+  height: 100%;
+}
+
+.contenedor-logo span img {
+  height: 100%;
+}
+
+.contenedor-logo span::before {
+  content: "";
+  height: 37%;
+  background-color: #e92a41;
+  position: absolute;
+  bottom: 14%;
+  left: 8%;
+  z-index: 99999;
+  animation: square1 4s ease infinite;
+  width: 1%;
+}
+
+.contenedor-logo span::after {
+  width: 1%;
+  height: 37%;
+  background-color: #e92a41;
+  position: absolute;
+  top: 11%;
+  right: 13%;
+  z-index: 99999;
+  animation: square2 4s ease infinite;
+  content: "";
+}
 
   @keyframes square1 {
     0% {
@@ -300,91 +300,88 @@ a:hover {
     cursor: pointer;
     transition: 0.2s ease;
     box-shadow: 0 0px #cc5a29;
+}
 
-    & p {
-        font-size: 1rem;
-        margin: 0;
-        text-align: center;
-        text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
-    }
+.contenedor-periodos span p {
+  font-size: 1rem;
+  text-align: center;
+  text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
+  margin: 0;
+}
 
-    & img {
-        height: 40px;
-    }
+.contenedor-periodos span img {
+  height: 40px;
 }
 
 #prehistoria {
-    background-color: #f86d31;
+  background-color: #f86d31;
+}
 
-    &:hover {
-        box-shadow: 0 6px #bb5225;
-        transform: translateY(-4px);
-    }
+#prehistoria:hover {
+  box-shadow: 0 6px #bb5225;
+  transform: translateY(-4px);
+}
 
-    &:active {
-      transform: translateY(0px);
-      box-shadow: 0 2px #bb5225;
-    }
+#prehistoria:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px #bb5225;
 }
 
 #edad-antigua {
   background-color: #30a5e8;
-  
-  &:hover {
-      box-shadow: 0 6px #2477a7;
-      transform: translateY(-4px);
-  }
+}
 
-  &:active {
-    transform: translateY(0px);
-    box-shadow: 0 2px #2477a7;
-  }
-  
+#edad-antigua:hover {
+  box-shadow: 0 6px #2477a7;
+  transform: translateY(-4px);
+}
+
+#edad-antigua:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px #2477a7;
 }
 
 #edad-medieval {
-    background-color: #f8b229;
+  background-color: #f8b229;
+}
 
-    &:hover {
-      box-shadow: 0 6px #a87a1c;
-      transform: translateY(-4px);
-  }
+#edad-medieval:hover {
+  box-shadow: 0 6px #a87a1c;
+  transform: translateY(-4px);
+}
 
-  &:active {
-    transform: translateY(0px);
-    box-shadow: 0 2px #a87a1c;
-  }
+#edad-medieval:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px #a87a1c;
 }
 
 #edad-moderna {
-    background-color: #f11c35;
+  background-color: #f11c35;
+}
 
-    &:hover {
-      box-shadow: 0 6px #b81c2e;
-      transform: translateY(-4px);
-  }
+#edad-moderna:hover {
+  box-shadow: 0 6px #b81c2e;
+  transform: translateY(-4px);
+}
 
-  &:active {
-    transform: translateY(0px);
-    box-shadow: 0 2px #b81c2e;
-  }
+#edad-moderna:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px #b81c2e;
 }
 
 #contemporanea {
-    background-color: #2e8b57;
-
-    &:hover {
-      box-shadow: 0 6px #246d44;
-      transform: translateY(-4px);
-  }
-
-  &:active {
-    transform: translateY(0px);
-    box-shadow: 0 2px #246d44;
-  }
+  background-color: #2e8b57;
 }
 
+#contemporanea:hover {
+  box-shadow: 0 6px #246d44;
+  transform: translateY(-4px);
+}
 
+#contemporanea:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px #246d44;
+}
 
 .contenedor-cartas {
     display: none;
@@ -418,40 +415,39 @@ a:hover {
     justify-content: center;
     transform-style: preserve-3d;
     transform: perspective(1000px);
-  
-    &:hover {
-      transition: all 0s linear;
-    }
   }
+
+.card-contenido:hover {
+  transition: all 0s linear;
+}
   
   .card-contenido.active {
     scale: 1;
     opacity: 1;
   }
   
-  .card-contenido-etiqueta {
-    z-index: 9;
-    position: relative;
-    bottom: 0;
-    text-align: center;
-    pointer-events: none;
-    transition: 0.3s ease;
-    transform: translateZ(30px);
-    
-  
-    & h1 {
-      font: 900 2rem BreeSerif;
-      line-height: 1;
-      text-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 1);
-    }
-  
-    & span {
-      font: 1rem Roboto;
-      opacity: 0;
-      transition: 0.3s ease;
-    }
-  }
-  
+.card-contenido-etiqueta {
+  position: relative;
+  bottom: 0;
+  text-align: center;
+  pointer-events: none;
+  transition: 0.3s ease;
+  transform: translateZ(30px);
+  z-index: 9;
+}
+
+.card-contenido-etiqueta h1{
+  text-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 1);
+  font: 900 2rem BreeSerif;
+  line-height: 1;
+}
+
+.card-contenido-etiqueta span {
+  opacity: 0;
+  transition: 0.3s ease;
+  font: 1rem Roboto;
+}
+
   .card-contenido:hover .card-contenido-etiqueta {
     bottom: 35%;
   }
@@ -546,12 +542,12 @@ a:hover {
   gap: 1rem;
   padding: 2rem;
   flex-direction: column;
+}
 
-  & h1 {
-    font-size: 1rem;
-    text-align: center;
-    font-family: BreeSerif;
-  }
+.aplicaciones h1 {
+  font-size: 1rem;
+  font-family: BreeSerif;
+  text-align: center;
 }
 
 .app {
@@ -564,21 +560,19 @@ a:hover {
   align-items: center;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.25);
   transition: 0.2s ease;
-  
+}
 
-  & img {
-    height: 90%;
-    transition: all 0.2s ease;
-  }
+.app img {
+  height: 90%;
+  transition: all 0.2s ease;
+}
 
-  &:hover {
-    scale: 1.05;
+.app:hover {
+  scale: 1.05;
+}
 
-    & img {
-      height: 110%;
-      
-    }
-  }
+.app:hover img {
+  height: 110%;
 }
 
 #mapas-interactivos {
@@ -588,24 +582,25 @@ a:hover {
   background-size: cover;
   background-position: center;
   overflow-x: hidden;
+}
 
-  & img {
-    align-self: flex-end;
-  }
+#mapas-interactivos img {
+  align-self: flex-end;
 }
 
 #historia-3d {
   background-color: #30a5e8;
-
-  &:hover img {
-    animation-play-state: running;
-  }
-
-  & img {
-    animation: float 3s linear infinite;
-    animation-play-state: paused;
-  }
 }
+
+#historia-3d:hover img {
+  animation-play-state: running;
+}
+
+#historia-3d img {
+  animation: float 3s linear infinite;
+  animation-play-state: paused;
+}
+
 
 #cuestionarios {
   background-color: #f7c10f;
@@ -633,22 +628,22 @@ a:hover {
   gap: 2rem;
   padding: 2rem;
   background-color: var(--secondary-color);
+}
 
-  & img {
-    height: 200px;
-    border-radius: 100%;
-  }
+.contenedor-acerca-de img {
+  height: 200px;
+  border-radius: 100%;
 }
 
 .acerca-de {
   display: flex;
   flex-direction: column;
   max-width: 850px;
+}
 
-  & h1 {
-    font-size: 2rem;
-    font-family: BreeSerif;
-  }
+.acerca-de h1 {
+  font-size: 2rem;
+  font-family: BreeSerif;
 }
 
 .redes-sociales {
@@ -663,7 +658,7 @@ a:hover {
   background-color: var(--primary-color);
   width: fit-content;
   align-items: center;
-  padding: 0.5rem 1rem 0.5rem 1rem; 
+  padding: 0.5rem 1rem;
   display: flex;
   gap: 0.5rem;
   border-radius: 2rem;
@@ -673,11 +668,11 @@ a:hover {
   border-color: transparent;
   cursor: pointer;
   user-select: none;
+}
 
-  & img {
-    height: 1rem;
-    border-radius: 0;
-  }
+.redes-sociales span img {
+  height: 1rem;
+  border-radius: 0;
 }
 
 .redes-sociales span:hover {
@@ -688,9 +683,6 @@ a:hover {
   background-color: white;
   color: black;
 }
-
-
-
 
 @media screen and (max-width: 768px) {
     header {
