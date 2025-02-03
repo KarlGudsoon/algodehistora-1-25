@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Historia!</title>
+    <title>Algo de Historia - Inicio</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,70 +12,228 @@
       integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/pruebas.css" />
+    <link rel="stylesheet" href="/index.css" />
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
   </head>
-  <body>
-    <section class="contenedor-scroll">
-      <section class="portada" >
-        <div class="contenedor-logo" id="portada">
-              <span><img class="logo" src="/svg/logo.svg"></span>
-            <nav class="dropdownmenu">
-              <ul>
-                <li><a href="/index.html">Home</a></li>
-                <li>
-                  <a href="http://www.jochaho.com/wordpress/about-pritesh-badge/"
-                    >About Me</a
-                  >
-                </li>
-                <li>
-                  <a href="#menu-inicio">Articulos</a>
-                </li>
-                <li>
-                  <a href="/Apps/miaula/main.html">Mi aula</a>
-                </li>
-                <li>
-                  <a href="http://www.jochaho.com/wordpress/about-pritesh-badge/"
-                    >Contact Us</a
-                  >
-                </li>
-              </ul>
-            </nav>
+  <body >
+    <header>
+      <img src="/icons/logo.svg">
+      <nav>
+        <ul>
+          <li><a href="/Borradores/index.html">Inicio</a></li>
+          <li><a href="#articulos">Articulos</a></li>
+          <li><a href="#aplicaciones">Aplicaciones</a></li>
+          <li><a href="#acerca-de">Acerca de</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="contenedor-titulo">
+      <div class="contenedor-logo" id="portada">
+        <span><img class="logo" src="/svg/logo.svg"></span>
+      </div>
+      <span id="version">V 1.0</span>
+      <p>
+        Pagina web interactiva para aprender Historia, Geografía y Ciencias Sociales
+      </p>
+      <div class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel" id="carousel">
+            <div>
+              <h1>ARTICULOS INTERACTIVOS</h1>
+              <p>Aprende de diferentes temas historicos con articulos interactivos totalmente personalizados.</p>
+              <a href="#articulos">Ver articulos</a>
+              <img src="/img/contemporanea/inicio-revolucion-industrial.jpg" alt="1">
+            </div>
+            <div>
+              <img src="/img/contemporanea/1267px-Claude_Monet_-_The_Gare_Saint-Lazare,_Arrival_of_a_Train-min.jpg" alt="2">
+            </div>
+            <div>
+              <img src="/img/contemporanea/'The_Munitions_Girls'_oil_painting,_England,_1918_Wellcome_L0059548-min.jpg" alt="3">
+            </div>
+          </div>
+        </div>
+        <div class="indicators" id="indicators"></div>
+      </div>
+    </div>
+    <main>
+      <section class="contenedor-articulos" id="articulos"> 
+        <div class="contenedor-periodos"> 
+          <span class="toggleButton" data-container="cardContainer1" id="prehistoria"><img src="/icons/carbon.png"><p>PREHISTORIA</p></span>
+          <span class="toggleButton" data-container="cardContainer2" id="edad-antigua"><img src="/icons/carbon.png"><p>EDAD ANTIGUA</p></span>
+          <span class="toggleButton" data-container="cardContainer3" id="edad-medieval"><img src="/icons/carbon.png"><p>EDAD MEDIA</p></span>
+          <span class="toggleButton" data-container="cardContainer4" id="edad-moderna"><img src="/icons/carbon.png"><p>EDAD MODERNA</p></span>
+          <span class="toggleButton" data-container="cardContainer5" id="contemporanea"><img src="/icons/carbon.png"><p>EDAD CONTEMPORANEA</p></span>
+        </div>
+        <div class="contenedor-cartas active" id="cardContainer1">
+          <a href="/Articulos/Prehistoria/template.html">
+            <div class="card-contenido active" data-tilt>
+              <div class="card-contenido-img"><img src="/img/prehistoria/arterupestre (2).webp"></div>
+              <div class="card-contenido-etiqueta">
+                <h1>PREHISTORIA COMPLETA</h1>
+                <span>7 M a. C. - 3.000 a. C.</span>
+              </div>
+            </div>
+            </a>
+            <div class="card-contenido active"></div>
+            <div class="card-contenido active"></div>
+            <div class="card-contenido active"></div>
+            <div class="card-contenido active"></div>
+            <div class="card-contenido active"></div>
+        </div>
+        <div class="contenedor-cartas" id="cardContainer2">
+          <a href="/Articulos/Prehistoria/template.html">
+            <div class="card-contenido" data-tilt>
+              <div class="card-contenido-img"><img src="/img/prehistoria/arterupestre (2).webp"></div>
+              <div class="card-contenido-etiqueta">
+                <h1>PREHISTORIA COMPLETA</h1>
+                <span>7 M a. C. - 3.000 a. C.</span>
+              </div>
+            </div>
+            </a>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+        </div>
+        <div class="contenedor-cartas" id="cardContainer3">
+          <a href="/Articulos/Prehistoria/template.html">
+            <div class="card-contenido" data-tilt>
+              <div class="card-contenido-img"><img src="/img/prehistoria/arterupestre (2).webp"></div>
+              <div class="card-contenido-etiqueta">
+                <h1>PREHISTORIA COMPLETA</h1>
+                <span>7 M a. C. - 3.000 a. C.</span>
+              </div>
+            </div>
+            </a>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+        </div>
+        <div class="contenedor-cartas" id="cardContainer4">
+            <a href="/Articulos/moderna/chile/main.html">
+              <div class="card-contenido" id="revolucion-industrial" data-tilt>
+                <img class="personaje-img" src="/img/moderna/descubrimiento-chile/pedro-valdivia.png">
+                <div class="card-contenido-img">
+                  <img src="/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg">
+                </div>
+                <div class="card-contenido-etiqueta">
+                  <h1>ORIGÉNES DE CHILE</h1>
+                  <span>10.000 a. C. - 1541</span>
+                </div>
+            </div>
+            </a>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+        </div>
+        <div class="contenedor-cartas" id="cardContainer5">
+            <a href="/Articulos/Contemporanea/revolucion-industrial.html" style="view-transition-name: revolucion-industrial;">
+              <div class="card-contenido" id="revolucion-industrial" data-tilt>
+                <img id="gif-humo" src="/gif/humo.gif">
+                <div class="card-contenido-img">
+                  <img src="/img/contemporanea/inicio-revolucion-industrial.jpg" >
+                </div>
+                <div class="card-contenido-etiqueta">
+                  <h1>REVOLUCIÓN INDUSTRIAL</h1>
+                  <span>1871 - 1914</span>
+                </div>
+              </div>
+            </a>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+            <div class="card-contenido"></div>
+        </div>
+
+      </section>
+      <section class="contenedor-aplicaciones" id="aplicaciones"> 
+        <div class="contenedor-titulo-aplicaciones">
+          <h1>Aplicaciones</h1>
+          <p>Aplicaciones para aprender Historia, Geografía y Ciencias Sociales</p>
+        </div>
+        <div class="contenedor-app">
+          <a href="/App-Paises/paisesdelmundo.html">
+            <div class="aplicaciones">
+              <div class="app" id="mapas-interactivos">
+                <img src="/icons/paisesdelmundo.png">
+              </div>
+              <h1>MAPAS INTERACTIVOS</h1>
+            </div>
+          </a>
+          <a href="/3D/menu3D.html">
+            <div class="aplicaciones">
+              <div class="app" id="historia-3d">
+                <img src="/icons/historia3d.png">
+              </div>
+              <h1>HISTORIA 3D</h1>
+            </div>
+          </a>
+          <a href="/Apps/cuestionarios/index.html">
+            <div class="aplicaciones">
+              <div class="app" id="cuestionarios">
+                <img src="/icons/eos-icons--master.svg">
+              </div>
+              <h1>CUESTIONARIOS</h1>
+            </div>
+          </a>
+          <a href="/Apps/juegos/index.html">
+            <div class="aplicaciones">
+              <div class="app" id="juegos">
+                <img src="/icons/juegos.png">
+              </div>
+              <h1>JUEGOS</h1>
+            </div>
+          </a>
+          <a>
+            <div class="aplicaciones">
+              <div class="app" id="album">
+                <img src="">
+              </div>
+              <h1>PROXIMAMENTE</h1>
+            </div>
+          </a>
         </div>
       </section>
-      <section class="menu-inicio" id="menu-inicio">
-        <article class="contenedor-paginas">
-          <div class="pagina prehistoria-tema">
-            <a href="/Articulos/Prehistoria/template.html"><h1>PREHISTORIA</h1></a>
-          </div>
-          <div class="pagina antigua-tema">
-            <a><h1>EDAD ANTIGUA</h1></a>
-          </div>
-          <div class="pagina medieval-tema">
-            <h1>MEDIEVAL</h1>
-          </div>
-          <div class="pagina moderna-tema">
-            <h1>MODERNA</h1>
-          </div>
-          <div class="pagina contemporanea-tema">
-            <a href="/Articulos/Contemporanea/contemporanea.html"><h1>CONTEMPORÁNEA</h1></a>
-          </div>
-        </article>
-        <article class="contenedor-apps">
-          <div class="aplicacion app1"></div>
-          <div class="aplicacion app2"></div>
-          <div class="aplicacion app3"></div>
-          <div class="aplicacion app4"></div>
-          <div class="aplicacion app5"></div>
-        </article>
+      <section class="contenedor-acerca-de" id="acerca-de">
+        <img src="/icons/foto-perfil.jpg">
+        <div class="acerca-de">
+            <h1>Hola!</h1>
+            <p>Mi nombre es Adrián, soy Profesor de Historia y Geografía creé esta pagina web, 
+              para facilitar la enseñanza y aprendizaje de las Ciencias Sociales a traves del uso 
+              de la interactividad que te puede ofrecer los medios tecnologicos. Algo de Historia es 
+              una pagina web interactiva para aprender Historia, Geografía y Ciencias Sociales. En esta 
+              pagina encontraras articulos interactivos, videos educativos, aplicaciones y 
+              juegos para aprender de una forma inmersiva. Sin embargo, muchas de las secciones estan
+              en desarrollo, por lo que te podras encontrar con secciones vacias o cosas sin terminar.
+              Por lo que te invito a visitar la pagina de vez en cuando.
+            </p>
+            <p>Ademas, te dejo las redes sociales de Algo de Historia, en donde podrás encontrar mi contacto y más contenido educativo.</p>
+            <div class="redes-sociales">
+              <a target="_blank" href="https://www.linkedin.com/in/adri%C3%A1n-maturana-mu%C3%B1oz-3a7b501aa/"><span><img src="/icons/LinkedIn_icon.svg.png">Linkedin</span></a>
+              <a target="_blank" href="https://www.instagram.com/algodehistoria.cl/"><span><img src="/icons/Instagram_logo_2016.svg">Instagram</span></a>
+              <a target="_blank" href="https://www.youtube.com/@algodehistoriaYT"><span><img src="/icons/YouTube_social_white_square_(2017).svg">YouTube</span></a>
+            </div>
+        </div>
       </section>
-    </section>
-
-    <script src="/index.js"></script>
+    </main>
+    <footer>
       
+    </footer>
+    
+    
+
+  
     
   </body>
+  <script src="/index.js"></script>
+  <script type="text/javascript" src="/vanilla-tilt.min.js"></script>
 </html>

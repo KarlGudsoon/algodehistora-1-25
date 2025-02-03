@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Apps/tests/revolucion-industrial/style.css" />
+    <title>Document</title>
+</head>
+<body>
+    <main>
+            <section class="titulo-cuestionario">
+                <h1>REVOLUCIÓN INDUSTRIAL</h1>
+            </section>
+            <form id="cuestionario" action="/Apps/tests/revolucion-industrial/enviar.php" method="POST">
+                <section class="datos">
+                    <label>Nombre: <input type="text" id="nombre" name="nombre"></label>
+                    <label>Apellidos: <input type="text" id="apellidos" name="apellidos"></label>
+                    <label><input type="hidden" id="resultado" name="resultado"></label>
+                </section>
+                <section class="container-pregunta-nav">
+                    <div class="navigation">
+                        <div class="container-nav">
+                            <span id="currentQuestion"></span><span>/5</span>
+                            <p>Pregunta</p>
+                            <div class="container-navButton">
+                                <div class="navButton" id="prev"><p>«</p></div>
+                                <div class="navButton" id="next"><p>»</p></div>
+                            </div>
+                            <div class="markerQuestion">
+                                <span id="c-p0">1</span>
+                                <span id="c-p1">2</span>
+                                <span id="c-p2">3</span>
+                                <span id="c-p3">4</span>
+                                <span id="c-p4">5</span>
+                            </div>
+                        </div>
+                        <div style="width: 100%;">
+                            <input id="submit" class="button" type="submit" value="ENVIAR">
+                        </div>
+                    </div>
+                    <div class="container-preguntas">
+                        <section class="question" id="p0">
+                            <h2>¿Cuales son los períodos de la Prehistoria?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p0" onclick="respuesta(0, this)"> Paleolítico, Mesolítico y Neolítico
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p0" onclick="respuesta(0, this)"> Paleolítico y Neolítico
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p0" onclick="respuesta(0, this)"> Paleolítico inferior, medio y superior
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p0" onclick="respuesta(0, this)"> Ninguna de las anteriores
+                            </label>
+                            
+                        </section>
+                        <section class="question" id="p1">
+                            <h2>Es la progresiva adquisición de las características que acabaron diferenciando a los homínidos del resto de primates.
+                            </h2>
+                            <label>
+                                <input type="radio" value="1" name="p1" onclick="respuesta(1, this)"> Evolución
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p1" onclick="respuesta(1, this)"> Hominización
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p1" onclick="respuesta(1, this)"> Humanización
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p1" onclick="respuesta(1, this)"> Adaptación
+                            </label>
+                        </section>
+                        <section class="question" id="p2">
+                            <h2>¿Qué habilidad permite a los Homo Sapiens realizar cosas como rituales, enterramientos, arte, lenguaje, etc.?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p2" onclick="respuesta(2, this)"> Abstracción
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p2" onclick="respuesta(2, this)"> Herramientas
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p2" onclick="respuesta(2, this)"> Bipedismo
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p2" onclick="respuesta(2, this)"> Adaptación
+                            </label>
+                        </section>
+                        <section class="question" id="p3">
+                            <h2>¿Por qué se caracterizó la especie humana Homo Habilis?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p3" onclick="respuesta(3, this)"> Descubrimiento del fuego
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p3" onclick="respuesta(3, this)"> Vivir en cuevas
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p3" onclick="respuesta(3, this)"> Creación de herramientas
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p3" onclick="respuesta(3, this)"> Ninguna de las anteriores
+                            </label>
+                        </section>
+                        <section class="question" id="p4">
+                            <h2>¿Cuál fue la primera de las especies de Homos de emigrar de África hacia otros continentes?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p4" onclick="respuesta(4, this)"> Homo Habilis
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p4" onclick="respuesta(4, this)"> Homo Erectus
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p4" onclick="respuesta(4, this)"> Homo Sapiens
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p4" onclick="respuesta(4, this)"> Homo Neanderthal
+                            </label>
+                        </section>
+                        
+                    </div>
+                </section>
+        
+            
+                
+            </form>
+    </main>
+
+    <script src="/Apps/tests/revolucion-industrial/script.js"></script>
+</body>
+</html>

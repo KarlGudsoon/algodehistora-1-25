@@ -22,6 +22,11 @@ html {
   src: url("/fonts/RobotoSlab-Regular.ttf")
     format("truetype");
 }
+
+@view-transition {
+  navigation: auto;
+}
+
 body {
   background: #f86d31;
   font-family: roboto;

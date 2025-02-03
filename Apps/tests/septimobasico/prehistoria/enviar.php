@@ -34,7 +34,7 @@
     }
 
     :root {
-        background-color: #e92a41;
+        background-color: transparent;
     }
     
     body {

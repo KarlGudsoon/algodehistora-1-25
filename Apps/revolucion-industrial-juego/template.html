@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Historia!</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/icon.png?v=1709518284245"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/Apps/revolucion-industrial-juego/template.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    
+  </head> 
+  <body>
+    <section class="container-juego-mesa">
+      <div class="juego-mesa">
+        <span class="casilla" id="e-1"><div id="player-1"></div></span>
+        <span class="casilla" id="e-2" data-casilla="situacion"></span>
+        <span class="casilla" id="e-3" data-casilla="situacion"></span>
+        <span class="casilla" id="e-4" data-casilla="situacion"></span>
+        <span class="casilla" id="e-5" data-casilla="situacion"></span>
+        <span class="casilla" id="e-6" data-casilla="situacion"></span>
+        <span class="casilla" id="e-7"></span>
+        <span class="casilla" id="e-8" data-casilla="situacion"></span>
+        <span class="casilla" id="e-9"></span>
+        <span class="casilla" id="e-10" data-casilla="situacion"></span>
+        <span class="casilla" id="e-11"></span>
+        <span class="casilla" id="e-12"></span>
+        <span class="casilla" id="e-13" data-casilla="situacion"></span>
+        <span class="casilla" id="e-14"></span>
+        <span class="casilla" id="e-15"></span>
+        <span class="casilla" id="e-16" data-casilla="situacion"></span>
+        <span class="casilla" id="e-17"></span>
+        <span class="casilla" id="e-18" data-casilla="situacion"></span>
+        <span class="casilla" id="e-19"></span>
+        <span class="casilla" id="e-20"></span>
+        <span class="casilla" id="e-21" data-casilla="situacion"></span>
+        <span class="casilla" id="e-22"></span>
+        <span class="casilla" id="e-23"></span>
+        <span class="casilla" id="e-24"></span>
+        <span class="casilla" id="e-25" data-casilla="situacion"></span>
+        <span class="casilla" id="e-26"></span>
+        <span class="casilla" id="e-27" data-casilla="situacion"></span>
+        <span class="casilla" id="e-28"></span>
+        <span class="casilla" id="e-29" data-casilla="situacion"></span>
+        <span class="casilla" id="e-30"></span>
+        <span class="casilla" id="e-31"></span>
+        <span class="casilla" id="e-32" data-casilla="situacion"></span>
+        <span class="casilla" id="e-33"></span>
+        <span class="casilla" id="e-34"></span>
+        <span class="casilla" id="e-35"></span>
+        <span class="casilla" id="e-36" data-casilla="situacion"></span>
+        <span class="casilla" id="e-37"></span>
+        <span class="casilla" id="e-38" data-casilla="situacion"></span>
+        <img id="juego-mesa-fondo" src="/img/contemporanea/juego-mesa.png">
+      </div>
+      <div class="juego-mesa-descripcion">
+        <img class="fondo-juego-mesa" src="/img/contemporanea/15-538617.jpg">
+        <div class="titulo-juego-mesa">
+          <span>Juego de Mesa - Revolución Industrial</span>
+          <h1>
+            RECORRIDO INDUSTRIAL
+          </h1>
+          <p>
+            La industria siderúrgica en la Revolución Industrial 
+            del hierro y el acero. Esto permitió obtener un material más 
+            barato y en grandes cantidades.
+            se caracterizó por la mejora de los procesos de producción 
+          </p>
+        </div>
+        <span class="contenedor-dinero">Dinero disponible $<span id="dinero-obrero"></span></span>
+        
+        <div class="boton-dado">
+          <span class="resultado-casillas">Avanza <span id="resultado-dado"></span> casillas</span>
+          <img class="dado activo" src="/icons/dado1.png" id="dado-1">
+          <img class="dado" src="/icons/dado2.png" id="dado-2">
+          <img class="dado" src="/icons/dado3.png" id="dado-3">
+          <img class="dado" src="/icons/dado4.png" id="dado-4">
+          <img class="dado" src="/icons/dado5.png" id="dado-5">
+          <img class="dado" src="/icons/dado6.png" id="dado-6">
+        </div>
+        <div class="dinero-billetes">
+          <div class="conjunto-billetes-1000">
+            <span class="billete b-1000" data-cantidad="1000" draggable="true">1000</span>
+            <span class="billete b-1000" data-cantidad="1000" draggable="true">1000</span>
+            <span class="billete b-1000" data-cantidad="1000" draggable="true">1000</span>
+            <span class="billete b-1000" data-cantidad="1000" draggable="true">1000</span>
+          </div>
+          <div class="conjunto-billetes-500">
+            <span class="billete b-500" data-cantidad="500" draggable="true">500</span>
+            <span class="billete b-500" data-cantidad="500" draggable="true">500</span>
+            <span class="billete b-500" data-cantidad="500" draggable="true">500</span>
+            <span class="billete b-500" data-cantidad="500" draggable="true">500</span>
+          </div>
+          <div class="conjunto-billetes-2000">
+            <span class="billete b-2000" data-cantidad="2000" draggable="true">2000</span>
+            <span class="billete b-2000" data-cantidad="2000" draggable="true">2000</span>
+            <span class="billete b-2000" data-cantidad="2000" draggable="true">2000</span>
+            <span class="billete b-2000" data-cantidad="2000" draggable="true">2000</span>
+          </div>
+          
+        </div>
+        <button class="boton-pagar">Pagar</button>
+        <div class="dinero-pagar"><p>Tienes que pagar $<span id="dinero-por-pagar">0</span></p></div>
+        <div class="deposito-billetes">
+          
+        </div>
+        
+        <div class="espacio-carta-juego">
+        </div>
+        <div class="carta carta-situacion" id="s-1" data-tilt>
+          <h1>ENFERMEDAD</h1>
+          <p>
+            Tu hijo se enfermó, necesita un
+            doctor con urgencia, buscas un
+            doctor y te recomienda comprar
+            medicina.
+          </p>
+          <span>Pierdes $<span class="carta-dinero" data-dinero="pierde">2000</span></span>
+          <div class="carta-img">
+            <img src="/img/contemporanea/'The_Munitions_Girls'_oil_painting,_England,_1918_Wellcome_L0059548-min.jpg">
+          </div>
+          <footer>
+            El acceso a la salud era difícil y
+            muy costosa.
+          </footer>
+        </div>
+        <div class="carta carta-situacion" id="s-2" data-tilt>
+          <h1>HUELGA</h1>
+          <p>
+            Tu hijo se enfermó, necesita un
+            doctor con urgencia, buscas un
+            doctor y te recomienda comprar
+            medicina.
+          </p>
+          <span>Pierdes $<span class="carta-dinero" data-dinero="pierde">2000</span></span>
+          <div class="carta-img">
+            <img src="/img/contemporanea/'The_Munitions_Girls'_oil_painting,_England,_1918_Wellcome_L0059548-min.jpg">
+          </div>
+          <footer>
+            El acceso a la salud era difícil y
+            muy costosa.
+          </footer>
+        </div>
+        <div class="carta carta-situacion" id="s-3" data-tilt>
+          <h1>ACCIDENTE</h1>
+          <p>
+            Tu hijo se enfermó, necesita un
+            doctor con urgencia, buscas un
+            doctor y te recomienda comprar
+            medicina.
+          </p>
+          <span>Pierdes $<span class="carta-dinero" data-dinero="pierde">2000</span></span>
+          <div class="carta-img">
+            <img src="/img/contemporanea/'The_Munitions_Girls'_oil_painting,_England,_1918_Wellcome_L0059548-min.jpg">
+          </div>
+          <footer>
+            El acceso a la salud era difícil y
+            muy costosa.
+          </footer>
+        </div>
+
+      </div>
+
+    </section>
+   
+    
+
+    
+  </body>
+
+  <script src="/Apps/revolucion-industrial-juego/template.js" defer></script>
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.81/build/spline-viewer.js"></script>
+  <script type="text/javascript" src="/vanilla-tilt.min.js"></script>
+  
+</html>
