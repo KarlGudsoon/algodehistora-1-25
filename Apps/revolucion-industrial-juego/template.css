@@ -192,11 +192,67 @@ body {
   }
 }
 
+.carta-situacion-verde {
+  background-color: green;
+  position: absolute;
+  left: -45%;
+  scale: 0.9;
+  bottom: -50%;
+  width: 15vw;
+  height: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+  transition: bottom 0.3s ease;
+  box-shadow: 0vw 0vw 1vw rgb(0, 0, 0, 0.25);
+  cursor: pointer;
+
+  & h1 {
+    font: 600 2vw BreeSerif;
+    margin-bottom: 0.2vw;
+  }
+
+  & p {
+    font: 300 0.8vw Roboto;
+    margin-bottom: 0.5vw;
+    text-align: center;
+  }
+
+  & span {
+    font: 600 1vw Roboto;
+    margin-bottom: 0.5vw;
+  }
+
+  & footer {
+    font: 300 0.8vw Roboto;
+    position: absolute;
+    display: flex;
+    padding: 1vw;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    background-color: #333333;
+  }
+}
+
 .carta-situacion.active {
   bottom: 0%;
 }
 
 .carta-situacion.clickeada {
+  scale: 1.5;
+  bottom: 30%;
+  left: -105%;
+}
+
+.carta-situacion-verde.active {
+  bottom: 0%;
+}
+
+.carta-situacion-verde.clickeada {
   scale: 1.5;
   bottom: 30%;
   left: -105%;
@@ -306,6 +362,14 @@ body {
   display: block;
 }
 
+.billete {
+  transition: transform .2s ease;
+}
+
+.billete:hover {
+  transform: translateY(-5%);
+}
+
 .dinero-billetes {
   width: 20vw;
   height: 10vw;
@@ -399,7 +463,11 @@ body {
     background-color: #8229e7;
     opacity: 0.1;
   }
- 
+
+  & span {
+    bottom: 0;
+  }
+
   & span:nth-child(4) {
     bottom: 0%;
   }
