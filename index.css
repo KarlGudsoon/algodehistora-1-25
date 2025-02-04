@@ -757,18 +757,34 @@ a:hover {
     }
 
     .card-contenido-etiqueta {
-      transform: translateZ(0px);
+      position: relative;
+      text-align: center;
+      pointer-events: none;
+      transition: 0.3s ease;
+      transform: translateZ(30px);
+      z-index: 0;
+      margin-bottom: 1rem;
     }
-
-    .card-contenido-etiqueta h1 {
-        font-size: 1.25rem;
-        margin: 0;
-        text-shadow: 5px 5px 10px black;
+    
+    .card-contenido-etiqueta h1{
+      font: 900 1.25rem BreeSerif;
+      line-height: 1;
+      margin: 0;
     }
-
+    
     .card-contenido-etiqueta span {
-        font-size: 0.5rem;
+      opacity: 1;
+      transition: 0.3s ease;
+      font: 0.8rem Roboto;
     }
+    
+      .card-contenido:hover .card-contenido-etiqueta {
+        bottom: 0;
+      }
+      
+      .card-contenido:hover span {
+        opacity: 1;
+      }
 
     .contenedor-periodos span {
         flex-direction: column;
