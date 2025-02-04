@@ -731,7 +731,7 @@ a:hover {
     }
 
     .contenedor-articulos {
-        padding: 1rem;
+        padding: 0 0 2rem 0;
     }
 
     .contenedor-cartas {
@@ -778,7 +778,7 @@ a:hover {
     }
 
     .aplicaciones {
-        padding: 1rem;
+        padding: 0rem;
     }
 
     .app {
