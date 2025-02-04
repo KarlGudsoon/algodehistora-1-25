@@ -763,7 +763,7 @@ a:hover {
       text-align: center;
       pointer-events: none;
       transition: 0.3s ease;
-      transform: translateZ(30px);
+      transform: translateZ(0px);
       z-index: 0;
       margin-bottom: 1rem;
     }
