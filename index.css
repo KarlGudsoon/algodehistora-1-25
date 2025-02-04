@@ -730,6 +730,36 @@ a:hover {
       padding-bottom: 10px;
     }
 
+    .contenedor-articulos {
+        padding: 1rem;
+    }
+
+    .contenedor-cartas {
+        padding: 0rem;
+    }
+
+    .card-contenido {
+        width: 150px;
+        height: 150px;
+        border-radius: 1rem;
+    }
+
+    .card-contenido-img {
+        height: 100%;
+        width: 100%;
+        border-radius: 1rem;
+    }
+
+    .card-contenido-etiqueta h1 {
+        font-size: 1.25rem;
+        margin: 0;
+        text-shadow: 5px 5px 10px black;
+    }
+
+    .card-contenido-etiqueta span {
+        font-size: 0.5rem;
+    }
+
     .contenedor-periodos span {
         flex-direction: column;
         gap: 0.5rem;
