@@ -338,6 +338,22 @@ body {
   height: 10vw;
 }
 
+.conjunto-billetes-1000 span, .conjunto-billetes-500 span, .conjunto-billetes-2000 span {
+  bottom: 0;
+}
+
+.conjunto-billetes-1000 span:nth-child(3), .conjunto-billetes-500 span:nth-child(3), .conjunto-billetes-2000 span:nth-child(3) {
+  bottom: 5%;
+}
+
+.conjunto-billetes-1000 span:nth-child(2), .conjunto-billetes-500 span:nth-child(2), .conjunto-billetes-2000 span:nth-child(2) {
+  bottom: 10%;
+}
+
+.conjunto-billetes-1000 span:nth-child(1), .conjunto-billetes-500 span:nth-child(1), .conjunto-billetes-2000 span:nth-child(1) {
+  bottom: 15%;
+}
+
 .conjunto-billetes-1000::before {
   content: "1000";
   display: flex;
