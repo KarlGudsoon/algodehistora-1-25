@@ -1,17 +1,10 @@
 var concepto = document.querySelectorAll(".concepto");
 
-
 function manejarClic() {
     var idConcepto = this.id;
     var concepto = document.getElementById("glosario-" + idConcepto);
-    if (concepto) {
-        var bottomPosition = concepto.style.bottom;
-        if (bottomPosition === "20px") {
-            concepto.style.bottom = "-400px"; // Cerrar el concepto
-        } else {
-            concepto.style.bottom = "20px"; // Abrir el concepto
-        }
-    }
+    
+    concepto.classList.toggle("active")
 }
 
 

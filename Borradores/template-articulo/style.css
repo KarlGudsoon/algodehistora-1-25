@@ -362,10 +362,10 @@ li:hover ul#submenu {
   font-size: 20px;
   transition: .2s ease;
   pointer-events: auto;
-  
-  &:hover {
-    margin-top: -5px;
-  }
+}
+
+.widget-hitos-cerrar:hover {
+  margin-top: -5px;
 }
 
 .widget-hitos {
@@ -395,40 +395,40 @@ li:hover ul#submenu {
   transition: .5s ease;
   user-select: none;
   cursor: grab;
-  
-  & h1 {
-    padding: 5px;
-    margin: 0;
-  }
-  
-  & p {
-    padding: 5px;
-  }
-  
-  &:active {
-    cursor: grabbing;
-  }
-  
-  & span {
-    text-align: center;
-    width: 100%;
-    display: block;
-    background: #b31b33;
-    padding: 2px;
-    font-size: 16px;
-  }
-  
-  & img {
-    width: 55%;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-  }
-  
-  &:hover {
-    background: #cb1935;
-  }
+}
+
+.hitos1 h1 {
+  padding: 5px;
+  margin: 0;
+}
+
+.hitos1 p {
+  padding: 5px;
+}
+
+.hitos1:active {
+  cursor: grabbing;
+}
+
+.hitos1 span {
+  text-align: center;
+  width: 100%;
+  display: block;
+  background: #b31b33;
+  padding: 2px;
+  font-size: 16px;
+}
+
+.hitos1 img {
+  width: 55%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.hitos1:hover {
+  background: #cb1935;
 }
 
 .hitos2 {
@@ -439,41 +439,41 @@ li:hover ul#submenu {
   transition: .5s ease;
   user-select: none;
   cursor: grab;
-  
-  & h1 {
-    padding: 5px;
-    margin: 0;
-  }
-  
-  & p {
-    padding: 5px;
-  }
-  
-  & span {
-    text-align: center;
-    width: 100%;
-    display: block;
-    background: #9b1e31;
-    padding: 2px;
-  }
-  
-   & img {
-    width: 55%;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
-  }
-  
-  &:active {
-    cursor: grabbing;
-  }
-  
-  &:hover {
-    background: #cb1935;
-    
-  }
 }
+
+.hitos2 h1 {
+  padding: 5px;
+  margin: 0;
+}
+
+.hitos2 p {
+  padding: 5px;
+}
+
+.hitos2 span {
+  text-align: center;
+  width: 100%;
+  display: block;
+  background: #9b1e31;
+  padding: 2px;
+}
+
+.hitos2 img {
+  width: 55%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.hitos2:active {
+  cursor: grabbing;
+}
+
+.hitos2:hover {
+  background: #cb1935;
+}
+
 
 .mapa-interactivo {
   width: 100%;
@@ -576,20 +576,26 @@ li:hover ul#submenu {
   background: #cd1c38;
   margin: 1rem;
   bottom: -100%;
-  left: 1rem;
+  opacity: 0;
   box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
     -webkit-box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
     -moz-box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
   pointer-events: auto;
-  font-family: roboto slab;
+  font-family: Roboto;
   color: white;
   padding: 1rem;
-  transition: .5s ease;
+  transition: opacity .5s ease, bottom .5s ease;
   z-index: 99999999999999;
+}
+
+.widget-glosario.active {
+  bottom: 5%;
+  opacity: 1;
 }
 
 .widget-glosario h1 {
   font-size: 1.5rem;
+  font-family: BreeSerif;
 }
 
 .widget-glosario p {
@@ -600,13 +606,12 @@ li:hover ul#submenu {
 .widget-glosario-img {
   width: 500px;
   object-fit: cover;
-  
+}
 
-  & img {
-    object-fit: cover;
-    width: 100%;
-    border-radius: 20px 20px 20px 20px;
-  }
+.widget-glosario-img img {
+  object-fit: cover;
+  border-radius: 20px 20px 20px 20px;
+  width: 100%;
 }
 
 .concepto-cerrar {
@@ -682,7 +687,7 @@ li:hover ul#submenu {
   bottom: 0px;
   left: 0;
   width: 100%;
-  height: 15%;
+  height: 10%;
   background: white;
   transition: .2s ease;
   z-index: -1;
