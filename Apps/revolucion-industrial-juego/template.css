@@ -428,6 +428,9 @@ body {
   height: 3vw;
   border-radius: 1vw 1vw 0 0;
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #e92a41;
   font: 600 1vw Roboto;
   color: white;
@@ -436,6 +439,7 @@ body {
   left: 25%;
   font-size: 1vw;
   transition: transform 0.2s ease;
+  cursor: pointer;
 }
 
 .boton-pagar:hover {
