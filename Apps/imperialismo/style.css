@@ -37,7 +37,7 @@ html, body {
     justify-content: center;
 }
   
-div#zoom > svg {
+#zoom svg {
     height: 100vh;
 }
 
@@ -64,10 +64,10 @@ div#zoom > svg {
     cursor: pointer;
     transition: 0.2s ease;
     user-select: none;
+}
 
-    :hover {
-        scale: 1.1;
-    }
+.boton:hover {
+    scale: 1.1;
 }
 
 .container-imperialismo {
@@ -101,23 +101,23 @@ div#zoom > svg {
     cursor: pointer;
     position: relative;
     user-select: none;
+}
 
-    h1 {
-        font-family: BreeSerif;
-        font-size: 1.5vw;
-        margin: 0;
-    }
+.pais h1 {
+    font-family: BreeSerif;
+    font-size: 1.5vw;
+    margin: 0;
+}
 
-    p {
-        font-family: Roboto;
-        font-size: 1vw;
-        width: 60%;
-        margin: 0;
-    }
+.pais p {
+    font-family: Roboto;
+    font-size: 1vw;
+    width: 60%;
+    margin: 0;
+}
 
-    :hover {
-        filter: brightness(120%);
-    }
+.pais:hover {
+    filter: brightness(120%);
 }
 
 .contenedor-imagen {
@@ -128,12 +128,12 @@ div#zoom > svg {
     bottom: 0;
     right: 0;
     overflow-x: hidden;
+}
 
-    img {
-        height: 100%;
-        position: absolute;
-        right: -70%;
-    }
+.contenedor-imagen img {
+    height: 100%;
+    position: absolute;
+    right: -70%;
 }
 
 .carta-pais {
@@ -163,26 +163,26 @@ div#zoom > svg {
 
 #i-2 {
     background-color: #9ac31c;
+}
 
-    img {
-        left: 15%;
-    }
+#i-2 img {
+    left: 15%;
 }
 
 #i-3 {
-    background-color: #b24995;
+    background-color: #b24995;  
+}
 
-    img {
-        left: 15%;
-    }
+#i-3 img {
+    left: 15%;
 }
 
 #i-4 {
-    background-color: var(--yellow);
+    background-color: var(--yellow); 
+}
 
-    img {
-        left: 15%;
-    }
+#i-4 img {
+    left: 15%;
 }
 
 #i-all {
@@ -190,11 +190,8 @@ div#zoom > svg {
     left: 9%;
 }
 
-#egipto {
-
-    hover {
-        filter: brightness(120%);
-    }
+#egipto:hover {
+    filter: brightness(120%);
 }
 
 #imperio-belga {
