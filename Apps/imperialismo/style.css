@@ -65,7 +65,7 @@ div#zoom > svg {
     transition: 0.2s ease;
     user-select: none;
 
-    &:hover {
+    :hover {
         scale: 1.1;
     }
 }
@@ -102,20 +102,20 @@ div#zoom > svg {
     position: relative;
     user-select: none;
 
-    & h1 {
+    h1 {
         font-family: BreeSerif;
         font-size: 1.5vw;
         margin: 0;
     }
 
-    & p {
+    p {
         font-family: Roboto;
         font-size: 1vw;
         width: 60%;
         margin: 0;
     }
 
-    &:hover {
+    :hover {
         filter: brightness(120%);
     }
 }
@@ -129,7 +129,7 @@ div#zoom > svg {
     right: 0;
     overflow-x: hidden;
 
-    & img {
+    img {
         height: 100%;
         position: absolute;
         right: -70%;
@@ -164,7 +164,7 @@ div#zoom > svg {
 #i-2 {
     background-color: #9ac31c;
 
-    & img {
+    img {
         left: 15%;
     }
 }
@@ -172,7 +172,7 @@ div#zoom > svg {
 #i-3 {
     background-color: #b24995;
 
-    & img {
+    img {
         left: 15%;
     }
 }
@@ -180,7 +180,7 @@ div#zoom > svg {
 #i-4 {
     background-color: var(--yellow);
 
-    & img {
+    img {
         left: 15%;
     }
 }
@@ -192,7 +192,7 @@ div#zoom > svg {
 
 #egipto {
 
-    &:hover {
+    hover {
         filter: brightness(120%);
     }
 }

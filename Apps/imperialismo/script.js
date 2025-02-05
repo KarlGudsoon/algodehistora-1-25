@@ -58,7 +58,7 @@ var scale = 1,
 
 // Límites de escala
 const MIN_SCALE = 1; // Escala mínima
-const MAX_SCALE = 5;   // Escala máxima
+const MAX_SCALE = 6;   // Escala máxima
 
 // Función para ajustar la escala dentro de los límites
 function clampScale(value) {
