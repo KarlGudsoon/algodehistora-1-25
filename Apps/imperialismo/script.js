@@ -56,6 +56,16 @@ var scale = 1,
     start = { x: 0, y: 0 },
     zoom = document.getElementById("zoom");
 
+// Límites de escala
+const MIN_SCALE = 1; // Escala mínima
+const MAX_SCALE = 5;   // Escala máxima
+
+// Función para ajustar la escala dentro de los límites
+function clampScale(value) {
+    return Math.min(Math.max(value, MIN_SCALE), MAX_SCALE);
+}
+
+// Función para aplicar la transformación
 function setTransform() {
     zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
 }
@@ -87,6 +97,7 @@ zoom.onwheel = function (e) {
         ys = (e.clientY - pointY) / scale,
         delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
     (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
+    scale = clampScale(scale); // Aplicar límites de escala
     pointX = e.clientX - xs * scale;
     pointY = e.clientY - ys * scale;
     setTransform();
@@ -98,27 +109,7 @@ zoom.addEventListener('touchstart', function (e) {
         e.preventDefault();
         start = { x: e.touches[0].clientX - pointX, y: e.touches[0].clientY - pointY };
         panning = true;
-    }
-});
-
-zoom.addEventListener('touchmove', function (e) {
-    if (e.touches.length === 1 && panning) { // Solo un dedo y panning activo
-        e.preventDefault();
-        pointX = (e.touches[0].clientX - start.x);
-        pointY = (e.touches[0].clientY - start.y);
-        setTransform();
-    }
-});
-
-zoom.addEventListener('touchend', function (e) {
-    panning = false;
-});
-
-// Zoom con gesto de pellizco (pinch)
-var initialDistance = null;
-
-zoom.addEventListener('touchstart', function (e) {
-    if (e.touches.length === 2) { // Dos dedos
+    } else if (e.touches.length === 2) { // Dos dedos (zoom)
         e.preventDefault();
         initialDistance = Math.hypot(
             e.touches[0].clientX - e.touches[1].clientX,
@@ -128,33 +119,41 @@ zoom.addEventListener('touchstart', function (e) {
 });
 
 zoom.addEventListener('touchmove', function (e) {
-    if (e.touches.length === 2 && initialDistance !== null) { // Dos dedos y distancia inicial calculada
+    if (e.touches.length === 1 && panning) { // Solo un dedo y panning activo
+        e.preventDefault();
+        pointX = (e.touches[0].clientX - start.x);
+        pointY = (e.touches[0].clientY - start.y);
+        setTransform();
+    } else if (e.touches.length === 2 && initialDistance !== null) { // Dos dedos y zoom
         e.preventDefault();
         var currentDistance = Math.hypot(
             e.touches[0].clientX - e.touches[1].clientX,
             e.touches[0].clientY - e.touches[1].clientY
         );
 
-        var newScale = scale * (currentDistance / initialDistance);
-        scale = newScale; // Actualiza la escala
+        // Reducir la velocidad del zoom
+        var zoomFactor = 1 + (currentDistance - initialDistance) / 1000; // Ajusta el divisor para controlar la velocidad
+        var newScale = scale * zoomFactor;
+        scale = clampScale(newScale); // Aplicar límites de escala
 
-        // Ajusta el punto de transformación para que el zoom se centre entre los dos dedos
+        // Ajustar el punto de transformación para que el zoom se centre entre los dos dedos
         var midpointX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
         var midpointY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
 
-        pointX = midpointX - (midpointX - pointX) * (scale / (scale / (currentDistance / initialDistance)));
-        pointY = midpointY - (midpointY - pointY) * (scale / (scale / (currentDistance / initialDistance)));
+        pointX = midpointX - (midpointX - pointX) * (scale / (scale / zoomFactor));
+        pointY = midpointY - (midpointY - pointY) * (scale / (scale / zoomFactor));
 
         setTransform();
     }
 });
 
 zoom.addEventListener('touchend', function (e) {
+    if (e.touches.length < 1) { // Levantar todos los dedos
+        panning = false;
+    }
     if (e.touches.length < 2) { // Menos de dos dedos
         initialDistance = null;
     }
 });
-
-      
       
 

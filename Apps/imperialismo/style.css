@@ -63,6 +63,7 @@ div#zoom > svg {
     z-index: 1;
     cursor: pointer;
     transition: 0.2s ease;
+    user-select: none;
 
     &:hover {
         scale: 1.1;
