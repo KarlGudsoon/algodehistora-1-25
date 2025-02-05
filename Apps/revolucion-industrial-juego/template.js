@@ -256,6 +256,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    pagarBtn.addEventListener("click", pagarDeuda);
+    pagarBtn.addEventListener("touchstart", pagarDeuda);
+    pagarBtn.addEventListener("touchend", pagarDeuda);
+
     // Animación del dado
     function animarDado(resultado, callback) {
         let contador = 0;

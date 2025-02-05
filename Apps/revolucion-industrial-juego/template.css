@@ -432,6 +432,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #e92a41;
+  pointer-events: all;
   font: 600 1vw Roboto;
   color: white;
   border: 0;
