@@ -478,11 +478,14 @@ li:hover ul#submenu {
 .mapa-interactivo {
   width: 100%;
   background: black;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  height: 100vh;
   pointer-events: auto;
   clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
   box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
   transition: 0.8s ease;
+  z-index: 99999999999999999;
 }
 
 .timeline-interactivo {
@@ -675,10 +678,10 @@ li:hover ul#submenu {
   color: white;
   font-weight: 600;
   z-index: 1;
+}
 
-  &:hover {
-    color: var(--red)
-  }
+.concepto:hover {
+  color: var(--red)
 }
 
 .concepto:before {
@@ -718,10 +721,12 @@ li:hover ul#submenu {
   color: white;
   font: 300 15px Roboto;
   pointer-events: auto;
-  transition: opacity 1s ease;
+  transition: all .5s ease, opacity 1s ease;
+  z-index: 99999999999999999;
 }
 
 .widget-card-pais h1 {
+  font-size: 2rem;
   text-align: center;
   margin: 0;
   font-weight: 900;
