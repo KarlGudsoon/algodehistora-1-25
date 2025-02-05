@@ -29,32 +29,8 @@ html {
 
 body {
   background: #f86d31;
-  font-family: roboto;
+  font-family: Roboto;
   color: white;
-  animation: viewtransition-entrada 2s ease;
-}
-
-@keyframes viewtransition-entrada {
-  from {
-    clip-path: circle(0% at 50% 0);
-  }
-  to {
-    clip-path: circle(100% at 50% 0);
-  }
-}
-
-.clip-transition {
-  animation: viewtransition-salida 1s ease;
-  animation-fill-mode: forwards;
-}
-
-@keyframes viewtransition-salida {
-  from {
-    clip-path: circle(100% at 50% 0);
-  }
-  to {
-    clip-path: circle(0% at 50% 0);
-  }
 }
 
 .navegacion-above {
