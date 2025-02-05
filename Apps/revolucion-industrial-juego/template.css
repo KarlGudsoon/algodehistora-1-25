@@ -97,10 +97,12 @@ body {
 .titulo-juego-mesa h1 {
   font: 900 3vw BreeSerif;
   margin: 0;
+  line-height: 1;
 }
 
 .titulo-juego-mesa p {
   font: 300 1vw Roboto;
+  margin: 0;
 }
 
 .contenedor-dinero {
