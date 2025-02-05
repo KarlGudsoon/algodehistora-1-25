@@ -772,7 +772,7 @@ a:hover {
       font: 900 1.25rem BreeSerif;
       line-height: 1;
       margin: 0;
-      text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.1);
+      text-shadow: 0rem 0rem 0rem rgba(0, 0, 0,);
     }
     
     .card-contenido-etiqueta span {
