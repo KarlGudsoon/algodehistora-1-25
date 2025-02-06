@@ -267,21 +267,31 @@ var conceptoCerrar = document.querySelectorAll(".concepto-cerrar");
 paises.forEach((pais) => {
     pais.addEventListener("click", function () {
         var idPais = this.id; // Obtener el ID del país clickeado
-        var card = document.querySelector("#card-" + idPais); // Seleccionar el card correspondiente
+        var card = document.querySelector("#card-" + idPais);
+        var containerCard = document.querySelector(".contenedor-personaje")
 
         if (card) {
             card.classList.toggle("active"); // Agregar clase 'active' al card
         }
+
+        if (containerCard) {
+          containerCard.classList.toggle("active"); // Agregar clase 'active' al card
+      }
     });
 });
 
 function manejarCierre(event) {
     var concepto = event.target.parentElement;
+    var containerCard = document.querySelector(".contenedor-personaje")
 
     
     if (concepto) {
         concepto.classList.remove("active");
     }
+
+    if (containerCard) {
+      containerCard.classList.remove("active");
+  }
 }
 
 
