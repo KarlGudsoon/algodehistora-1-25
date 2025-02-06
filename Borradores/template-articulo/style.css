@@ -12,6 +12,11 @@ html {
   scroll-snap-type: y mandatory;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
+
 @font-face {
   font-family: BreeSerif;
   src: url("/fonts/BreeSerif-Regular.ttf")

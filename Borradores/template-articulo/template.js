@@ -44,17 +44,23 @@ var personajes = document.querySelectorAll(".personaje");
 
 personajes.forEach((personaje) => {
     personaje.addEventListener("click", function () {
-        var idPersonaje = this.id; // Obtener el ID del país clickeado
+        var idPersonaje = this.id; // Obtener el ID del personaje clickeado
         var card = document.querySelector("#personaje-" + idPersonaje); 
-        var containerCard = document.querySelector(".contenedor-personaje")
+        var containerCard = document.querySelector(".contenedor-personaje");
 
         if (card) {
             card.classList.toggle("active");
         }
 
         if (containerCard) {
-          containerCard.classList.toggle("active");
-      }
+            containerCard.classList.toggle("active");
+        }
+        
+        if (card.classList.contains("active") || containerCard.classList.contains("active")) {
+            document.body.classList.add("no-scroll");
+        } else {
+            document.body.classList.remove("no-scroll");
+        }
     });
 });
 
@@ -258,15 +264,13 @@ paises.forEach((pais) => {
     pais.addEventListener("click", function () {
         var idPais = this.id; // Obtener el ID del país clickeado
         var card = document.querySelector("#card-" + idPais);
-        var containerCard = document.querySelector(".contenedor-personaje")
+      
 
         if (card) {
             card.classList.toggle("active"); // Agregar clase 'active' al card
         }
 
-        if (containerCard) {
-          containerCard.classList.toggle("active"); // Agregar clase 'active' al card
-      }
+       
     });
 });
 
@@ -281,7 +285,9 @@ function manejarCierre(event) {
 
     if (containerCard) {
       containerCard.classList.remove("active");
-  }
+    }
+
+    document.body.classList.remove("no-scroll");
 }
 
 
