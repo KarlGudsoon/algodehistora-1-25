@@ -1,3 +1,74 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const cardCarousel = document.querySelectorAll('.item');
+
+  cardCarousel.forEach(card => {
+    const etiquetaItem = card.querySelector('.etiqueta');
+    const personajeItem = card.querySelector('.personaje-item');
+
+    // Función para voltear la tarjeta
+    const flipCard = () => {
+      card.classList.toggle('flipped');
+
+      if (etiquetaItem) {
+        etiquetaItem.classList.toggle('flipped');
+      }
+
+      if (personajeItem) {
+        personajeItem.classList.toggle('flipped');
+      }
+
+      // Deshabilitar temporalmente el evento para evitar múltiples flips rápidos
+      card.style.pointerEvents = 'none';
+      setTimeout(() => {
+        card.style.pointerEvents = 'auto';
+      }, 500); // 500ms de retraso
+    };
+
+    // Evento de doble clic (para desktop)
+    card.addEventListener('dblclick', flipCard);
+
+    // Evento de toque (para móviles)
+    let touchTimeout;
+    card.addEventListener('touchstart', () => {
+      // Si ya hay un timeout en progreso, no hacer nada
+      if (touchTimeout) return;
+
+      // Establecer un timeout para simular el doble clic
+      touchTimeout = setTimeout(() => {
+        touchTimeout = null; // Limpiar el timeout
+      }, 300); // 300ms para detectar un toque simple
+
+      // Si se toca dos veces en menos de 300ms, voltear la tarjeta
+      card.addEventListener('touchend', () => {
+        if (touchTimeout) {
+          clearTimeout(touchTimeout);
+          touchTimeout = null;
+          flipCard();
+        }
+      }, { once: true }); // Ejecutar solo una vez
+    });
+  });
+});
+
+var personajes = document.querySelectorAll(".personaje");
+
+personajes.forEach((personaje) => {
+    personaje.addEventListener("click", function () {
+        var idPersonaje = this.id; // Obtener el ID del país clickeado
+        var card = document.querySelector("#personaje-" + idPersonaje); 
+        var containerCard = document.querySelector(".contenedor-personaje")
+
+        if (card) {
+            card.classList.toggle("active");
+        }
+
+        if (containerCard) {
+          containerCard.classList.toggle("active");
+      }
+    });
+});
+
+
 var concepto = document.querySelectorAll(".concepto");
 
 function manejarClic() {
@@ -219,154 +290,6 @@ conceptoCerrar.forEach(function(cerrar) {
 });
 
 
-/* CARTA PERSONAJE HISTORICO */
-
-var fondopersonaje = document.querySelectorAll(".card-container-img");
-var container = document.querySelectorAll(".container-perspectiva");
-var personaje = document.querySelectorAll(".personaje-historico");
-var carta = document.querySelectorAll(".widget-card-personaje");
-var texto = document.querySelectorAll(".card-texto");
-var titulo = document.querySelectorAll(".container-titulo-personaje");
-var tituloh1 = document.querySelectorAll(".titulo-personaje");
-var atras = document.querySelectorAll(".concepto-atras");
-var cardDorada = document.querySelectorAll(".card-dorada");
-var sobre = document.querySelectorAll(".sobre-carta-roma");
-var containers = document.querySelectorAll('.widget-personaje-flip');
-
-
-function abrirpersonaje() {
-  fondopersonaje.forEach(function(elemento) {
-    elemento.style.height = "175px";
-    elemento.style.borderRadius = "50px 50px 0px 0px";
-  });
-
-  texto.forEach(function(elemento) {
-    elemento.style.opacity = "1";
-  });
-  
-  atras.forEach(function(elemento) {
-    elemento.style.display = "flex";
-  });
-  
-  personaje.forEach(function(elemento) {
-    elemento.style.height = "200px";
-    elemento.style.bottom = "225px";
-    elemento.style.left = "10%";
-    elemento.style.opacity = "1";
-  });
-  
-  container.forEach(function(elemento) {
-    elemento.style.cursor = "auto";
-  });
-  
-  carta.forEach(function(elemento) {
-    elemento.style.transform = "translateY(0%)";
-    elemento.classList.add('transicion');
-  });
-  
-  titulo.forEach(function(elemento) {
-    elemento.style.transform = "translateY(0%)";
-    elemento.style.fontSize = "2rem";
-    elemento.style.bottom = "225px";
-    elemento.style.right = "10px";
-    elemento.style.width = "auto";
-    elemento.style.opacity = "1";
-  });
-  
-  tituloh1.forEach(function(elemento) {
-    elemento.style.fontSize = "2rem";
-  });
-  
-  cardDorada.forEach(function(elemento) {
-    elemento.style.opacity = "1";
-  });
-}
-
-function cerrarpersonaje() {
-  fondopersonaje.forEach(function(elemento) {
-    elemento.style.height = ""; // Revertir la altura
-    elemento.style.borderRadius = ""; // Revertir el radio del borde
-  });
-
-  texto.forEach(function(elemento) {
-    elemento.style.opacity = ""; // Revertir la opacidad
-  });
-  
-  atras.forEach(function(elemento) {
-    elemento.style.display = "";
-  });
-  
-  personaje.forEach(function(elemento) {
-    elemento.style.height = ""; // Revertir la altura
-    elemento.style.bottom = ""; // Revertir la posición inferior
-    elemento.style.left = ""; // Revertir la posición izquierda
-    elemento.style.opacity = ""; // Revertir la opacidad
-  });
-  
-  container.forEach(function(elemento) {
-    elemento.style.cursor = "";
-  });
-  
-  carta.forEach(function(elemento) {
-    elemento.style.transform = "";
-    elemento.classList.remove('transicion');
-  });
-  
-  titulo.forEach(function(elemento) {
-    elemento.style.transform = "";
-    elemento.style.bottom = "";
-    elemento.style.right = "";
-    elemento.style.width = "";
-    elemento.style.opacity = "";
-  });
-  
-  tituloh1.forEach(function(elemento) {
-    elemento.style.fontSize = "";
-  });
-  
-  cardDorada.forEach(function(elemento) {
-    elemento.style.opacity = "";
-  });
-  
-  sobre.forEach(function(elemento) {
-    elemento.style.display = "";
-  });
-  
-  personaje.forEach(function(elemento) {
-    elemento.style.visibility = "";
-  });
-  
-  tituloh1.forEach(function(elemento) {
-    elemento.style.visibility = "";
-  });
-}
-
-function abrirsobre() {
-  sobre.forEach(function(elemento) {
-    elemento.style.display = "";
-  });
-  
-  personaje.forEach(function(elemento) {
-    elemento.style.visibility = "";
-  });
-  
-  tituloh1.forEach(function(elemento) {
-    elemento.style.visibility = "";
-  });
-}
-
-carta.forEach(function(carta) {
-  carta.addEventListener("click", abrirpersonaje);
-});
-
-atras.forEach(function(atras) {
-  atras.addEventListener("click", cerrarpersonaje);
-});
-
-sobre.forEach(function(sobre) {
-  sobre.addEventListener("click", abrirsobre);
-});
-
 // ABRIR SOBRE 
 
 const DECISION_THRESHOLD = 150
@@ -555,63 +478,7 @@ botones.forEach(function(boton) {
   });
 });
 
-// Navegación //
-
-var containerNavegacion = document.querySelector(".widget-navegacion");
-var Navegacion = document.querySelector("#navegacion");
-var Navegacionsimbolo = document.querySelector("#navegacionsimbolo");
-
-var estaAbierto = false;
-
-Navegacion.addEventListener("click", function() {
-    if (!estaAbierto) {
-        containerNavegacion.style.height = "500px"; 
-        containerNavegacion.classList.remove('flotar');
-        Navegacionsimbolo.style.transform = "rotate(180deg)";
-        estaAbierto = true; 
-    } else {
-        containerNavegacion.style.height = "";
-        containerNavegacion.classList.add('flotar');
-        Navegacionsimbolo.style.transform = "";
-        estaAbierto = false; 
-    }
-});
-
-var containerventana = document.querySelectorAll(".widget-ventana");
-var ventanaCerrar = document.querySelectorAll(".ventana-cerrar");
-var botonventana = document.querySelectorAll(".boton-ventana")
+// FLIPPED CARTA PERSONAJE //
 
 
-function cerrarventana(event) {
-    
-    var ventana = event.target.parentElement;
-
-    
-    if (ventana) {
-        ventana.style.clipPath = "circle(0%)";
-    }
-}
-
-ventanaCerrar.forEach(function(cerrar) {
-  cerrar.addEventListener("click", cerrarventana);
-});
-
-
-function ventanaClic() {
-    var idventana = this.id;
-    var ventana = document.getElementById("ventana-" + idventana);
-    if (ventana) {
-        var clipPath = ventana.style.clipPath;
-        if (clipPath === "circle(100%)") {
-            ventana.style.clipPath = "circle(0%)"; // Cerrar el concepto
-        } else {
-            ventana.style.clipPath = "circle(100%)"; // Abrir el concepto
-        }
-    }
-}
-
-
-botonventana.forEach(function(abrirventana) {
-    abrirventana.addEventListener("click", ventanaClic);
-});
 
