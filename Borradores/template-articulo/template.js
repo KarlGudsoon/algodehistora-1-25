@@ -1,17 +1,3 @@
-function isTouchDevice() {
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
-}
-
-// Aplicar Vanilla Tilt.js solo si no es un dispositivo táctil
-if (!isTouchDevice()) {
-  VanillaTilt.init(document.querySelector(".item"), {
-    max: 25,
-    speed: 400,
-    glare: true,
-    "max-glare": 0.5,
-  });
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   const cardCarousel = document.querySelectorAll('.item');
 
@@ -502,7 +488,9 @@ botones.forEach(function(boton) {
   });
 });
 
-// FLIPPED CARTA PERSONAJE //
+
+
+
 
 
 
