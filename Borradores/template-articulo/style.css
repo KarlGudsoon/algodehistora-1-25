@@ -3646,6 +3646,7 @@ li:hover ul#submenu {
   border-radius: 100%;
   transition: 0.2s ease;
   border: 0px solid white;
+  user-select: none;
 }
 
 .face-etiqueta-trasera span:hover {
@@ -3656,7 +3657,6 @@ li:hover ul#submenu {
 .face-etiqueta-trasera span img {
   height: 50%;
   user-select: none;
-  pointer-events: none;
 }
 
 .face-descripcion-trasera {
