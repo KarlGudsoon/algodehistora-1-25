@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   cardCarousel.forEach(card => {
     const etiquetaItem = card.querySelector('.etiqueta');
     const personajeItem = card.querySelector('.personaje-item');
+    
+    let startX;
 
     // Función para voltear la tarjeta
     const flipCard = () => {
@@ -16,33 +18,23 @@ document.addEventListener("DOMContentLoaded", function () {
       if (personajeItem) {
         personajeItem.classList.toggle('flipped');
       }
-
-      
     };
 
     // Evento de doble clic (para desktop)
     card.addEventListener('dblclick', flipCard);
 
-    // Lógica para detectar doble toque en móviles
-    let lastTouchTime = 0;
-    let touchCount = 0;
+    // Eventos para dispositivos móviles
+    card.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
 
-    card.addEventListener('touchstart', (event) => {
-      const currentTime = new Date().getTime();
+    card.addEventListener('touchend', (e) => {
+      const endX = e.changedTouches[0].clientX;
+      const diffX = endX - startX;
 
-      // Si el tiempo entre toques es menor a 300ms, incrementar el contador
-      if (currentTime - lastTouchTime < 300) {
-        touchCount++;
-      } else {
-        touchCount = 1; // Reiniciar el contador si el tiempo es mayor
-      }
-
-      lastTouchTime = currentTime;
-
-      // Si se detectan dos toques en menos de 300ms, voltear la tarjeta
-      if (touchCount === 2) {
+      // Si el deslizamiento es suficientemente largo y en horizontal
+      if (Math.abs(diffX) > 50) {
         flipCard();
-        touchCount = 0; // Reiniciar el contador después de voltear
       }
     });
   });
