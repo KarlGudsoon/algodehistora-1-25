@@ -137,7 +137,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Eventos táctiles (para móviles)
   carousel.addEventListener("touchstart", dragStart);
-  carousel.addEventListener("touchmove", dragging);
+  carousel.addEventListener("touchmove", (e) => {
+    // Prevenir el comportamiento por defecto del touchmove
+    e.preventDefault();
+    dragging(e);
+  });
   document.addEventListener("touchend", dragStop);
 });
 
