@@ -172,45 +172,44 @@ header {
   display: flex;
   width: 100%;
   height: 100%;
-  margin-top: 1vw;
+  margin-top: 1rem;
   flex-direction: column;
   align-items: center;
   pointer-events: auto;
+}
 
-  & span {
-    position: relative;
-    height: 5vw;
+.contenedor-logo span {
+  position: relative;
+  height: 75px;
+}
 
+.contenedor-logo span img {
+  height: 100%;
+  user-select: none;
+}
 
-    & img {
-      height: 100%;
-      user-select: none;
-    }
+.contenedor-logo span::before {
+  content: "";
+  width: 1.5%;
+  height: 37%;
+  background-color: #232323;
+  position: absolute;
+  bottom: 13.5%;
+  left: 8%;
+  z-index: 9;
+  animation: square1 4s ease infinite;
+}
 
-    &::before {
-      content: "";
-      width: 1.5%;
-      height: 37%;
-      background-color: #232323;
-      position: absolute;
-      bottom: 13.5%;
-      left: 8%;
-      z-index: 9;
-      animation: square1 4s ease infinite;
-    }
-
-    &::after {
-      content: "";
-      width: 1.5%;
-      height: 37%;
-      background-color: #232323;
-      position: absolute;
-      top: 11.5%;
-      right: 13%;
-      z-index: 9;
-      animation: square2 4s ease infinite;
-    }
-  }
+.contenedor-logo span::after {
+  content: "";
+  width: 1.5%;
+  height: 37%;
+  background-color: #232323;
+  position: absolute;
+  top: 11.5%;
+  right: 13%;
+  z-index: 9;
+  animation: square2 4s ease infinite;
 }
 
 .dropdownmenu ul,
@@ -223,7 +222,7 @@ header {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 0.5vw;
+  margin-bottom: 0.5rem;
 }
 .dropdownmenu li {
   float: left;
@@ -233,8 +232,8 @@ header {
 .dropdownmenu a {
   color: white;
   display: block;
-  font: 900 1vw roboto;
-  padding: 0.5vw 1vw;
+  font: 900 1rem roboto;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   text-align: center;
   text-decoration: none;
   -webkit-transition: all 0.25s ease;
@@ -3755,10 +3754,27 @@ li:hover ul#submenu {
 }
 
 @media screen and (max-width: 768px) {
+  .widget-card-pais {
+    transition: opacity 0.5s ease;
+  }
+
   .widget-card-pais.active {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
+  }
+
+  .widget-glosario {
+    transition: opacity .5s ease;
+  }
+
+  .widget-glosario.active {
+    position: fixed;
+    width: 90%;
+    margin: 0;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
   }
 }
