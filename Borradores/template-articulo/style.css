@@ -3479,11 +3479,13 @@ li:hover ul#submenu {
   align-items: center;
   visibility: hidden;
   opacity: 0;
+  pointer-events: none;
 }
 
 .contenedor-personaje.active {
   visibility: visible;
   opacity: 1;
+  pointer-events: auto;
 }
 
 .item {
