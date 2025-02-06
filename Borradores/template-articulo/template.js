@@ -17,11 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         personajeItem.classList.toggle('flipped');
       }
 
-      // Deshabilitar temporalmente el evento para evitar múltiples flips rápidos
-      card.style.pointerEvents = 'none';
-      setTimeout(() => {
-        card.style.pointerEvents = 'auto';
-      }, 500); // 500ms de retraso
+      
     };
 
     // Evento de doble clic (para desktop)
@@ -48,9 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
         flipCard();
         touchCount = 0; // Reiniciar el contador después de voltear
       }
-
-      // Evitar que el evento se propague (opcional)
-      event.preventDefault();
     });
   });
 });
