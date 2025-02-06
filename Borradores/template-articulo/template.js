@@ -27,25 +27,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // Evento de doble clic (para desktop)
     card.addEventListener('dblclick', flipCard);
 
-    // Evento de toque (para móviles)
-    let touchTimeout;
+    // Eventos para móviles (mantener presionado)
+    let touchTimer;
     card.addEventListener('touchstart', () => {
-      // Si ya hay un timeout en progreso, no hacer nada
-      if (touchTimeout) return;
+      // Iniciar un temporizador para detectar si se mantiene presionado
+      touchTimer = setTimeout(() => {
+        flipCard(); // Voltear la carta después de 500ms
+      }, 500); // 500ms para considerar que se mantuvo presionado
+    });
 
-      // Establecer un timeout para simular el doble clic
-      touchTimeout = setTimeout(() => {
-        touchTimeout = null; // Limpiar el timeout
-      }, 300); // 300ms para detectar un toque simple
+    card.addEventListener('touchend', () => {
+      // Si el usuario suelta antes de 500ms, cancelar el temporizador
+      clearTimeout(touchTimer);
+    });
 
-      // Si se toca dos veces en menos de 300ms, voltear la tarjeta
-      card.addEventListener('touchend', () => {
-        if (touchTimeout) {
-          clearTimeout(touchTimeout);
-          touchTimeout = null;
-          flipCard();
-        }
-      }, { once: true }); // Ejecutar solo una vez
+    card.addEventListener('touchmove', () => {
+      // Si el usuario mueve el dedo, cancelar el temporizador
+      clearTimeout(touchTimer);
     });
   });
 });
