@@ -131,15 +131,16 @@ zoom.addEventListener('touchmove', function (e) {
             e.touches[0].clientY - e.touches[1].clientY
         );
 
-        // Reducir la velocidad del zoom
-        var zoomFactor = 1 + (currentDistance - initialDistance) / 1000; // Ajusta el divisor para controlar la velocidad
-        var newScale = scale * zoomFactor;
+        // Controlar la velocidad del zoom ajustando la fórmula
+        var zoomFactor = (currentDistance - initialDistance) / 200; // Ajustar el divisor para controlar la velocidad
+        var newScale = scale * (1 + zoomFactor); // Multiplicar por un factor pequeño
         scale = clampScale(newScale); // Aplicar límites de escala
 
         // Ajustar el punto de transformación para que el zoom se centre entre los dos dedos
         var midpointX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
         var midpointY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
 
+        // Ajustar desplazamiento para que se mantenga estable mientras se hace zoom
         pointX = midpointX - (midpointX - pointX) * (scale / (scale / zoomFactor));
         pointY = midpointY - (midpointY - pointY) * (scale / (scale / zoomFactor));
 
@@ -155,5 +156,5 @@ zoom.addEventListener('touchend', function (e) {
         initialDistance = null;
     }
 });
-      
+
 
