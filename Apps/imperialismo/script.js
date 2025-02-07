@@ -159,14 +159,11 @@ zoom.addEventListener("touchmove", function (e) {
 });
 
 zoom.addEventListener("touchend", function (e) {
-    if (e.touches.length === 1) {
-        // Un dedo queda, ajustar posición para evitar desplazamiento inesperado
-        pointX = pointX;
-        pointY = pointY;
-        setTransform();
-    } else if (e.touches.length === 0) {
-        // No hay dedos tocando, no hacer panning
+    if (e.touches.length === 0) {
+        // Cuando ambos dedos se han soltado, mantener las posiciones sin mover la vista
         panning = false;
+        // No necesitamos actualizar `pointX` y `pointY`, ya que no queremos que la imagen se mueva
+        setTransform();
     }
 });
 
