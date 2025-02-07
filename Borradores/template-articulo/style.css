@@ -921,145 +921,59 @@ li:hover ul#submenu {
   animation: gradient-animation 15s linear infinite;
 }
 
-
-
-.card-texto {
-  width: 85%;
-  padding-top: 10px;
-  margin: 0 auto;
-  text-align: center;
-  opacity: 0;
-  z-index: 1;
-}
-
-.card-container-img {
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  transition: .5s ease;
-  border-radius: 50px 50px 50px 50px;
-  z-index: 1;
-}
-
-.fondo-personaje {
-  height: 100%;
-}
-
-.personaje-historico {
-  height: 400px;
-  width: 100%;
-  position: absolute;
-  bottom: 0px;
-  display: flex;
-  justify-content: center;
-  opacity: 1;
-  filter: drop-shadow(2px 2px 10px #000000);
-  transition: .5s ease;
-  z-index: 1;
-  
-  & img {
-    height: 100%;
-  }
-}
-
-.container-titulo-personaje {
-  position: absolute;
-  transform: rotateX(0deg) rotateY(0deg) translateY(0);
-  transition: .2s ease;
-  text-shadow: 4px 4px 11px rgba(0,0,0,0.6);
-  z-index: 2;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  right: 0;
-  justify-content: center;
-  bottom: 10px;
-  opacity: 1;
-}
-
-.titulo-personaje {
-  font-size: 3rem;
-  width: min-content;
-  
-  text-align: center;
-  transition: .5s ease;
-  text-shadow: 5px 5px 10px rgba(0,0,0,1);
-}
-
-.sobre-carta-roma {
+.sobre-carta {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  margin: 3rem;
+  bottom: 0;
+  left: 1rem;
+  width: 300px;
+  height: 400px;
+  scale: 0;
   background-size: cover;
   background-image: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/889693ce-907d-480f-ac32-17ae063a73dd.image.png?v=1711949981710"); 
-  z-index: 99999999;
-  transition: .2s ease;
-  animation: blur-out-expand 0.4s linear both;
+  z-index: 999;
+  transition: scale .5s ease, opacity .5s ease;
+  animation: blur-out-expand 0.5s ease both;
   animation-play-state: paused;
-  scale: 1.05;
   -webkit-box-shadow: inset 1px 1px 12px 1px #000000; 
   box-shadow: inset 1px 1px 20px 15px rgb(163 163 163 / 50%);
   clip-path: polygon(2% 10%, 1% 5%, 0 0, 100% 0, 99% 5%, 98% 10%, 98% 90%, 99% 95%, 100% 100%, 0 100%, 1% 95%, 2% 90%);
+  pointer-events: none;
+}
+
+.sobre-carta.active {
+  scale: 1.1;
+  opacity: 1;
   pointer-events: auto;
-  
-  & h1 {
-    position: absolute;
-    bottom: 20px;
-    color: #ffcf00;
-    width: 100%;
-    text-align: center;
-    text-shadow: 5px 5px 15px rgba(0,0,0,0.9);
-    font-size: 40px;
-            -webkit-text-stroke-width: 0px;
-            -webkit-text-stroke-color: var(--red2);
-    user-select: none;
-  }
-  
-  & img {
-    position: absolute;
-    bottom: 75px;
-    left: 25%;
-    width: 150px;
-    filter: drop-shadow(5px 5px 15px #000000);
-    padding: 10px;
-    user-select: none;
-  }
-  
-  &:hover {
-    scale: 1.1;
-    
-  }
-  
-  &.go-left {
-    transform: translateX(-150%) rotate(-30deg) !important;
-    opacity: 0
-  }
+}
 
-  &.go-right {
-    transform: translateY(200%) translateX(100%) !important;
-    opacity: 0
-  }
+.sobre-carta img {
+  position: absolute;
+  bottom: 75px;
+  left: 25%;
+  width: 150px;
+  filter: drop-shadow(5px 5px 15px #000000);
+  padding: 10px;
+  user-select: none;
+}
 
-  &.go-left,
-  &.go-right {
-    transition: transform .5s ease, rotate .8s ease, opacity .3s ease;
-  }
-
-  &.reset {
-    transition: transform .3s ease;
-    transform: translateX(0) !important;
-  }
+.sobre-carta h1 {
+  position: absolute;
+  bottom: 20px;
+  color: #ffcf00;
+  width: 100%;
+  text-align: center;
+  text-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+  font-size: 40px;
+          -webkit-text-stroke-width: 0px;
+          -webkit-text-stroke-color: var(--red2);
+  user-select: none;
 }
 
 
 
-.sobre-carta-roma:before {
+.sobre-carta:before {
   content: "";
   width: 100%;
   height: 20px;
@@ -1071,7 +985,7 @@ li:hover ul#submenu {
   box-shadow: 1px 5px 20px 15px rgb(55 55 55);
 }
 
-.sobre-carta-roma:after {
+.sobre-carta:after {
   content: "";
   width: 100%;
   height: 20px;
@@ -3614,7 +3528,7 @@ li:hover ul#submenu {
 .personaje-historico-item {
   height: 115%;
   position: absolute;
-  z-index: 9;
+  z-index: 0;
   transform: translateZ(15px) rotateY(0deg);
   user-select: none;
   transition: transform 0.6s, scale .3s; 
@@ -3937,6 +3851,12 @@ li:hover ul#submenu {
     bottom: 50%;
     left: 50%;
     transform: translate(-50%, 50%);
+  }
+
+  .sobre-carta {
+    bottom: auto;
+    left: auto;
+    margin: 0;
   }
 
   .item {

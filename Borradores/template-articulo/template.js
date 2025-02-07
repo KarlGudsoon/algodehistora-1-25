@@ -63,6 +63,11 @@ personajes.forEach((personaje) => {
         var card = document.querySelector("#personaje-" + idPersonaje); 
         var cerrar = card.querySelector(".concepto-cerrar");
         var cardItem = card.querySelector(".item");
+        var sobreCard = card.querySelector(".sobre-carta");
+
+        if (sobreCard) {
+          sobreCard.classList.toggle("active");
+        }
 
         if (cardItem) {
           cardItem.classList.toggle("active");
