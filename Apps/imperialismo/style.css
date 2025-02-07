@@ -199,7 +199,7 @@ html, body {
     display: none;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
     #zoom svg {
         scale: 3;
     }
