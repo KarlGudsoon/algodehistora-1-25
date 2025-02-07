@@ -66,7 +66,7 @@ personajes.forEach((personaje) => {
 
         if (cardItem) {
           cardItem.classList.toggle("active");
-      }
+        }
 
         if (card) {
             card.classList.toggle("active");
@@ -100,6 +100,35 @@ function manejarClic() {
 concepto.forEach(function(concepto) {
     concepto.addEventListener("click", manejarClic);
 });
+
+document.querySelectorAll(".personaje").forEach((personaje, index) => {
+  personaje.addEventListener("click", () => {
+    let canvas = document.createElement("canvas");
+    canvas.width = 600;
+    canvas.height = 600;
+
+    // Seleccionamos el contenedor correspondiente según el índice del personaje
+    let containers = document.querySelectorAll(".contenedor-personaje");
+    let container = containers[index];
+
+    if (!container) return; // Si no encuentra el contenedor, evita errores
+
+    container.appendChild(canvas);
+
+    let confetti_button = confetti.create(canvas, { resize: true });
+
+    confetti_button({
+      particleCount: 50,
+      spread: 50,
+      origin: { y: 1 }
+    });
+
+    setTimeout(() => {
+      container.removeChild(canvas);
+    }, 3000); // Se elimina después de 3 segundos
+  });
+});
+
 
 
 

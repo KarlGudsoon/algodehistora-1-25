@@ -3526,6 +3526,15 @@ li:hover ul#submenu {
   transition: scale .5s ease, opacity .5s ease;
 }
 
+.contenedor-personaje canvas {
+  position: absolute;
+  bottom: 0;
+  left: -5rem;
+  pointer-events: none;
+  z-index: -1;
+  border: 1px solid red;
+}
+
 .item.active {
   opacity: 1;
   bottom: 0;
@@ -3941,6 +3950,14 @@ li:hover ul#submenu {
     position: relative;
     bottom: auto;
     left: auto;
-
   } 
+
+  .contenedor-personaje canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+  }
 }
