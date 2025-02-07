@@ -54,7 +54,9 @@ var scale = 1,
     pointX = 0,
     pointY = 0,
     start = { x: 0, y: 0 },
-    zoom = document.getElementById("zoom");
+    zoom = document.getElementById("zoom"),
+    lastDist = null,
+    pinchActive = false;
 
 // Límites de escala
 const MIN_SCALE = 1;
@@ -83,7 +85,7 @@ zoom.onmouseup = function () {
 
 zoom.onmousemove = function (e) {
     e.preventDefault();
-    if (!panning) return;
+    if (!panning || pinchActive) return; // No moverse si el zoom táctil está activo
     pointX = e.clientX - start.x;
     pointY = e.clientY - start.y;
     setTransform();
@@ -95,7 +97,7 @@ zoom.onwheel = function (e) {
         ys = (e.clientY - pointY) / scale,
         delta = e.wheelDelta ? e.wheelDelta : -e.deltaY;
 
-    scale *= delta > 0 ? 1.2 : 1 / 1.2;
+    scale *= delta > 0 ? 1.1 : 1 / 1.1; // Suaviza el zoom
     scale = clampScale(scale);
 
     pointX = e.clientX - xs * scale;
@@ -110,60 +112,69 @@ zoom.addEventListener("touchstart", function (e) {
         e.preventDefault();
         start = { x: e.touches[0].clientX - pointX, y: e.touches[0].clientY - pointY };
         panning = true;
+        pinchActive = false;
     } else if (e.touches.length === 2) {
         // Dos dedos para zoom
         e.preventDefault();
+        pinchActive = true;
+
         let touch1 = e.touches[0];
         let touch2 = e.touches[1];
 
-        // Centro del gesto de pellizco
         start.centerX = (touch1.clientX + touch2.clientX) / 2;
         start.centerY = (touch1.clientY + touch2.clientY) / 2;
-        
-        // Distancia inicial entre los dedos
+
         start.touchDist = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
         start.touchScale = scale;
+        lastDist = start.touchDist; // Guardar la distancia inicial
     }
 });
 
 zoom.addEventListener("touchmove", function (e) {
-    if (e.touches.length === 1 && panning) {
-        // Un solo dedo para panning
+    if (e.touches.length === 1 && panning && !pinchActive) {
+        // Panning con un solo dedo
         e.preventDefault();
         pointX = e.touches[0].clientX - start.x;
         pointY = e.touches[0].clientY - start.y;
         setTransform();
     } else if (e.touches.length === 2) {
-        // Dos dedos para zoom
+        // Zoom con dos dedos
         e.preventDefault();
         let touch1 = e.touches[0];
         let touch2 = e.touches[1];
 
-        // Nuevo centro del pellizco
-        let newCenterX = (touch1.clientX + touch2.clientX) / 2;
-        let newCenterY = (touch1.clientY + touch2.clientY) / 2;
-
-        // Nueva distancia entre los dedos
         let newDist = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
+        
+        if (lastDist) {
+            let diff = newDist - lastDist;
+            if (Math.abs(diff) > 10) { // Filtra cambios abruptos
+                return;
+            }
+        }
+
         let newScale = start.touchScale * (newDist / start.touchDist);
         newScale = clampScale(newScale);
 
-        // Ajustar `pointX` y `pointY` para que el zoom ocurra desde el centro del pellizco
         let scaleRatio = newScale / scale;
-        pointX = newCenterX - (newCenterX - pointX) * scaleRatio;
-        pointY = newCenterY - (newCenterY - pointY) * scaleRatio;
+        pointX = start.centerX - (start.centerX - pointX) * scaleRatio;
+        pointY = start.centerY - (start.centerY - pointY) * scaleRatio;
 
         scale = newScale;
+        lastDist = newDist;
         setTransform();
     }
 });
 
 zoom.addEventListener("touchend", function (e) {
     if (e.touches.length === 0) {
-        // Cuando ambos dedos se han soltado, mantener las posiciones sin mover la vista
+        // Se levantaron todos los dedos
         panning = false;
-        // No necesitamos actualizar `pointX` y `pointY`, ya que no queremos que la imagen se mueva
-        setTransform();
+        pinchActive = false;
+        lastDist = null;
+    } else if (e.touches.length === 1) {
+        // Si queda un solo dedo, evitar movimientos bruscos
+        pinchActive = false;
+        lastDist = null;
     }
 });
 
