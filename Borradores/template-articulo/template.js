@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
   cardCarousel.forEach(card => {
     const etiquetaItem = card.querySelector('.etiqueta');
     const personajeItem = card.querySelector('.personaje-item');
+    const personajeHistoricoItem = card.querySelector('.personaje-historico-item');
+    const personajeHistoricoItemTrasera = card.querySelector('.personaje-historico-item-trasera')
+    const descripcionItem = card.querySelector('.descripcion-personaje-trasera')
     
     let startX;
 
@@ -11,12 +14,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const flipCard = () => {
       card.classList.toggle('flipped');
 
+      if (descripcionItem) {
+        descripcionItem.classList.toggle('flipped');
+      }
+
       if (etiquetaItem) {
         etiquetaItem.classList.toggle('flipped');
       }
 
       if (personajeItem) {
         personajeItem.classList.toggle('flipped');
+      }
+
+      if (personajeHistoricoItem) {
+        personajeHistoricoItem.classList.toggle('flipped');
+      }
+
+      if (personajeHistoricoItemTrasera) {
+        personajeHistoricoItemTrasera.classList.toggle('flipped');
       }
     };
 
@@ -44,23 +59,29 @@ var personajes = document.querySelectorAll(".personaje");
 
 personajes.forEach((personaje) => {
     personaje.addEventListener("click", function () {
-        var idPersonaje = this.id; // Obtener el ID del personaje clickeado
+        var idPersonaje = this.id;
         var card = document.querySelector("#personaje-" + idPersonaje); 
-        var containerCard = document.querySelector(".contenedor-personaje");
+        var cerrar = card.querySelector(".concepto-cerrar");
+        var cardItem = card.querySelector(".item");
+
+        if (cardItem) {
+          cardItem.classList.toggle("active");
+      }
 
         if (card) {
             card.classList.toggle("active");
         }
 
-        if (containerCard) {
-            containerCard.classList.toggle("active");
-        }
-        
-        if (card.classList.contains("active") || containerCard.classList.contains("active")) {
+        if (card.classList.contains("active")) {
             document.body.classList.add("no-scroll");
         } else {
             document.body.classList.remove("no-scroll");
         }
+
+        cerrar.addEventListener("click", function () {      
+          card.classList.remove("active");
+          cardItem.classList.remove("active");
+        });
     });
 });
 
@@ -100,23 +121,6 @@ function manejaCierre(event) {
 hitosCerrar.forEach(function(cerrar) {
     cerrar.addEventListener("click", manejaCierre);
 });
-
-var conceptoCerrar = document.querySelectorAll(".widget-referencias");
-
-function Clic() {
-  
-    var elemento = this;
-
-
-    var estaDesplazado = elemento.style.transform === "translateX(250px)";
-
-    elemento.style.transform = estaDesplazado ? "" : "translateX(250px)";
-}
-
-conceptoCerrar.forEach(function(elemento) {
-    elemento.addEventListener("click", Clic);
-});
-
 
 // Seleccionar los elementos del widget del mapa y del mapa interactivo
 var widgetMapa = document.querySelectorAll(".widget-mapa");
@@ -276,7 +280,7 @@ paises.forEach((pais) => {
 
 function manejarCierre(event) {
     var concepto = event.target.parentElement;
-    var containerCard = document.querySelector(".contenedor-personaje")
+    var containerCard = document.querySelectorAll(".contenedor-personaje")
 
     
     if (concepto) {
