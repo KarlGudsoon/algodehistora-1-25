@@ -3482,6 +3482,7 @@ li:hover ul#submenu {
   animation: gradient-animation 5s linear infinite;
   filter: blur(15px);
   position: absolute;
+  border-radius: 2rem;
   z-index: 0;
 }
 
