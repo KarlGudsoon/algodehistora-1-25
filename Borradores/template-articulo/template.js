@@ -81,6 +81,7 @@ personajes.forEach((personaje) => {
         cerrar.addEventListener("click", function () {      
           card.classList.remove("active");
           cardItem.classList.remove("active");
+          document.body.classList.remove("no-scroll");
         });
     });
 });

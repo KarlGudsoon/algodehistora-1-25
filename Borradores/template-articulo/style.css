@@ -3553,6 +3553,7 @@ li:hover ul#submenu {
   flex-direction: column;
   justify-content: center;
   padding-bottom: 1rem;
+  border-radius: 2rem;
 }
 
 .fondo-frontal {
@@ -3571,6 +3572,7 @@ li:hover ul#submenu {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  border-radius: 2rem;
 }
 
 .etiqueta {
