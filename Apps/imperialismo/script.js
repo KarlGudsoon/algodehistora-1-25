@@ -60,6 +60,9 @@ var scale = 1,
 const MIN_SCALE = 1;
 const MAX_SCALE = 6;
 
+// Estado adicional para rastrear si se está realizando un gesto de pellizco
+let isPinching = false;
+
 // Función para ajustar la escala dentro de los límites
 function clampScale(value) {
     return Math.min(Math.max(value, MIN_SCALE), MAX_SCALE);
@@ -110,6 +113,7 @@ zoom.addEventListener("touchstart", function (e) {
         e.preventDefault();
         start = { x: e.touches[0].clientX - pointX, y: e.touches[0].clientY - pointY };
         panning = true;
+        isPinching = false; // No es un gesto de pellizco
     } else if (e.touches.length === 2) {
         // Dos dedos para zoom
         e.preventDefault();
@@ -123,17 +127,18 @@ zoom.addEventListener("touchstart", function (e) {
         // Distancia inicial entre los dedos
         start.touchDist = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
         start.touchScale = scale;
+        isPinching = true; // Es un gesto de pellizco
     }
 });
 
 zoom.addEventListener("touchmove", function (e) {
-    if (e.touches.length === 1 && panning) {
-        // Un solo dedo para panning
+    if (e.touches.length === 1 && panning && !isPinching) {
+        // Un solo dedo para panning y no estamos en un gesto de pellizco
         e.preventDefault();
         pointX = e.touches[0].clientX - start.x;
         pointY = e.touches[0].clientY - start.y;
         setTransform();
-    } else if (e.touches.length === 2) {
+    } else if (e.touches.length === 2 && isPinching) {
         // Dos dedos para zoom
         e.preventDefault();
         let touch1 = e.touches[0];
@@ -160,10 +165,14 @@ zoom.addEventListener("touchmove", function (e) {
 
 zoom.addEventListener("touchend", function (e) {
     if (e.touches.length === 0) {
-        // Cuando ambos dedos se han soltado, mantener las posiciones sin mover la vista
+        // Cuando ambos dedos se han soltado, reiniciar el estado
         panning = false;
-        // No necesitamos actualizar `pointX` y `pointY`, ya que no queremos que la imagen se mueva
+        isPinching = false;
         setTransform();
+    } else if (e.touches.length === 1 && isPinching) {
+        // Si queda un dedo después de un gesto de pellizco, evitar el desplazamiento
+        panning = false;
+        isPinching = false;
     }
 });
 
