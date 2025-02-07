@@ -105,56 +105,52 @@ zoom.onwheel = function (e) {
 
 // Eventos táctiles
 zoom.addEventListener('touchstart', function (e) {
-    if (e.touches.length === 1) { // Solo un dedo
+    if (e.touches.length === 1) {
+        // Un solo dedo para panning
         e.preventDefault();
         start = { x: e.touches[0].clientX - pointX, y: e.touches[0].clientY - pointY };
         panning = true;
-    } else if (e.touches.length === 2) { // Dos dedos (zoom)
+    } else if (e.touches.length === 2) {
+        // Dos dedos para zoom
         e.preventDefault();
-        initialDistance = Math.hypot(
-            e.touches[0].clientX - e.touches[1].clientX,
-            e.touches[0].clientY - e.touches[1].clientY
+        var touch1 = e.touches[0];
+        var touch2 = e.touches[1];
+        var dist = Math.hypot(
+            touch2.clientX - touch1.clientX,
+            touch2.clientY - touch1.clientY
         );
+        start.touchDist = dist;
+        start.touchScale = scale;
     }
 });
 
 zoom.addEventListener('touchmove', function (e) {
-    if (e.touches.length === 1 && panning) { // Solo un dedo y panning activo
+    if (e.touches.length === 1 && panning) {
+        // Un solo dedo para panning
         e.preventDefault();
         pointX = (e.touches[0].clientX - start.x);
         pointY = (e.touches[0].clientY - start.y);
         setTransform();
-    } else if (e.touches.length === 2 && initialDistance !== null) { // Dos dedos y zoom
+    } else if (e.touches.length === 2) {
+        // Dos dedos para zoom
         e.preventDefault();
-        var currentDistance = Math.hypot(
-            e.touches[0].clientX - e.touches[1].clientX,
-            e.touches[0].clientY - e.touches[1].clientY
+        var touch1 = e.touches[0];
+        var touch2 = e.touches[1];
+        var dist = Math.hypot(
+            touch2.clientX - touch1.clientX,
+            touch2.clientY - touch1.clientY
         );
-
-        // Controlar la velocidad del zoom ajustando la fórmula
-        var zoomFactor = (currentDistance - initialDistance) / 200; // Ajustar el divisor para controlar la velocidad
-        var newScale = scale * (1 + zoomFactor); // Multiplicar por un factor pequeño
+        var newScale = start.touchScale * (dist / start.touchDist);
         scale = clampScale(newScale); // Aplicar límites de escala
-
-        // Ajustar el punto de transformación para que el zoom se centre entre los dos dedos
-        var midpointX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-        var midpointY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
-        // Ajustar desplazamiento para que se mantenga estable mientras se hace zoom
-        pointX = midpointX - (midpointX - pointX) * (scale / (scale / zoomFactor));
-        pointY = midpointY - (midpointY - pointY) * (scale / (scale / zoomFactor));
-
         setTransform();
     }
 });
 
 zoom.addEventListener('touchend', function (e) {
-    if (e.touches.length < 1) { // Levantar todos los dedos
+    if (e.touches.length === 0) {
         panning = false;
     }
-    if (e.touches.length < 2) { // Menos de dos dedos
-        initialDistance = null;
-    }
 });
+
 
 
