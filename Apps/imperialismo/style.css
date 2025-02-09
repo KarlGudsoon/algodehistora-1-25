@@ -66,8 +66,6 @@ html, body {
     align-items: center;
     color: white;
     font: 600 0.8rem Roboto;
-    top: -20%;
-    left: 2%;
     z-index: 0;
     cursor: pointer;
     transition: 0.2s ease;
@@ -242,6 +240,7 @@ html, body {
 
     .pais img {
         height: 80%;
+        pointer-events: none;
     }
 
     .boton {
