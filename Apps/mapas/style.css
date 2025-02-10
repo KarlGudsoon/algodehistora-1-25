@@ -292,7 +292,7 @@ iframe {
 @media only screen and (max-width: 600px) {
     .contenedor-menu-mapa {
         width: 90%;
-        height: 100%;
+        height: auto;
         margin: 1rem;
     }
 
