@@ -1,0 +1,26 @@
+[
+    {
+      "id": "poblamiento_americano",
+      "titulo": "POBLAMIENTO AMERICANO",
+      "descripcion": "Es la teoría más aceptada. Postula que los primeros habitantes de América llegaron desde Asia atravesando un 'puente terrestre' que unió Siberia con  Alaska durante la última glaciación",
+      "periodo": "PREHISTORIA",
+      "imagen": "/img/prehistoria/pixelcut-export (6).jpeg",
+      "srcMapa": "/maps/Prehistoria/prehistoria-globe.html"
+    },
+    {
+      "id": "imperialismo_xix",
+      "titulo": "IMPERIALISMO SIGLO XIX",
+      "descripcion": "El imperialismo del siglo XIX fue un periodo en el que las potencias europeas, como Gran Bretaña, Francia, Alemania, Rusia, Holanda y Bélgica, conquistaron territorios en Asia, África y Oceanía.",
+      "periodo": "CONTEMPORÁNEA",
+      "imagen": "/img/contemporanea/imperialismo/1820px-Alphonse_de_Neuville_-_The_defence_of_Rorke's_Drift_1879_-_Google_Art_Project-min.jpg",
+      "srcMapa": "/Apps/imperialismo/world.html"
+    },
+    {
+        "id": "primera_guerra_mundial",
+        "titulo": "PRIMERA GUERRA MUNDIAL",
+        "descripcion": "Con el imperialismo se fue desarrollando una creciente tensión entre las grandes potencias. Esto, entre otras circunstancias, conducirá a que en 1914 se desencadene la Gran Guerra o Primera Guerra Mundial. ",
+        "periodo": "CONTEMPORÁNEA",
+        "imagen": "/img/contemporanea/primera-guerra-mundial/trincheras.jpg",
+        "srcMapa": "/Apps/mapas/1914/world.html"
+    }
+  ]
