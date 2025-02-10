@@ -4,6 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(data => {
         renderizarMapas(data);
         agregarEventosDeClic(data);
+  
+        // Seleccionar un mapa aleatorio al inicio
+        const mapaAleatorio = data[Math.floor(Math.random() * data.length)];
+        actualizarMapaSeleccionado(mapaAleatorio);
+  
+        // Marcarlo como activo
+        document.querySelector(`.mapa[data-id="${mapaAleatorio.id}"]`).classList.add("active");
       })
       .catch(error => console.error("Error cargando JSON:", error));
   });
@@ -46,8 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("titulo-mapa-seleccionado").textContent = mapa.titulo;
     document.getElementById("descripcion-mapa-seleccionado").textContent = mapa.descripcion;
     document.getElementById("periodo-mapa-selecionado").textContent = mapa.periodo;
+    document.getElementById("periodo-mapa-selecionado").className = "";
+    document.getElementById("periodo-mapa-selecionado").classList.add(mapa.clasePeriodo);
     document.querySelector("#mapa-seleccionado img").src = mapa.imagen;
     document.getElementById("mapa").src = mapa.srcMapa;
+    document.getElementById("enlace-mapa-seleccionado").href = mapa.hrefMapa;
   }
 
 var abrirMapa = document.getElementById("abrir-menu");
