@@ -62,7 +62,7 @@ body {
 }
 
 .contenedor-mapa {
-    height: 100vh;
+    height: 100dvh;
     background-color: beige;
     display: flex;
     align-items: center;
