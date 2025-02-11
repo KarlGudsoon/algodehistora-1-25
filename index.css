@@ -279,7 +279,7 @@ a:hover {
 }
 
 .contenedor-periodos {
-    z-index: 99999999999999;
+    z-index: 9999;
     display: flex;
     height: auto;
     flex-wrap: wrap;
@@ -291,7 +291,7 @@ a:hover {
 }
 
 .contenedor-periodos span {
-    z-index: 99999999999999;
+    z-index: 999999;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
