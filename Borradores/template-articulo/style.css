@@ -483,8 +483,8 @@ li:hover ul#submenu {
   border-radius: 1rem;
   background: #cd1c38;
   margin: 1rem;
-  bottom: -100%;
-  opacity: 0;
+  bottom: -50%;
+  opacity: 1;
   box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
     -webkit-box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
     -moz-box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);

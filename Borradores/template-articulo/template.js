@@ -91,21 +91,6 @@ personajes.forEach((personaje) => {
     });
 });
 
-
-var concepto = document.querySelectorAll(".concepto");
-
-function manejarClic() {
-    var idConcepto = this.id;
-    var concepto = document.getElementById("glosario-" + idConcepto);
-    
-    concepto.classList.toggle("active")
-}
-
-
-concepto.forEach(function(concepto) {
-    concepto.addEventListener("click", manejarClic);
-});
-
 document.querySelectorAll(".personaje").forEach((personaje, index) => {
   personaje.addEventListener("click", () => {
     let canvas = document.createElement("canvas");
