@@ -11,12 +11,6 @@
   --medieval: #f8b229;
   --moderna: #f11c35; 
   --contemporanea: #2e8b57; 
-
-  --periodopagina : #252525;
-
-  --primarycolor : #333333;
-  --secondarycolor : #868686;
-  --tertiarycolor : #252525;
 }
 
 html {
@@ -1353,6 +1347,15 @@ li:hover ul#submenu {
   position: relative;
 }
 
+.inset {
+  box-shadow: inset 0rem 0rem 1rem rgb(0,0,0,0.75);
+}
+
+.br {
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
 /* PATRONES DE DISEÑO */
 
 .inicio-pagina {
@@ -1400,12 +1403,11 @@ li:hover ul#submenu {
 }
 
 .exp1 {
-  background-color: var(--red);
   display: flex;
   padding-left: 2rem;
   padding-right: 2rem;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   gap: 1rem;
 }
@@ -1426,6 +1428,52 @@ li:hover ul#submenu {
   height: 200px;
   position: relative;
 }
+
+.exp2 {
+  display: flex;
+  padding: 2rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+}
+
+.exp2 h1 {
+  width: min-content;
+  margin: 0;
+  font: 600 2.5rem BreeSerif;
+  line-height: 1;
+}
+
+.exp2 p {
+  width: 400px;
+  margin: 0;
+}
+
+.exp3 {
+  display: flex;
+  padding: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+}
+
+.exp3-1 {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.exp3-1 h1 {
+  font: 600 2.5rem BreeSerif;
+}
+
+.exp3-2 {
+  width: 500px;
+  height: 300px;
+}
+
+
 
 @media screen and (max-width: 700px) {
   .widget-mapa {
