@@ -2201,129 +2201,135 @@ li:hover ul#submenu {
   z-index: 2;
   border-radius: 1.5vw;
   box-shadow: 0 0px #c45222;
+  position: relative;
+}
 
-  & img {
-    height: 100%;
-    position: absolute;
-    right: 1%;
-    opacity: 0;
-    transition: .5s ease;
-    border-radius: 50px;
-    background-color: var(--red);
-  }
+.especie-neandertal img {
+  height: 100%;
+  position: absolute;
+  right: 1%;
+  opacity: 0;
+  transition: 0.5s ease;
+  border-radius: 50px;
+  background-color: var(--red);
+}
 
-  & p {
-    margin: 0;
-  }
+.especie-neandertal p {
+  margin: 0;
+}
 
-  & .fecha-desaparecer {
-    opacity: 0;
-  }
+.especie-neandertal .fecha-desaparecer {
+  opacity: 0;
+}
 
-  &:hover {
-    background-color: var(--red);
-    transform: translateY(-4px);
-    box-shadow: 0 4px #a31e2d;
-  }
+.especie-neandertal:hover {
+  background-color: var(--red);
+  transform: translateY(-4px);
+  box-shadow: 0 4px #a31e2d;
+}
 
-  &:hover img {
-    opacity: 1;
-  }
+.especie-neandertal:hover img {
+  opacity: 1;
+}
 
-  &:hover .fecha-aparecer, &:hover .fecha-desaparecer {
-    opacity: 1;
-  }
+.especie-neandertal:hover .fecha-aparecer,
+.especie-neandertal:hover .fecha-desaparecer {
+  opacity: 1;
+}
 
-  &:hover::after, &:hover::before {
-    opacity: 1;
-    border-color: var(--red);
-  }
+.especie-neandertal:hover::after,
+.especie-neandertal:hover::before {
+  opacity: 1;
+  border-color: var(--red);
+}
 
-  &::before {
-    content: "";
-    height: 4.5vw;
-    width: 0;
-    border-left: var(--orange) dotted 0.3vw;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    opacity: 1;
-    transition: .5s ease;
-  }
+.especie-neandertal::before {
+  content: "";
+  height: 4.5vw;
+  width: 0;
+  border-left: var(--orange) dotted 0.3vw;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  opacity: 1;
+  transition: 0.5s ease;
+}
 
-  &::after {
-    content: "";
-    height: 5vw;
-    width: 0;
-    border-left: var(--orange) dotted 0.3vw;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    opacity: 0;
-    transition: .5s ease;
-  }
+.especie-neandertal::after {
+  content: "";
+  height: 5vw;
+  width: 0;
+  border-left: var(--orange) dotted 0.3vw;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  opacity: 0;
+  transition: 0.5s ease;
 }
 
 .especie-sapiens {
   width: 2.5vw;
-  right: 0%; 
+  right: 0%;
   z-index: 2;
   position: relative;
   border-radius: 1.5vw 0 0 1.5vw;
+}
 
-  &:hover p::after {
-    background-color: green;
-  }
+.especie-sapiens:hover p::after {
+  background-color: green;
+}
 
-  & p {
-    margin: 0;
-    font-size: .5vw;
-    line-height: 1;
+.especie-sapiens p {
+  margin: 0;
+  font-size: 0.5vw;
+  line-height: 1;
+  position: relative;
+}
 
-    &::after {
-      content: "";
-      width: 1.5vw;
-      height: 150%;
-      background-color: var(--orange);
-      position: absolute;
-      top: -22%;
-      right: -1.4vw;
-      clip-path: polygon(100% 50%, 0 0, 0 100%);
-      transition: .5s ease;
-      z-index: -1;
-    }
-  }
+.especie-sapiens p::after {
+  content: "";
+  width: 1.5vw;
+  height: 150%;
+  background-color: var(--orange);
+  position: absolute;
+  top: -22%;
+  right: -1.4vw;
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+  transition: 0.5s ease;
+  z-index: -1;
+}
 
-  & .fecha-aparecer {
-    opacity: 1;
-    width: 4vw;
-    left: -4.2vw;
-  }
+.especie-sapiens .fecha-aparecer {
+  opacity: 1;
+  width: 4vw;
+  left: -4.2vw;
+}
 
-  &:hover .fecha-aparecer, &:hover .fecha-desaparecer {
-    opacity: 1;
-  }
+.especie-sapiens:hover .fecha-aparecer,
+.especie-sapiens:hover .fecha-desaparecer {
+  opacity: 1;
+}
 
-  &:hover {
-    background-color: green;
-  }
+.especie-sapiens:hover {
+  background-color: green;
+}
 
-  &:hover::after, &:hover::before {
-    opacity: 1;
-    border-color: green;
-  }
+.especie-sapiens:hover::after,
+.especie-sapiens:hover::before {
+  opacity: 1;
+  border-color: green;
+}
 
-  &::before {
-    content: "";
-    height: 2.3vw;
-    width: 0;
-    border-left: var(--orange) dotted 0.3vw;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    opacity: 1;
-    transition: .5s ease;
-  }
+.especie-sapiens::before {
+  content: "";
+  height: 2.3vw;
+  width: 0;
+  border-left: var(--orange) dotted 0.3vw;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  opacity: 1;
+  transition: 0.5s ease;
 }
 
 .pag2 {
@@ -2336,26 +2342,26 @@ li:hover ul#submenu {
   overflow: hidden;
   display: flex;
   position: relative;
+}
 
-  & object {
-    width: 100%;
-    margin: 0;
-  }
+#imagen-evolucion object {
+  width: 100%;
+  margin: 0;
 }
 
 .img-hominidos {
   z-index: 99;
   width: 100%;
   position: absolute;
-  transition: .5s ease;
-  filter: drop-shadow(5px 5px 10px rgb(0,0,0,0.4));
+  transition: 0.5s ease;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.4));
   cursor: pointer;
+}
 
-  &:hover {
-    transform: translateY(-5px);
-    transition: .5s ease;
-    filter: drop-shadow(5px 5px 10px rgb(0,0,0,0.8));
-  }
+.img-hominidos:hover {
+  transform: translateY(-5px);
+  transition: 0.5s ease;
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.8));
 }
 
 #homosapiens {
@@ -2398,19 +2404,18 @@ li:hover ul#submenu {
   padding-left: 3%;
   padding-top: 8%;
   padding-bottom: 5%;
+}
 
-  & h1 {
-    width: 100%;
-    font-size: 5vw;
-    font-weight: 600;
-    font-family: BreeSerif;
-  }
+.hominizacion-parte1 h1 {
+  width: 100%;
+  font-size: 5vw;
+  font-weight: 600;
+  font-family: BreeSerif;
+}
 
-  & p {
-    width: 90%;
-    font-size: 1.25vw;
-
-  }
+.hominizacion-parte1 p {
+  width: 90%;
+  font-size: 1.25vw;
 }
 
 .hominizacion-parte2 {
@@ -2420,24 +2425,23 @@ li:hover ul#submenu {
   display: flex;
   flex-direction: column;
   padding-top: 8%;
-  
   overflow: hidden;
+}
 
-  & div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: relative;
-  }
+.hominizacion-parte2 div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
 
-  & img {
-    width: 50%;
-    transition: .2s ease;
+.hominizacion-parte2 img {
+  width: 50%;
+  transition: 0.2s ease;
+}
 
-    &:hover {
-      transform: translateY(-4px);
-    }
-  }
+.hominizacion-parte2 img:hover {
+  transform: translateY(-4px);
 }
 
 .mapa-prehistoria {
@@ -2458,25 +2462,26 @@ li:hover ul#submenu {
   padding: 5%;
   gap: 10%;
   position: relative;
+}
 
-  & div:first-child, div:nth-child(2) {
-    background-color: #c45222;
-    width: 50%;
-    padding: 5%;
-    border-radius: 2vw;
-    box-shadow: 5px 5px 20px  rgb(0 0 0 / 25%);
-    z-index: 2;
-    position: relative;
-    font-size: 1vw;
-  }
+.poblamientoamericano div:first-child,
+.poblamientoamericano div:nth-child(2) {
+  background-color: #c45222;
+  width: 50%;
+  padding: 5%;
+  border-radius: 2vw;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+  position: relative;
+  font-size: 1vw;
+}
 
-  & div:nth-child(2) {
-    overflow: hidden;
-  }
+.poblamientoamericano div:nth-child(2) {
+  overflow: hidden;
+}
 
-  & h1 {
-    font-size: 2vw;
-  }
+.poblamientoamericano h1 {
+  font-size: 2vw;
 }
 
 .poblamientoamericano div:first-child::after {
@@ -2516,12 +2521,11 @@ li:hover ul#submenu {
   transition: .2s ease;
   cursor: pointer;
   font-weight: 500;
-  
+}
 
-  &:hover {
-    filter: brightness(100%);
-    transform: translateX(10%);
-  }
+.boton-poblamiento:hover {
+  filter: brightness(100%);
+  transform: translateX(10%);
 }
 
 .boton-teoria {
@@ -2538,11 +2542,11 @@ li:hover ul#submenu {
   transition: .2s ease;
   cursor: pointer;
   font-weight: 500;
+}
 
-  &:hover {
-    filter: brightness(100%);
-    transform: translateX(10%);
-  }
+.boton-teoria:hover {
+  filter: brightness(100%);
+  transform: translateX(10%);
 }
 
 .active {
@@ -2573,7 +2577,6 @@ li:hover ul#submenu {
   transform: scale(0);
 }
 
-
 .mapa-poblamiento {
   width: 100%;
   height: 100%;
@@ -2592,7 +2595,6 @@ li:hover ul#submenu {
   align-items: center;
 }
 
-
 #formulario {
   width: 100%;
   height: 100%;
@@ -2605,11 +2607,11 @@ li:hover ul#submenu {
   padding: 5%;
   gap: 5%;
   text-align: center;
+}
 
-  & label {
-    font-weight: 600;
-    font-size: 1vw;
-  }
+#formulario label {
+  font-weight: 600;
+  font-size: 1vw;
 }
 
 .answer {
@@ -2618,17 +2620,17 @@ li:hover ul#submenu {
   flex-direction: column;
   align-items: center;
   color: white;
+}
 
-  & textarea {
-    width: 100%;
-    height: 10vw;
-    padding: 5%;
-    border-radius: 20px;
-    background: #fc3f55;
-    border: 0;
-    color: white;
-    resize: none;
-  }
+.answer textarea {
+  width: 100%;
+  height: 10vw;
+  padding: 5%;
+  border-radius: 20px;
+  background: #fc3f55;
+  border: 0;
+  color: white;
+  resize: none;
 }
 
 textarea:focus {
@@ -2647,46 +2649,45 @@ textarea::placeholder {
   align-items: center;
   color: white;
   gap: 1vw;
+}
 
-  & input {
-    outline: none;
-    border: 0;
-    padding: 2%;
-    border-radius: 1vw;
-    color: white;
-    background: #fc3f55;
-  }
+.user input {
+  outline: none;
+  border: 0;
+  padding: 2%;
+  border-radius: 1vw;
+  color: white;
+  background: #fc3f55;
+}
 
-  & button {
-    background-color: white;
-    color: var(--red);
-    padding: 5px 10px 5px 10px;
-    text-decoration: none;
-    border-radius: 1vw;
-    font-weight: 600;
-    font-size: 1vw;
-    box-shadow: 0 5px #999;
-    user-select: none;
-    border: 0;
-    transition: .2s ease;
+.user button {
+  background-color: white;
+  color: var(--red);
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  border-radius: 1vw;
+  font-weight: 600;
+  font-size: 1vw;
+  box-shadow: 0 5px #999;
+  user-select: none;
+  border: 0;
+  transition: .2s ease;
+}
 
-    &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 9px #999;
-    }
+.user button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 9px #999;
+}
 
-    &:active {
-    box-shadow: 0 3px #666;
-    transform: translateY(4px);
-    }
-
-  }
+.user button:active {
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
 }
 
 input::placeholder {
   color: white;
   opacity: 0.8;
-} 
+}
 
 .signo-pregunta {
   width: 4vw;
@@ -2707,15 +2708,14 @@ input::placeholder {
   animation: notificacion 3s ease infinite;
   animation-delay: 1s;
   z-index: 9;
+}
 
+.signo-pregunta:hover {
+  animation-play-state: paused;
+}
 
-  &:hover {
-    animation-play-state: paused;
-  }
-
-  & p {
-    margin: 0;
-  }
+.signo-pregunta p {
+  margin: 0;
 }
 
 .modal-pregunta {
@@ -2785,137 +2785,105 @@ input::placeholder {
   justify-content: center;
   z-index: 1;
   position: relative;
+}
 
-  & h1 {
-    width: 100%;
-    font-size: 7vw;
-    font-family: BreeSerif;
-    text-align: center;
-    color: black;
-    opacity: .07;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;  
-    z-index: -1;
-    margin: 0;
-  }
+.linea-tiempo-paleolitico h1 {
+  width: 100%;
+  font-size: 7vw;
+  font-family: BreeSerif;
+  text-align: center;
+  color: black;
+  opacity: 0.07;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  z-index: -1;
+  margin: 0;
+}
 
-  & .linea {
-    background-color: white;
-    width: 0.5vw;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-    opacity: 1;
-  }
+.linea-tiempo-paleolitico .linea {
+  background-color: white;
+  width: 0.5vw;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  opacity: 1;
+}
 
-  & .p-inferior {
-    width: 2vw;
-    height: 2vw;
-    position: absolute;
-    display: flex;
-    font-size: 0.8vw;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50vw;
-    background-color: white;
-    color: var(--orange);
-    top: 14%;
-    box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
+.linea-tiempo-paleolitico .p-inferior,
+.linea-tiempo-paleolitico .p-medio,
+.linea-tiempo-paleolitico .p-superior {
+  width: 2vw;
+  height: 2vw;
+  position: absolute;
+  display: flex;
+  font-size: 0.8vw;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50vw;
+  background-color: white;
+  color: var(--orange);
+  box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
+}
 
-    &::before {
-      position: absolute;
-      content: "2 M años atrás";
-      width: 100%;
-      font-size: 0.7vw;
-      color: white;
-      left: -100%;
-      z-index: 1;
-    }
+.linea-tiempo-paleolitico .p-inferior {
+  top: 14%;
+}
 
-    &::after {
-      content: "";
-      width: 0.5vw;
-      height: 18vw;
-      position: absolute;
-      background-color: white;
-    color: var(--orange);
-      top: 0;
-      z-index: -1;
-      box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
-    }
-  }
+.linea-tiempo-paleolitico .p-medio {
+  top: 49%;
+}
 
-  & .p-medio {
-    width: 2vw;
-    height: 2vw;
-    position: absolute;
-    display: flex;
-    font-size: 0.8vw;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50vw;
-    background-color: white;
-    color: var(--orange);
-    top: 49%;
-    box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
+.linea-tiempo-paleolitico .p-superior {
+  top: 82%;
+}
 
-    &::before {
-      position: absolute;
-      content: "250 mil años atrás";
-      width: 100%;
-      font-size: 0.7vw;
-      color: white;
-      left: -100%;
-    }
+.linea-tiempo-paleolitico .p-inferior::before,
+.linea-tiempo-paleolitico .p-medio::before,
+.linea-tiempo-paleolitico .p-superior::before {
+  position: absolute;
+  width: 100%;
+  font-size: 0.7vw;
+  color: white;
+  left: -100%;
+}
 
-    &::after {
-      content: "";
-      width: 0.5vw;
-      height: 18vw;
-      position: absolute;
-      background-color: white;
-      color: var(--orange);
-      top: 0;
-      z-index: -1;
-      box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
-    }
-  }
+.linea-tiempo-paleolitico .p-inferior::before {
+  content: "2 M años atrás";
+}
 
-  & .p-superior {
-    width: 2vw;
-    height: 2vw;
-    position: absolute;
-    display: flex;
-    font-size: 0.8vw;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50vw;
-    background-color: white;
-    color: var(--orange);
-    top: 82%;
-    box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
+.linea-tiempo-paleolitico .p-medio::before {
+  content: "250 mil años atrás";
+}
 
-    &::before {
-      position: absolute;
-      content: "30 mil años atrás";
-      width: 100%;
-      font-size: 0.7vw;
-      color: white;
-      left: -100%;
-    }
+.linea-tiempo-paleolitico .p-superior::before {
+  content: "30 mil años atrás";
+}
 
-    &::after {
-      content: "";
-      width: 0.5vw;
-      height: 5vw;
-      position: absolute;
-      background-color: white;
-      color: var(--orange);
-      top: 0;
-      z-index: -1;
-      box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
-    }
-  }
+.linea-tiempo-paleolitico .p-inferior::after,
+.linea-tiempo-paleolitico .p-medio::after,
+.linea-tiempo-paleolitico .p-superior::after {
+  content: "";
+  width: 0.5vw;
+  position: absolute;
+  background-color: white;
+  color: var(--orange);
+  z-index: -1;
+  box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
+}
+
+.linea-tiempo-paleolitico .p-inferior::after {
+  height: 18vw;
+  top: 0;
+}
+
+.linea-tiempo-paleolitico .p-medio::after {
+  height: 18vw;
+  top: 0;
+}
+
+.linea-tiempo-paleolitico .p-superior::after {
+  height: 5vw;
+  top: 0;
 }
 
 .contenedor-paleolitico {
@@ -2937,44 +2905,44 @@ input::placeholder {
   justify-content: center;
   padding: 5%;
   position: relative;
+}
 
-  & h1 {
-    font-family: BreeSerif;
-    font-size: 4vw;
-    font-weight: 900;
-  }
+.paleolitico-texto h1 {
+  font-family: BreeSerif;
+  font-size: 4vw;
+  font-weight: 900;
+}
 
-  & p {
-    font-size: 1vw;
-  }
+.paleolitico-texto p {
+  font-size: 1vw;
+}
 
-  & .a1 {
-    position: absolute;
-    height: 10vw;
-    right: -50%;
-    top: 15%;
-  }
+.paleolitico-texto .a1 {
+  position: absolute;
+  height: 10vw;
+  right: -50%;
+  top: 15%;
+}
 
-  & .a2 {
-    position: absolute;
-    height: 10vw;
-    right: -65%;
-    top: 45%;
-  }
+.paleolitico-texto .a2 {
+  position: absolute;
+  height: 10vw;
+  right: -65%;
+  top: 45%;
+}
 
-  & .hp {
-    position: absolute;
-    height: 10vw;
-    right: -35%;
-    bottom: 0;
-  }
+.paleolitico-texto .hp {
+  position: absolute;
+  height: 10vw;
+  right: -35%;
+  bottom: 0;
+}
 
-  & .fogata {
-    position: absolute;
-    height: 8vw;
-    right: -40%;
-    bottom: 0;
-  }
+.paleolitico-texto .fogata {
+  position: absolute;
+  height: 8vw;
+  right: -40%;
+  bottom: 0;
 }
 
 .paleolitico-img {
@@ -2986,102 +2954,103 @@ input::placeholder {
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   padding: 2%;
+}
 
-  & div:nth-child(1) {
-    grid-area: 1 / 1 / 2 / 3;
-    background-color: #1e90ff;
-    border-radius: 1vw;
-    box-shadow: 2px 2px 5px rgb(0 0 0 / 25%);
-    overflow: hidden;
+.paleolitico-img div:nth-child(1) {
+  grid-area: 1 / 1 / 2 / 3;
+  background-color: #1e90ff;
+  border-radius: 1vw;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 25%);
+  overflow: hidden;
+}
 
-    & img {
-      width: 100%;
-      object-fit: cover;
-    }
-  }
+.paleolitico-img div:nth-child(1) img {
+  width: 100%;
+  object-fit: cover;
+}
 
-  & div:nth-child(2) {
-    grid-area: 2 / 1 / 3 / 2;
-    background: var(--red);
-    border-radius: 1vw;
-    box-shadow: 2px 2px 5px rgb(0 0 0 / 25%);
-    overflow: hidden;
+.paleolitico-img div:nth-child(2) {
+  grid-area: 2 / 1 / 3 / 2;
+  background: var(--red);
+  border-radius: 1vw;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 25%);
+  overflow: hidden;
+}
 
-    & img {
-      height: 100%;
-      object-fit: cover;
-    }
-  }
+.paleolitico-img div:nth-child(2) img {
+  height: 100%;
+  object-fit: cover;
+}
 
-  & div:nth-child(3) {
-    grid-area: 2 / 2 / 3 / 3;
-    background-color: green;
-    border-radius: 1vw;
-    box-shadow: 2px 2px 5px rgb(0 0 0 / 25%);
-    overflow: hidden;
+.paleolitico-img div:nth-child(3) {
+  grid-area: 2 / 2 / 3 / 3;
+  background-color: green;
+  border-radius: 1vw;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 25%);
+  overflow: hidden;
+}
 
-    & img {
-      height: 100%;
-      object-fit: cover;
-    }
-  }
+.paleolitico-img div:nth-child(3) img {
+  height: 100%;
+  object-fit: cover;
 }
 
 .periodos-paleolitico {
   height: 50vw;
   display: flex;
   flex-direction: column;
-
-  & .inferior {
-    display: flex;
-    align-items: center;
-    padding-left: 5%;
-    gap: 5%;
-    height: 100%;
-    width: 100%;
-    background-color: #e86b35;
-  }
-
-  & .medio {
-    display: flex;
-    align-items: center;
-    padding-left: 5%;
-    gap: 5%;
-    height: 100%;
-    width: 100%;
-    background-color: #d95922;
-  }
-
-  & .superior {
-    display: flex;
-    align-items: center;
-    padding-left: 5%;
-    gap: 5%;
-    height: 100%;
-    width: 100%;
-    background-color: #c45222;
-    border-bottom: 1px solid rgb(0 0 0 / 10%);
-  }
-  
-  & ul {
-    font-size: 1vw;
-    padding: 0;
-    width: 25vw;
-  }
-
-  & li {
-    position: relative;
-
-    &::before {
-      content: "";
-      width: 5vw;
-      top: 38%;
-      left: -25.5%;
-      border-top: 0.4vw dotted white;
-      position: absolute;
-    }
-  }
 }
+
+.periodos-paleolitico .inferior {
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  gap: 5%;
+  height: 100%;
+  width: 100%;
+  background-color: #e86b35;
+}
+
+.periodos-paleolitico .medio {
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  gap: 5%;
+  height: 100%;
+  width: 100%;
+  background-color: #d95922;
+}
+
+.periodos-paleolitico .superior {
+  display: flex;
+  align-items: center;
+  padding-left: 5%;
+  gap: 5%;
+  height: 100%;
+  width: 100%;
+  background-color: #c45222;
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+
+.periodos-paleolitico ul {
+  font-size: 1vw;
+  padding: 0;
+  width: 25vw;
+}
+
+.periodos-paleolitico li {
+  position: relative;
+}
+
+.periodos-paleolitico li::before {
+  content: "";
+  width: 5vw;
+  top: 38%;
+  left: -25.5%;
+  border-top: 0.4vw dotted white;
+  position: absolute;
+}
+
 
 .card-paleolitico {
   height: 13vw;
@@ -3096,22 +3065,22 @@ input::placeholder {
   overflow: hidden;
   cursor: pointer;
   z-index: 9;
-  
-  & img {
-    height: 9vw;
-  }
+}
 
-  & h1 {
-    color: var(--orange);
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: BreeSerif;
-    font-size: 2.2vw;
-    font-weight: 900;
-    position: relative;
-  }
+.card-paleolitico img {
+  height: 9vw;
+}
+
+.card-paleolitico h1 {
+  color: var(--orange);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: BreeSerif;
+  font-size: 2.2vw;
+  font-weight: 900;
+  position: relative;
 }
 
 .especies-paleolitico {
@@ -3120,35 +3089,35 @@ input::placeholder {
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
+}
 
-  & p {
-    font-size: 1vw;
-    width: max-content;
-    height: 100%;
-    margin: 0;
-    margin-bottom: 1vw;
-    background-color: #c45222;
-    box-shadow: 2px 2px 5px rgb(0 0 0 / 25%);
-    padding: 0.5vw;
-    border-radius: 1vw;
-  }
-  
-  & div {
-    display: flex;
-    height: 100%;
-    gap: 1vw;
-    align-items: flex-end;
+.especies-paleolitico p {
+  font-size: 1vw;
+  width: max-content;
+  height: 100%;
+  margin: 0;
+  margin-bottom: 1vw;
+  background-color: #c45222;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 25%);
+  padding: 0.5vw;
+  border-radius: 1vw;
+}
 
-    & span {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+.especies-paleolitico div {
+  display: flex;
+  height: 100%;
+  gap: 1vw;
+  align-items: flex-end;
+}
 
-    & img {
-      height: 8vw;
-    }
-  }
+.especies-paleolitico div span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.especies-paleolitico div img {
+  height: 8vw;
 }
 
 .paleolitico-superior-cotidiana {
@@ -3157,7 +3126,6 @@ input::placeholder {
   display: flex;
   position: relative;
   overflow-x: clip;
-  
 }
 
 .vida-cotidiana {
@@ -3167,18 +3135,17 @@ input::placeholder {
   justify-content: center;
   padding-left: 10%;
   position: relative;
+}
 
-  & h1 {
-    font-family: BreeSerif;
-    font-size: 4vw;
-    font-weight: 900;
-    line-height: 1;
-  }
+.vida-cotidiana h1 {
+  font-family: BreeSerif;
+  font-size: 4vw;
+  font-weight: 900;
+  line-height: 1;
+}
 
-  & p {
-    font-size: 1vw;
-  }
-
+.vida-cotidiana p {
+  font-size: 1vw;
 }
 
 #fondovidacotidiana {
@@ -3283,14 +3250,14 @@ input::placeholder {
   align-items: center;
   user-select: none;
   transition: 0.2s ease;
+}
 
-  & p {
-    margin: 0;
-  }
+.draggable p {
+  margin: 0;
+}
 
-  &:hover {
-    filter: brightness(125%);
-  }
+.draggable:hover {
+  filter: brightness(125%);
 }
 
 #draggable-container {
@@ -3339,56 +3306,56 @@ input::placeholder {
   animation-range: entry 20% cover 60%;
   animation-fill-mode: both;
   animation-name: glaciacion;
-  
-  & .izquierda-glaciacion {
-    width: 100%;
-    height: 100%;
-    padding: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+}
 
-    & h1 {
-      font-size: 5vw;
-      font-family: BreeSerif;
-      font-weight: 900;
-      line-height: 1;
-    }
+.izquierda-glaciacion {
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-    & p {
-      font-size: 1.25vw;
-      text-shadow: 2px 2px 5px rgb(0 0 0 / 50%);
-    }
-  }
+.izquierda-glaciacion h1 {
+  font-size: 5vw;
+  font-family: BreeSerif;
+  font-weight: 900;
+  line-height: 1;
+}
 
-  & .medio-glaciacion {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.izquierda-glaciacion p {
+  font-size: 1.25vw;
+  text-shadow: 2px 2px 5px rgb(0 0 0 / 50%);
+}
 
-  & .derecha-glaciacion {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1vw;
-  }
+.medio-glaciacion {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  &::before {
-    background-image: url("/img/prehistoria/glaciacion-min.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-color: #1e90ff;
-  }
+.derecha-glaciacion {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.glaciacion-wurm::before {
+  background-image: url("/img/prehistoria/glaciacion-min.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #1e90ff;
 }
 
 .texto-glaciacion {
@@ -3402,11 +3369,11 @@ input::placeholder {
   width: 10vw;
   height: 10vw;
   position: relative;
+}
 
-  & img {
-    width: 100%;
-    height: 100%;
-  }
+.glaciacion-grafico img {
+  width: 100%;
+  height: 100%;
 }
 
 #glaciacion-scratch {
@@ -3452,14 +3419,14 @@ input::placeholder {
   z-index: 5;
   cursor: pointer;
   transition: .2s ease;
-  
-  &:hover {
-    scale: 1.1;
-  }
+}
 
-  &:active {
-    scale: 1;
-  }
+#ultima-glaciacion:hover {
+  scale: 1.1;
+}
+
+#ultima-glaciacion:active {
+  scale: 1;
 }
 
 #fondo-glaciares {
@@ -3496,17 +3463,17 @@ input::placeholder {
   scale: 1.5;
   width: 100%;
   transition: 1s ease;
+}
 
-  &::before {
-    content: "";
-    height: 1vw;
-    width: 1vw;
-    background-color: var(--red);
-    border-radius: 100%;
-    position: relative;
-    left: -52.5%;
-    scale: 1;
-  }
+#circulo-grafico::before {
+  content: "";
+  height: 1vw;
+  width: 1vw;
+  background-color: var(--red);
+  border-radius: 100%;
+  position: relative;
+  left: -52.5%;
+  scale: 1;
 }
 
 #glaciacion-calor {
@@ -3524,10 +3491,10 @@ input::placeholder {
   user-select: none;
   transition: 0.2s ease;
   transform: scale(1.2);
+}
 
-  &:hover {
-    scale: 1.05;
-  }
+#glaciacion-calor:hover {
+  scale: 1.05;
 }
 
 #glaciacion-frío {
@@ -3545,10 +3512,10 @@ input::placeholder {
   user-select: none;
   transition: 0.2s ease;
   filter: brightness(75%);
+}
 
-  &:hover {
-    scale: 1.05;
-  }
+#glaciacion-frío:hover {
+  scale: 1.05;
 }
 
 .tierra-caliente {
@@ -3564,10 +3531,10 @@ input::placeholder {
   opacity: 0;
   scale: 0;
   transition: 0.2s ease;
+}
 
-  & svg {
-    height: 5vw;
-  }
+.tierra-caliente svg {
+  height: 5vw;
 }
 
 .tierra-fria {
@@ -3582,11 +3549,11 @@ input::placeholder {
   font-size: 0.8vw;
   opacity: 0;
   scale: 0;
-  transition: 0.2s ease;
+  transition: 0.2s ease; 
+}
 
-  & svg {
-    height: 5vw;
-  }
+.tierra-fria svg {
+  height: 5vw;
 }
 
 .hombre-cavernas {
@@ -3615,16 +3582,16 @@ input::placeholder {
   box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
   user-select: none;
   cursor: pointer;
+}
 
-  & h1 {
-    font-family: BreeSerif;
-    font-size: 2vw;
-    font-weight: 900;
-  }
+.texto-cavernas h1 {
+  font-family: BreeSerif;
+  font-size: 2vw;
+  font-weight: 900;
+}
 
-  & p {
-    font-size: 1vw;
-  }
+.texto-cavernas p {
+  font-size: 1vw;
 }
 
 .img-cavernas {
@@ -3640,10 +3607,10 @@ input::placeholder {
   z-index: 0;
   user-select: none;
   transition: filter .2s ease;
+}
 
-  &:hover {
-    filter: brightness(100%);
-  }
+.fondo-caverna:hover {
+  filter: brightness(100%);
 }
 
 .contenedor-caverna {
@@ -3669,10 +3636,10 @@ input::placeholder {
   font-size: 0.7vw;
   user-select: none;
   pointer-events: none;
+}
 
-  & img {
-    height: 1.5vw;
-  }
+.icon-draggable img {
+  height: 1.5vw;
 }
 
 .aparecer-expandir {
@@ -3707,10 +3674,10 @@ input::placeholder {
   z-index: 0;
   user-select: none;
   transition: filter .2s ease;
+}
 
-  &:hover {
-    filter: brightness(100%);
-  }
+.mapa-glaciacion:hover {
+  filter: brightness(100%);
 }
 
 .texto-mapa-glaciacion {
@@ -3728,16 +3695,16 @@ input::placeholder {
   box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
   user-select: none;
   cursor: pointer;
+}
 
-  & h1 {
-    font-family: BreeSerif;
-    font-size: 2vw;
-    font-weight: 900;
-  }
+.texto-mapa-glaciacion h1 {
+  font-family: BreeSerif;
+  font-size: 2vw;
+  font-weight: 900;
+}
 
-  & p {
-    font-size: 1vw;
-  }
+.texto-mapa-glaciacion p {
+  font-size: 1vw;
 }
 
 .no-seleccionado {
@@ -3791,27 +3758,27 @@ input::placeholder {
   background-color: var(--orange);
   border-radius: .5vw;
   box-shadow: .5vw .5vw 1vw rgb(0 0 0 / 40%);
+}
 
-  & h1 {
-    font-size: 3vw;
-    font-family: BreeSerif;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 5%;
-  }
+.revolucion-cognitiva-texto h1 {
+  font-size: 3vw;
+  font-family: BreeSerif;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 5%;
+}
 
-  & p {
-    padding-right: 30%;
-    font-size: .9vw;
-  }
+.revolucion-cognitiva-texto p {
+  padding-right: 30%;
+  font-size: .9vw;
+}
 
-  & img {
-    height: 120%;
-    position: absolute;
-    right: -5%;
-    top: 10%;
-    z-index: 0;
-  }
+.revolucion-cognitiva-texto img {
+  height: 120%;
+  position: absolute;
+  right: -5%;
+  top: 10%;
+  z-index: 0;
 }
 
 .revolucion-cognitiva-abstraccion {
@@ -3854,14 +3821,14 @@ input::placeholder {
   position: absolute;
   top: 40%;
   left: 5%;
+}
 
-  &::before {
-    content: "";
-    width: 18vw;
-    position: absolute;
-    left: 100%;
-    border-top: .3vw solid white;
-  }
+.humanizacion::before {
+  content: "";
+  width: 18vw;
+  position: absolute;
+  left: 100%;
+  border-top: .3vw solid white;
 }
 
 #lenguaje {
@@ -3881,18 +3848,18 @@ input::placeholder {
   user-select: none;
   cursor: pointer;
   transition: .2s ease;
+}
 
-  &::before {
-    content: "Lenguaje";
-    width: fit-content;
-    position: absolute;
-    top: -35%;
-    color: white;
-  }
+#lenguaje::before {
+  content: "Lenguaje";
+  width: fit-content;
+  position: absolute;
+  top: -35%;
+  color: white;
+}
 
-  & img {
-    height: 65%;
-  }
+#lenguaje img {
+  height: 65%;
 }
 
 #ritualidad {
@@ -3912,18 +3879,18 @@ input::placeholder {
   user-select: none;
   cursor: pointer;
   transition: .2s ease;
+}
 
-  &::before {
-    content: "Ritualidad";
-    width: fit-content;
-    position: absolute;
-    top: -35%;
-    color: white;
-  }
+#ritualidad::before {
+  content: "Ritualidad";
+  width: fit-content;
+  position: absolute;
+  top: -35%;
+  color: white;
+}
 
-  & img {
-    height: 65%;
-  }
+#ritualidad img {
+  height: 65%;
 }
 
 #arte {
@@ -3943,18 +3910,18 @@ input::placeholder {
   user-select: none;
   cursor: pointer;
   transition: .2s ease;
+}
 
-  &::before {
-    content: "Arte";
-    width: fit-content;
-    position: absolute;
-    top: -35%;
-    color: white;
-  }
+#arte::before {
+  content: "Arte";
+  width: fit-content;
+  position: absolute;
+  top: -35%;
+  color: white;
+}
 
-  & img {
-    height: 65%;
-  }
+#arte img {
+  height: 65%;
 }
 
 .rasgo-seleccionado {
@@ -3967,92 +3934,93 @@ input::placeholder {
   flex-direction: row;
   background-color: #000000;
 }
-  
-  .div1 { 
-    width: 25vw;
-    height: 100%;
-    overflow: hidden;
 
-    & #venus-b {
-      height: 45%;
-      opacity: 0.5;
-      transition: .2s ease;
+.div1 {
+  width: 25vw;
+  height: 100%;
+  overflow: hidden;
+}
 
-      &:hover {
-        opacity: 1;
-      }
-    }
+.div1 #venus-b {
+  height: 45%;
+  opacity: 0.5;
+  transition: .2s ease;
+}
 
-    & #venus-w {
-      width: 100%;
-      background-color: #000000;
-      opacity: 0.5;
-      transition: .2s ease;
+.div1 #venus-b:hover {
+  opacity: 1;
+}
 
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
-  .div2 { 
-    width: 40vw;
-    height: 100%;
-    overflow: hidden;
+.div1 #venus-w {
+  width: 100%;
+  background-color: #000000;
+  opacity: 0.5;
+  transition: .2s ease;
+}
 
-    & #cueva-altamira {
-      height: 50%;
-      width: 100%;
-      position: relative;
-      opacity: 0.5;
-      transition: .2s ease;
+.div1 #venus-w:hover {
+  opacity: 1;
+}
 
-      &:hover {
-        opacity: 1;
-      }
-    }
+.div2 {
+  width: 40vw;
+  height: 100%;
+  overflow: hidden;
+}
 
-    & #cueva-manos {
-      height: 50%;
-      opacity: 0.5;
-      transition: .2s ease;
+.div2 #cueva-altamira {
+  height: 50%;
+  width: 100%;
+  position: relative;
+  opacity: 0.5;
+  transition: .2s ease;
+}
 
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
+.div2 #cueva-altamira:hover {
+  opacity: 1;
+}
 
-  .div3 { 
-    width: 35vw;
-    height: 100%;
-    overflow: hidden;
-    transition: .2s ease;
+.div2 #cueva-manos {
+  height: 50%;
+  opacity: 0.5;
+  transition: .2s ease;
+}
 
-      &:hover {
-        opacity: 1;
-      }
+.div2 #cueva-manos:hover {
+  opacity: 1;
+}
 
-    & #funeral {
-      height: 100%;
-      opacity: 0.5;
-      transition: .2s ease;
+.div3 {
+  width: 35vw;
+  height: 100%;
+  overflow: hidden;
+  transition: .2s ease;
+}
 
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
+.div3:hover {
+  opacity: 1;
+}
+
+.div3 #funeral {
+  height: 100%;
+  opacity: 0.5;
+  transition: .2s ease;
+}
+
+.div3 #funeral:hover {
+  opacity: 1;
+}
 
 .intermedio-neolitico {
   height: 25vw;
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-  & p {
-    font-size: 3vw;
-    text-align: center;
-  }
+.intermedio-neolitico p {
+  font-size: 3vw;
+  text-align: center;
 }
 
 .container-cuestionario {
