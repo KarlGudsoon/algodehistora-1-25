@@ -1557,9 +1557,10 @@ li:hover ul#submenu {
   transform-origin: 0px 0px;
   transform: scale(1) translate(0px, 0px);
   cursor: grab;
-  z-index: -1;
+  z-index: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 #zoom svg {
