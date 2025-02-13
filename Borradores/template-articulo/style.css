@@ -1485,6 +1485,32 @@ li:hover ul#submenu {
   width: 100%;
   height: 150px;
   background-color: var(--secondarycolor);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.linea-tiempo-horizontal .linea-tiempo::before {
+  content: "";
+  width: 100%;
+  height: 0.2rem;
+  background-color: white;
+  position: absolute;
+  z-index: 0;
+}
+
+.linea-tiempo-horizontal .linea-tiempo div {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  font-weight: 900;
+  color: var(--primarycolor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  z-index: 1;
 }
 
 .linea-tiempo-horizontal .contenedor-hechos {
@@ -1583,6 +1609,19 @@ li:hover ul#submenu {
 
   .exp1 {
     padding-top: 1rem;
+  }
+
+  .linea-tiempo-horizontal .linea-tiempo {
+    flex-direction: column;
+  }
+
+  .linea-tiempo-horizontal .linea-tiempo::before {
+    content: "";
+    width: 0.2rem;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    z-index: 0;
   }
 
   .linea-tiempo-horizontal {
