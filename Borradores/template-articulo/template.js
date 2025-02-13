@@ -480,37 +480,3 @@ containers.forEach(function(container) {
   });
 });
 
-// VIEW TRANSITION //
-
-var botones = document.querySelectorAll(".viewtransition");
-
-botones.forEach(function(boton) {
-  boton.addEventListener('click', function(event) {
-    // Previene el comportamiento predeterminado de seguir el enlace inmediatamente
-    event.preventDefault();
-
-    // Agrega la clase para la animación al body actual
-    document.body.classList.add('clip-transition');
-
-    // Obtiene la URL de destino del atributo href del botón
-    var href = boton.getAttribute('href');
-
-    // Espera a que la animación termine antes de redirigir
-    document.body.addEventListener('animationend', function() {
-      // Redirige a la URL de destino
-      window.location.href = href;
-    }, { once: true });
-
-    // Elimina la clase 'clip-transition' después de 2.5 segundos
-    setTimeout(function() {
-      document.body.classList.remove('clip-transition');
-    }, 2500); // 2500 milisegundos = 2.5 segundos
-  });
-});
-
-
-
-
-
-
-

@@ -1489,6 +1489,17 @@ li:hover ul#submenu {
   align-items: center;
   justify-content: space-around;
   position: relative;
+  overflow: hidden;
+}
+
+.linea-tiempo-horizontal .linea-tiempo h1 {
+  color: black;
+  font: 900 8rem BreeSerif;
+  position: absolute;
+  z-index: 0;
+  opacity: 0.2;
+  margin: 0;
+  user-select: none;
 }
 
 .linea-tiempo-horizontal .linea-tiempo::before {
@@ -1497,7 +1508,7 @@ li:hover ul#submenu {
   height: 0.2rem;
   background-color: white;
   position: absolute;
-  z-index: 0;
+  z-index: 1;
 }
 
 .linea-tiempo-horizontal .linea-tiempo div {
@@ -1510,7 +1521,7 @@ li:hover ul#submenu {
   justify-content: center;
   align-items: center;
   border-radius: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 
 .linea-tiempo-horizontal .contenedor-hechos {
@@ -1534,6 +1545,33 @@ li:hover ul#submenu {
   font: 300 2rem BreeSerif;
 }
 
+.mapa-interno {
+  overflow: hidden;
+  height: 600px;
+  width: 100%;
+}
+
+#zoom {
+  width: 100%;
+  height: 100%;
+  transform-origin: 0px 0px;
+  transform: scale(1) translate(0px, 0px);
+  cursor: grab;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+}
+
+#zoom svg {
+  height: 100%;
+  width: 100%;
+}
+
+.zoom_outer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
 @media screen and (max-width: 700px) {
   .widget-mapa {
@@ -1631,6 +1669,10 @@ li:hover ul#submenu {
   .linea-tiempo-horizontal .linea-tiempo {
     width: 150px;
     height: auto;
+  }
+
+  .linea-tiempo-horizontal .linea-tiempo h1  {
+    writing-mode: vertical-rl;
   }
 
   .linea-tiempo-horizontal .contenedor-hechos {
