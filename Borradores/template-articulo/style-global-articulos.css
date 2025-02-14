@@ -428,7 +428,7 @@ li:hover ul#submenu {
   scale: 1.1;
 }
 
-.widget-mapa svg {
+.widget-mapa object {
   margin: 8%;
   height: 10%;
   position: absolute;
@@ -1409,7 +1409,11 @@ li:hover ul#submenu {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  gap: 1rem;
+  gap: 3rem;
+  overflow-x: clip;
+  box-shadow: .2rem .2rem 1rem rgb(0,0,0,0.25);
+  position: relative;
+  z-index: 1;
 }
 
 .exp1 h1 {
@@ -1424,9 +1428,18 @@ li:hover ul#submenu {
   margin: 0;
 }
 
-.exp1 img {
+.contenedor-img-exp1 {
+  width: 200px;
   height: 200px;
   position: relative;
+  justify-content: center;
+  display: flex;
+}
+
+.contenedor-img-exp1 img {
+  height: 120%;
+  position: absolute;
+  bottom: 0;
 }
 
 .exp2 {
@@ -1539,10 +1552,31 @@ li:hover ul#submenu {
   padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0rem 0rem 0.5rem rgb(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .linea-tiempo-horizontal .contenedor-hechos div h1 {
-  font: 300 2rem BreeSerif;
+  font: 600 2rem BreeSerif;
+}
+
+.linea-tiempo-horizontal .contenedor-hechos div img {
+  height: 100px;
+  justify-self: end;
+}
+
+.mapa-interno {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mapa-interno svg {
+  height: 500px;
 }
 
 #zoom {
@@ -1569,7 +1603,6 @@ li:hover ul#submenu {
 }
 
 .mapa-externo {
-  width: 100%;
   height: 600px;
   background-color: var(--secondarycolor);
   overflow: hidden;
