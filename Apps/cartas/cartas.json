@@ -11,6 +11,19 @@
       { "nombre": "Intrépido", "clase": "punto-bronce" }
     ],
     "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
+    },
+    "neandertal": {
+    "titulo": "NEANDERTAL",
+    "categoria": "Prehistoria",
+    "imagen": "/img/prehistoria/Neandertal.png",
+    "fondoFrontal": "/img/prehistoria/pixelcut-export (6).jpeg",
+    "fondoTrasera": "/img/prehistoria/pixelcut-export (6).jpeg",
+    "personalidad": [
+      { "nombre": "Agresivo", "clase": "punto-dorado" },
+      { "nombre": "Cazador", "clase": "punto-dorado" },
+      { "nombre": "Resistente", "clase": "punto-bronce" }
+    ],
+    "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
     }
     
 }
