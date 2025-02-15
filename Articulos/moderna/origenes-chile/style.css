@@ -239,4 +239,9 @@
 
 @media screen and (max-width: 700px) {
 
+    .contenedor-lenguetas {
+        position: sticky;
+        top: 0;
+        z-index: 9;
+    }
 }
