@@ -55,41 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-var personajes = document.querySelectorAll(".personaje");
 
-personajes.forEach((personaje) => {
-    personaje.addEventListener("click", function () {
-        var idPersonaje = this.id;
-        var card = document.querySelector("#personaje-" + idPersonaje); 
-        var cerrar = card.querySelector(".concepto-cerrar");
-        var cardItem = card.querySelector(".item");
-        var sobreCard = card.querySelector(".sobre-carta");
-
-        if (sobreCard) {
-          sobreCard.classList.toggle("active");
-        }
-
-        if (cardItem) {
-          cardItem.classList.toggle("active");
-        }
-
-        if (card) {
-            card.classList.toggle("active");
-        }
-
-        if (card.classList.contains("active")) {
-            document.body.classList.add("no-scroll");
-        } else {
-            document.body.classList.remove("no-scroll");
-        }
-
-        cerrar.addEventListener("click", function () {      
-          card.classList.remove("active");
-          cardItem.classList.remove("active");
-          document.body.classList.remove("no-scroll");
-        });
-    });
-});
 
 document.querySelectorAll(".personaje").forEach((personaje, index) => {
   personaje.addEventListener("click", () => {
@@ -118,6 +84,63 @@ document.querySelectorAll(".personaje").forEach((personaje, index) => {
     }, 3000); // Se elimina después de 3 segundos
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Cargar JSON de personajes
+  fetch("/Apps/cartas/cartas.json")
+    .then(response => response.json())
+    .then(data => {
+      inicializarEventos(data);
+    })
+    .catch(error => console.error("Error al cargar el JSON:", error));
+});
+
+function inicializarEventos(personajes) {
+  // Seleccionamos todos los elementos que abren cartas
+  document.querySelectorAll(".personaje").forEach(elemento => {
+    elemento.addEventListener("click", () => {
+      const idPersonaje = elemento.id; // El ID del <span> es el mismo que el del personaje
+      if (personajes[idPersonaje]) {
+        actualizarCarta(personajes[idPersonaje], idPersonaje);
+        document.getElementById("contenedor-personaje").classList.add("active");
+        document.getElementById("personaje-historico").classList.add("active");
+      } else {
+        console.error("Personaje no encontrado en JSON:", idPersonaje);
+      }
+
+    });
+  });
+}
+
+function actualizarCarta(personaje, idPersonaje) {
+  // Actualizar título y categoría
+  document.getElementById("titulo-carta").textContent = personaje.categoria;
+  document.getElementById("imagen-carta").src = personaje.imagen;
+  document.getElementById("nombre-personaje").textContent = personaje.titulo;
+  document.getElementById("categoria-personaje").textContent = personaje.categoria;
+  document.getElementById("imagen-personaje").src = personaje.imagen;
+  document.getElementById("imagen-personaje-trasera").src = personaje.imagen;
+  document.getElementById("fondo-frontal").src = personaje.fondoFrontal;
+  document.getElementById("fondo-trasera").src = personaje.fondoTrasera;
+  document.getElementById("descripcion-personaje").textContent = personaje.descripcion;
+
+  // Actualizar personalidad con clases dinámicas
+  const personalidadDiv = document.getElementById("personalidad-personaje");
+  personalidadDiv.innerHTML = "";
+  personaje.personalidad.forEach(caracteristica => {
+    const span = document.createElement("span");
+    span.textContent = caracteristica.nombre;
+    span.classList.add(caracteristica.clase);
+    personalidadDiv.appendChild(span);
+  });
+
+  // Actualizar IDs de los <span> de los iconos sin modificar su estructura HTML
+  document.querySelector(".lugar-personaje").id = `lugar-${idPersonaje}`;
+  document.querySelector(".reconocimiento-personaje").id = `reconocimiento-${idPersonaje}`;
+  document.querySelector(".tiempo-personaje").id = `tiempo-${idPersonaje}`;
+}
+
 
 
 
@@ -300,7 +323,8 @@ paises.forEach((pais) => {
 
 function manejarCierre(event) {
     var concepto = event.target.parentElement;
-    var containerCard = document.querySelectorAll(".contenedor-personaje")
+    var containerCard = document.getElementById("contenedor-personaje");
+    var Card = document.getElementById("personaje-historico");
 
     
     if (concepto) {
@@ -310,6 +334,10 @@ function manejarCierre(event) {
     if (containerCard) {
       containerCard.classList.remove("active");
     }
+
+    if (Card) {
+      Card.classList.remove("active");
+  }
 
     document.body.classList.remove("no-scroll");
 }

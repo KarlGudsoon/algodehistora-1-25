@@ -1080,7 +1080,6 @@ li:hover ul#submenu {
   position: relative;
   flex-direction: column;
   border-radius: 2rem;
-  border: 0.2rem solid var(--primarycolor);
 }
 
 .face-imagen-trasera {

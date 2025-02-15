@@ -173,47 +173,39 @@
           </div>
         </div>
       </div>
-      <div class="contenedor-personaje" id="personaje-sapiens">
-        <div class="sobre-carta exit-animation" style="background-image: url(/img/prehistoria/sobreprehistoria.webp);">
-          <h1 style="top: 80px">Prehistoria</h1>
-          <img style="top: 25px" src="https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/dsadasd.png?v=1711951960296">
+      <div class="contenedor-personaje" id="contenedor-personaje">
+        <div class="sobre-carta exit-animation">
+          <h1 id="titulo-carta"></h1>
+          <img id="imagen-carta">
         </div>
-        <div class="item" data-tilt>
+        <div class="item" id="personaje-historico" data-tilt>
           <div class="concepto-cerrar">-</div>
           <div class="etiqueta">
             <span>Personaje Histórico</span>
-            <h1>HOMO SAPIENS</h1>
-            <span class="etiqueta-prehistoria">Prehistoria</span>
+            <h1 id="nombre-personaje"></h1>
+            <span id="categoria-personaje" class="etiqueta-prehistoria"></span>
           </div>
-          <img class="personaje-historico-item" draggable="false" src="/img/prehistoria/sapiens.png">
+          <img id="imagen-personaje" class="personaje-historico-item" draggable="false">
           <div class="face frontal dorada">
             <div class="fondo-frontal">
-              <img draggable="false" src="/img/prehistoria/neolitico.webp">
+              <img id="fondo-frontal" draggable="false">
             </div>
           </div>
           <div class="descripcion-personaje-trasera">
-            <div class="carta-personalidad">
-              <span class="punto-dorado">Pensador</span>
-              <span class="punto-plata">Agricultor</span>
-              <span>Intrepido</span>
-            </div>
+            <div class="carta-personalidad" id="personalidad-personaje"></div>
             <div class="descripcion-personaje-texto">
-              <p>
-                La industria siderúrgica en la Revolución Industrial 
-                se caracterizó por la mejora de los procesos de producción 
-                del hierro y el acero.
-              </p>
+              <p id="descripcion-personaje"></p>
             </div>
-            <div class="descripcion-personaje-caracteristicas">
-              <span><img src="/svg/mundo.svg"></span>
-              <span><img src="/svg/ribbon.svg"></span>
-              <span><img draggable="false" src="/svg/tiempo.svg"></span>
+            <div class="descripcion-personaje-caracteristicas" id="iconos-personaje">
+              <span class="lugar-personaje"><img src="/svg/mundo.svg"></span>
+              <span class="reconocimiento-personaje"><img src="/svg/ribbon.svg"></span>
+              <span class="tiempo-personaje"><img draggable="false" src="/svg/tiempo.svg"></span>
             </div>
           </div>
-          <img class="personaje-historico-item-trasera" draggable="false" src="/img/prehistoria/sapiens.png">
+          <img id="imagen-personaje-trasera" class="personaje-historico-item-trasera" draggable="false">
           <div class="face trasera dorada">
             <div class="img-personaje-trasera">
-              <img src="/img/prehistoria/dawnofman.jpeg">
+              <img id="fondo-trasera">
             </div>
           </div>
         </div>

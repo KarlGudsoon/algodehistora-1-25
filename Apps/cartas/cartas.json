@@ -1,0 +1,17 @@
+{
+    "sapiens": {
+    "titulo": "HOMO SAPIENS",
+    "categoria": "Prehistoria",
+    "imagen": "/img/prehistoria/sapiens.png",
+    "fondoFrontal": "/img/prehistoria/neolitico.webp",
+    "fondoTrasera": "/img/prehistoria/dawnofman.jpeg",
+    "personalidad": [
+      { "nombre": "Pensador", "clase": "punto-dorado" },
+      { "nombre": "Agricultor", "clase": "punto-dorado" },
+      { "nombre": "Intrépido", "clase": "punto-bronce" }
+    ],
+    "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
+    }
+    
+}
+  
