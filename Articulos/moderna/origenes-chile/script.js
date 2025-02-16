@@ -1,3 +1,22 @@
+var botonGeo = document.getElementById("lengueta-geo");
+var botonPueblos = document.getElementById("lengueta-pueblos");
+var titulo = document.getElementById("titulo-explicacion1");
+var texto = document.getElementById("texto-explicacion1");
+var img = document.getElementById("img-explicacion1");
+
+botonGeo.addEventListener("click", function () {
+    titulo.innerHTML = "GEOMORFOLOGÍA DE CHILE";
+    texto.innerHTML = "El territorio de Chile se formó hace millones de años debido a procesos geológicos como el choque de placas tectónicas, que formaron la cordillera de los Andes, que junto a la corriente de Humboldt, mantiene el Desierto de Atacama.";
+    img.src = "/img/moderna/descubrimiento-chile/00909c64-2d8e-464b-bcb6-e1013e2b5e7d (2).webp"
+});
+
+botonPueblos.addEventListener("click", function () {
+    titulo.innerHTML = "PUEBLOS ORIGINARIOS";
+    texto.innerHTML = "Antes de la llegada de los españoles y la dominación Inca, en el territorio actual de Chile habitaron diversos pueblos originarios. Como los límites actuales no existían en el siglo XVI, los pueblos tenían su territorio más allá de la frontera actual entre países.";
+    img.src = "/img/moderna/descubrimiento-chile/selknam-ropa-cazar-removebg-preview.png"
+});
+
+
 const toggleButtons = document.querySelectorAll('.lengueta-vertical'); 
 
 toggleButtons.forEach((button) => {
@@ -70,7 +89,6 @@ document.querySelectorAll('.mapa_pueblo').forEach(el => {
 
         if (carta) {
             carta.style.transform = "scale(1.1)";
-            carta.style.transition = "transform 0.2s ease";
         }
     });
 
