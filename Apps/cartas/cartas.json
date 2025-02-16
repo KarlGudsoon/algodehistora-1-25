@@ -19,7 +19,7 @@
     "fondoFrontal": "/img/prehistoria/pixelcut-export (6).jpeg",
     "fondoTrasera": "/img/prehistoria/pixelcut-export (6).jpeg",
     "personalidad": [
-      { "nombre": "Agresivo", "clase": "punto-dorado" },
+      { "nombre": "Agresivo", "clase": "punto-bronce" },
       { "nombre": "Cazador", "clase": "punto-dorado" },
       { "nombre": "Resistente", "clase": "punto-bronce" }
     ],
