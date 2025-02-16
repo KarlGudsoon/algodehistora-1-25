@@ -1,7 +1,10 @@
 {
     "sapiens": {
     "titulo": "HOMO SAPIENS",
-    "categoria": "Prehistoria",
+    "color": "var(--prehistoria)",
+    "categoria": [
+      { "nombre": "Prehistoria", "clase": "etiqueta-prehistoria" }
+    ],
     "imagen": "/img/prehistoria/sapiens.png",
     "fondoFrontal": "/img/prehistoria/neolitico.webp",
     "fondoTrasera": "/img/prehistoria/dawnofman.jpeg",
@@ -14,7 +17,10 @@
     },
     "neandertal": {
     "titulo": "NEANDERTAL",
-    "categoria": "Prehistoria",
+    "color": "var(--prehistoria)",
+    "categoria": [
+      { "nombre": "Prehistoria", "clase": "etiqueta-prehistoria" }
+    ],
     "imagen": "/img/prehistoria/Neandertal.png",
     "fondoFrontal": "/img/prehistoria/pixelcut-export (6).jpeg",
     "fondoTrasera": "/img/prehistoria/pixelcut-export (6).jpeg",
@@ -22,6 +28,23 @@
       { "nombre": "Agresivo", "clase": "punto-bronce" },
       { "nombre": "Cazador", "clase": "punto-dorado" },
       { "nombre": "Resistente", "clase": "punto-bronce" }
+    ],
+    "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
+    },
+
+    "aymara": {
+    "titulo": "PUEBLO AYMARA",
+    "color": "#356b11",
+    "categoria": [
+      { "nombre": "Precolombino", "clase": "etiqueta-medieval" }
+    ],
+    "imagen": "/img/moderna/descubrimiento-chile/personaje-aymara.webp",
+    "fondoFrontal": "/img/moderna/descubrimiento-chile/parque-lauca.webp",
+    "fondoTrasera": "/img/moderna/descubrimiento-chile/parque-lauca.webp",
+    "personalidad": [
+      { "nombre": "Agricultor", "clase": "punto-dorado" },
+      { "nombre": "Cultista", "clase": "punto-dorado" },
+      { "nombre": "Andino", "clase": "punto-bronce" }
     ],
     "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
     }

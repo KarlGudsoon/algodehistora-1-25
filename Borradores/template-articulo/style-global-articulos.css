@@ -422,6 +422,7 @@ li:hover ul#submenu {
     -webkit-box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
     -moz-box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
   pointer-events: auto;
+  z-index: 999999999999;
 }
 
 .widget-mapa:hover {
@@ -533,6 +534,7 @@ li:hover ul#submenu {
   cursor: pointer;
   display: flex;
   justify-content: center;
+  transform: translateZ(20px);
   align-items: center;
   transition: .2s ease;
   z-index: 999999999999;
@@ -1046,6 +1048,7 @@ li:hover ul#submenu {
   transition: transform 0.6s; 
   backface-visibility: hidden; 
   filter: drop-shadow(.2rem .2rem .5rem rgb(0,0,0,0.8));
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -1133,7 +1136,6 @@ li:hover ul#submenu {
 
 .descripcion-personaje-texto {
   width: 100%;
-  background-color: var(--periodopagina);
   padding: 1rem;
   font-size: 0.8rem;
   border-radius: 1rem;

@@ -86,6 +86,9 @@ document.querySelectorAll(".personaje").forEach((personaje, index) => {
 });
 
 
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   // Cargar JSON de personajes
   fetch("/Apps/cartas/cartas.json")
@@ -105,6 +108,7 @@ function inicializarEventos(personajes) {
         actualizarCarta(personajes[idPersonaje], idPersonaje);
         document.getElementById("contenedor-personaje").classList.add("active");
         document.getElementById("personaje-historico").classList.add("active");
+        document.body.classList.add("no-scroll");
       } else {
         console.error("Personaje no encontrado en JSON:", idPersonaje);
       }
@@ -114,18 +118,22 @@ function inicializarEventos(personajes) {
 }
 
 function actualizarCarta(personaje, idPersonaje) {
-  // Actualizar título y categoría
+  
   document.getElementById("titulo-carta").textContent = personaje.categoria;
   document.getElementById("imagen-carta").src = personaje.imagen;
   document.getElementById("nombre-personaje").textContent = personaje.titulo;
-  document.getElementById("categoria-personaje").textContent = personaje.categoria;
+
+  const categoriaElemento = document.getElementById("categoria-personaje");
+  categoriaElemento.textContent = personaje.categoria[0].nombre;
+  categoriaElemento.style.background = personaje.color;
+
   document.getElementById("imagen-personaje").src = personaje.imagen;
   document.getElementById("imagen-personaje-trasera").src = personaje.imagen;
   document.getElementById("fondo-frontal").src = personaje.fondoFrontal;
   document.getElementById("fondo-trasera").src = personaje.fondoTrasera;
   document.getElementById("descripcion-personaje").textContent = personaje.descripcion;
+  document.getElementById("descripcion-personaje-texto").style.background = personaje.color;
 
-  // Actualizar personalidad con clases dinámicas
   const personalidadDiv = document.getElementById("personalidad-personaje");
   personalidadDiv.innerHTML = "";
   personaje.personalidad.forEach(caracteristica => {
@@ -135,11 +143,18 @@ function actualizarCarta(personaje, idPersonaje) {
     personalidadDiv.appendChild(span);
   });
 
-  // Actualizar IDs de los <span> de los iconos sin modificar su estructura HTML
+  const contenedorIcons = document.getElementById("iconos-personaje");
+  const spans = contenedorIcons.querySelectorAll("span");
+  
+    spans.forEach(span => {
+    span.style.background = personaje.color;
+  });
+
   document.querySelector(".lugar-personaje").id = `lugar-${idPersonaje}`;
   document.querySelector(".reconocimiento-personaje").id = `reconocimiento-${idPersonaje}`;
   document.querySelector(".tiempo-personaje").id = `tiempo-${idPersonaje}`;
 }
+
 
 
 
