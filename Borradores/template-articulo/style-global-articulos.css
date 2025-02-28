@@ -261,7 +261,7 @@ li:hover ul#submenu {
   bottom: -250px;
   transition: .2s ease;
   pointer-events: none;
-  z-index: 99;
+  z-index: 99999999999;
 }
 
 .inner {
@@ -422,7 +422,7 @@ li:hover ul#submenu {
     -webkit-box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
     -moz-box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
   pointer-events: auto;
-  z-index: 999999999999;
+  z-index: 999999;
 }
 
 .widget-mapa:hover {
