@@ -1,8 +1,8 @@
 :root {
     background-color: transparent;
     color: white;
-    --primary: #333333;
-    --secondary: #555555;
+    --primary: #c45222;
+    --secondary: #f86d31;
 }
 
 html {
@@ -72,7 +72,7 @@ main {
 }
 
 .question h2 {
-    font-size: 21px;
+    font-size: 1.5rem;
     margin-top: 0;
 }
 
@@ -162,6 +162,12 @@ main {
     margin-bottom: 5px;
 }
 
+.container-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .navButton {
     background-color: white;
     color: var(--secondary);
@@ -222,9 +228,9 @@ main {
 }
 
 .markerQuestion {
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 5px;
 }
 
@@ -246,15 +252,31 @@ main {
 }
 
 @media screen and (max-width: 750px) {
+
+    .titulo-cuestionario h1 {
+        text-align: center;
+    }
+
+    .markerQuestion {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 150px;
+    }
+
     .container-pregunta-nav {
         flex-wrap: wrap;
     }
 
     .container-nav {
         display: flex;
+        flex-direction: row;
         width: 100%;
         gap: 10px;
         justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0.2rem;
     }
 
     .navigation {

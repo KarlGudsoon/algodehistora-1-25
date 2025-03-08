@@ -9,10 +9,10 @@ function respuesta(num_pregunta, seleccionada) {
     let labels = document.getElementById(id).childNodes;
 
     // Restablecer el color de fondo de todas las opciones
-    labels[3].style.backgroundColor = "#f86d31";
-    labels[5].style.backgroundColor = "#f86d31";
-    labels[7].style.backgroundColor = "#f86d31";
-    labels[9].style.backgroundColor = "#f86d31";
+    labels[3].style.backgroundColor = "var(--secondary)";
+    labels[5].style.backgroundColor = "var(--secondary)";
+    labels[7].style.backgroundColor = "var(--secondary)";
+    labels[9].style.backgroundColor = "var(--secondary)";
 
     // Establecer el color de fondo de la opción seleccionada
     seleccionada.parentNode.style.backgroundColor = "green";

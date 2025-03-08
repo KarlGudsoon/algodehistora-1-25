@@ -11,7 +11,7 @@
         die("Error de conexión: " . mysqli_connect_error());
     }
 
-    $consulta = "INSERT INTO prehistoria (nombre, apellidos, nota) VALUES ('$nombre', '$apellidos', $nota)";
+    $consulta = "INSERT INTO revolucionindustrial (nombre, apellidos, nota) VALUES ('$nombre', '$apellidos', $nota)";
 
     $resultado = mysqli_query($conexion, $consulta);
 
