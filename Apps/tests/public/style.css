@@ -264,8 +264,13 @@ main {
 
 @media screen and (max-width: 750px) {
 
+    .titulo-cuestionario {
+        margin-bottom: 5px;
+    }
+
     .titulo-cuestionario h1 {
         text-align: center;
+        font-size: 1.2rem;
     }
 
     .markerQuestion {
@@ -294,6 +299,18 @@ main {
         width: 100%;
     }
 
+    .question h2 {
+        font-size: 1.2rem;
+    }
+
+    .question {
+        min-height: 250px;
+    }
+
+    .container-pregunta-nav {
+        gap: 5px;
+    }
+
     .container-preguntas,
     .question.active,
     .question {
@@ -302,10 +319,14 @@ main {
     }
 
     .datos {
-        justify-content: center;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        margin-bottom: 5px;
     }
 
     .datos label {
-        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 }
