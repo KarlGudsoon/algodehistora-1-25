@@ -9,13 +9,13 @@ function respuesta(num_pregunta, seleccionada) {
     let labels = document.getElementById(id).childNodes;
 
     // Restablecer el color de fondo de todas las opciones
-    labels[3].style.backgroundColor = "var(--secondary)";
-    labels[5].style.backgroundColor = "var(--secondary)";
-    labels[7].style.backgroundColor = "var(--secondary)";
-    labels[9].style.backgroundColor = "var(--secondary)";
+    labels[3].classList.remove("seleccionada");
+    labels[5].classList.remove("seleccionada");
+    labels[7].classList.remove("seleccionada");
+    labels[9].classList.remove("seleccionada");
 
     // Establecer el color de fondo de la opción seleccionada
-    seleccionada.parentNode.style.backgroundColor = "green";
+    seleccionada.parentNode.classList.add("seleccionada");
 
     // Llamar a la función corregir para actualizar la cantidad de respuestas correctas
     corregir();
@@ -112,7 +112,8 @@ questions.forEach((question) => {
         input.addEventListener('change', () => {
             const span = document.getElementById(`c-${questionId}`);
             if (span) {
-                span.style.backgroundColor = 'green';
+                span.style.backgroundColor = '#e92a41';
+                span.style.outline = '1px solid white';
             }
             checkAllQuestionsAnswered();
         });
