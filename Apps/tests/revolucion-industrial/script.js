@@ -112,8 +112,8 @@ questions.forEach((question) => {
         input.addEventListener('change', () => {
             const span = document.getElementById(`c-${questionId}`);
             if (span) {
-                span.style.backgroundColor = '#e92a41';
-                span.style.outline = '1px solid white';
+                span.style.backgroundColor = 'green';
+                span.style.outline = '1px solid rgb(255, 255, 255, 0.8)';
             }
             checkAllQuestionsAnswered();
         });

@@ -252,18 +252,14 @@ main {
 }
 
 .question label.seleccionada {
-    background-color: #e92a41;
-    box-shadow: 0 4px  #9b1c2b;
+    background-color: green;
+    box-shadow: 0 4px rgb(1, 82, 1);
+    transition: .1s ease;
 }
 
 .question label.seleccionada:hover {
-    box-shadow: 0 6px  #9b1c2b;
+    box-shadow: 0 6px rgb(1, 82, 1);
     transform: translateY(-2px);
-}
-
-.question label:active {
-    box-shadow: 0 4px  #9b1c2b;
-    transform: translateY(1px);
 }
 
 @media screen and (max-width: 750px) {
