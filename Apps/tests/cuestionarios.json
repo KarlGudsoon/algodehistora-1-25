@@ -1,6 +1,6 @@
 [
     {
-      "id": "poblamiento_americano",
+      "id": "paleolitico",
       "titulo": "PALEOLÍTICO",
       "descripcion": "El Paleolítico es una etapa de la Prehistoria que se extiende desde hace unos 2,5 millones de años hasta hace unos 10.000 años. Durante este periodo, los seres humanos vivían en pequeños grupos de cazadores-recolectores y utilizaban herramientas de piedra y hueso.",
       "periodo": "PREHISTORIA",
@@ -10,7 +10,7 @@
       "hrefMapa": "/Articulos/Prehistoria/template.html"
     },
     {
-      "id": "imperialismo_xix",
+      "id": "revolucion industrial",
       "titulo": "REVOLUCIÓN INDUSTRIAL",
       "descripcion": "La Revolución Industrial fue un periodo de la historia que se desarrolló en la segunda mitad del siglo XVIII y principios del siglo XIX. Se caracterizó por la aparición de la máquina de vapor, la mecanización de la industria y el desarrollo de nuevas formas de trabajo.",
       "periodo": "CONTEMPORÁNEA",

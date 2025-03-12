@@ -75,3 +75,17 @@ cerrarMapa.addEventListener("click", () => {
 
     menu.classList.remove("active")
 });
+
+function filtrarCuestionarios() {
+  let input = document.getElementById("buscador").value.toLowerCase();
+  let cuestionarios = document.querySelectorAll(".mapa");
+
+  cuestionarios.forEach(cuestionario => {
+      let nombre = cuestionario.getAttribute("data-id");
+      if (nombre.includes(input)) {
+          cuestionario.style.display = "flex";
+      } else {
+          cuestionario.style.display = "none";
+      }
+  });
+}
