@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let divMapa = document.createElement("div");
       divMapa.classList.add("mapa");
       divMapa.setAttribute("data-id", mapa.id);
+      divMapa.setAttribute("data-periodo", mapa.periodo);
   
       divMapa.innerHTML = `
         <h1>${mapa.titulo}</h1>
@@ -86,6 +87,21 @@ function filtrarCuestionarios() {
           cuestionario.style.display = "flex";
       } else {
           cuestionario.style.display = "none";
+      }
+  });
+}
+
+function filtrarPorPeriodo() {
+  let periodoSeleccionado = document.getElementById("periodo").value;
+  let cuestionarios = document.querySelectorAll(".mapa");
+
+  cuestionarios.forEach(cuestionario => {
+      let periodo = cuestionario.getAttribute("data-periodo");
+
+      if (periodoSeleccionado === "todos" || periodo === periodoSeleccionado) {
+          cuestionario.style.display = "flex"; // Muestra el cuestionario
+      } else {
+          cuestionario.style.display = "none"; // Oculta si no coincide
       }
   });
 }

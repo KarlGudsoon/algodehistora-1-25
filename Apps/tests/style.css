@@ -247,8 +247,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 .buscador input {
@@ -256,8 +259,6 @@ body {
     height: 1rem;
     border-radius: 1rem;
     border: 0;
-    margin-left: 2rem;
-    margin-right: 2rem;
     padding: 1rem;
     font: 300 1rem Roboto;
     color: white;
@@ -274,7 +275,27 @@ body {
 }
 
 .buscador input:focus {
-    outline: 1px solid white;
+    outline: 1px solid #971b2a;
+}
+
+.buscador select {
+    background-color: #c92437;
+    border: 0;
+    color: white;
+    padding: 0.5rem;
+    font-family: Roboto;
+}
+
+.buscador select:hover {
+    filter: brightness(1.05);
+}
+
+.buscador select:focus {
+    outline: 1px solid #971b2a;
+}
+
+.buscador select option:hover {
+    background-color: #971b2a;
 }
 
 .mapa {

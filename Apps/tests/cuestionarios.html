@@ -29,6 +29,14 @@
       </div>
       <div class="buscador">
         <input type="text" id="buscador" placeholder="Buscar cuestionario" onkeyup="filtrarCuestionarios()">
+        <select id="periodo" onchange="filtrarPorPeriodo()">
+          <option value="todos">Todos</option>
+          <option value="PREHISTORIA">Prehistoria</option>
+          <option value="edad-antigua">Edad Antigua</option>
+          <option value="edad-media">Edad Media</option>
+          <option value="edad-moderna">Edad Moderna</option>
+          <option value="CONTEMPORÁNEA">Edad Contemporanea</option>
+        </select>
       </div>
       <div class="contenedor-mapas-interactivos">
       
