@@ -69,6 +69,27 @@ body {
     justify-content: center;
 }
 
+.boton-inicio {
+    position: fixed;
+    top: 0;
+    left: 3.5rem;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    margin: 1.5rem 0 0rem 0rem;
+    transition: .2s ease;
+    padding: 0.5rem;
+    cursor: pointer;
+    opacity: 0.35;
+}
+
+.boton-inicio:hover {
+    scale: 1.1;
+    opacity: 1;
+}
+
 #abrir-menu {
     position: fixed;
     top: 0;
@@ -263,6 +284,8 @@ body {
     font: 300 1rem Roboto;
     color: white;
     background-color: #c92437;
+    transition: 0.2s ease;
+    outline: 1px solid transparent;
 }
 
 .buscador input:hover {
@@ -276,6 +299,7 @@ body {
 
 .buscador input:focus {
     outline: 1px solid #971b2a;
+    box-shadow: inset 0rem 0rem 0.5rem rgb(0, 0, 0, 0.2);
 }
 
 .buscador select {
