@@ -34,7 +34,7 @@
 
     "aymara": {
     "titulo": "PUEBLO AYMARA",
-    "color": "#356b11",
+    "color": "var(--red)",
     "categoria": [
       { "nombre": "Precolombino", "clase": "etiqueta-medieval" }
     ],
