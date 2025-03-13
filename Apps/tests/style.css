@@ -117,6 +117,23 @@ body {
     height: 75%;
 }
 
+#boton-profe {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 1rem 0rem 0rem;
+    transition: .2s ease;
+    border-radius: 1rem 0 0 1rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: white;
+    font: 300 1rem Roboto;
+    opacity: 1;
+}
+
 .contenedor-menu-mapa {
     height: 95%;
     width: 500px;
