@@ -3,6 +3,9 @@
     color: white;
     --primary: #c45222;
     --secondary: #f86d31;
+    --tertiary: #9b421c;
+    --quaternary: #753215;
+
 }
 
 html {
@@ -252,13 +255,13 @@ main {
 }
 
 .question label.seleccionada {
-    background-color: green;
-    box-shadow: 0 4px rgb(1, 82, 1);
+    background-color: var(--tertiary);
+    box-shadow: 0 4px var(--quaternary);
     transition: .1s ease;
 }
 
 .question label.seleccionada:hover {
-    box-shadow: 0 6px rgb(1, 82, 1);
+    box-shadow: 0 6px var(--quaternary);
     transform: translateY(-2px);
 }
 
