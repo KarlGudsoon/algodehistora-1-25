@@ -85,6 +85,10 @@ body {
     opacity: 0.35;
 }
 
+.boton-inicio img {
+    height: 100%;
+}
+
 .boton-inicio:hover {
     scale: 1.1;
     opacity: 1;
