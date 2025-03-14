@@ -94,16 +94,29 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("/Apps/cartas/cartas.json")
     .then(response => response.json())
     .then(data => {
+      precargarImagenes(data);
       inicializarEventos(data);
     })
     .catch(error => console.error("Error al cargar el JSON:", error));
 });
 
+function precargarImagenes(personajes) {
+  Object.values(personajes).forEach(personaje => {
+    precargarImagen(personaje.imagen);
+    precargarImagen(personaje.fondoFrontal);
+    precargarImagen(personaje.fondoTrasera);
+  });
+}
+
+function precargarImagen(url) {
+  const img = new Image();
+  img.src = url;
+}
+
 function inicializarEventos(personajes) {
-  // Seleccionamos todos los elementos que abren cartas
   document.querySelectorAll(".personaje").forEach(elemento => {
     elemento.addEventListener("click", () => {
-      const idPersonaje = elemento.id; // El ID del <span> es el mismo que el del personaje
+      const idPersonaje = elemento.id; 
       if (personajes[idPersonaje]) {
         actualizarCarta(personajes[idPersonaje], idPersonaje);
         document.getElementById("contenedor-personaje").classList.add("active");
@@ -112,27 +125,26 @@ function inicializarEventos(personajes) {
       } else {
         console.error("Personaje no encontrado en JSON:", idPersonaje);
       }
-
     });
   });
 }
 
 function actualizarCarta(personaje, idPersonaje) {
-  
   document.getElementById("titulo-carta").textContent = personaje.categoria;
-  document.getElementById("imagen-carta").src = personaje.imagen;
   document.getElementById("nombre-personaje").textContent = personaje.titulo;
 
   const categoriaElemento = document.getElementById("categoria-personaje");
   categoriaElemento.textContent = personaje.categoria[0].nombre;
   categoriaElemento.style.background = personaje.color;
 
+  document.getElementById("descripcion-personaje").textContent = personaje.descripcion;
+  document.getElementById("descripcion-personaje-texto").style.background = personaje.color;
+
+  // Asignar imágenes ya precargadas
   document.getElementById("imagen-personaje").src = personaje.imagen;
   document.getElementById("imagen-personaje-trasera").src = personaje.imagen;
   document.getElementById("fondo-frontal").src = personaje.fondoFrontal;
   document.getElementById("fondo-trasera").src = personaje.fondoTrasera;
-  document.getElementById("descripcion-personaje").textContent = personaje.descripcion;
-  document.getElementById("descripcion-personaje-texto").style.background = personaje.color;
 
   const personalidadDiv = document.getElementById("personalidad-personaje");
   personalidadDiv.innerHTML = "";
@@ -145,8 +157,7 @@ function actualizarCarta(personaje, idPersonaje) {
 
   const contenedorIcons = document.getElementById("iconos-personaje");
   const spans = contenedorIcons.querySelectorAll("span");
-  
-    spans.forEach(span => {
+  spans.forEach(span => {
     span.style.background = personaje.color;
   });
 
@@ -154,6 +165,7 @@ function actualizarCarta(personaje, idPersonaje) {
   document.querySelector(".reconocimiento-personaje").id = `reconocimiento-${idPersonaje}`;
   document.querySelector(".tiempo-personaje").id = `tiempo-${idPersonaje}`;
 }
+
 
 
 
