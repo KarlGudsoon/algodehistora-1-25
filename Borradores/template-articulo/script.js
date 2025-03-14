@@ -59,6 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.querySelectorAll(".personaje").forEach((personaje, index) => {
   personaje.addEventListener("click", () => {
+
+    
+
     let canvas = document.createElement("canvas");
     canvas.width = 600;
     canvas.height = 600;
@@ -352,6 +355,15 @@ function manejarCierre(event) {
     var concepto = event.target.parentElement;
     var containerCard = document.getElementById("contenedor-personaje");
     var Card = document.getElementById("personaje-historico");
+    const cardPersonaje = document.querySelectorAll('.item');
+    
+    cardPersonaje.forEach(card => {
+      card.classList.remove('flipped');
+  
+      card.querySelectorAll('.flipped').forEach(element => {
+          element.classList.remove('flipped');
+      });
+    });
 
     
     if (concepto) {
@@ -359,14 +371,25 @@ function manejarCierre(event) {
     }
 
     if (containerCard) {
-      containerCard.classList.remove("active");
+      setTimeout(() => {
+        containerCard.classList.remove("active");
+      }
+      , 500);
+      
     }
 
     if (Card) {
       Card.classList.remove("active");
-  }
+    }
 
-    document.body.classList.remove("no-scroll");
+    setTimeout(() => {
+      document.body.classList.remove("no-scroll");
+    }
+    , 500);
+
+    
+
+     
 }
 
 
