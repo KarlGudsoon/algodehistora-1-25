@@ -146,6 +146,9 @@ function actualizarCarta(personaje, idPersonaje) {
   // Asignar imágenes ya precargadas
   document.getElementById("imagen-personaje").src = personaje.imagen;
   document.getElementById("imagen-personaje-trasera").src = personaje.imagen;
+
+  document.getElementById("fondo-trasera").style.borderColor = personaje.color;
+
   document.getElementById("fondo-frontal").src = personaje.fondoFrontal;
   document.getElementById("fondo-trasera").src = personaje.fondoTrasera;
 
