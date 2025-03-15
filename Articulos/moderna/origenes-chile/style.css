@@ -285,7 +285,78 @@
     fill: yellow !important;
 }
 
+.exp4 {
+    gap: 0.2rem;
+}
 
+.exp4 h1 {
+    font: 900 2.5rem BreeSerif;
+    color: black;
+    opacity: 0.35;
+    line-height: 1;
+    margin: 1rem 0 2rem 0 ;
+    text-align: center;
+}
+
+.contenedor-teorias {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.teoria {
+    background-color: #e92a41;
+    box-shadow: 0rem 0rem 1rem rgb(0, 0, 0, 0.5);
+    padding: 2rem;
+    max-width: 350px;
+    border-radius: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.teoria h1 {
+    font: 900 2rem BreeSerif;
+    color: black;
+    opacity: 0.35;
+    line-height: 1;
+    margin: 0;
+    text-align: left;
+}
+
+.teoria p {
+    font: 300 1rem Roboto;
+    color: white;
+    margin: 0;
+}
+
+.nota-profesor {
+    margin: 1rem;
+    background-color: var(--primarycolor);
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    
+}
+
+.nota-profesor h1 {
+    margin: 0;
+    text-align: left;
+    width: min-content;
+}
+
+.nota-profesor p {
+    margin: 0;
+    max-width: 800px;
+}
 
 
 @media screen and (max-width: 700px) {
