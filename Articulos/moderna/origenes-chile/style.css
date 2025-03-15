@@ -287,12 +287,13 @@
 
 .exp4 {
     gap: 0.2rem;
+    background-color: var(--primarycolor);
 }
 
 .exp4 h1 {
     font: 900 2.5rem BreeSerif;
-    color: black;
-    opacity: 0.35;
+    color: var(--tertiarycolor);
+    opacity: 1;
     line-height: 1;
     margin: 1rem 0 2rem 0 ;
     text-align: center;
@@ -308,8 +309,9 @@
 }
 
 .teoria {
-    background-color: #e92a41;
-    box-shadow: 0rem 0rem 1rem rgb(0, 0, 0, 0.5);
+    background-color: #fd2e46;
+    border: 1px solid var(--tertiarycolor);
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
     padding: 2rem;
     max-width: 350px;
     border-radius: 1rem;
@@ -336,8 +338,9 @@
 
 .nota-profesor {
     margin: 1rem;
-    background-color: var(--primarycolor);
-    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.5);
+    background-color: #fd2e46;
+    border: 1px solid var(--tertiarycolor);
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
     border-radius: 1rem;
     padding: 2rem;
     display: flex;
@@ -348,6 +351,8 @@
 }
 
 .nota-profesor h1 {
+    color: black;
+    opacity: 0.35;
     margin: 0;
     text-align: left;
     width: min-content;
@@ -365,5 +370,10 @@
         position: sticky;
         top: 0;
         z-index: 9;
+        
+    }
+
+    .lengueta-vertical {
+        font-size: 0.8rem;
     }
 }
