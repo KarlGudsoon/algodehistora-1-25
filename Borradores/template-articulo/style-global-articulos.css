@@ -1421,7 +1421,7 @@ li:hover ul#submenu {
   font-family: BreeSerif;
   font-weight: 900;
   opacity: 0.05;
-  z-index: 0;
+  z-index: -1;
   height: 100%;
   width: min-content;
   line-height: 1;
@@ -1479,17 +1479,6 @@ li:hover ul#submenu {
   display: flex;
   gap: 0.2rem;
   align-items: center;
-}
-
-.etiqueta-pais span {
-}
-
-.etiqueta-imperiocentral {
-  background-color: #f86d31;
-}
-
-.etiqueta-entente {
-  background-color: chocolate;
 }
 
 #pais-imagen {
