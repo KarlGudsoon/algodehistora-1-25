@@ -1380,6 +1380,30 @@ li:hover ul#submenu {
   margin: 1rem;
 }
 
+a {
+  appearance: none;
+  text-decoration: none;
+  color: var(--color);
+}
+
+a:hover {
+  color: var(--color);
+}
+
+.boton-simple {
+  background-color: var(--primarycolor);
+  color: white;
+  font: 300 1rem Roboto;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
 .pais {
   max-width: 1500px;
   min-height: 150px;
