@@ -715,17 +715,17 @@ li:hover ul#submenu {
   left: 1rem;
   width: 300px;
   height: 400px;
-  scale: 0;
+  scale: 1.1;
   background-size: cover;
   background-image: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/889693ce-907d-480f-ac32-17ae063a73dd.image.png?v=1711949981710"); 
-  z-index: 999;
+  z-index: 999999999999;
   transition: scale .5s ease, opacity .5s ease;
   animation: blur-out-expand 0.5s ease both;
   animation-play-state: paused;
   -webkit-box-shadow: inset 1px 1px 12px 1px #000000; 
   box-shadow: inset 1px 1px 20px 15px rgb(163 163 163 / 50%);
   clip-path: polygon(2% 10%, 1% 5%, 0 0, 100% 0, 99% 5%, 98% 10%, 98% 90%, 99% 95%, 100% 100%, 0 100%, 1% 95%, 2% 90%);
-  pointer-events: none;
+  pointer-events: all;
 }
 
 .sobre-carta.active {
@@ -938,6 +938,7 @@ li:hover ul#submenu {
   transition: scale .5s ease, opacity .5s ease, bottom .5s ease;
 }
 
+
 .contenedor-personaje canvas {
   position: absolute;
   bottom: 0;
@@ -986,6 +987,35 @@ li:hover ul#submenu {
   overflow: hidden;
   border-radius: 2rem;
   
+}
+
+.fondo-frontal::after {
+  content: "";
+  background: linear-gradient(90deg, rgba(119,119,119,0) 0%, rgba(255,255,255,0.8) 50%, rgba(119,119,119,0) 100%);
+  mask-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+  transform: rotate(30deg);
+  width: 50%;
+  height: 250%;
+  position: absolute;
+  top: -50%;
+  left: -250%;
+  z-index: 1;
+  opacity: 0.5;
+  transition: .2s ease;
+  animation-direction: normal;
+  animation: brillo-carta 5s infinite linear;
+}
+
+@keyframes brillo-carta {
+  0% {
+      left: -250%;
+  }
+  25% {
+      left: 150%;
+  }
+  100% {
+      left: 150%;
+  }
 }
 
 .fondo-frontal img {
@@ -1117,6 +1147,24 @@ li:hover ul#submenu {
   backface-visibility: hidden;
   transition: transform 0.6s; 
   pointer-events: none;
+  overflow: hidden;
+}
+
+.descripcion-personaje-trasera::after {
+  content: "";
+  background: linear-gradient(90deg, rgba(119,119,119,0) 0%, rgba(255,255,255,0.8) 50%, rgba(119,119,119,0) 100%);
+  mask-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+  transform: rotate(30deg);
+  width: 50%;
+  height: 250%;
+  position: absolute;
+  top: -50%;
+  left: -250%;
+  z-index: 1;
+  opacity: 0.35;
+  transition: .2s ease;
+  animation-direction: normal;
+  animation: brillo-carta 5s infinite linear;
 }
 
 .descripcion-personaje-trasera.flipped {
