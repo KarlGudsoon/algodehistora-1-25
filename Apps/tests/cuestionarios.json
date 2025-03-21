@@ -26,7 +26,7 @@
         "periodo": "CONTEMPORÁNEA",
         "clasePeriodo": "etiqueta-contemporanea",
         "imagen": "/img/contemporanea/primera-guerra-mundial/trincheras.jpg",
-        "srcMapa": "/Apps/mapas/1914/world.html",
+        "srcMapa": "/Apps/tests/primera-guerra-mundial/test.html",
         "hrefMapa": "/Apps/imperialismo/world.html"
     }
   ]

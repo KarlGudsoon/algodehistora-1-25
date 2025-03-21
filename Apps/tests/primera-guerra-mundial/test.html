@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Apps/tests/public/style.css" />
+    <title>Document</title>
+</head>
+
+<style>
+    :root {
+    background-color: transparent;
+    color: white;
+    --primary: #bb2436;
+    --secondary: #e92a41;
+    --tertiary: #222222;
+    --quaternary: #131313;
+    }
+
+    html {
+        background-image: url("/img/contemporanea/primera-guerra-mundial/trincheras.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+</style>
+<body>
+    <main>
+            <section class="titulo-cuestionario">
+                <h1>PRIMERA GUERRA MUNDIAL</h1>
+            </section>
+            <form id="cuestionario" method="POST" data-netlify="true">
+                <section class="datos">
+                    <label>Nombre: <input type="text" id="nombre" name="nombre"></label>
+                    <label>Apellidos: <input type="text" id="apellidos" name="apellidos"></label>
+                    <label><input type="hidden" id="resultado" name="resultado"></label>
+                </section>
+                <section class="container-pregunta-nav">
+                    <div class="navigation">
+                        <div class="container-nav">
+                            <div style="display: flex; align-items: center;"><span id="currentQuestion"></span><span>/5</span></div>
+                            <p>Pregunta</p>
+                            <div class="container-navButton">
+                                <div class="navButton" id="prev"><p>«</p></div>
+                                <div class="navButton" id="next"><p>»</p></div>
+                            </div>
+                            <div class="markerQuestion">
+                                <span id="c-p0">1</span>
+                                <span id="c-p1">2</span>
+                                <span id="c-p2">3</span>
+                                <span id="c-p3">4</span>
+                                <span id="c-p4">5</span>
+                            </div>
+                        </div>
+                        <div style="width: 100%;">
+                            <input id="submit" class="button" type="submit" value="ENVIAR">
+                        </div>
+                    </div>
+                    <div class="container-preguntas">
+                        <section class="question" id="p0">
+                            <h2>¿En qué año comenzó la Primera Guerra Mundial?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p0" onclick="respuesta(0, this)"> 1914
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p0" onclick="respuesta(0, this)"> 1905
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p0" onclick="respuesta(0, this)"> 1939
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p0" onclick="respuesta(0, this)"> 1923
+                            </label>
+                        </section>
+
+                        <section class="question" id="p1">
+                            <h2>¿Cuál fue la causa principal de la Primera Guerra Mundial?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p1" onclick="respuesta(1, this)"> El asesinato del archiduque Francisco Fernando
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p1" onclick="respuesta(1, this)"> La Revolución Rusa
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p1" onclick="respuesta(1, this)"> La caída del Imperio Otomano
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p1" onclick="respuesta(1, this)"> La guerra entre Inglaterra y Francia
+                            </label>
+                        </section>
+
+                        <section class="question" id="p2">
+                            <h2>¿Cuáles fueron las principales potencias de la Triple Entente?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p2" onclick="respuesta(2, this)"> Estados Unidos, Japón y Alemania
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p2" onclick="respuesta(2, this)"> Alemania, Italia y Austria-Hungría
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p2" onclick="respuesta(2, this)"> Francia, Reino Unido y Rusia
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p2" onclick="respuesta(2, this)"> España, Portugal y Suiza
+                            </label>
+                        </section>
+
+                        <section class="question" id="p3">
+                            <h2>¿Qué país se retiró de la guerra en 1917 debido a una revolución interna?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p3" onclick="respuesta(3, this)"> Reino Unido
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p3" onclick="respuesta(3, this)"> Alemania
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p3" onclick="respuesta(3, this)"> Francia
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p3" onclick="respuesta(3, this)"> Rusia
+                            </label>
+                        </section>
+
+                        <section class="question" id="p4">
+                            <h2>¿Cuáles de estos países fueron parte de las Potencias Centrales?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p4" onclick="respuesta(4, this)"> Japón
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p4" onclick="respuesta(4, this)"> Estados Unidos
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p4" onclick="respuesta(4, this)"> Austria-Hungría
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p4" onclick="respuesta(4, this)"> Francia
+                            </label>
+                        </section>
+                        
+                        
+                    </div>
+                </section>
+        
+            
+                
+            </form>
+    </main>
+
+    <script src="/Apps/tests/revolucion-industrial/script.js"></script>
+</body>
+</html>
