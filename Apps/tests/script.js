@@ -39,6 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
       mapaElement.addEventListener("click", () => {
         const mapaId = mapaElement.getAttribute("data-id");
         const mapaSeleccionado = mapas.find(mapa => mapa.id === mapaId);
+        const menu = document.getElementById("menu-mapa");
+
+        menu.classList.remove("active")
 
         document.querySelectorAll(".mapa").forEach(m => m.classList.remove("active"));
 
