@@ -492,7 +492,7 @@
 }
 
 .paso-conquista {
-    height: 600px;
+    height: 500px;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -503,7 +503,7 @@
 }
 
 .paso-conquista img {
-    max-width: 1200px;
+    max-width: 1000px;
     position: absolute;
     bottom: -35%;
     filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0, 0.75));
@@ -523,14 +523,18 @@
 }
 
 .paso-conquista h1 {
-    font: 900 10rem BreeSerif;
-    max-width: 1500px;
+    font: 900 8rem BreeSerif;
+    max-width: 1200px;
     color: var(--tertiarycolor);
     opacity: 0.5;
     line-height: 1;
     text-align: center;
     position: relative;
     z-index: 0;
+}
+
+.contenedor-conquista-1 {
+    display: flex;
 }
 
 @media screen and (max-width: 700px) {
