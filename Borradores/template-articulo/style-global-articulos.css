@@ -1896,9 +1896,12 @@ a:hover {
   }
 
   .sobre-carta {
+    left: auto;
+  }
+
+  .sobre-carta.active {
     bottom: auto;
     left: auto;
-    margin: 0;
   }
 
   .item {
