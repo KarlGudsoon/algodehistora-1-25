@@ -713,27 +713,27 @@ li:hover ul#submenu {
   transform-style: preserve-3d;
   transform: translateZ(45px);
   margin: 3rem;
-  bottom: 0;
+  bottom: -100%;
   left: 1rem;
   width: 300px;
   height: 400px;
   scale: 1.1;
+  opacity: 1;
   background-size: cover;
   background-image: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/889693ce-907d-480f-ac32-17ae063a73dd.image.png?v=1711949981710"); 
   z-index: 999999999999;
-  transition: scale .5s ease, opacity .5s ease;
-  animation: blur-out-expand 0.5s ease both;
-  animation-play-state: paused;
+  transition: scale .5s ease, opacity .5s ease, bottom .5s ease;
   -webkit-box-shadow: inset 1px 1px 12px 1px #000000; 
   box-shadow: inset 1px 1px 20px 15px rgb(163 163 163 / 50%);
   clip-path: polygon(2% 10%, 1% 5%, 0 0, 100% 0, 99% 5%, 98% 10%, 98% 90%, 99% 95%, 100% 100%, 0 100%, 1% 95%, 2% 90%);
-  pointer-events: all;
+  pointer-events: none;
 }
 
 .sobre-carta.active {
   scale: 1.1;
   opacity: 1;
   pointer-events: auto;
+  bottom: 0;
 }
 
 .sobre-carta img {

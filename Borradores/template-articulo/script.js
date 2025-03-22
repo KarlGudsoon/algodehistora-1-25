@@ -60,7 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
 document.querySelectorAll(".personaje").forEach((personaje, index) => {
   personaje.addEventListener("click", () => {
 
-    
+    const sobreCarta = document.querySelector(".sobre-carta");
+
+    sobreCarta.classList.add('active');
 
     let canvas = document.createElement("canvas");
     canvas.width = 600;
@@ -550,19 +552,11 @@ containers.forEach(function(container) {
 
 // ABRIR SOBRE (2) / EXIT ANIMATION //
 
-var containers = document.querySelectorAll('.exit-animation');
-
-containers.forEach(function(container) {
-  container.addEventListener('click', function() {
-    // Cambiar el estado de la animación a "running"
-    container.style.animationPlayState = 'running';
-
-    // Escuchar el evento transitionend para eliminar el elemento una vez que termine la transición
-    container.addEventListener('animationend', function() {
-      container.remove();
-    });
+var sobreCarta = document.querySelector('.sobre-carta');
+  
+  sobreCarta.addEventListener('click', function() {
+    sobreCarta.classList.remove('active');
   });
-});
 
 var scale = 1,
     panning = false,
