@@ -133,7 +133,10 @@ function inicializarEventos(personajes) {
 }
 
 function actualizarCarta(personaje, idPersonaje) {
-  document.getElementById("titulo-carta").textContent = personaje.categoria;
+  document.getElementById("titulo-sobre").textContent = personaje.categoria[0].nombre;
+  document.getElementById("imagen-sobre").src = personaje.imgSobre;
+
+
   document.getElementById("nombre-personaje").textContent = personaje.titulo;
 
   const categoriaElemento = document.getElementById("categoria-personaje");
