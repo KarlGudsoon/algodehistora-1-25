@@ -888,7 +888,7 @@ li:hover ul#submenu {
   width: 100%;
   height: 100%;
   bottom: 0;
-  scale: 1.02;
+  scale: 1.05;
   background: linear-gradient(133deg,#603512,#c89629,#faf290,#c89629,#603512, #603512,#c89629,#faf290,#c89629,#603512, #603512,#c89629,#faf290,#c89629,#603512);
   background-size: 400% 400%;
   animation: gradient-animation 5s linear infinite;
@@ -1057,7 +1057,7 @@ li:hover ul#submenu {
 } 
 
 .personaje-historico-item {
-  height: 115%;
+  height: 100%;
   position: absolute;
   z-index: 0;
   transform: translateZ(15px) rotateY(0deg);

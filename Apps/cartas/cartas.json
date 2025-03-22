@@ -17,6 +17,7 @@
     "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
     },
     "neandertal": {
+    "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
     "titulo": "NEANDERTAL",
     "color": "var(--prehistoria)",
     "categoria": [
@@ -34,6 +35,7 @@
     },
 
     "aymara": {
+    "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
     "titulo": "PUEBLO AYMARA",
     "color": "var(--red)",
     "categoria": [
