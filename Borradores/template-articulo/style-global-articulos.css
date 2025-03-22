@@ -433,8 +433,8 @@ li:hover ul#submenu {
   scale: 1.1;
 }
 
-.widget-mapa object {
-  margin: 8%;
+.widget-mapa .widget-mapa-timeline {
+  margin: 0.5rem;
   height: 10%;
   position: absolute;
   background: #cd1c38;
