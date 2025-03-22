@@ -714,13 +714,14 @@ li:hover ul#submenu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-items: center;
+  justify-content: space-between;
   transform: translateZ(45px);
   margin: 3rem;
   bottom: -100%;
   left: 1rem;
   width: 300px;
   height: 400px;
+  padding: 2rem 0 2rem 0rem;
   scale: 1.1;
   opacity: 1;
   background-size: cover;
@@ -748,14 +749,15 @@ li:hover ul#submenu {
 }
 
 .sobre-carta h1 {
-  color: #ffcf00;
+  color: white;
   width: 100%;
   text-align: center;
-  text-shadow: 5px 5px 15px rgba(0,0,0,0.9);
-  font-size: 40px;
-          -webkit-text-stroke-width: 0px;
-          -webkit-text-stroke-color: var(--red2);
+  text-shadow: 0px 0px 2rem rgba(0,0,0);
+  font-size: 2rem;
+  font-family: BreeSerif;
   user-select: none;
+  text-transform: uppercase;
+
 }
 
 .sobre-carta:before {
