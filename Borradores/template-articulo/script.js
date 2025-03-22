@@ -136,7 +136,7 @@ function inicializarEventos(personajes) {
 
 function actualizarCarta(personaje, idPersonaje) {
   document.getElementById("titulo-sobre").textContent = personaje.categoria[0].nombre;
-  document.getElementById("imagen-sobre").src = personaje.imgSobre;
+  document.getElementById("sobre-carta").style.backgroundImage = personaje.imgSobre;
 
 
   document.getElementById("nombre-personaje").textContent = personaje.titulo;

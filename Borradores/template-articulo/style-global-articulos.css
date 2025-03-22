@@ -711,6 +711,10 @@ li:hover ul#submenu {
   cursor: pointer;
   perspective: 1000px;
   transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
   transform: translateZ(45px);
   margin: 3rem;
   bottom: -100%;
@@ -737,18 +741,13 @@ li:hover ul#submenu {
 }
 
 .sobre-carta img {
-  position: absolute;
-  bottom: 75px;
-  left: 25%;
-  width: 150px;
-  filter: drop-shadow(5px 5px 15px #000000);
+  width: 200px;
+  filter: drop-shadow(0px 0px 15px #000000);
   padding: 10px;
   user-select: none;
 }
 
 .sobre-carta h1 {
-  position: absolute;
-  bottom: 20px;
   color: #ffcf00;
   width: 100%;
   text-align: center;

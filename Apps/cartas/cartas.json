@@ -1,6 +1,6 @@
 {
     "sapiens": {
-    "imgSobre": "/img/prehistoria/sapiens.png",
+    "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
     "titulo": "HOMO SAPIENS",
     "color": "var(--prehistoria)",
     "categoria": [
