@@ -735,11 +735,16 @@ li:hover ul#submenu {
   pointer-events: none;
 }
 
+.sobre-carta.active:hover {
+  scale: 1.15;
+}
+
 .sobre-carta.active {
   scale: 1.1;
   opacity: 1;
   pointer-events: auto;
   bottom: 0;
+  transition: SCALE .2s ease, OPACITY .5s ease, BOTTOM .5s ease;
 }
 
 .sobre-carta img {
