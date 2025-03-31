@@ -725,6 +725,7 @@ li:hover ul#submenu {
   scale: 1.1;
   opacity: 1;
   background-size: cover;
+  background-color: #e92a41;
   background-image: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/889693ce-907d-480f-ac32-17ae063a73dd.image.png?v=1711949981710"); 
   z-index: 999999999999;
   transition: scale .5s ease, opacity .5s ease, bottom .5s ease;
