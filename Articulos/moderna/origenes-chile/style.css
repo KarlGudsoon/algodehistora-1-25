@@ -584,6 +584,10 @@
 
 @media screen and (max-width: 700px) {
 
+    .mapa-interno {
+        height: 400px;
+    }
+
     .contenedor-lenguetas {
         position: sticky;
         top: 0;
@@ -595,12 +599,25 @@
         font-size: 0.8rem;
     }
 
+    #origen-palabra p{
+        font-size: 0.8rem;
+    }
+
+    .explicacion-inca-2 {
+        padding: 1rem;
+    }
+
+    .explicacion-inca-2 p {
+        font-size: .8rem;
+    }
+
     .contenedor-explicacion-inca {
         flex-wrap: wrap;
     }
 
     .contenedor-mapa-imperioinca {
         min-width: 100%;
+        max-height: 500px;
     }
 
     .paso-conquista {
