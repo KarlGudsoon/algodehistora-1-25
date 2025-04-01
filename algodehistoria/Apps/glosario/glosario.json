@@ -1,0 +1,14 @@
+{
+    "imaginacion": {
+        "titulo": "Imaginación Histórica",
+        "descripcion": "Según Levesque (2008), la imaginación histórica ayuda a poblar los huecos que deja nuestro conocimiento de la historia, ya que incluso los historiadores carecen de algunas de las claves del pasado."
+    },
+    "historia": {
+        "titulo": "Historia",
+        "descripcion": "Disciplina que estudia el pasado de la humanidad a través de diversas fuentes y métodos."
+    },
+    "revolucion": {
+        "titulo": "Revolución Industrial",
+        "descripcion": "Proceso de transformación económica, social y tecnológica que se inició en el siglo XVIII en Gran Bretaña y se expandió al resto del mundo."
+    }
+}

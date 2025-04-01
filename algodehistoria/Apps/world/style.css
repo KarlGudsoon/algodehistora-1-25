@@ -1,0 +1,7 @@
+.cls-27 {
+    transition: 0.2s ease;
+
+    &:hover {
+        filter: brightness(110%);
+    }
+}

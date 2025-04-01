@@ -1,0 +1,102 @@
+:root {
+  --blue: #1e90ff;
+  --red2: #780618;
+  --red: #e92a41;
+  --yellow: #ffa218;
+}
+
+@font-face {
+  font-family: HatschSans;
+  src: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/HatschSans.otf?v=1679725680887")
+    format("truetype");
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/RobotoSlab-Regular.ttf?v=1699503789327")
+    format("truetype");
+}
+
+.portada {
+  background-color: #e92a41;
+  height: 0;
+  width: 0;
+  position: absolute;
+  left: 0;
+  z-index: 999999;
+  margin-top: 20px;
+}
+
+.boxp {
+  position: absolute;
+  width: 680px;
+  height: 230px;
+  left: -230px;
+  top: -90px;
+  background-color: ;
+  scale: 0.2;
+  opacity: 0.5;
+  transition: 0.5s ease;
+  z-index: 999999;
+}
+
+.boxp:hover {
+  opacity: 1
+}
+
+.boxp:hover .squarein {
+  left: 80%;
+}
+
+.boxp:hover .square2in {
+  right: 80%;
+}
+
+.boxp p {
+  font: 900 100px roboto;
+  color: yellow;
+  position: absolute;
+  top: 0;
+  margin: 0;
+}
+
+.square {
+  width: 190px;
+    height: 110px;
+    background-color: yellow;
+    position: absolute;
+    right: 47px;
+    top: 10px;
+}
+
+.squarein {
+  content: "";
+  position: absolute;
+  background-color: #e92a41;
+  width: 10px;
+  height: 100%;
+  left: 10%;
+  animation: square1 4s ease infinite;
+  transition: 0.5s ease;
+}
+
+.square2 {
+  width: 190px;
+    height: 110px;
+    background-color: yellow;
+    position: absolute;
+    left: -10px;
+    bottom: -10px;
+}
+
+.square2in {
+  content: "";
+  position: absolute;
+  background-color: #e92a41;
+  width: 10px;
+  height: 100%;
+  right: 10%;
+  animation: square2 4s ease infinite;
+  transition: 0.5s ease;
+}
+

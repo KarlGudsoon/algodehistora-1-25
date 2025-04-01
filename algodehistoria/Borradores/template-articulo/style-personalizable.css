@@ -1,0 +1,20 @@
+:root {
+    --periodopagina : #252525;
+
+    --primarycolor : #e92a41;
+    --secondarycolor : #c72437;
+    --tertiarycolor : #f6d2d6;
+}
+
+.bg-1 {
+    background-color: var(--primarycolor);
+}
+
+.bg-2 {
+    background-color: var(--secondarycolor);
+}
+
+.bg-3 {
+    background-color: var(--tertiarycolor);
+    color: var(--primarycolor);
+}

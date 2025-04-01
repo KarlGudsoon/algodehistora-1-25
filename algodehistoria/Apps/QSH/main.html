@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario</title>
+    <link rel="stylesheet" href="/Apps/QSH/style.css" />
+</head>
+<body>
+
+<h2>Cuestionario</h2>
+<div id="quiz">
+    <div class="question active" data-correct="1">
+        <p>1. ¿Cuál es la capital de Francia?</p>
+        <label class="option"><input type="radio" name="q1" value="0"> Berlín</label>
+        <label class="option"><input type="radio" name="q1" value="1"> París</label>
+        <label class="option"><input type="radio" name="q1" value="2"> Madrid</label>
+    </div>
+
+    <div class="question" data-correct="2">
+        <p>2. ¿Cuál es el planeta más cercano al Sol?</p>
+        <label class="option"><input type="radio" name="q2" value="0"> Marte</label>
+        <label class="option"><input type="radio" name="q2" value="1"> Tierra</label>
+        <label class="option"><input type="radio" name="q2" value="2"> Mercurio</label>
+    </div>
+
+    <div class="question" data-correct="0">
+        <p>3. ¿Quién escribió 'Don Quijote de la Mancha'?</p>
+        <label class="option"><input type="radio" name="q3" value="0"> Miguel de Cervantes</label>
+        <label class="option"><input type="radio" name="q3" value="1"> William Shakespeare</label>
+        <label class="option"><input type="radio" name="q3" value="2"> Gabriel García Márquez</label>
+    </div>
+
+    <div class="question" data-correct="1">
+        <p>4. ¿Cuál es el metal más abundante en la Tierra?</p>
+        <label class="option"><input type="radio" name="q4" value="0"> Oro</label>
+        <label class="option"><input type="radio" name="q4" value="1"> Aluminio</label>
+        <label class="option"><input type="radio" name="q4" value="2"> Plata</label>
+    </div>
+
+    <div class="question" data-correct="2">
+        <p>5. ¿Cuál es el país más grande del mundo?</p>
+        <label class="option"><input type="radio" name="q5" value="0"> Estados Unidos</label>
+        <label class="option"><input type="radio" name="q5" value="1"> China</label>
+        <label class="option"><input type="radio" name="q5" value="2"> Rusia</label>
+        
+    </div>
+</div>
+
+<div class="buttons">
+    <button id="anterior" disabled>Anterior</button>
+    <button id="siguiente">Siguiente</button>
+    <button id="corregir">Corregir</button>
+    <button id="eliminarIncorrecta">Eliminar incorrecta</button>
+    <button id="mostrarModal">Mostrar Modal</button>
+    <button id="pasarPregunta">Pasar Pregunta</button>
+    <button id="reset">Reiniciar</button>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h2>Contador</h2>
+        <p id="contador">30</p>
+    </div>
+</div>
+
+<script src="/Apps/QSH/script.js"></script>
+
+</body>
+</html>

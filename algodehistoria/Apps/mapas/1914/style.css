@@ -1,0 +1,327 @@
+:root {
+    --blue: #1e90ff;
+    --red2: #780618;
+    --red: #e92a41;
+    --yellow: #ffa218;
+    --orange: #f86d31;
+  }
+  @font-face {
+    font-family: BreeSerif;
+    src: url("/fonts/BreeSerif-Regular.ttf")
+      format("truetype");
+  }
+  
+  @font-face {
+    font-family: Roboto;
+    src: url("/fonts/RobotoSlab-Regular.ttf")
+      format("truetype");
+  }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e92a41;
+    
+}
+
+#zoom {
+    width: 100%;
+    height: 100%;
+    transform-origin: 0px 0px;
+    transform: scale(1) translate(0px, 0px);
+    cursor: grab;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+}
+  
+div#zoom > svg {
+    height: 100%;
+}
+
+.zoom_outer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.boton {
+    height: 2vw;
+    width: fit-content;
+    padding-left: 1%;
+    padding-right: 1%;
+    background-color: #242424;
+    display: flex;
+    border-radius: 0.8vw;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font: 600 1vw Roboto;
+    z-index: 1;
+    cursor: pointer;
+    transition: 0.2s ease;
+    user-select: none;
+    pointer-events: auto;
+    box-shadow: 0px 0.5vw 0px black;
+
+    &:hover {
+        box-shadow: 0px .7vw 0px black;
+        transform: translateY(-0.2vw);
+    }
+
+    &:active {
+        transform: translateY(4px);
+        box-shadow: 0px 0px 0px black, 0px 0px 10px rgba(0,0,0,0.75) inset;
+    }
+}
+
+.boton-activo {
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0px black, 0px 0px 10px rgba(0,0,0,0.75) inset;
+
+    &:hover {
+        box-shadow: 0px 0px 0px black, 0px 0px 10px rgba(0,0,0,0.75) inset;
+        transform: translateY(4px);
+    }
+}
+
+.container-imperialismo {
+    width: 100%;
+    height: 100%;
+}
+
+.menu-contextual {
+    width: 100%;
+    height: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    gap: 1%;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+#TRIPLEALIANZA {
+    display: none;
+    fill: rgb(216, 83, 50);
+    stroke: rgb(216, 83, 50);
+    pointer-events: none;
+}
+
+#TRIPLEENTENTE {
+    display: none;
+    fill: rgb(34, 96, 177);
+    stroke: rgb(34, 96, 177);
+    pointer-events: none;
+}
+
+.aliados {
+    fill: #1e90ff;
+}
+
+#centrales {
+    fill: #ffa218;
+}
+
+g {
+    :hover {
+        cursor: pointer;
+    }
+}
+
+.menu-contextual-paises {
+    width: 100%;
+    height: 10vw;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    gap: 1%;
+    pointer-events: none;
+   
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.pais {
+    width: 65vw;
+    height: 100%;
+    background-color: #242424;
+    border-radius: 1vw;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: .2s ease;
+    position: relative;
+}
+
+.pais-cerrar {
+    width: 1vw;
+    height: 1vw;
+    background-color: #242424;
+    color: white;
+    font: 900 1vw Roboto;
+    position: absolute;
+    top: 5%;
+    right: 1%;
+    z-index: 9;
+    pointer-events: auto;
+    border-radius: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+
+    &:hover {
+        scale: 1.2;
+    }
+}
+
+#pais-descripcion {
+    &:before {
+        content: "1914";
+        color: white;
+        position: absolute;
+        font-size: 10vw;
+        font-family: BreeSerif;
+        font-weight: 900;
+        opacity: 0.05;
+        z-index: 0;
+        height: 100%;
+        width: 100%;
+        bottom: 25%;
+        left: 5%;
+    }
+}
+
+.pais-seccion {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-family: Roboto;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 2%;
+    padding-right: 2%;
+
+    & h1 {
+        font-family: BreeSerif;
+        font-size: 2vw;
+        margin: 0;
+    }
+
+    & p {
+        font-size: 0.9vw;
+        margin: 0;
+        margin-bottom: 0.2vw;
+    }
+}
+
+.pais-enunciados {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+
+    & img {
+        height: 2vw;
+        background-color: rgb(80, 80, 80);
+        border-radius: 0.3vw;
+        padding: 1%;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+        transition: .2s ease;
+
+        &:hover {
+            background-color: #1e90ff;
+        }
+    }
+}
+
+.etiqueta {
+    display: flex;
+    gap: 0.2vw;
+    margin-top: 2%;
+    justify-self: flex-end;
+}
+
+.etiqueta-imperiocentral {
+    background-color: #f86d31;
+}
+
+.etiqueta-entente {
+    background-color: chocolate;
+}
+
+#pais-imagen {
+    padding: 0;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(36, 36, 36, 1) 0%, rgba(36, 36, 36, 0.8) 25%, rgba(0, 0, 0, 0) 75%);
+    }
+}
+
+
+#pais-fondo {
+    width: 100%;  
+    overflow: hidden;
+    position: relative;
+    border-radius: 0 1vw 1vw 0vw;  
+
+    
+}
+
+#pais-personaje {
+    height: 120%;
+    width: auto;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 1vw;
+    z-index: 1;
+}
+
+#bandera-alemania {
+    background-image: 
+        linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), /* Gradiente */
+        url("/img/banderas/Flag_of_Germany_1867–1918.webp"); /* Imagen de fondo */
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+   
+}
+
+#pais-bandera {
+    height: 3vw;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 0 0 1vw 0;
+}

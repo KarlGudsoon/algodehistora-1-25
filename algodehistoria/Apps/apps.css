@@ -1,0 +1,373 @@
+:root {
+  --blue: #1e90ff;
+  --red2: #780618;
+  --red: #e92a41;
+  --yellow: #ffa218;
+  --blue2: #44a2f5;
+}
+
+html {
+  background-color: #e92a41;
+}
+
+body {
+  background-color: #e92a41;
+  margin: 0;
+  padding: 0;
+  animation: viewtransition-entrada 2s ease;
+}
+
+@keyframes viewtransition-entrada {
+  from {
+    clip-path: circle(0% at 50% 0);
+  }
+  to {
+    clip-path: circle(100% at 50% 0);
+  }
+}
+
+.clip-transition {
+  animation: viewtransition-salida 1s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes viewtransition-salida {
+  from {
+    clip-path: circle(100% at 50% 0);
+  }
+  to {
+    clip-path: circle(0% at 50% 0);
+  }
+}
+
+@font-face {
+  font-family: HatschSans;
+  src: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/HatschSans.otf?v=1679725680887")
+    format("truetype");
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/RobotoSlab-Regular.ttf?v=1699503789327")
+    format("truetype");
+}
+
+.container {
+  height: 100vh;
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 2em 2em;
+  padding-bottom: 2em;
+  padding-top: 2em;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "app-1 app-1 app-2"
+    "app-3 app-4 app-2"
+    "app-3 app-4 app-5";
+}
+
+a {
+  text-decoration: none;
+}
+
+.app-1 {
+  grid-area: app-1;
+  background: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/Sin%20t%C3%ADtulo-5.png?v=1709086120843");
+  background-color: var(--yellow);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  overflow-x: clip;
+  overflow-y: clip;
+  transition: 0.2s ease;
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  & h1 {
+    font: 600 60px Roboto slab;
+    color: var(--red2);
+    max-width: 450px;
+    max-height: 100%;
+    line-height: 60px;
+    padding-left: 100px;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  & img {
+    height: 280px;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+    transition: 0.2s ease;
+    opacity: 50%;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.app-2 {
+  grid-area: app-2;
+  
+  background: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/fondohistoria3d.png?v=1712897938860");
+  background-color: #44a2f5;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50px;
+  position: relative;
+  display: flex;
+  transition: .2s ease;
+  cursor: pointer;
+  
+  & article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    perspective: 500px;
+    gap: 20px;
+    overflow: hidden;
+  }
+  
+  & h2 {
+    font: 600 60px Roboto;
+    color: white;
+    width: 70%;
+    padding-top: 20px;
+    text-align: center;
+    max-height: 100%;
+    line-height: 60px;
+    user-select: none;
+    pointer-events: none;
+    margin: 0;
+    z-index: 9999999999;
+    transition: 0.2s ease;
+  }
+
+  & img {
+    width: 90%;
+    transform-style: preserve-3d;
+    transition: 0.5s ease;
+    z-index: 3;
+  }
+  
+  &:hover {
+    scale: 1.05;
+  }
+  
+}
+
+.app-3 {
+  grid-area: app-3;
+  background: #d3293d;
+  border-radius: 50px;
+}
+
+.app-4 {
+  grid-area: app-4;
+  background: #d3293d;
+  border-radius: 50px;
+}
+
+.app-5 {
+  grid-area: app-5;
+  background: #198754;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-5 img {
+  width: 300px;
+}
+
+@media only screen and (max-width: 700px) {
+  .container {
+    height: 1920px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 2em 2em;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "app-1"
+      "app-2"
+      "app-3"
+      "app-4"
+      "app-5";
+  }
+
+  .app-1 {
+    grid-area: app-1;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    & h1 {
+      padding-left: 0px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    & img {
+      bottom: -100px;
+      z-index: 1;
+    }
+  }
+
+  .app-1:hover img {
+    height: 260px;
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    transition: 0.2s ease;
+    opacity: 100%;
+  }
+
+  .app-2 {
+    grid-area: app-2;
+  }
+
+  .app-3 {
+    grid-area: app-3;
+  }
+
+  .app-4 {
+    grid-area: app-4;
+  }
+
+  .app-5 {
+    grid-area: app-5;
+  }
+}
+
+.app-1:hover img {
+  height: 320px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transition: 0.5s ease;
+  opacity: 100%;
+}
+
+.app-2:hover #center {
+  transform: rotateX(20deg);
+  scale: 0.6;
+  transition: 0.5s ease;
+  animation: float 3s linear infinite;
+}
+
+#right {
+  position: absolute;
+  right: -300px;
+  bottom: 70px;
+  z-index: 1;
+  transition: 0.4s ease;
+  opacity: 0%;
+}
+
+#left {
+  position: absolute;
+  left: -300px;
+  bottom: 20px;
+  z-index: 1;
+  transition: 0.4s ease;
+  opacity: 0%;
+}
+
+.app-2:hover #left {
+  left: -50px;
+  opacity: 100%;
+  animation: float 3s ease infinite;
+}
+
+.app-2:hover #right {
+  right: 0px;
+  opacity: 100%;
+  transition: 0.6s ease;
+  animation: float 4s ease infinite;
+}
+
+.app-2:hover h2 {
+  scale: 0.9;
+  transition: 0.2s ease;
+  z-index: 0;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+.container-menu3D {
+  min-width: 300px;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.card3D {
+  width: 300px;
+  height: 300px;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.card3D h1 {
+  color: white;
+  font: 600 35px Roboto;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  text-shadow: 2px 2px 5px rgb(0, 0, 0, 1);
+}
+
+.card3D img {
+  height: 100%;
+}
+
+
+.prehistoira3d { 
+  background: white;
+}
+.edadantigua3d { 
+  background: white;
+}
+.edadmedieval3d { 
+  background: white;
+}
+.edadmoderna3d { 
+  background: white;
+}
+.edadcontemporanea3d { 
+  background: white;
+}
+.varios3d { 
+  background: white;
+}
+
+/* ruleta */
+
