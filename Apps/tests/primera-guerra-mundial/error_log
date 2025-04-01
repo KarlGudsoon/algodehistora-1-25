@@ -1,0 +1,20 @@
+[01-Apr-2025 02:32:41 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php:8
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php(8): mysqli_connect('localhost', 'root', '', 'algodehi_tests')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php on line 8
+[01-Apr-2025 02:35:00 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php:8
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php(8): mysqli_connect('localhost', 'root', '', 'algodehi_tests')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php on line 8
+[01-Apr-2025 02:58:50 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php:8
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php(8): mysqli_connect('localhost', 'root', '', 'algodehi_tests')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php on line 8
+[01-Apr-2025 03:05:55 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'algodehi_adrian'@'localhost' to database 'algodehi_tests' in /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php:8
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php(8): mysqli_connect('localhost', 'algodehi_adrian', '1qa2ws3ed123', 'algodehi_tests')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tests/primera-guerra-mundial/enviar.php on line 8

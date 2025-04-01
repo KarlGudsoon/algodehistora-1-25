@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Apps/QSH/quiz.css" />
+</head>
+<body>
+    <div id="quiz">
+        <button id="boton-contador" class="comodintimer" onclick="mostrarContadorEnBoton(this)">20<span></span></button>
+        <button id="eliminarIncorrectas" class="comodintimer" onclick="eliminarDosIncorrectas()">50%</button>
+        <button id="preguntaAleatoria" class="comodintimer" onclick="mostrarPreguntaAleatoria()">P</button>
+        <div id="pregunta"></div>
+        <div id="opciones"></div>
+        <button id="siguiente" onclick="siguientePregunta()">Siguiente</button>
+        <button id="corregir" onclick="corregirRespuestas()">Corregir</button>
+        <button id="reiniciar" onclick="reiniciarCorreccion()">Reiniciar Corrección</button>
+      </div>
+</body>
+<script src="/Apps/QSH/quiz.js"></script>
+</html>

@@ -1,0 +1,86 @@
+[01-Apr-2025 02:41:17 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'sistema_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 02:41:19 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'sistema_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 02:41:35 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'sistema_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 02:42:46 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'sistema_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 02:47:32 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'algodehi_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 02:47:33 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'algodehi_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 02:47:37 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'algodehi_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 02:56:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'algodehi_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 02:56:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'algodehi_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 03:12:58 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'algodehi_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 03:59:51 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/tareas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(2): mysqli->__construct('localhost', 'root', '', 'algodehi_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 2
+[01-Apr-2025 04:02:56 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'algodehi_tareas.tareas' doesn't exist in /home/algodehi/public_html/Apps/tareas/tareas.php:3
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(3): mysqli->query('SELECT * FROM t...')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 3
+[01-Apr-2025 04:02:58 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'algodehi_tareas.tareas' doesn't exist in /home/algodehi/public_html/Apps/tareas/tareas.php:3
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(3): mysqli->query('SELECT * FROM t...')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 3
+[01-Apr-2025 04:02:59 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'algodehi_tareas.tareas' doesn't exist in /home/algodehi/public_html/Apps/tareas/tareas.php:3
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/tareas.php(3): mysqli->query('SELECT * FROM t...')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/tareas.php on line 3
+[01-Apr-2025 04:08:31 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/config.php:7
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/config.php(7): mysqli->__construct('localhost', 'root', '', 'sistema_usuario...')
+#1 /home/algodehi/public_html/Apps/tareas/login.php(3): include('/home/algodehi/...')
+#2 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/config.php on line 7
+[01-Apr-2025 04:09:43 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/ver_entregas.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/ver_entregas.php(2): mysqli->__construct('localhost', 'root', '', 'sistema_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/ver_entregas.php on line 2
+[01-Apr-2025 04:10:40 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/algodehi/public_html/Apps/tareas/guardar_tarea.php:2
+Stack trace:
+#0 /home/algodehi/public_html/Apps/tareas/guardar_tarea.php(2): mysqli->__construct('localhost', 'root', '', 'sistema_tareas')
+#1 {main}
+  thrown in /home/algodehi/public_html/Apps/tareas/guardar_tarea.php on line 2

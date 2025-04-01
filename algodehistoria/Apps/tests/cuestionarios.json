@@ -1,0 +1,32 @@
+[
+    {
+      "id": "paleolitico",
+      "titulo": "PALEOLÍTICO",
+      "descripcion": "El Paleolítico es una etapa de la Prehistoria que se extiende desde hace unos 2,5 millones de años hasta hace unos 10.000 años. Durante este periodo, los seres humanos vivían en pequeños grupos de cazadores-recolectores y utilizaban herramientas de piedra y hueso.",
+      "periodo": "PREHISTORIA",
+      "clasePeriodo": "etiqueta-prehistoria",
+      "imagen": "/img/prehistoria/arterupestre (2).webp",
+      "srcMapa": "/Apps/tests/prehistoria-paleolítico/test.html",
+      "hrefMapa": "/Articulos/Prehistoria/template.html"
+    },
+    {
+      "id": "revolucion industrial",
+      "titulo": "REVOLUCIÓN INDUSTRIAL",
+      "descripcion": "La Revolución Industrial fue un periodo de la historia que se desarrolló en la segunda mitad del siglo XVIII y principios del siglo XIX. Se caracterizó por la aparición de la máquina de vapor, la mecanización de la industria y el desarrollo de nuevas formas de trabajo.",
+      "periodo": "CONTEMPORÁNEA",
+      "clasePeriodo": "etiqueta-contemporanea",
+      "imagen": "/img/contemporanea/inicio-revolucion-industrial.jpg",
+      "srcMapa": "/Apps/tests/revolucion-industrial/test.html",
+      "hrefMapa": "/Articulos/Contemporanea/revolucion-industrial.html"
+    },
+    {
+        "id": "primera guerra mundial",
+        "titulo": "PRIMERA GUERRA MUNDIAL",
+        "descripcion": "Con el imperialismo se fue desarrollando una creciente tensión entre las grandes potencias. Esto, entre otras circunstancias, conducirá a que en 1914 se desencadene la Gran Guerra o Primera Guerra Mundial. ",
+        "periodo": "CONTEMPORÁNEA",
+        "clasePeriodo": "etiqueta-contemporanea",
+        "imagen": "/img/contemporanea/primera-guerra-mundial/trincheras.jpg",
+        "srcMapa": "/Apps/tests/primera-guerra-mundial/test.html",
+        "hrefMapa": "/Apps/imperialismo/world.html"
+    }
+  ]

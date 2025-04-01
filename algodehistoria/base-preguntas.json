@@ -1,0 +1,13 @@
+[
+  {
+        "categoria": "Historia",
+        "pregunta": "¿En que año se construyeron las piramides de Guiza?",
+        "respuesta": "Entre el 2550 y el 2490 a.C.",
+        "incorrecta1": "46 a.C.",
+        "incorrecta2": "2020",
+        "incorrecta3": "420 a.C.",
+        "imagen": "https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/fotografia-de-las-tres-grandes-piramides-en-la-llanura-de-giza_56999db0_230308100940_1280x831.jpg?v=1687541816134",
+        "objectFit": "cover"
+    }
+  
+]
