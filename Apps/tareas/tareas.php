@@ -35,3 +35,11 @@ $resultado = $conexion->query("SELECT * FROM tareas");
 </ul>
 
 <a href="login.php">Ingresar</a>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+</style>
