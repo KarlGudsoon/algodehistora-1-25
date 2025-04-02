@@ -192,6 +192,7 @@ a:hover {
 .carousel {
     display: flex;
     height: 350px;
+    min-width: 200px;
     transition: transform 0.5s ease-in-out;
     
 }
@@ -294,6 +295,7 @@ a:hover {
     z-index: 999999;
     display: flex;
     flex-wrap: wrap;
+    position: relative;
     justify-content: center;
     gap: 1rem;
     align-items: center;
@@ -303,7 +305,8 @@ a:hover {
     background-color: var(--primary-color);
     cursor: pointer;
     transition: 0.2s ease;
-    box-shadow: 0 0px #cc5a29;
+    box-shadow: 0 4px black;
+    overflow: hidden;
 }
 
 .contenedor-periodos span p {
@@ -311,14 +314,20 @@ a:hover {
   text-align: center;
   text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
   margin: 0;
+  user-select: none;
 }
 
 .contenedor-periodos span img {
-  height: 40px;
+  height: 75px;
+  opacity: 0.1;
+  filter: brightness(0);
+  position: absolute;
+  z-index: -1;
 }
 
 #prehistoria {
   background-color: #f86d31;
+  box-shadow: 0 2px #bb5225;
 }
 
 #prehistoria:hover {
@@ -333,6 +342,7 @@ a:hover {
 
 #edad-antigua {
   background-color: #30a5e8;
+  box-shadow: 0 2px #2477a7;
 }
 
 #edad-antigua:hover {
@@ -347,6 +357,7 @@ a:hover {
 
 #edad-medieval {
   background-color: #f8b229;
+  box-shadow: 0 2px #a87a1c;
 }
 
 #edad-medieval:hover {
@@ -361,6 +372,7 @@ a:hover {
 
 #edad-moderna {
   background-color: #f11c35;
+  box-shadow: 0 2px #b81c2e;
 }
 
 #edad-moderna:hover {
@@ -370,21 +382,22 @@ a:hover {
 
 #edad-moderna:active {
   transform: translateY(0px);
-  box-shadow: 0 2px #b81c2e;
+  box-shadow: 0 0px #b81c2e;
 }
 
 #contemporanea {
   background-color: #2e8b57;
+  box-shadow: 0 2px #1f5f3b;
 }
 
 #contemporanea:hover {
-  box-shadow: 0 6px #246d44;
+  box-shadow: 0 6px #1f5f3b;
   transform: translateY(-4px);
 }
 
 #contemporanea:active {
   transform: translateY(0px);
-  box-shadow: 0 2px #246d44;
+  box-shadow: 0 2px #1f5f3b;
 }
 
 .contenedor-cartas {
@@ -711,6 +724,10 @@ a:hover {
     .carousel {
         height: 200px;
     }
+
+    .carousel div {
+      padding: 1rem;
+  }
 
     .carousel div h1 {
         font-size: 1rem;

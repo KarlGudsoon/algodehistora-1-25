@@ -294,6 +294,7 @@ li:hover ul#submenu {
   font-size: 20px;
   transition: .2s ease;
   pointer-events: auto;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 }
 
 .widget-hitos-cerrar:hover {
@@ -312,9 +313,7 @@ li:hover ul#submenu {
   display: grid;
   grid-auto-flow: column;
   transition: .5s ease;
-  box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
-    -webkit-box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
-    -moz-box-shadow: 10px 15px 45px -21px rgba(0, 0, 0, 0.83);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 }
 
 .hitos1 {
