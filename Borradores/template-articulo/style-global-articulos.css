@@ -1566,16 +1566,6 @@ a:hover {
   height: 100%;
 }
 
-#pais-imagen::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, var(--color) 0%, rgba(0, 0, 0, 0) 50%);
-}
-
 
 #pais-fondo {
   width: 100%;  
@@ -1583,6 +1573,7 @@ a:hover {
   overflow: hidden;
   position: relative;
   border-radius: 1rem;  
+  mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
 #pais-personaje {
@@ -1992,4 +1983,9 @@ a:hover {
   #pais-datos {
     padding: 0 1.5rem 0 1.5rem; 
   }
+
+  #pais-fondo {
+    mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  }
+
 }
