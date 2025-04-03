@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Albert Einstein",
+        "clues": [
+            {
+                "text": "Estuvo involucrado en la revolución científica del siglo XX."
+            },
+            {
+                "text": "Vivió 76 años."
+            },
+            {
+                "text": "Nació en Alemania 🚩."
+            },
+            {
+                "text": "Desarrolló la teoría de la relatividad."
+            },
+            {
+                "text": "Este es su retrato."
+                
+            }
+        ],
+        "image": "/img/contemporanea/james_watt_17361819-removebg-preview.png"
+    }
+]
+   

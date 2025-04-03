@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>🏛️ ADIVINA EL PERSONAJE HISTÓRICO 🕵️</h1>
+    <p>Adivina el personaje en base a las pistas que te dan</p>
+    <div id="game-container">
+        <div id="result"></div>
+        <p id="character-revealed">Personaje Histórico</p>
+        <div id="clue-container">
+            <div class="historical-character">
+                <img id="clue-image" src="" alt="Clue Image">
+                <p id="clue-text"></p>
+                
+            </div>
+            <div id="clue-revealed">
+                <span class="revealed" data-clue="1">?</span>
+                <span class="revealed" data-clue="2">?</span>
+                <span class="revealed" data-clue="3">?</span>
+                <span class="revealed" data-clue="4">?</span>
+                <span class="revealed" data-clue="5">?</span>
+            </div>
+        </div>
+        <div class="container-buttons">
+            <input type="text" id="guess" placeholder="Tu respuesta">
+            <button id="submit-guess">Adivinar</button>
+            <button id="clue-skip">Skip</button>
+        </div>  
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
