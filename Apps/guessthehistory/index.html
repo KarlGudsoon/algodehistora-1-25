@@ -11,7 +11,7 @@
     <p>Adivina el personaje en base a las pistas que te dan</p>
     <div id="game-container">
         <div id="result"></div>
-        <p id="character-revealed">Personaje Histórico</p>
+        <div class="character-revealed"><p id="character-revealed">Personaje Histórico</p><button id="character-skip"><img src="/icons/reload.svg"></button></div>
         <div id="clue-container">
             <div class="historical-character">
                 <img id="clue-image" src="" alt="Clue Image">
@@ -28,7 +28,7 @@
         </div>
         <div class="container-buttons">
             <input type="text" id="guess" placeholder="Tu respuesta">
-            <button id="submit-guess">Adivinar</button>
+            <button id="submit-guess">Enviar</button>
             <button id="clue-skip">Skip</button>
         </div>  
         
