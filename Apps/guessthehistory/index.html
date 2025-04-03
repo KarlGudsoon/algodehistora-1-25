@@ -5,35 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/index.css">
 </head>
-<body>
-    <h1>🏛️ ADIVINA EL PERSONAJE HISTÓRICO 🕵️</h1>
-    <p>Adivina el personaje en base a las pistas que te dan</p>
-    <div id="game-container">
-        <div id="result"></div>
-        <div class="character-revealed"><p id="character-revealed">Personaje Histórico</p><button id="character-skip"><img src="/icons/reload.svg"></button></div>
-        <div id="clue-container">
-            <div class="historical-character">
-                <img id="clue-image" src="" alt="Clue Image">
-                <p id="clue-text"></p>
-                
+<header style="position: relative;">
+    <img src="/icons/logo.svg">
+    <nav>
+      <ul>
+        <li><a href="/index.html">Inicio</a></li>
+        <li><a href="#articulos">Articulos</a></li>
+        <li><a href="#aplicaciones">Aplicaciones</a></li>
+        <li><a href="#acerca-de">Acerca de</a></li>
+      </ul>
+    </nav>
+</header>
+<body style="background-color: #111927;">
+    <main>
+        <h1>🏛️ ADIVINA EL PERSONAJE HISTÓRICO 🕵️</h1>
+        <p>Adivina el personaje en base a las pistas que te dan</p>
+        <div id="game-container">
+            <div id="result"></div>
+            <div class="character-revealed"><p id="character-revealed">Personaje Histórico</p><button id="character-skip"><img src="/icons/reload.svg"></button></div>
+            <div id="clue-container">
+                <div class="historical-character">
+                    <img id="clue-image" src="" alt="Clue Image">
+                    <p id="clue-text"></p>
+                    
+                </div>
+                <div id="clue-revealed">
+                    <span class="revealed" data-clue="1">?</span>
+                    <span class="revealed" data-clue="2">?</span>
+                    <span class="revealed" data-clue="3">?</span>
+                    <span class="revealed" data-clue="4">?</span>
+                    <span class="revealed" data-clue="5">?</span>
+                </div>
             </div>
-            <div id="clue-revealed">
-                <span class="revealed" data-clue="1">?</span>
-                <span class="revealed" data-clue="2">?</span>
-                <span class="revealed" data-clue="3">?</span>
-                <span class="revealed" data-clue="4">?</span>
-                <span class="revealed" data-clue="5">?</span>
-            </div>
+            <div class="container-buttons">
+                <input type="text" id="guess" placeholder="Tu respuesta">
+                <button id="submit-guess">Enviar</button>
+                <button id="clue-skip">Skip</button>
+            </div>  
+            
         </div>
-        <div class="container-buttons">
-            <input type="text" id="guess" placeholder="Tu respuesta">
-            <button id="submit-guess">Enviar</button>
-            <button id="clue-skip">Skip</button>
-        </div>  
-        
-    </div>
-
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
