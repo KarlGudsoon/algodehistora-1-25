@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Apps/tests/public/style.css" />
+    <title>Document</title>
+</head>
+
+<style>
+    :root {
+    background-color: transparent;
+    color: white;
+    --primary: #181818;
+    --secondary: #313131;
+    --tertiary: #d2061e;
+    --quaternary: rgb(97, 20, 29);
+    }
+
+    html {
+        background-image: url("/img/contemporanea/totalitarismos/ejercito-aleman-nazi.webp");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+</style>
+<body>
+    <main>
+            <section class="titulo-cuestionario">
+                <h1>TOTALITARISMOS</h1>
+            </section>
+            <form id="cuestionario" method="POST" action="/Apps/tests/primera-guerra-mundial/enviar.php">
+                <section class="datos">
+                    <label>Nombre: <input type="text" id="nombre" name="nombre"></label>
+                    <label>Apellidos: <input type="text" id="apellidos" name="apellidos"></label>
+                    <label><input type="hidden" id="resultado" name="resultado"></label>
+                </section>
+                <section class="container-pregunta-nav">
+                    <div class="navigation">
+                        <div class="container-nav">
+                            <div style="display: flex; align-items: center;"><span id="currentQuestion"></span><span>/5</span></div>
+                            <p>Pregunta</p>
+                            <div class="container-navButton">
+                                <div class="navButton" id="prev"><p>«</p></div>
+                                <div class="navButton" id="next"><p>»</p></div>
+                            </div>
+                            <div class="markerQuestion">
+                                <span id="c-p0">1</span>
+                                <span id="c-p1">2</span>
+                                <span id="c-p2">3</span>
+                                <span id="c-p3">4</span>
+                                <span id="c-p4">5</span>
+                            </div>
+                        </div>
+                        <div style="width: 100%;">
+                            <input id="submit" class="button" type="submit" value="ENVIAR">
+                        </div>
+                    </div>
+                    <div class="container-preguntas">
+                        <section class="question" id="p0">
+                            <h2>1. ¿Cuál de las siguientes características es propia de un régimen totalitario?
+
+                            </h2>
+                            <label>
+                                <input type="radio" value="1" name="p0" onclick="respuesta(0, this)"> División de poderes y respeto por los derechos humanos.
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p0" onclick="respuesta(0, this)"> Participación ciudadana libre y elecciones transparentes.
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p0" onclick="respuesta(0, this)"> Control absoluto del Estado sobre la vida pública y privada.
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p0" onclick="respuesta(0, this)"> Independencia de los medios de comunicación.
+                            </label>
+                        </section>
+
+                        <section class="question" id="p1">
+                            <h2>2. ¿Qué líder está asociado con el régimen totalitario de la Alemania nazi?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p1" onclick="respuesta(1, this)">Benito Mussolini
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p1" onclick="respuesta(1, this)"> Joseph Stalin
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p1" onclick="respuesta(1, this)"> Francisco Franco
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p1" onclick="respuesta(1, this)"> Adolf Hitler
+                            </label>
+                        </section>
+
+                        <section class="question" id="p2">
+                            <h2>3. ¿Qué ideología predominaba en el totalitarismo soviético bajo Stalin?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p2" onclick="respuesta(2, this)"> Liberalismo
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p2" onclick="respuesta(2, this)"> Fascismo
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p2" onclick="respuesta(2, this)"> Comunismo
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p2" onclick="respuesta(2, this)"> Anarquismo
+                            </label>
+                        </section>
+
+                        <section class="question" id="p3">
+                            <h2>4. ¿Cuál fue una herramienta clave usada por los regímenes totalitarios para mantener el control social?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p3" onclick="respuesta(3, this)"> El libre mercado
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p3" onclick="respuesta(3, this)"> La propaganda masiva
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p3" onclick="respuesta(3, this)"> La descentralización del poder
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p3" onclick="respuesta(3, this)"> El sufragio universal sin restricciones
+                            </label>
+                        </section>
+
+                        <section class="question" id="p4">
+                            <h2>5. ¿Qué evento facilitó el ascenso de regímenes totalitarios en Europa en el siglo XX?</h2>
+                            <label>
+                                <input type="radio" value="1" name="p4" onclick="respuesta(4, this)"> La Guerra Fría
+                            </label>
+                            <label>
+                                <input type="radio" value="2" name="p4" onclick="respuesta(4, this)"> La Revolución Francesa
+                            </label>
+                            <label>
+                                <input type="radio" value="3" name="p4" onclick="respuesta(4, this)"> La Primera Guerra Mundial y sus consecuencias
+                            </label>
+                            <label>
+                                <input type="radio" value="4" name="p4" onclick="respuesta(4, this)"> La caída del Imperio Romano
+                            </label>
+                        </section>
+                        
+                        
+                    </div>
+                </section>
+        
+            
+                
+            </form>
+    </main>
+
+    <script src="/Apps/tests/totalitarismos/script.js"></script>
+</body>
+</html>

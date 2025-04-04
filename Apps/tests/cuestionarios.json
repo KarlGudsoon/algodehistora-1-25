@@ -28,5 +28,15 @@
         "imagen": "/img/contemporanea/primera-guerra-mundial/trincheras.jpg",
         "srcMapa": "/Apps/tests/primera-guerra-mundial/test.html",
         "hrefMapa": "/Apps/imperialismo/world.html"
-    }
+    },
+    {
+      "id": "totalitarismos",
+      "titulo": "TOTALITARISMOS",
+      "descripcion": " ",
+      "periodo": "CONTEMPORÁNEA",
+      "clasePeriodo": "etiqueta-contemporanea",
+      "imagen": "/img/contemporanea/totalitarismos/ejercito-aleman-nazi.webp",
+      "srcMapa": "/Apps/tests/totalitarismos/test.html",
+      "hrefMapa": "/Apps/tests/totalitarismos/test.html"
+  }
   ]
