@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$database = "cuestionario"; 
+$username = "algodehi_adrian"; 
+$password = "1qa2ws3ed123"; 
+$database = "algodehi_tests"; 
 
 // Conectar a MySQL
 $conn = new mysqli($servername, $username, $password, $database);

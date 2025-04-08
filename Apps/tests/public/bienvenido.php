@@ -1,11 +1,39 @@
+
+
+<link rel="stylesheet" href="/index.css">
+
+<style>
+    
+    body {
+        margin: 0;
+    }
+    
+</style>
+
+<header>
+      <img src="/icons/logo.svg">
+      <nav>
+        <ul>
+          <li><a href="/index.html">Inicio</a></li>
+          <li><a href="#articulos">Articulos</a></li>
+          <li><a href="#aplicaciones">Aplicaciones</a></li>
+          <li><a href="#acerca-de">Acerca de</a></li>
+        </ul>
+      </nav>
+</header>
+
 <?php
 $servername = "localhost"; 
 $username = "algodehi_adrian"; 
 $password = "1qa2ws3ed123"; 
 $database = "algodehi_tests"; 
 
+
+
 // Conexión a MySQL
 $conn = new mysqli($servername, $username, $password, $database);
+
+
 
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
@@ -65,6 +93,8 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+
+<a href="logout.php">Salir</a>
 
 <!-- JavaScript para descargar CSV y vaciar tabla -->
 <script>
