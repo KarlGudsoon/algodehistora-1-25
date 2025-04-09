@@ -53,7 +53,6 @@ html, body {
     justify-content: center;
     align-items: center;
     position: fixed;
-    background-color: #e92a41;
     bottom: 0;
     width: 100%;
     height: 75px;
@@ -62,6 +61,83 @@ html, body {
 
 .tripleeje {
     fill: #e92a41;
+}
+
+.mapa-bloque {
+    display: none;
+}
+  
+.mapa-bloque.activo {
+    display: block;
+}
+
+#ALEMANIA1939 .cls-1 {
+    background-image: url("/img/contemporanea/1267px-Claude_Monet_-_The_Gare_Saint-Lazare\,_Arrival_of_a_Train-min.jpg");
+}
+
+#boton-capas {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-color: #e92a41;
+    border-radius: 50%;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#boton-capas:hover {
+    background-color: #ffa218;
+}
+#boton-capas:active {
+    background-color: #f86d31;
+}
+
+#boton-capas img {
+    height: 80%;
+    filter: invert(0);
+    opacity: 0.35;
+}
+
+.container-capas-content {
+    position: fixed;
+    bottom: 70px;
+    right: 10px;
+    width: 200px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container-capas-content-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family: BreeSerif;
+    font-size: 1rem;
+    color: #e92a41;
+    margin: 0;
+}
+
+.container-capas-content-header h2 {
+    margin: 0;
+}
+
+.container-capas-content-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 600px) {

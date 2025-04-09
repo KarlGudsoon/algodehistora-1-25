@@ -132,42 +132,220 @@ document.getElementById("resetZoom").addEventListener("click", function() {
   setTransform();
 });
 
-document.getElementById("TripleEje").addEventListener("click", function() {
-  var Alemania = document.getElementById("ALEMANIA");
-  var AlemaniaP = Alemania.querySelectorAll(".cls-1");
-  var Italia = document.getElementById("ITALIA1937");
-  var ItaliaP = Italia.querySelectorAll(".cls-1");
-  var Japon = document.getElementById("JAPÓN1937");
-  var JaponP = Japon.querySelectorAll(".cls-1");
+let tripleEjeActivo = false;
+let pactoActivo = false;
 
+function reiniciarcolor() {
+  var mapa = document.getElementById("world-map");
+  var elementoMapa = mapa.querySelectorAll(".cls-1");
 
-  AlemaniaP.forEach(function(elemento) {
-    var colorActual = window.getComputedStyle(elemento).fill;
-
-    if (colorActual === "rgba(54, 54, 54, 1)" || colorActual === "rgb(54, 54, 54)") {
-      elemento.style.fill = "#e92a41";
-    } else {
-      elemento.style.fill = "rgba(54, 54, 54, 1)";
-    }
+  elementoMapa.forEach(function(elemento) {
+    elemento.style.fill = "";
   });
+}
 
-  ItaliaP.forEach(function(elemento) {
-    var colorActual = window.getComputedStyle(elemento).fill;
+/*
+document.getElementById("TripleEje").addEventListener("click", function () {
+  if (tripleEjeActivo) {
+    reiniciarcolor();
+    tripleEjeActivo = false;
+  } else {
+    reiniciarcolor();
 
-    if (colorActual === "rgba(54, 54, 54, 1)" || colorActual === "rgb(54, 54, 54)") {
-      elemento.style.fill = "#e92a41";
-    } else {
-      elemento.style.fill = "rgba(54, 54, 54, 1)";
-    }
-  });
+    // Seleccionamos todos los elementos por clase común
+    var Alemania = document.querySelectorAll(".alemania");
+    var Italia = document.querySelectorAll(".italia");
+    var Japon = document.querySelectorAll(".japon");
 
-  JaponP.forEach(function(elemento) {
-    var colorActual = window.getComputedStyle(elemento).fill;
 
-    if (colorActual === "rgba(54, 54, 54, 1)" || colorActual === "rgb(54, 54, 54)") {
-      elemento.style.fill = "#e92a41";
-    } else {
-      elemento.style.fill = "rgba(54, 54, 54, 1)";
-    }
-  });
+    // Aplicamos color a cada conjunto
+    [...Alemania, ...Italia, ...Japon].forEach(function (grupo) {
+      var paths = grupo.querySelectorAll(".cls-1");
+      paths.forEach(function (elemento) {
+        elemento.style.fill = "#e92a41";
+      });
+    });
+
+    tripleEjeActivo = true;
+    pactoActivo = false; // Desactivamos el otro bloque si estaba activo
+  }
 });
+
+document.getElementById("Pacto").addEventListener("click", function() {
+  if (pactoActivo) {
+    reiniciarcolor();
+    pactoActivo = false;
+  } else {
+    reiniciarcolor();
+
+    var Alemania = document.querySelectorAll(".Pacto");
+    var Urss = document.querySelectorAll(".Pacto");
+
+    [...Alemania, ...Urss].forEach(function (grupo) {
+      var paths = grupo.querySelectorAll(".cls-1");
+      paths.forEach(function (elemento) {
+        elemento.style.fill = "#a82737";
+      });
+    });
+      
+
+    pactoActivo = true;
+    tripleEjeActivo = false; // desactivamos el otro bloque si estaba activo
+  }
+});
+*/
+
+const añosDisponibles = [1937, 1939, 1940];
+const input = document.getElementById("input-año");
+const btnAvanzar = document.getElementById("avanzar");
+const btnRetroceder = document.getElementById("retroceder");
+
+function actualizarVista(añoActual) {
+  añosDisponibles.forEach(function(año) {
+    const bloque = document.getElementById(`_${año}`);
+    if (año <= añoActual) {
+      bloque.classList.add("activo");
+    } else {
+      bloque.classList.remove("activo");
+    }
+  });
+}
+
+input.addEventListener("input", function() {
+  let año = parseInt(input.value);
+  if (añosDisponibles.includes(año)) {
+    actualizarVista(año);
+    actualizarVista1939();
+    pintarTripleEje();
+    pintarTripleEje();
+    pintarAliados();
+  }
+});
+
+// Avanzar al siguiente año
+btnAvanzar.addEventListener("click", function() {
+  let añoActual = parseInt(input.value);
+  let index = añosDisponibles.indexOf(añoActual);
+  if (index < añosDisponibles.length - 1) {
+    input.value = añosDisponibles[index + 1];
+    actualizarVista(añosDisponibles[index + 1]);
+    actualizarVista1939();
+    pintarTripleEje();
+    pintarTripleEje();
+    pintarAliados();
+  }
+});
+
+// Retroceder al año anterior
+btnRetroceder.addEventListener("click", function() {
+  let añoActual = parseInt(input.value);
+  let index = añosDisponibles.indexOf(añoActual);
+  if (index > 0) {
+    input.value = añosDisponibles[index - 1];
+    actualizarVista(añosDisponibles[index - 1]);
+    actualizarVista1939();
+    pintarTripleEje();
+    pintarTripleEje();
+    pintarAliados();
+  }
+});
+
+function actualizarVista1939() {
+  const Francia1939 = document.getElementById("FRANCIA1937");
+  const UK1939 = document.getElementById("REINOUNIDO1937");
+
+  if (input.value == 1939 || input.value == 1940) {
+    Francia1939.classList.add("aliado");
+    UK1939.classList.add("aliado");
+  } else {
+    Francia1939.classList.remove("aliado");
+    UK1939.classList.remove("aliado");
+    Francia1939.querySelectorAll(".cls-1").forEach(function(elemento) {
+      elemento.style.fill = "";
+    }
+    );
+    UK1939.querySelectorAll(".cls-1").forEach(function(elemento) {
+      elemento.style.fill = "";
+    });
+  }
+}
+
+function actualizarVista1940() {
+  const Francia1939 = document.getElementById("FRANCIA1937");
+  const UK1939 = document.getElementById("REINOUNIDO1937");
+
+  if (input.value == 1940) {
+    Francia1939.classList.add("aliado");
+    UK1939.classList.add("aliado");
+  } else {
+    Francia1939.classList.remove("aliado");
+    UK1939.classList.remove("aliado");
+    Francia1939.querySelectorAll(".cls-1").forEach(function(elemento) {
+      elemento.style.fill = "";
+    }
+    );
+    UK1939.querySelectorAll(".cls-1").forEach(function(elemento) {
+      elemento.style.fill = "";
+    });
+  }
+}
+
+actualizarVista(1937);
+
+const checkboxTripleEje = document.getElementById("triple-eje");
+
+function pintarTripleEje() {
+  var paisesEje = document.querySelectorAll(".triple-eje");
+
+  paisesEje.forEach(function(paisEje) {
+    var subpaises = paisEje.querySelectorAll(".cls-1");
+
+    subpaises.forEach(function(pais) {
+      pais.style.fill = checkboxTripleEje.checked ? "#e92a41" : "";
+    });
+  });
+}
+
+checkboxTripleEje.addEventListener("change", pintarTripleEje);
+
+pintarTripleEje();
+
+const checkboxPacto = document.getElementById("pacto");
+
+function pintarPacto() {
+  var paisesPacto = document.querySelectorAll(".Pacto");
+
+  paisesPacto.forEach(function(paisPacto) {
+    var subpaises = paisPacto.querySelectorAll(".cls-1");
+
+    subpaises.forEach(function(pais) {
+      pais.style.fill = checkboxPacto.checked ? "#a82737" : "";
+    });
+  });
+}
+
+checkboxPacto.addEventListener("change", pintarPacto);
+
+pintarPacto();
+
+checkboxTripleEje.addEventListener("change", pintarTripleEje);
+
+pintarTripleEje();
+
+const checkboxAliados = document.getElementById("aliados");
+
+function pintarAliados() {
+  var paisesAliados = document.querySelectorAll(".aliado");
+
+  paisesAliados.forEach(function(paisAliado) {
+    var subpaises = paisAliado.querySelectorAll(".cls-1");
+
+    subpaises.forEach(function(pais) {
+      pais.style.fill = checkboxAliados.checked ? "#175ac0" : "";
+    });
+  });
+}
+
+checkboxAliados.addEventListener("change", pintarAliados);
+
+pintarAliados();
