@@ -185,9 +185,15 @@
             <h1 id="nombre-personaje"></h1>
             <span id="categoria-personaje" class="etiqueta-prehistoria"></span>
           </div>
+          <div class="contenedor-caracteristicas">
+            <span class="caracteristicas-personaje-frontal"><img src="/icons/dado1.png"><p class="caracteristica-frontal" id="caracteristica-1"></p></span>
+            <span class="caracteristicas-personaje-frontal"><img src="/icons/dado1.png"><p class="caracteristica-frontal" id="caracteristica-2"></p></span>
+            <span class="caracteristicas-personaje-frontal"><img src="/icons/dado1.png"><p class="caracteristica-frontal" id="caracteristica-3"></p></span>
+          </div>
           <img id="imagen-personaje" class="personaje-historico-item" draggable="false">
-          <div class="face frontal dorada">
+          <div id="face-frontal" class="face frontal">
             <div class="fondo-frontal">
+              <h1 class="etiqueta-fondo" id="etiqueta-fondo-frontal"></h1>
               <img id="fondo-frontal" draggable="false">
             </div>
           </div>
@@ -203,8 +209,10 @@
             </div>
           </div>
           <img id="imagen-personaje-trasera" class="personaje-historico-item-trasera" draggable="false">
-          <div class="face trasera dorada">
+          <div id="face-trasera" class="face trasera">
+            
             <div class="img-personaje-trasera">
+              <h1 class="etiqueta-fondo" id="etiqueta-fondo-trasera"></h1>
               <img id="fondo-trasera">
             </div>
           </div>

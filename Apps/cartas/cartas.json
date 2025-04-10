@@ -1,22 +1,26 @@
 {
     "sapiens": {
+    "rareza": "legendario",
+    "colorCarta": "punto-dorado",
     "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
     "titulo": "HOMO SAPIENS",
     "color": "var(--prehistoria)",
     "categoria": [
       { "nombre": "Prehistoria", "clase": "etiqueta-prehistoria" }
     ],
-    "imagen": "/img/prehistoria/sapiens.png",
+    "imagen": "/img/prehistoria/humano.webp",
     "fondoFrontal": "/img/prehistoria/neolitico.webp",
     "fondoTrasera": "/img/prehistoria/dawnofman.jpeg",
     "personalidad": [
-      { "nombre": "Pensador", "clase": "punto-dorado" },
-      { "nombre": "Agricultor", "clase": "punto-dorado" },
-      { "nombre": "Intrépido", "clase": "punto-bronce" }
+      { "nombre": "Pensador", "clase": "punto-dorado", "img": "/icons/cerebro.svg" },
+      { "nombre": "Agricultor", "clase": "punto-dorado", "img": "/icons/trigo.svg" },
+      { "nombre": "Intrépido", "clase": "punto-bronce", "img": "/icons/prehistoria/stone-tablet.svg" }
     ],
     "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
     },
     "neandertal": {
+    "rareza": "comun",
+    "colorCarta": "punto-plata",
     "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
     "titulo": "NEANDERTAL",
     "color": "var(--prehistoria)",
@@ -28,14 +32,16 @@
     "fondoTrasera": "/img/prehistoria/pixelcut-export (6).jpeg",
     "personalidad": [
       { "nombre": "Agresivo", "clase": "punto-bronce" },
-      { "nombre": "Cazador", "clase": "punto-dorado" },
+      { "nombre": "Cazador", "clase": "punto-dorado", "img": "/icons/prehistoria/stone-spear.svg" },
       { "nombre": "Resistente", "clase": "punto-bronce" }
     ],
     "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
     },
 
     "aymara": {
-    "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
+    "rareza": "bronce",
+    "colorCarta": "punto-bronce",
+    "imgSobre": "url(/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg)",
     "titulo": "PUEBLO AYMARA",
     "color": "var(--red)",
     "categoria": [

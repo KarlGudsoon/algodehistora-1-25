@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const personajeHistoricoItem = card.querySelector('.personaje-historico-item');
     const personajeHistoricoItemTrasera = card.querySelector('.personaje-historico-item-trasera')
     const descripcionItem = card.querySelector('.descripcion-personaje-trasera')
+    const caracteristicaFrontal = card.querySelector('.contenedor-caracteristicas');
     
     let startX;
 
@@ -20,6 +21,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (etiquetaItem) {
         etiquetaItem.classList.toggle('flipped');
+      }
+
+      if (caracteristicaFrontal) {
+        caracteristicaFrontal.classList.toggle('flipped');
       }
 
       if (personajeItem) {
@@ -122,6 +127,7 @@ function inicializarEventos(personajes) {
   document.querySelectorAll(".personaje").forEach(elemento => {
     elemento.addEventListener("click", () => {
       const idPersonaje = elemento.id; 
+      
       if (personajes[idPersonaje]) {
         actualizarCarta(personajes[idPersonaje], idPersonaje);
         document.getElementById("contenedor-personaje").classList.add("active");
@@ -135,8 +141,22 @@ function inicializarEventos(personajes) {
 }
 
 function actualizarCarta(personaje, idPersonaje) {
+  const rarezas = ["basico", "bronce", "comun", "raro", "epico", "legendario"];
+  const colorCarta = ["punto-dorado", "punto-plata", "punto-bronce"]
+  
   document.getElementById("titulo-sobre").textContent = personaje.categoria[0].nombre;
   document.getElementById("sobre-carta").style.backgroundImage = personaje.imgSobre;
+
+  document.getElementById("face-frontal").classList.remove(...rarezas);
+  document.getElementById("face-trasera").classList.remove(...rarezas);
+
+
+  document.getElementById("face-frontal").classList.add(personaje.rareza);
+  document.getElementById("face-trasera").classList.add(personaje.rareza);
+
+  document.getElementById("etiqueta-fondo-frontal").textContent = personaje.categoria[0].nombre;
+
+  document.getElementById("etiqueta-fondo-trasera").textContent = personaje.titulo;
 
 
   document.getElementById("nombre-personaje").textContent = personaje.titulo;
@@ -145,17 +165,38 @@ function actualizarCarta(personaje, idPersonaje) {
   categoriaElemento.textContent = personaje.categoria[0].nombre;
   categoriaElemento.style.background = personaje.color;
 
+  document.getElementById("descripcion-personaje-texto").classList.remove(...colorCarta);
   document.getElementById("descripcion-personaje").textContent = personaje.descripcion;
-  document.getElementById("descripcion-personaje-texto").style.background = personaje.color;
+  document.getElementById("descripcion-personaje-texto").classList.add(personaje.colorCarta);
 
   // Asignar imágenes ya precargadas
   document.getElementById("imagen-personaje").src = personaje.imagen;
   document.getElementById("imagen-personaje-trasera").src = personaje.imagen;
 
-  document.getElementById("fondo-trasera").style.borderColor = personaje.color;
-
   document.getElementById("fondo-frontal").src = personaje.fondoFrontal;
   document.getElementById("fondo-trasera").src = personaje.fondoTrasera;
+
+  const caracteristicasSpans = document.querySelectorAll(".caracteristicas-personaje-frontal");
+  personaje.personalidad.forEach((caracteristica, index) => {
+    if (caracteristicasSpans[index]) {
+      // Actualizar imagen
+      const img = caracteristicasSpans[index].querySelector("img");
+      if (img && caracteristica.img) {
+        img.src = caracteristica.img;
+        img.alt = caracteristica.nombre;
+      }
+      
+      // Actualizar texto
+      const p = caracteristicasSpans[index].querySelector("p.caracteristica-frontal");
+      if (p) {
+        p.textContent = caracteristica.nombre;
+      }
+      
+      // Actualizar clases
+      caracteristicasSpans[index].className = "caracteristicas-personaje-frontal";
+      //caracteristicasSpans[index].classList.add(caracteristica.clase);
+    }
+  });
 
   const personalidadDiv = document.getElementById("personalidad-personaje");
   personalidadDiv.innerHTML = "";
@@ -166,15 +207,25 @@ function actualizarCarta(personaje, idPersonaje) {
     personalidadDiv.appendChild(span);
   });
 
-  const contenedorIcons = document.getElementById("iconos-personaje");
+  /* const contenedorIcons = document.getElementById("iconos-personaje");
   const spans = contenedorIcons.querySelectorAll("span");
   spans.forEach(span => {
     span.style.background = personaje.color;
   });
+*/
 
   document.querySelector(".lugar-personaje").id = `lugar-${idPersonaje}`;
   document.querySelector(".reconocimiento-personaje").id = `reconocimiento-${idPersonaje}`;
   document.querySelector(".tiempo-personaje").id = `tiempo-${idPersonaje}`;
+
+  document.querySelector(".lugar-personaje").classList.remove(...colorCarta);
+  document.querySelector(".reconocimiento-personaje").classList.remove(...colorCarta);
+  document.querySelector(".tiempo-personaje").classList.remove(...colorCarta);
+
+
+  document.querySelector(".lugar-personaje").classList.add(personaje.colorCarta);
+  document.querySelector(".reconocimiento-personaje").classList.add(personaje.colorCarta);
+  document.querySelector(".tiempo-personaje").classList.add(personaje.colorCarta);
 }
 
 
