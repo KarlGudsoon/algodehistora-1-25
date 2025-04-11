@@ -875,12 +875,44 @@ li:hover ul#submenu {
 }
 
 .punto-bronce {
-  background: linear-gradient(133deg, #603512,#603512, #603512, #603512, #d37528,  #603512, #603512, #603512, #603512);
+  background: linear-gradient(133deg, #603512, #603512, #603512,#603512, #603512, #603512, #603512, #603512, #603512, #603512, #603512, #603512);
   background-size: 300% 300%;
   animation: gradient-animation 5s linear infinite;
   text-shadow: rgb(0 0 0 / 25%) 1px 1px 10px;
+  overflow: visible;
 }
 
+.punto-bronce::before {
+  content: "";
+  background: linear-gradient(90deg, #603512, #d37528,  #603512);
+  mask-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+  transform: rotate(30deg);
+  width: 50%;
+  height: 250%;
+  position: absolute;
+  opacity: 0.5;
+  top: -50%;
+  left: 0%;
+  z-index: 1;
+  opacity: 0.2;
+  transition: .2s ease;
+  animation-direction: normal;
+  animation: brillo-punto 0s infinite linear;
+}
+
+@keyframes brillo-punto {
+  0% {
+      left: -250%;
+  }
+  25% {
+      left: 150%;
+  }
+  100% {
+      left: 150%;
+  }
+}
+
+/*
 .punto-bronce::before {
   content: "";
   position: absolute;
@@ -888,7 +920,7 @@ li:hover ul#submenu {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(133deg, #603512,#603512, #603512, #603512, #d37528,  #603512, #603512, #603512, #603512);
+  background: linear-gradient(133deg, #603512, #603512,#603512, #603512, #603512, #d37528,  #603512, #603512, #603512, #603512, #603512);
   background-size: 300% 300%;
   animation: gradient-animation 4s linear infinite;
   z-index: -1;
@@ -896,6 +928,7 @@ li:hover ul#submenu {
   scale: 1;
   filter: blur(0.5rem);
 }
+*/
 
 @keyframes gradient-animation {
   0% {
@@ -1237,7 +1270,7 @@ li:hover ul#submenu {
   position: relative;
   padding: 0.5rem;
   clip-path: circle(20% at 16% 50%); 
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .caracteristicas-personaje-frontal img {

@@ -28,5 +28,15 @@
         "imagen": "/img/contemporanea/primera-guerra-mundial/trincheras.jpg",
         "srcMapa": "/Apps/mapas/1914/world.html",
         "hrefMapa": "/Apps/imperialismo/world.html"
-    }
+    },
+    {
+      "id": "segunda_guerra_mundial",
+      "titulo": "SEGUNDA GUERRA MUNDIAL",
+      "descripcion": "La Segunda Guerra Mundial fue un conflicto militar que tuvo lugar entre 1939 y 1945, y que involucró a la mayoría de las naciones del mundo, incluidas todas las grandes potencias, organizadas en dos alianzas militares opuestas: los Aliados y el Eje.",
+      "periodo": "CONTEMPORÁNEA",
+      "clasePeriodo": "etiqueta-contemporanea",
+      "imagen": "/img/contemporanea/segunda-guerra-mundial/Sadae-Kasoaka-Testigo-del-bombardeo-de-Hiroshima-Informes.webp",
+      "srcMapa": "/Apps/mapas/segunda-guerra-mundial/world.html",
+      "hrefMapa": "/index.html"
+  }
   ]
