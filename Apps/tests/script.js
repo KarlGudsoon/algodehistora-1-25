@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const mapaSeleccionado = mapas.find(mapa => mapa.id === mapaId);
         const menu = document.getElementById("menu-mapa");
 
-        menu.classList.remove("active")
+        /// menu.classList.remove("active") * Descomentar si se quiere cerrar el menú al seleccionar un mapa
 
         document.querySelectorAll(".mapa").forEach(m => m.classList.remove("active"));
 

@@ -1914,17 +1914,36 @@ a:hover {
 }
 
 .contenedor-img-exp1 {
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 300px;
   position: relative;
   justify-content: center;
   display: flex;
+  align-self: self-end;
+  overflow-x: clip;
+  pointer-events: none;
 }
 
 .contenedor-img-exp1 img {
   height: 120%;
   position: absolute;
   bottom: 0;
+}
+
+.contenedor-img-2 {
+  min-width: 400px;
+  flex: 1;
+  height: 300px;
+  position: relative;
+  align-self: self-end;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, transparent 10%, black 50%);
+}
+
+.contenedor-img-2 img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .exp2 {
@@ -1941,11 +1960,6 @@ a:hover {
   margin: 0;
   font: 600 2.5rem BreeSerif;
   line-height: 1;
-}
-
-.exp2 p {
-  width: 400px;
-  margin: 0;
 }
 
 .exp3 {
@@ -2105,6 +2119,66 @@ a:hover {
   overflow: hidden;
 }
 
+.contenedor-fecha-periodo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 2rem;
+}
+
+.fecha-periodo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  transition: 0.2s ease;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.fecha-periodo h1 {
+  font: 900 4rem BreeSerif;
+  width: fit-content;
+  color: white;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  user-select: none;
+}
+
+.fecha-periodo p {
+  position: relative;
+  margin: 0;
+  font-size: 0.8rem;
+  max-width: 200px;
+}
+
+.fecha-periodo span {
+  content: "";
+  width: 0.5rem;
+  position: relative;
+  height: 1rem;
+  background-color: white;
+  clip-path: polygon(100% 0, 100% 100%, 0% 50%);
+}
+
+.fecha-periodo:hover {
+  opacity: 1;
+}
+
+.separador-periodo {
+  height: 0;
+  width: 100%;
+  background-color: transparent;
+  border-top: dotted 0.35rem white;
+}
+
+
+
+
+
+
 @media screen and (max-width: 700px) {
   .widget-mapa {
     width: 100px;
@@ -2184,6 +2258,15 @@ a:hover {
     padding-top: 1rem;
   }
 
+  .contenedor-img-exp1 img {
+    height: 100%;
+  }
+
+  .contenedor-img-2 {
+    width: 100%;
+    mask-image: linear-gradient(to bottom, transparent 10%, black 50%);
+  }
+
   .linea-tiempo-horizontal .linea-tiempo {
     flex-direction: column;
   }
@@ -2229,6 +2312,22 @@ a:hover {
 
   #pais-fondo {
     mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  }
+
+  .fecha-periodo {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .fecha-periodo h1 {
+    font-size: 3rem;
+  }
+
+  .fecha-periodo span {
+    border-top: 0;
+    border-right: 0.5rem dotted white;
+    height: 2rem;
+    width: 0;
   }
 
 }

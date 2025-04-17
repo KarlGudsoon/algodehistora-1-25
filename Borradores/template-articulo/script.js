@@ -13,6 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para voltear la tarjeta
     const flipCard = () => {
+      
+      var sonidoCarta = new Audio("/audio/carta.mp3");
+      sonidoCarta.volume = 0.3;
+      sonidoCarta.preload = "auto";
+      sonidoCarta.play();
+
       card.classList.toggle('flipped');
 
       if (descripcionItem) {
@@ -59,8 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
-
 
 document.querySelectorAll(".personaje").forEach((personaje, index) => {
   personaje.addEventListener("click", () => {
@@ -427,6 +431,7 @@ function manejarCierre(event) {
     
     if (concepto) {
         concepto.classList.remove("active");
+        
     }
 
     if (containerCard) {
