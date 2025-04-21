@@ -22,7 +22,7 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100dvh;
-    background-color: transparent;
+    background-color: #c72437;
     
 }
 
@@ -40,8 +40,9 @@ html, body {
 #zoom svg {
     height: 100vh;
     width: auto;
-    scale: 3;
+    scale: 2;
     user-select: none;
+    transition: .5s ease-in-out;
 }
 
 .zoom_outer {
@@ -61,21 +62,156 @@ html, body {
     z-index: 1;
 }
 
-.tripleeje {
-    fill: #e92a41;
+.container-hechos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    z-index: 1;
+    gap: 1rem;
 }
 
-.mapa-bloque {
-    display: none;
-}
-  
-.mapa-bloque.activo {
-    display: block;
+.container-hechos span {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: #e92a41;
+    color: white;
+    font: 900 1.5rem Roboto;
+    cursor: no-drop;
+    transition: 0.2s ease;
+    filter: brightness(50%);
+    user-select: none;
 }
 
-#ALEMANIA1939 .cls-1 {
-    background-image: url("/img/contemporanea/1267px-Claude_Monet_-_The_Gare_Saint-Lazare\,_Arrival_of_a_Train-min.jpg");
+.container-hechos span.activo:hover {
+    scale: 1.2;
 }
+
+.container-hechos span.activo {
+    filter: brightness(100%);
+    cursor: pointer;
+}
+
+#VIAJEPORTUGAL {
+    opacity: 1;
+    transition: 2s ease;
+    clip-path: circle(0% at 0% 0%);
+
+}
+
+#VIAJEPORTUGAL.activo {
+    opacity: 1;
+    clip-path: circle(115% at 0% 0%);
+}
+
+#objetivo_asia {
+    opacity: 0;
+    transition: 1s ease;
+}
+
+#objetivo_asia.activo {
+    opacity: 1;
+}
+
+#objetivo_circulo {
+    opacity: 0;
+    transition: 1s ease;
+}
+
+#objetivo_circulo.activo {
+    opacity: 0.2;
+}
+
+#REINO_DE_ESPAÑA {
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#REINO_DE_ESPAÑA:hover {
+    filter: brightness(110%);
+}
+
+#viajesexploracionespaña {
+    opacity: 0;
+    transition: 1s ease;
+    clip-path: circle(0% at 100% 0%);
+}
+
+#viajesexploracionespaña.activo {
+    opacity: 1;
+    clip-path: circle(150% at 100% 0%);
+}
+
+#via_terrestre {
+    opacity: 1;
+    transition: 1s ease;
+    clip-path: inset(0 100% 0 0);;
+}
+
+#via_terrestre.activo {
+    opacity: 1;
+    transition: 1s ease;
+    clip-path: inset(0 0 0 0);;
+}
+
+#telon_america.activo {
+    opacity: 1;
+    transition-delay: 0.5s;
+    transition: 1s ease;
+}
+
+#telon_america {
+    opacity: 0;
+    transition-delay: 0.5s;
+    transition: 1s ease;
+}
+
+.fecha-mapa {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: BreeSerif;
+    font-size: 1.5rem;
+    color: white;
+
+}
+
+#fecha-mapa {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 20px;
+    background-color: #e92a41;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.75);
+    border-radius: 1rem;
+}
+
+#fecha-mapa.animacion {
+    animation: scaleUp 0.2s ease-in-out;
+}
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 
 #resetZoom {
     position: fixed;

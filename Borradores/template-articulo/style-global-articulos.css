@@ -1670,8 +1670,16 @@ li:hover ul#submenu {
   mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
-.inset {
-  box-shadow: inset 0rem 0rem 1rem rgb(0,0,0,0.75);
+.inset::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: inset 0 0 1rem rgb(0, 0, 0, 0.75);
+    pointer-events: none;
 }
 
 .br {

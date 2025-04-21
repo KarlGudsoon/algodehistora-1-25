@@ -17,7 +17,6 @@ function clampScale(value) {
     return Math.min(Math.max(value, MIN_SCALE), MAX_SCALE);
 }
 
-// Función para aplicar la transformación
 function setTransform() {
     zoom.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
 }
@@ -125,11 +124,93 @@ zoom.addEventListener("touchend", function (e) {
     }
 });
 
-document.getElementById("resetZoom").addEventListener("click", function() {
+document.getElementById("resetZoom").addEventListener("click", function resetZoom() {
   scale = 1;
   pointX = 0;
   pointY = 0;
   setTransform();
+
+  zoom.querySelector("svg").style = "";
 });
+
+document.getElementById("hecho-1").addEventListener("click", function() {
+    var objetivoCirculo = document.getElementById("objetivo_circulo");
+    var objetivoTexto = document.getElementById("objetivo_asia");
+    var hechoSiguiente = document.getElementById("hecho-2");
+
+    scale = 1;
+    pointX = -400;
+    pointY = -50;
+    setTransform();
+
+    zoom.style.transition = "transform 0.5s ease-in-out";
+
+    setTimeout(() => {
+        zoom.style.transition = "none";
+    }, 500);
+
+    objetivoCirculo.classList.add("activo");
+    objetivoTexto.classList.add("activo");
+
+    hechoSiguiente.classList.add("activo");
+});
+
+document.getElementById("hecho-2").addEventListener("click", function() {
+    var viajePortugal = document.getElementById("VIAJEPORTUGAL");
+    var hechoSiguiente = document.getElementById("hecho-3");
+
+    scale = 1;
+    pointX = 0;
+    pointY = -150;
+    setTransform();
+
+    zoom.style.transition = "transform 0.5s ease-in-out";
+
+    setTimeout(() => {
+        zoom.style.transition = "none";
+    }, 500);
+
+    viajePortugal.classList.add("activo");
+
+    hechoSiguiente.classList.add("activo");
+});
+
+document.getElementById("hecho-3").addEventListener("click", function() {
+    var viajeTerrestre = document.getElementById("via_terrestre");
+    var mapa = document.getElementById("world-map");
+
+    scale = 1;
+    pointX = 0;
+    pointY = 50;
+    setTransform();
+
+    zoom.style.transition = "transform 0.5s ease-in-out";
+
+    mapa.style.scale = "5";
+    zoom.style.pointerEvents = "none";
+
+    setTimeout(() => {
+        mapa.style.scale = "";
+        zoom.style.pointerEvents = "auto";
+        zoom.style.transition = "none";
+    }, 1500);
+
+    viajeTerrestre.classList.add("activo");
+});
+
+
+
+
+document.getElementById("hecho-4").addEventListener("click", function() {
+    var viaje = document.getElementById("viajesexploracionespaña");
+    var telon = document.getElementById("telon_america");
+
+    this.style.pointerEvents = "none";
+
+    viaje.classList.toggle("activo");
+    telon.classList.toggle("activo");
+    
+});
+
 
 

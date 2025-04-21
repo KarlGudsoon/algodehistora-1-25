@@ -631,11 +631,12 @@
     margin: 0;
 }
 
-.mapa-descubrimiento-america {
+.inicio-conquista-2 {
     height: 600px;
+    position: relative;
 }
 
-.mapa-descubrimiento-america iframe {
+.inicio-conquista-2 iframe {
     width: 100%;
     height: 100%;
 }
