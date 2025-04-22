@@ -38,5 +38,15 @@
       "imagen": "/img/contemporanea/segunda-guerra-mundial/Sadae-Kasoaka-Testigo-del-bombardeo-de-Hiroshima-Informes.webp",
       "srcMapa": "/Apps/mapas/segunda-guerra-mundial/world.html",
       "hrefMapa": "/index.html"
-  }
+    },
+    {
+      "id": "descubrimiento_america",
+      "titulo": "DESCUBRIMIENTO DE AMÉRICA",
+      "descripcion": "El descubrimiento de América se refiere al proceso histórico que comenzó en 1492 con la llegada de Cristóbal Colón a América, y que tuvo un impacto profundo en la historia mundial.",
+      "periodo": "EDAD MODERNA",
+      "clasePeriodo": "etiqueta-moderna",
+      "imagen": "/img/moderna/fondo.webp",
+      "srcMapa": "/Apps/mapas/descubrimiento-america/world.html",
+      "hrefMapa": "/Articulos/Moderna/descubrimiento-america.html"
+    }
   ]

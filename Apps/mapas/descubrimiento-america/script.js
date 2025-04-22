@@ -137,6 +137,22 @@ document.getElementById("hecho-1").addEventListener("click", function() {
     var objetivoCirculo = document.getElementById("objetivo_circulo");
     var objetivoTexto = document.getElementById("objetivo_asia");
     var hechoSiguiente = document.getElementById("hecho-2");
+    var idHecho = this.id;
+    const idHechoTexto = `${idHecho}-texto`;
+    const elementoHechoTexto = document.getElementById(idHechoTexto);
+    var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
+
+    todosLosHechos.forEach(function(elemento) {
+        elemento.classList.remove("notify");
+    });
+
+    if (elementoHechoTexto) {
+        elementoHechoTexto.classList.add("activo");
+        elementoHechoTexto.classList.add("notify");
+        elementoHechoTexto.style.animationPlayState = "running";
+    } else {
+        return;
+    }
 
     scale = 1;
     pointX = -400;
@@ -158,6 +174,22 @@ document.getElementById("hecho-1").addEventListener("click", function() {
 document.getElementById("hecho-2").addEventListener("click", function() {
     var viajePortugal = document.getElementById("VIAJEPORTUGAL");
     var hechoSiguiente = document.getElementById("hecho-3");
+    var idHecho = this.id;
+    const idHechoTexto = `${idHecho}-texto`;
+    const elementoHechoTexto = document.getElementById(idHechoTexto);
+    var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
+
+    todosLosHechos.forEach(function(elemento) {
+        elemento.classList.remove("notify");
+    });
+
+    if (elementoHechoTexto) {
+        elementoHechoTexto.classList.add("activo");
+        elementoHechoTexto.classList.add("notify");
+        elementoHechoTexto.style.animationPlayState = "running";
+    } else {
+        return;
+    }
 
     scale = 1;
     pointX = 0;
@@ -178,6 +210,23 @@ document.getElementById("hecho-2").addEventListener("click", function() {
 document.getElementById("hecho-3").addEventListener("click", function() {
     var viajeTerrestre = document.getElementById("via_terrestre");
     var mapa = document.getElementById("world-map");
+    var hechoSiguiente = document.getElementById("hecho-4");
+    var idHecho = this.id;
+    const idHechoTexto = `${idHecho}-texto`;
+    const elementoHechoTexto = document.getElementById(idHechoTexto);
+    var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
+
+    todosLosHechos.forEach(function(elemento) {
+        elemento.classList.remove("notify");
+    });
+
+    if (elementoHechoTexto) {
+        elementoHechoTexto.classList.add("activo");
+        elementoHechoTexto.classList.add("notify");
+        elementoHechoTexto.style.animationPlayState = "running";
+    } else {
+        return;
+    }
 
     scale = 1;
     pointX = 0;
@@ -196,6 +245,8 @@ document.getElementById("hecho-3").addEventListener("click", function() {
     }, 1500);
 
     viajeTerrestre.classList.add("activo");
+    
+    hechoSiguiente.classList.add("activo");
 });
 
 
@@ -204,13 +255,81 @@ document.getElementById("hecho-3").addEventListener("click", function() {
 document.getElementById("hecho-4").addEventListener("click", function() {
     var viaje = document.getElementById("viajesexploracionespaña");
     var telon = document.getElementById("telon_america");
+    var mapa = document.getElementById("world-map");
+    var idHecho = this.id;
+    const idHechoTexto = `${idHecho}-texto`;
+    const elementoHechoTexto = document.getElementById(idHechoTexto);
+    var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
 
-    this.style.pointerEvents = "none";
+    todosLosHechos.forEach(function(elemento) {
+        elemento.classList.remove("notify");
+    });
 
-    viaje.classList.toggle("activo");
-    telon.classList.toggle("activo");
+    if (elementoHechoTexto) {
+        elementoHechoTexto.classList.add("activo");
+        elementoHechoTexto.classList.add("notify");
+        elementoHechoTexto.style.animationPlayState = "running";
+    } else {
+        return;
+    }
+
+    scale = 1;
+    pointX = 250;
+    pointY = -150;
+    setTransform();
+
+    zoom.style.transition = "transform 0.5s ease-in-out";
     
+    mapa.style.scale = "4";
+    zoom.style.pointerEvents = "none";
+
+    setTimeout(() => {
+        mapa.style.scale = "";
+        zoom.style.pointerEvents = "auto";
+        zoom.style.transition = "none";
+    }, 1500);
+
+    viaje.classList.add("activo");
+    telon.classList.remove("activo");
+});
+
+document.getElementById("zoom").addEventListener("click", function() {
+    var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
+    todosLosHechos.forEach(function(elemento) {
+        elemento.classList.remove("notify");
+    });
 });
 
 
 
+    
+
+/*
+document.querySelectorAll(".container-hechos span").forEach(function(elemento) {
+    elemento.addEventListener("mouseenter", function() {
+        var idHecho = this.id;
+        const idHechoTexto = `${idHecho}-texto`;
+        const elementoHechoTexto = document.getElementById(idHechoTexto);
+
+        if (elementoHechoTexto) {
+            elementoHechoTexto.style.transform = "scale(1.05)";
+            elementoHechoTexto.style.transition = "transform 0.2s ease";
+        } else {
+            return;
+        }
+    });
+
+    elemento.addEventListener("mouseleave", function() {
+        var idHecho = this.id;
+        const idHechoTexto = `${idHecho}-texto`;
+        const elementoHechoTexto = document.getElementById(idHechoTexto);
+
+        if (elementoHechoTexto) {
+            elementoHechoTexto.style.transform = "scale(1)";
+        } else {
+            return;
+        }
+    });
+    }
+);
+*/
