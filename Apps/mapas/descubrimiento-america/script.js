@@ -21,15 +21,27 @@ function setTransform() {
     zoom.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
 }
 
+var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
+
 // Eventos de mouse
 zoom.onmousedown = function (e) {
     e.preventDefault();
     start = { x: e.clientX - pointX, y: e.clientY - pointY };
     panning = true;
+
+    todosLosHechos.forEach(function(elemento) {
+        elemento.style.pointerEvents = "none";
+    }
+    );
 };
 
 zoom.onmouseup = function () {
     panning = false;
+
+    todosLosHechos.forEach(function(elemento) {
+        elemento.style.pointerEvents = "";
+    }
+    );
 };
 
 zoom.onmousemove = function (e) {
@@ -140,7 +152,7 @@ document.getElementById("hecho-1").addEventListener("click", function() {
     var idHecho = this.id;
     const idHechoTexto = `${idHecho}-texto`;
     const elementoHechoTexto = document.getElementById(idHechoTexto);
-    var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
+    var todosLosHechos = document.querySelectorAll(".hecho-texto");
 
     todosLosHechos.forEach(function(elemento) {
         elemento.classList.remove("notify");
@@ -177,7 +189,7 @@ document.getElementById("hecho-2").addEventListener("click", function() {
     var idHecho = this.id;
     const idHechoTexto = `${idHecho}-texto`;
     const elementoHechoTexto = document.getElementById(idHechoTexto);
-    var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
+    var todosLosHechos = document.querySelectorAll(".hecho-texto");
 
     todosLosHechos.forEach(function(elemento) {
         elemento.classList.remove("notify");
@@ -214,7 +226,7 @@ document.getElementById("hecho-3").addEventListener("click", function() {
     var idHecho = this.id;
     const idHechoTexto = `${idHecho}-texto`;
     const elementoHechoTexto = document.getElementById(idHechoTexto);
-    var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
+    var todosLosHechos = document.querySelectorAll(".hecho-texto");
 
     todosLosHechos.forEach(function(elemento) {
         elemento.classList.remove("notify");
@@ -259,7 +271,7 @@ document.getElementById("hecho-4").addEventListener("click", function() {
     var idHecho = this.id;
     const idHechoTexto = `${idHecho}-texto`;
     const elementoHechoTexto = document.getElementById(idHechoTexto);
-    var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
+    var todosLosHechos = document.querySelectorAll(".hecho-texto");
 
     todosLosHechos.forEach(function(elemento) {
         elemento.classList.remove("notify");
@@ -297,14 +309,38 @@ document.getElementById("zoom").addEventListener("click", function() {
     var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
     todosLosHechos.forEach(function(elemento) {
         elemento.classList.remove("notify");
+
+
     });
 });
 
+document.querySelectorAll(".img-view").forEach(function(elemento) {
+    elemento.addEventListener("click", function() {
+        var containerImgViewer = document.querySelector(".container-img-viewer");
+        var imgViewer = document.getElementById("img-viewer");
+        var srcImg = this.src;
 
+        containerImgViewer.classList.add("activo");
+        imgViewer.src = srcImg;
+       
+    });
+})
+
+document.querySelector(".container-img-viewer").addEventListener("click", function() {
+    this.classList.remove("activo");
+});
+
+
+document.querySelectorAll(".close-icon").forEach(closeIcon => {
+    closeIcon.addEventListener("click", function() {
+        this.parentElement.classList.remove("activo");
+    });
+});
 
     
+// Código comentado para animación de los hechos
 
-/*
+/* 
 document.querySelectorAll(".container-hechos span").forEach(function(elemento) {
     elemento.addEventListener("mouseenter", function() {
         var idHecho = this.id;

@@ -148,7 +148,7 @@ html, body {
     top: 0;
     left: 0;
     height: 100%;
-    width: 400px;
+    width: 450px;
     display: flex;
     gap: 1rem;
     flex-direction: column;
@@ -157,37 +157,65 @@ html, body {
     pointer-events: none;
 }
 
-.container-hechos-texto div {
+.hecho-texto {
     border: 1px solid #fff;
+    pointer-events: auto;
     border-radius: 1rem;
     width: auto;
     font-family: Roboto;
-    font-size: 1rem;
+    font-size: 0.8rem;
     background-color: rgb(233, 42, 65, 0.75);
     backdrop-filter: blur(15px);
     color: white;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
-    padding: 1rem;
+    justify-content: center;
     margin: 0 1rem 0 1rem;
     scale: 0;
     display: none;
-    transition: 0.5s ease, scale 0.2s ease;
+    transform: translateX(0px);
+    transition: 0.5s ease;
     position: relative;
     animation: scaleUp 0.2s ease-in-out;
     animation-play-state: paused;
+    overflow: hidden;
 }
 
-.container-hechos-texto div h2 {
+.container-hecho-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 1;
+    padding: 1rem 0rem 1rem 1rem;
+    width: 60%;
+}
+
+.container-hecho-img {
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    mask-image: linear-gradient(to right, transparent 10%, black 50%);
+}
+
+.container-hecho-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.container-hechos-texto h2 {
     font-family: BreeSerif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 0;
+    line-height: 1;
 }
 
 .container-hechos-texto div p {
     margin: 0;
 }
 
-.container-hechos-texto div span {
+.hecho-texto span {
     font-family: Roboto;
     font-size: 1rem;
     margin: 0.5rem;
@@ -204,21 +232,21 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-
 }
 
-.container-hechos-texto div.activo {
+.hecho-texto.activo {
     scale: 1;
-    display: block;
+    display: flex;
+    justify-content: center;
 }
 
-.container-hechos-texto div.animacion {
+.hecho-texto.animacion {
     animation: scaleUp 0.5s ease-in-out;
 }
 
-.container-hechos-texto div.notify {
-    scale: 1.05;
+.hecho-texto.notify {
+    transform: scale(1.05) translateX(10px);
+    background-color: rgb(223, 141, 20, 0.75);
 }
 
 @keyframes notify {
@@ -232,10 +260,6 @@ html, body {
         transform: translateX(0)
     }
     
-}
-
-#hecho-4-texto {
-    background-color: rgb(238, 183, 43, 0.75);
 }
 
 #VIAJEPORTUGAL {
@@ -439,6 +463,79 @@ html, body {
     justify-content: center;
 }
 
+.container-img-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    scale: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    pointer-events: all;
+    transition: opacity 0.5s ease;
+    
+}
+
+.container-img-viewer.activo {
+    opacity: 1;
+    scale: 1;
+}
+
+.img-viewer {
+    width: 90%;
+    height: 90%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-viewer img {
+    aspect-ratio: auto;
+    width: auto;
+    height: 100%;
+}
+
+.img-view {
+    transition: 0.2s ease;
+}
+
+.img-view:hover {
+    cursor: pointer;
+    scale: 1.2;
+
+}
+
+.close-icon {
+    position: absolute;
+    margin: 1rem;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #e92a41;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.close-icon:hover {
+    filter: brightness(110%);
+}
+
+.close-icon:active {
+    box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
 @media only screen and (max-width: 600px) {
     #zoom svg {
         scale: 3;
@@ -476,5 +573,27 @@ html, body {
 
     .boton {
         font-size: 0.5rem;
+    }
+
+    .container-hechos-texto {
+        width: 250px;
+    }
+
+    .container-hechos-texto .hecho-texto {
+        font-size: 0.8rem;
+    }
+
+    .container-hecho-texto {
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+    }
+
+    .container-hechos-texto h2 {
+        font-size: 1rem;
+    }
+
+    .container-hecho-img {
+        display: none;
     }
 }
