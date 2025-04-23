@@ -114,7 +114,7 @@ html, body {
     gap: 1rem;
 }
 
-.container-hechos span {
+.container-hechos div {
     width: 35px;
     height: 35px;
     display: flex;
@@ -133,14 +133,54 @@ html, body {
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 }
 
-.container-hechos span.activo:hover {
+.container-hechos div.activo:hover {
     scale: 1.2;
 }
 
-.container-hechos span.activo {
+.container-hechos div.activo {
     filter: brightness(100%);
     cursor: pointer;
     scale: 1;
+}
+
+#start-travel {
+    position: absolute;
+    font: 300 1rem Roboto;
+    line-height: 1;
+    top: 0;
+    opacity: 0;
+    scale: 0;
+    width: 120px;
+    text-align: center;
+    transition: 0.5s ease;
+    z-index: -1;
+    background-color: #e92a41;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #fff;
+}
+
+#start-travel::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 6px;
+    bottom: -6px;
+    background-color: #e92a41;
+    z-index: 2;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+}
+
+#start-travel.activo {
+    top: -70px;
+    opacity: 1;
+    scale: 1;
+    transition: 0.5s ease;
 }
 
 .container-hechos-texto {
@@ -249,12 +289,42 @@ html, body {
     background-color: rgb(223, 141, 20, 0.75);
 }
 
+#hecho-1 {
+    animation: float 2.5s infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+    
+}
+
+
 @keyframes notify {
     0% {
         transform: translateX(0)
     }
+    40% {
+        transform: translateX(0px)
+    }
+    45% {
+        transform: translateX(5px)
+    }
     50% {
-        transform: translateX(10px)
+        transform: translateX(-5px)
+    }
+    55% {
+        transform: translateX(5px)
+    }
+    60% {
+        transform: translateX(0px)
     }
     100% {
         transform: translateX(0)

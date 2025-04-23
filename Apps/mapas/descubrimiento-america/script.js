@@ -153,6 +153,10 @@ document.getElementById("hecho-1").addEventListener("click", function() {
     const idHechoTexto = `${idHecho}-texto`;
     const elementoHechoTexto = document.getElementById(idHechoTexto);
     var todosLosHechos = document.querySelectorAll(".hecho-texto");
+    var startTravel = document.getElementById("start-travel");
+
+    startTravel.classList.remove("activo");
+    this.style.animation = "none";
 
     todosLosHechos.forEach(function(elemento) {
         elemento.classList.remove("notify");
