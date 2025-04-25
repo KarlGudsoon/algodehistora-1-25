@@ -23,7 +23,7 @@ function setTransform() {
 
 var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
 
-// Eventos de mouse (se mantienen igual)
+// Eventos de mouse
 zoom.onmousedown = function (e) {
     e.preventDefault();
     start = { x: e.clientX - pointX, y: e.clientY - pointY };
@@ -31,7 +31,8 @@ zoom.onmousedown = function (e) {
 
     todosLosHechos.forEach(function(elemento) {
         elemento.style.pointerEvents = "none";
-    });
+    }
+    );
 };
 
 zoom.onmouseup = function () {
@@ -39,7 +40,8 @@ zoom.onmouseup = function () {
 
     todosLosHechos.forEach(function(elemento) {
         elemento.style.pointerEvents = "";
-    });
+    }
+    );
 };
 
 zoom.onmousemove = function (e) {
@@ -64,83 +66,71 @@ zoom.onwheel = function (e) {
     setTransform();
 };
 
-// Eventos táctiles modificados
+// Eventos táctiles
 zoom.addEventListener("touchstart", function (e) {
-    if (e.touches.length === 2) {
-        // Dos dedos: activar panning o zoom según el gesto
+    if (e.touches.length === 1) {
+        // Un solo dedo para panning
         e.preventDefault();
-        
+        start = { x: e.touches[0].clientX - pointX, y: e.touches[0].clientY - pointY };
+        panning = true;
+        isPinching = false; // No es un gesto de pellizco
+    } else if (e.touches.length === 2) {
+        // Dos dedos para zoom
+        e.preventDefault();
         let touch1 = e.touches[0];
         let touch2 = e.touches[1];
+
+        // Centro del gesto de pellizco
+        start.centerX = (touch1.clientX + touch2.clientX) / 2;
+        start.centerY = (touch1.clientY + touch2.clientY) / 2;
         
-        // Guardar posición inicial para panning
-        start = { 
-            x: (touch1.clientX + touch2.clientX) / 2 - pointX, 
-            y: (touch1.clientY + touch2.clientY) / 2 - pointY 
-        };
-        
-        // Guardar distancia inicial para zoom
+        // Distancia inicial entre los dedos
         start.touchDist = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
         start.touchScale = scale;
-        
-        panning = true;
-        isPinching = false; // Se establecerá a true si detectamos movimiento de zoom
+        isPinching = true; // Es un gesto de pellizco
     }
 });
 
 zoom.addEventListener("touchmove", function (e) {
-    if (e.touches.length === 2) {
+    if (e.touches.length === 1 && panning && !isPinching) {
+        // Un solo dedo para panning y no estamos en un gesto de pellizco
+        e.preventDefault();
+        pointX = e.touches[0].clientX - start.x;
+        pointY = e.touches[0].clientY - start.y;
+        setTransform();
+    } else if (e.touches.length === 2 && isPinching) {
+        // Dos dedos para zoom
         e.preventDefault();
         let touch1 = e.touches[0];
         let touch2 = e.touches[1];
-        
-        // Calcular nueva distancia entre dedos
+
+        // Nuevo centro del pellizco
+        let newCenterX = (touch1.clientX + touch2.clientX) / 2;
+        let newCenterY = (touch1.clientY + touch2.clientY) / 2;
+
+        // Nueva distancia entre los dedos
         let newDist = Math.hypot(touch2.clientX - touch1.clientX, touch2.clientY - touch1.clientY);
-        
-        // Calcular diferencia con la distancia inicial
-        let distDiff = Math.abs(newDist - start.touchDist);
-        
-        // Umbral para determinar si es zoom o pan
-        const ZOOM_THRESHOLD = 5;
-        
-        if (distDiff > ZOOM_THRESHOLD || isPinching) {
-            // Es un gesto de zoom
-            isPinching = true;
-            
-            // Calcular nuevo scale
-            let newScale = start.touchScale * (newDist / start.touchDist);
-            newScale = clampScale(newScale);
-            
-            // Calcular centro del gesto
-            let newCenterX = (touch1.clientX + touch2.clientX) / 2;
-            let newCenterY = (touch1.clientY + touch2.clientY) / 2;
-            
-            // Ajustar posición para zoom centrado
-            let scaleRatio = newScale / scale;
-            pointX = newCenterX - (newCenterX - pointX) * scaleRatio;
-            pointY = newCenterY - (newCenterY - pointY) * scaleRatio;
-            
-            scale = newScale;
-        } else {
-            // Es un gesto de panning con dos dedos
-            let currentCenterX = (touch1.clientX + touch2.clientX) / 2;
-            let currentCenterY = (touch1.clientY + touch2.clientY) / 2;
-            
-            pointX = currentCenterX - start.x;
-            pointY = currentCenterY - start.y;
-        }
-        
+        let newScale = start.touchScale * (newDist / start.touchDist);
+        newScale = clampScale(newScale);
+
+        // Ajustar `pointX` y `pointY` para que el zoom ocurra desde el centro del pellizco
+        let scaleRatio = newScale / scale;
+        pointX = newCenterX - (newCenterX - pointX) * scaleRatio;
+        pointY = newCenterY - (newCenterY - pointY) * scaleRatio;
+
+        scale = newScale;
         setTransform();
     }
 });
 
 zoom.addEventListener("touchend", function (e) {
     if (e.touches.length === 0) {
-        // Cuando todos los dedos se han soltado, reiniciar el estado
+        // Cuando ambos dedos se han soltado, reiniciar el estado
         panning = false;
         isPinching = false;
-    } else if (e.touches.length === 1) {
-        // Si queda un dedo, desactivar todo
+        setTransform();
+    } else if (e.touches.length === 1 && isPinching) {
+        // Si queda un dedo después de un gesto de pellizco, evitar el desplazamiento
         panning = false;
         isPinching = false;
     }
