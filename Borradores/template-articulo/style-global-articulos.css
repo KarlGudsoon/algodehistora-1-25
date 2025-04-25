@@ -727,7 +727,7 @@ li:hover ul#submenu {
   background-color: #e92a41;
   background-image: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/889693ce-907d-480f-ac32-17ae063a73dd.image.png?v=1711949981710"); 
   z-index: 999999999999;
-  transition: scale .5s ease, opacity .5s ease, bottom .5s ease;
+  transition: scale .5s ease, opacity .5s ease, bottom 0.8s ease-in-out; 
   -webkit-box-shadow: inset 1px 1px 12px 1px #000000; 
   box-shadow: inset 1px 1px 20px 15px rgb(163 163 163 / 50%);
   clip-path: polygon(2% 10%, 1% 5%, 0 0, 100% 0, 99% 5%, 98% 10%, 98% 90%, 99% 95%, 100% 100%, 0 100%, 1% 95%, 2% 90%);
@@ -1044,17 +1044,20 @@ li:hover ul#submenu {
   height: 100%;
   top: 0;
   background-color: rgb(0 0 0 / 50%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
+  scale: 0;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 .contenedor-personaje.active {
-  visibility: visible;
+  scale: 1;
   opacity: 1;
   pointer-events: auto;
 }
@@ -1076,8 +1079,11 @@ li:hover ul#submenu {
   justify-content: center;
   align-items: center;
   position: absolute;
-  transition: scale .5s ease, opacity .5s ease, bottom .5s ease;
+  transition: scale .5s ease, opacity .5s ease, bottom .8s ease;
+  animation-duration: 2s;
+  animation-play-state: running;
 }
+
 
 
 .contenedor-personaje canvas {
@@ -1934,9 +1940,9 @@ a:hover {
   min-width: 400px;
   flex: 1;
   height: 300px;
+  overflow: hidden;
   position: relative;
   align-self: self-end;
-  pointer-events: none;
   mask-image: linear-gradient(to right, transparent 10%, black 50%);
 }
 
@@ -2145,7 +2151,62 @@ a:hover {
   z-index: 1;
   margin: 0;
   user-select: none;
+  display: flex;
+  align-items: center;
+  
 }
+
+.fecha-inicio {
+  transition: .5s ease;
+}
+
+.fecha-termino {
+  transition: .5s ease;
+}
+
+
+
+.fecha-inicio:hover::before {
+  opacity: 0.5;
+}
+
+.fecha-termino:hover::before {
+  opacity: 0.5;
+}
+
+.fecha-inicio::before {
+  content: "Inicio";
+  width: fit-content;
+  height: fit-content;
+  font: 300 0.8rem Roboto;
+  padding: 0 0.5rem; 
+  color: white;
+  background-color: rgb(0 0 0 / 35%);
+  position: absolute;
+  border-radius: 1rem;
+  z-index: -1;
+  top: 0;
+  opacity: 0;
+  transition: .2s ease;
+  
+}
+
+.fecha-termino::before {
+  content: "Termino";
+  width: fit-content;
+  height: fit-content;
+  font: 300 0.8rem Roboto;
+  padding: 0 0.5rem; 
+  color: white;
+  background-color: rgb(0 0 0 / 35%);
+  position: absolute;
+  border-radius: 1rem;
+  z-index: -1;
+  top: 0;
+  opacity: 0;
+  transition: .2s ease;
+}
+
 
 .fecha-periodo p {
   position: relative;
@@ -2249,6 +2310,87 @@ button:hover::before {
   transform: translateY(2px);
 }
 
+/* IMG VIEWER */
+
+.container-img-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  scale: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  pointer-events: all;
+  transition: opacity 0.5s ease;
+  
+}
+
+.container-img-viewer.activo {
+  opacity: 1;
+  scale: 1;
+}
+
+.img-viewer {
+  width: 90%;
+  height: 90%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-viewer img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  aspect-ratio: 16/9;
+}
+
+.img-view {
+  transition: 0.2s ease;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.img-view:hover {
+  cursor: pointer;
+  scale: 1.2;
+
+}
+
+.close-icon {
+  position: absolute;
+  margin: 1rem;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #e92a41;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.close-icon:hover {
+  filter: brightness(110%);
+}
+
+.close-icon:active {
+  box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+/* IMG VIEWER */
 
 
 @media screen and (max-width: 700px) {

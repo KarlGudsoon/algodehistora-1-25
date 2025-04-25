@@ -16,6 +16,10 @@
       integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
       crossorigin="anonymous"
     />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="/Borradores/template-articulo/style-global-articulos.css" />
     <link rel="stylesheet" href="/Articulos/moderna/origenes-chile/style.css" />
 
@@ -42,7 +46,12 @@
       </nav>
     </header>
     <main>
-
+      <div class="container-img-viewer">
+        <div class="img-viewer">
+          <img id="img-viewer" src="">
+        </div>
+        <span class="close-icon">X</span>
+      </div>
       <div class="widget-card-pais" id="card-chile">
         <div class="concepto-cerrar">-</div>
         <img
@@ -139,47 +148,13 @@
           [Definición del concepto]
         </p>
       </div>
-      <div class="contenedor-personaje" id="personaje-siderurgica">
-        <div class="item" data-tilt>
-          <div class="concepto-cerrar">-</div>
-          <div class="etiqueta">
-            <span>Innovación Tecnológica</span>
-            <h1>INDUSTRIA SIDERÚRGICA</h1>
-            <span class="etiqueta-periodo">Revolución Industrial</span>
-          </div>
-          <img class="personaje-item" draggable="false" src="/img/contemporanea/obrero-siderurgica.png">
-          <div class="face frontal dorada">
-            <div class="fondo-frontal">
-              <img draggable="false" src="/img/contemporanea/heyenbrock-min (2).webp">
-            </div>
-          </div>
-          <div class="face trasera dorada">
-            <div class="face-etiqueta-trasera">
-              <span id="ven-siderurgica"><img draggable="false" src="/svg/pulgararriba.svg"></span>
-              <span><img draggable="false" src="/svg/tiempo.svg"></span>
-              <span id="desv-siderurgica"><img draggable="false" src="/svg/pulgararriba.svg" style="transform: rotate(180deg);"></span>
-            </div>
-            <div class="face-imagen-trasera">
-              <img draggable="false" src="/img/contemporanea/212827fgsdl-min.jpg">
-            </div>
-            <div class="face-descripcion-trasera">
-              <p>
-                La industria siderúrgica en la Revolución Industrial 
-                se caracterizó por la mejora de los procesos de producción 
-                del hierro y el acero. Esto permitió obtener un material más 
-                barato y en grandes cantidades.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="contenedor-personaje" id="contenedor-personaje">
         <div class="sobre-carta" id="sobre-carta">   
-          <img id="imagen-sobre" src="/svg/logo-white.svg">
-          <h1 id="titulo-sobre"></h1>
+            <img id="imagen-sobre" src="/svg/logo-white.svg">
+            <h1 id="titulo-sobre"></h1>
         </div>
         <div class="item" id="personaje-historico" data-tilt>
-          <div class="concepto-cerrar">-</div>
+          <div class="concepto-cerrar" id="carta-cerrar">-</div>
           <div class="etiqueta">
             <span>Personaje Histórico</span>
             <h1 id="nombre-personaje"></h1>
@@ -625,7 +600,7 @@
               </p>
             </div>
           </div>
-          <div class="contenedor-img-2"><img src="/img/moderna/fondo.webp"></div>
+          <div class="contenedor-img-2"><img class="img-view" src="/img/moderna/fondo.webp"></div>
         </section>
         <section class="inicio-conquista-2 bg-2">
           <iframe src="/Apps/mapas/descubrimiento-america/world.html"></iframe>

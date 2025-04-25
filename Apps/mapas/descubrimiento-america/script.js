@@ -145,7 +145,9 @@ document.getElementById("resetZoom").addEventListener("click", function resetZoo
   zoom.querySelector("svg").style = "";
 });
 
-document.getElementById("hecho-1").addEventListener("click", function() {
+document.getElementById("hecho-1").addEventListener("click", hecho1);
+    
+    function hecho1() {
     var objetivoCirculo = document.getElementById("objetivo_circulo");
     var objetivoTexto = document.getElementById("objetivo_asia");
     var hechoSiguiente = document.getElementById("hecho-2");
@@ -185,7 +187,7 @@ document.getElementById("hecho-1").addEventListener("click", function() {
     objetivoTexto.classList.add("activo");
 
     hechoSiguiente.classList.add("activo");
-});
+};
 
 document.getElementById("hecho-2").addEventListener("click", function() {
     var viajePortugal = document.getElementById("VIAJEPORTUGAL");
@@ -309,7 +311,7 @@ document.getElementById("hecho-4").addEventListener("click", function() {
     telon.classList.remove("activo");
 });
 
-document.getElementById("zoom").addEventListener("click", function() {
+document.getElementById("zoom").addEventListener("mousedown", function() {
     var todosLosHechos = document.querySelectorAll(".container-hechos-texto div");
     todosLosHechos.forEach(function(elemento) {
         elemento.classList.remove("notify");
@@ -340,6 +342,7 @@ document.querySelectorAll(".close-icon").forEach(closeIcon => {
         this.parentElement.classList.remove("activo");
     });
 });
+
 
     
 // Código comentado para animación de los hechos

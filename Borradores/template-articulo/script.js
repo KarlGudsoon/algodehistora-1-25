@@ -68,6 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.querySelectorAll(".personaje").forEach((personaje, index) => {
   personaje.addEventListener("click", () => {
+    var sonidoSobre = new Audio("/audio/arrastrar.mp3");
+    sonidoSobre.volume = 0.5;
+    sonidoSobre.preload = "auto";
+    sonidoSobre.play();
+    
+
 
     const sobreCarta = document.querySelector(".sobre-carta");
 
@@ -77,11 +83,11 @@ document.querySelectorAll(".personaje").forEach((personaje, index) => {
     canvas.width = 600;
     canvas.height = 600;
 
-    // Seleccionamos el contenedor correspondiente según el índice del personaje
+    // Get all containers with the class
     let containers = document.querySelectorAll(".contenedor-personaje");
-    let container = containers[index];
+    let container = containers[index]; // Now this will work since querySelectorAll returns NodeList
 
-    if (!container) return; // Si no encuentra el contenedor, evita errores
+    if (!container) return;
 
     container.appendChild(canvas);
 
@@ -95,7 +101,7 @@ document.querySelectorAll(".personaje").forEach((personaje, index) => {
 
     setTimeout(() => {
       container.removeChild(canvas);
-    }, 3000); // Se elimina después de 3 segundos
+    }, 3000);
   });
 });
 
@@ -422,6 +428,8 @@ function manejarCierre(event) {
     
     cardPersonaje.forEach(card => {
       card.classList.remove('flipped');
+
+      card.classList.remove('animate__tada');
   
       card.querySelectorAll('.flipped').forEach(element => {
           element.classList.remove('flipped');
@@ -611,8 +619,41 @@ containers.forEach(function(container) {
 var sobreCarta = document.querySelector('.sobre-carta');
   
   sobreCarta.addEventListener('click', function() {
+    var sonidoSobre = new Audio("/audio/arrastrar.mp3");
+    var sonidoMostrarCarta = new Audio("/audio/reluciente.mp3");
+    var sonidoAbrir = new Audio("/audio/romperpapel.mp3");
+    sonidoAbrir.volume = 0.3;
+    sonidoMostrarCarta.volume = 0.3;
+    sonidoMostrarCarta.preload = "auto";
+    sonidoSobre.volume = 0.5;
+    sonidoSobre.preload = "auto";
+
+    sonidoSobre.play();
+
+    sonidoAbrir.play();
+
+    setTimeout(() => {
+      sonidoMostrarCarta.play();
+    }, 200);
+
     sobreCarta.classList.remove('active');
+
+    const card = document.querySelector('.item');
+
+    card.classList.add('animate__tada');
   });
+
+  
+// ABRIR SOBRE (2) / EXIT ANIMATION //
+
+document.getElementById("carta-cerrar").addEventListener("click", function() {
+  var sonidoSobre = new Audio("/audio/arrastrar.mp3");
+    sonidoSobre.volume = 0.5;
+    sonidoSobre.preload = "auto";
+    sonidoSobre.play();
+});
+
+// ZOOM INTERACTIVO 🖱️
 
 var scale = 1,
     panning = false,
@@ -741,3 +782,29 @@ zoom.addEventListener("touchend", function (e) {
     }
 });
 
+/// VISOR DE IMAGENES 🎞️
+
+document.querySelectorAll(".img-view").forEach(function(elemento) {
+  elemento.addEventListener("click", function() {
+      var containerImgViewer = document.querySelector(".container-img-viewer");
+      var imgViewer = document.getElementById("img-viewer");
+      var srcImg = this.src;
+
+      containerImgViewer.classList.add("activo");
+      imgViewer.src = srcImg;
+     
+  });
+})
+
+document.querySelector(".container-img-viewer").addEventListener("click", function() {
+  this.classList.remove("activo");
+});
+
+
+document.querySelectorAll(".close-icon").forEach(closeIcon => {
+  closeIcon.addEventListener("click", function() {
+      this.parentElement.classList.remove("activo");
+  });
+});
+
+/// VISOR DE IMAGENES 🎞️
