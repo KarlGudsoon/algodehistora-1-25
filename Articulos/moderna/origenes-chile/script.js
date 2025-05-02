@@ -8,53 +8,32 @@ botonGeo.addEventListener("click", function () {
     titulo.innerHTML = "GEOMORFOLOGÍA DE CHILE";
     texto.innerHTML = "El territorio de Chile se formó hace millones de años debido a procesos geológicos como el choque de placas tectónicas, que formaron la cordillera de los Andes, que junto a la corriente de Humboldt, mantiene el Desierto de Atacama.";
     img.src = "/img/moderna/descubrimiento-chile/00909c64-2d8e-464b-bcb6-e1013e2b5e7d (2).webp"
+
+    const containerId = this.getAttribute('data-container');
+    const container = document.getElementById(containerId);
+
+    document.getElementById('pueblos-originarios').classList.remove('active');
+    
+    container.classList.add('active');
+    this.classList.add('active');
+    botonPueblos.classList.remove('active');
 });
 
 botonPueblos.addEventListener("click", function () {
     titulo.innerHTML = "PUEBLOS ORIGINARIOS";
     texto.innerHTML = "Antes de la llegada de los españoles y la dominación Inca, en el territorio actual de Chile habitaron diversos pueblos originarios. Como los límites actuales no existían en el siglo XVI, los pueblos tenían su territorio más allá de la frontera actual entre países.";
     img.src = "/img/moderna/descubrimiento-chile/selknam-ropa-cazar-removebg-preview.png"
-});
 
+    const containerId = this.getAttribute('data-container');
+    const container = document.getElementById(containerId);
 
-const toggleButtons = document.querySelectorAll('.lengueta-vertical'); 
-
-toggleButtons.forEach((button) => {
-    button.addEventListener('click', function () {
-        const containerId = this.getAttribute('data-container');
-        const container = document.getElementById(containerId); 
-
-        if (this.classList.contains('active') && container.classList.contains('active')) {
-            
-        } else {
-        
-            deactivateAll();
-
-            activate(container, this);
-        }
-    });
-});
-
-function activate(container, button) {
+    document.getElementById('geomorfologia').classList.remove('active');
+    
     container.classList.add('active');
-    button.classList.add('active');
-}
+    this.classList.add('active');
+    botonGeo.classList.remove('active');
+});
 
-// Función para desactivar un contenedor y su botón
-function deactivate(container, button) {
-    container.classList.remove('active');
-    button.classList.remove('active');
-}
-
-// Función para desactivar todos los contenedores y botones
-function deactivateAll() {
-    toggleButtons.forEach((btn) => btn.classList.remove('active'));
-
-    const allContainers = document.querySelectorAll('.geo-pueblos');
-    allContainers.forEach((container) => {
-        container.classList.remove('active');
-    });
-}
 
 document.querySelectorAll('.carta-pueblo').forEach(div => {
     div.addEventListener('mouseenter', function() {
@@ -129,4 +108,38 @@ document.querySelector(".capa-activador-mapa").addEventListener("click", functio
 
     mapa.classList.add("activo");
     document.body.classList.add("no-scroll"); // Agregar o quitar la clase "no-scroll" al body
+});
+
+document.getElementById("lengueta-descubrimiento").addEventListener("click", function () {
+
+    const containerId = this.getAttribute('data-container');
+    const container = document.getElementById(containerId);
+
+    document.getElementById('conquista-america').classList.remove('active');
+    
+    container.classList.add('active');
+    this.classList.add('active');
+    document.getElementById("lengueta-conquista").classList.remove('active');
+
+    // window.location.href = '#inicio-descubrimiento';
+
+    document.getElementById("inicio-descubrimiento-2").style.display = "none";
+    document.getElementById("inicio-descubrimiento").style.display = "flex";
+});
+
+document.getElementById("lengueta-conquista").addEventListener("click", function () {
+
+    const containerId = this.getAttribute('data-container');
+    const container = document.getElementById(containerId);
+
+    document.getElementById("mapa-descubrimiento-america").classList.remove('active');
+    
+    container.classList.add('active');
+    this.classList.add('active');
+    document.getElementById("lengueta-descubrimiento").classList.remove('active');
+    
+    /// window.location.href = '#inicio-descubrimiento';
+
+    document.getElementById("inicio-descubrimiento-2").style.display = "flex";
+    document.getElementById("inicio-descubrimiento").style.display = "none";
 });

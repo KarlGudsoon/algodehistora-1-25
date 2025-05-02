@@ -6,6 +6,10 @@
     --tertiarycolor : #f6d2d6;
     --quaternarycolor : #a11a2a;
 
+    --alternativ: #9e1b2b;
+
+    --fondopagina: #c72437;
+
     --color : white;
 }
 
@@ -39,14 +43,13 @@
 .contenedor-lenguetas {
     display: flex;
     justify-content: center;
-    width: auto;
+    width: 100%;
     z-index: 0;
     gap: 0.5rem;
     height: 60px;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
     position: relative;
     overflow: hidden;
+    padding: 0 0.5rem;
 }
 
 .lengueta-vertical {
@@ -54,6 +57,7 @@
     height: 50px;
     background-color: var(--periodopagina);
     display: flex;
+    flex: 1;
     justify-content: center;
     align-items: flex-end;
     padding: 1rem;
@@ -600,6 +604,10 @@
     max-width: 400px;
 }
 
+.contenedor-conquista-1 h1 {
+    min-width: 250px;
+}
+
 .contenedor-conquista-2 {   
     display: flex;
     flex-direction: column;
@@ -662,6 +670,11 @@
     inset -.2rem -.2rem .2rem rgb(255, 255, 255, 0.2);
 }
 
+.contenedor-descubrimiento-conquista {
+    position: relative;
+    height: auto;
+}
+
 .contenedor-conquista-2 p {
     max-width: 250px;
     text-align: center;
@@ -672,9 +685,12 @@
     height: 600px;
     position: relative;
     overflow: hidden;
+    display: none;
 }
 
-
+.inicio-conquista-2.active {
+    display: block;
+}
 
 .inicio-conquista-2.activo {
     position: fixed;
@@ -691,6 +707,7 @@
     height: 100%;
     box-shadow: inset 0 0 1rem rgb(0, 0, 0, 0.75);
     position: absolute;
+    opacity: 0;
     top: 0;
     left: 0;
     z-index: 999;
@@ -702,6 +719,16 @@
     height: 100%;
     z-index: 0;
     overflow: clip;
+}
+
+.conquista-america {
+    height: 600px;
+    position: relative;
+    display: none;
+}
+
+.conquista-america.active {
+    display: block;
 }
 
 @media screen and (max-width: 700px) {

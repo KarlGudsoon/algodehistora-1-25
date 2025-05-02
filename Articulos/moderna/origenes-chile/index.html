@@ -195,7 +195,7 @@
       
       
       <article>
-        <section class="inicio-pagina">
+        <section class="inicio-pagina" style="view-transition-name: origenes-chile;">
           <div class="texto-inicio-pagina">
             <h1>ORIGENES DE CHILE</h1>
             <p>
@@ -567,7 +567,7 @@
           <a class="boton-simple" style="position: absolute; bottom: 10%;">Ver artículo</a>
           <img src="/img/moderna/descubrimiento-chile/Desembarco_de_Colón_de_Dióscoro_Puebla (3).webp">
         </section>
-        <section class="inicio-conquista exp2 bg-1">
+        <section class="inicio-conquista exp2 bg-1" id="inicio-descubrimiento">
           <div class="contenedor-conquista-1">
             <h1>DESCUBRIMIENTO DE AMÉRICA</h1>
             <p>
@@ -602,10 +602,60 @@
           </div>
           <div class="contenedor-img-2"><img class="img-view" src="/img/moderna/fondo.webp"></div>
         </section>
-        <section class="inicio-conquista-2 bg-2" id="mapa-descubrimiento-america">
-          <button id="abrir-mapa" class="button-map"><img src="/icons/expand.svg"></button>
-          <iframe src="/Apps/mapas/descubrimiento-america/world.html"></iframe>
-          <div class="capa-activador-mapa activo"></div>
+        <section class="inicio-conquista exp2 bg-3" id="inicio-descubrimiento-2" style="display: none;">
+          <div class="contenedor-conquista-1">
+            <h1>CONQUISTA DE AMÉRICA</h1>
+            <p>
+              Despues que Cristobal Colón "descubriera" América, 
+              volviendo a España y llevando testimonios de las 
+              riquezas de su llegada de las Indias, la corona se
+              puso en campaña para su pronta conquista.
+            </p>
+          </div>
+          <div class="contenedor-conquista-2">
+            <p>Se establecieron empresas de conquistas.</p>
+            <button>Territorio</button>
+            <p>Caida y genocidio de los imperios americanos.</p>
+            <button>Indígena</button>
+          </div>
+          <div class="contenedor-fecha-periodo">
+            <div class="fecha-periodo">
+              <h1 class="fecha-inicio" style="color: var(--primarycolor)">1492</h1>
+              <span></span>
+              <p class="hito-inicio">
+                Llegada de Cristobal Colón al nuevo continente, especificamente a las Bahamas.
+              </p>
+            </div>
+            <span class="separador-periodo"></span>
+            <div class="fecha-periodo">
+              <h1 class="fecha-termino" style="color: var(--primarycolor)">1533</h1>
+              <span></span>
+              <p class="hito-termino">
+                Caida del último imperio precolombino, el imperio Inca.
+              </p>
+            </div>
+          </div>
+          <div class="contenedor-img-2"><img class="img-view" src="/img/moderna/descubrimiento-chile/Prisión_de_Guatimocín.webp"></div>
+        </section>
+        <section class="contenedor-descubrimiento-conquista bg-2">
+          <div class="contenedor-lenguetas">
+            <span class="lengueta-vertical" id="lengueta-descubrimiento" data-container="mapa-descubrimiento-america">Descubrimiento de América</span>
+            <span class="lengueta-vertical" id="lengueta-conquista" data-container="conquista-america">Conquista de América</span>
+          </div>
+          <div class="inicio-conquista-2 active bg-2" id="mapa-descubrimiento-america">
+            <button id="abrir-mapa" class="button-map"><img src="/icons/expand.svg"></button>
+            <iframe src="/Apps/mapas/descubrimiento-america/world.html"></iframe>
+            <div class="capa-activador-mapa activo"></div>
+          </div>
+          <div class="conquista-america bg-2" id="conquista-america">
+          </div>
+        </section>
+        <section class="exp1 bg-1 br">
+          <h1>CONQUISTA DE CHILE</h1>
+          <p>
+            La conquista de Chile fue un proceso iniciado por los españoles en el siglo XVI, como parte de la expansión del Imperio español en América del Sur.
+          </p>
+          <div class="contenedor-img-exp1"><img src="/img/moderna/descubrimiento-chile/selknam-ropa-cazar-removebg-preview.png"></div>
         </section>
         <section class="exp1 bg-3 ">
           <h1>[TITULO DE EXPLICACIÓN]</h1>
