@@ -1758,6 +1758,21 @@ li:hover ul#submenu {
   padding: 0 1rem 0 1rem;
   display: flex;
   gap: 10rem;
+  position: relative;
+}
+
+.linea-tiempo-universal .años span {
+  position: relative;
+}
+
+.linea-tiempo-universal .años span::before {
+  content: "";
+  width: 10rem;
+  height: 0;
+  border-top: 2px dashed white;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .container-linea-tiempo-2 {
