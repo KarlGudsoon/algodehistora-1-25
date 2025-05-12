@@ -318,44 +318,66 @@ widgetTimeline.forEach(function(widgetTime) {
 /*HITOS DRAGGABLE*/
 
 document.addEventListener("DOMContentLoaded", function () {
-  const carousel = document.querySelector(".inner");
-  let isDragging = false;
-  let startX, startScrollLeft;
+  const carousels = document.querySelectorAll(".inner");
 
-  // Función para iniciar el arrastre
-  const dragStart = (e) => {
-    isDragging = true;
-    // Obtener la posición inicial del toque o clic
-    startX = e.pageX || e.touches[0].pageX;
-    startScrollLeft = carousel.scrollLeft;
-  };
+  carousels.forEach((carousel) => {
+    let isDragging = false;
+    let startX, startScrollLeft;
+    let initialTouchX, initialTouchY;
 
-  // Función para arrastrar
-  const dragging = (e) => {
-    if (!isDragging) return;
-    // Calcular el desplazamiento horizontal
-    const x = e.pageX || e.touches[0].pageX;
-    carousel.scrollLeft = startScrollLeft - (x - startX);
-  };
+    // Función para iniciar el arrastre
+    const dragStart = (e) => {
+      if (e.type === "touchstart") {
+        initialTouchX = e.touches[0].clientX;
+        initialTouchY = e.touches[0].clientY;
+      }
+      isDragging = true;
+      startX = e.pageX || e.touches[0].pageX;
+      startScrollLeft = carousel.scrollLeft;
+      carousel.style.cursor = "grabbing";
+      carousel.style.userSelect = "none";
+    };
 
-  // Función para detener el arrastre
-  const dragStop = () => {
-    isDragging = false;
-  };
+    // Función para arrastrar (con detección de dirección)
+    const dragging = (e) => {
+      if (!isDragging) return;
 
-  // Eventos de ratón (para desktop)
-  carousel.addEventListener("mousedown", dragStart);
-  carousel.addEventListener("mousemove", dragging);
-  document.addEventListener("mouseup", dragStop);
+      // Solo en touch: verificar si el movimiento es horizontal
+      if (e.type === "touchmove") {
+        const touchX = e.touches[0].clientX;
+        const touchY = e.touches[0].clientY;
+        const deltaX = Math.abs(touchX - initialTouchX);
+        const deltaY = Math.abs(touchY - initialTouchY);
 
-  // Eventos táctiles (para móviles)
-  carousel.addEventListener("touchstart", dragStart);
-  carousel.addEventListener("touchmove", (e) => {
-    // Prevenir el comportamiento por defecto del touchmove
-    e.preventDefault();
-    dragging(e);
+        // Si el movimiento es más vertical, cancelar el drag
+        if (deltaY > deltaX) {
+          isDragging = false;
+          return;
+        }
+      }
+
+      e.preventDefault();
+      const x = e.pageX || e.touches[0].pageX;
+      carousel.scrollLeft = startScrollLeft - (x - startX) * 1;
+    };
+
+    // Función para detener el arrastre
+    const dragStop = () => {
+      isDragging = false;
+      carousel.style.cursor = "grab";
+      carousel.style.removeProperty("user-select");
+    };
+
+    // Eventos de ratón (desktop)
+    carousel.addEventListener("mousedown", dragStart);
+    carousel.addEventListener("mousemove", dragging);
+    document.addEventListener("mouseup", dragStop);
+
+    // Eventos táctiles (móvil)
+    carousel.addEventListener("touchstart", dragStart, { passive: false });
+    carousel.addEventListener("touchmove", dragging, { passive: false });
+    document.addEventListener("touchend", dragStop);
   });
-  document.addEventListener("touchend", dragStop);
 });
 
 /* Marcado */

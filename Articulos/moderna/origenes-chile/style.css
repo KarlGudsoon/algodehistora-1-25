@@ -550,6 +550,11 @@
     overflow: hidden;
     align-items: center;
     padding: 2rem;
+    view-timeline-name: --reveal;
+    animation-name: fade-in;
+    animation-fill-mode: both;
+    animation-timeline: --reveal;
+    animation-range: entry 25% cover 50%;
 }
 
 .paso-conquista img {
@@ -741,7 +746,14 @@
     padding: 1rem;
     gap: 1rem;
     position: relative;
+    view-timeline-name: --reveal;
+    animation-name: fade-in;
+    animation-fill-mode: both;
+    animation-timeline: --reveal;
+    animation-range: entry 20% cover 30%;
 }
+
+
 
 .conquista-america-1 {
     background-color: #e92a41;
@@ -867,7 +879,7 @@
     padding: 1rem 1rem 0rem 1rem;
 }
 
-.conquista-america-2 .conquistadores p {
+.descripcion-conquistadores p {
     font: 300 0.9rem Roboto;
     color: var(--secondarycolor);
     margin: 0;
@@ -889,6 +901,19 @@
     box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
     width: 600px;
     height: 600px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.conquista-america-3 object {
+    width: 100%;
+    scale: 1.2;
+    bottom: 0;
+    left: -15%;
+    position: absolute;
 }
 
 #india-america {
@@ -897,6 +922,43 @@
     color: var(--quaternarycolor);
     border-color: var(--quaternarycolor);
     transition: background-color 0.5s ease, scale 0.2s ease;
+}
+
+.conquista-chile {
+    view-timeline-name: --reveal;
+    animation-name: slide-up;
+    animation-fill-mode: both;
+    animation-timeline: --reveal;
+    animation-range: entry 25% cover 50%;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes scale-up {
+    0% {
+        opacity: 0;
+        scale: 0;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(50%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -1005,13 +1067,12 @@
         font-size: 1.5rem;
     }
 
-    .conquista-america-2 div p {
-        font-size: 0.8rem;
-        margin-bottom: 0rem;
-    }
-
     .conquistadores {
         flex-direction: column;
+    }
+
+    .descripcion-conquistadores p {
+        font-size: 0.8rem;
     }
 
     .conquistadores .contenedor-img-1 {

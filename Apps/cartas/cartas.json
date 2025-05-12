@@ -60,7 +60,7 @@
     "colon": {
     "rareza": "épico",
     "colorCarta": "punto-plateado",
-    "imgSobre": "url(/img/edad-moderna/sobremoderna.webp)",
+    "imgSobre": "url(/img/moderna/fondo.webp)",
     "titulo": "CRISTÓBAL COLÓN",
     "color": "var(--edad-moderna)",
     "categoria": [
