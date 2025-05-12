@@ -110,36 +110,20 @@ document.querySelector(".capa-activador-mapa").addEventListener("click", functio
     document.body.classList.add("no-scroll"); // Agregar o quitar la clase "no-scroll" al body
 });
 
-document.getElementById("lengueta-descubrimiento").addEventListener("click", function () {
+document.getElementById("india-america").addEventListener("mouseenter", function() {
+    const spanTexto = this.querySelector("span");
 
-    const containerId = this.getAttribute('data-container');
-    const container = document.getElementById(containerId);
-
-    document.getElementById('conquista-america').classList.remove('active');
-    
-    container.classList.add('active');
-    this.classList.add('active');
-    document.getElementById("lengueta-conquista").classList.remove('active');
-
-    // window.location.href = '#inicio-descubrimiento';
-
-    document.getElementById("inicio-descubrimiento-2").style.display = "none";
-    document.getElementById("inicio-descubrimiento").style.display = "flex";
+    this.style.background = "#147bb7";
+    this.style.color = "white";
+    this.style.borderColor = "rgb(246, 210, 214, 0.75)";
+    spanTexto.innerHTML = "América";
 });
 
-document.getElementById("lengueta-conquista").addEventListener("click", function () {
+document.getElementById("india-america").addEventListener("mouseleave", function() {
+    const spanTexto = this.querySelector("span");
 
-    const containerId = this.getAttribute('data-container');
-    const container = document.getElementById(containerId);
-
-    document.getElementById("mapa-descubrimiento-america").classList.remove('active');
-    
-    container.classList.add('active');
-    this.classList.add('active');
-    document.getElementById("lengueta-descubrimiento").classList.remove('active');
-    
-    /// window.location.href = '#inicio-descubrimiento';
-
-    document.getElementById("inicio-descubrimiento-2").style.display = "flex";
-    document.getElementById("inicio-descubrimiento").style.display = "none";
+    this.style.background = ""; 
+    this.style.color = "";     
+    this.style.borderColor = "";
+    spanTexto.innerHTML = '"Indias"';
 });

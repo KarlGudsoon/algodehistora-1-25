@@ -56,7 +56,25 @@
       { "nombre": "Andino", "clase": "punto-bronce" }
     ],
     "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
+    },
+    "colon": {
+    "rareza": "épico",
+    "colorCarta": "punto-plateado",
+    "imgSobre": "url(/img/edad-moderna/sobremoderna.webp)",
+    "titulo": "CRISTÓBAL COLÓN",
+    "color": "var(--edad-moderna)",
+    "categoria": [
+      { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
+    ],
+    "imagen": "/img/edad-moderna/colon.webp",
+    "fondoFrontal": "/img/edad-moderna/carabela.webp",
+    "fondoTrasera": "/img/edad-moderna/mapamundi-antiguo.webp",
+    "personalidad": [
+      { "nombre": "Navegante", "clase": "punto-plateado", "img": "/icons/brujula.svg" },
+      { "nombre": "Explorador", "clase": "punto-plateado", "img": "/icons/mapa.svg" },
+      { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
+    ],
+    "descripcion": "Cristóbal Colón fue un navegante genovés conocido por realizar el viaje que llevó al descubrimiento de América en 1492, bajo el auspicio de los Reyes Católicos de España."
     }
-    
 }
   

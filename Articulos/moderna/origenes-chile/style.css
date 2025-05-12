@@ -589,7 +589,9 @@
     height: auto;
     gap: 0;
     justify-content: center;
-    
+    position: relative;
+    z-index: 9;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
 }
 
 .contenedor-conquista-1 {   
@@ -731,7 +733,175 @@
     display: block;
 }
 
+.explicacion-conquista-america {
+    min-height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
+    position: relative;
+}
+
+.conquista-america-1 {
+    background-color: #e92a41;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+    max-width: 600px;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.conquista-america-1 span {
+    padding: 0 2rem 0 2rem; 
+    text-align: center;
+}
+
+.conquista-america-1 h1 {
+    font: 900 2.5rem BreeSerif;
+    color: white;
+    opacity: 0.5;
+    line-height: 1;
+    padding: 2rem 2rem 0 2rem;
+    margin-bottom: 1rem;
+}
+
+.conquista-america-1 p {
+    padding: 0 2rem 0 2rem;
+    margin-bottom: 1rem;
+}
+
+.conquista-america-1 .contenedor-botones {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 1rem; 
+    margin-bottom: 1rem;
+}
+
+.conquista-america-1 .contenedor-botones span {
+    padding: 0;
+}
+
+.conquista-america-1 .contenedor-botones button img:first-child {
+    width: 50px;
+    position: absolute;
+    right: 0;
+    filter: invert(1);
+    opacity: 0;
+    transition: 0.2s ease;
+}
+
+.conquista-america-1 .contenedor-botones button:hover img:first-child {
+    opacity: 0.35;
+}
+
+.conquista-america-1 .contenedor-botones button img:nth-child(2) {
+    width: 50px;
+    position: absolute;
+    filter: invert(0.1);
+    left: 0;
+    opacity: 0.35;
+    transition: 0.2s ease;
+}
+
+.conquista-america-1 .contenedor-botones button:hover img:nth-child(2) {
+    opacity: 0;
+}
+
+.conquista-america-1 .arrow-down {
+    display: none;
+}
+
+.conquista-america-1 .contenedor-img-3 img {
+    object-position: 0 -50px;
+}
+
+.conquista-america-2 {
+    padding: 1rem;
+    background-color: #e92a41;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    height: 600px;
+    padding: 2rem;
+}
+
+.conquista-america-2 h1 {
+    font: 900 2.5rem BreeSerif;;
+    color: white;
+    opacity: 0.5;
+    line-height: 1;
+    margin: 0;
+}
+
+
+.conquista-america-2 .conquistadores {
+    background-color: var(--tertiarycolor);
+    color: var(--secondarycolor);
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+    width: 100%;
+    flex: 1;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.descripcion-conquistadores {
+    display: flex;
+    flex-direction: column;
+}
+
+.conquista-america-2 .conquistadores h1 {
+    font: 900 2rem BreeSerif;
+    color: var(--secondarycolor);
+    opacity: 0.5;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    padding: 1rem 1rem 0rem 1rem;
+}
+
+.conquista-america-2 .conquistadores p {
+    font: 300 0.9rem Roboto;
+    color: var(--secondarycolor);
+    margin: 0;
+    position: relative;
+    z-index: 9;
+    padding: 0rem 1rem 0rem 1rem;
+}
+
+.conquistadores .contenedor-img-1 {
+    height: 100%;
+    min-width: 200px;
+    width: 200px;
+}
+
+.conquista-america-3 {
+    padding: 1rem;
+    background-color: #e92a41;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+    width: 600px;
+    height: 600px;
+}
+
+#india-america {
+    width: 150px;
+    background-color: rgb(233, 195, 26);
+    color: var(--quaternarycolor);
+    border-color: var(--quaternarycolor);
+    transition: background-color 0.5s ease, scale 0.2s ease;
+}
+
 @media screen and (max-width: 700px) {
+
+
 
     .mapa-interno {
         height: 400px;
@@ -740,8 +910,7 @@
     .contenedor-lenguetas {
         position: sticky;
         top: 0;
-        z-index: 9;
-        
+        z-index: 9;   
     }
 
     .lengueta-vertical {
@@ -799,5 +968,62 @@
         height: 400px;
     }
     
-    
+    .explicacion-conquista-america {
+        font-size: 0.8rem;
+    }
+
+    .explicacion-conquista-america h1 {
+        font-size: 2rem;
+    }
+
+    .explicacion-conquista-america button {
+        font-size: 0.8rem;
+    }
+
+    .conquista-america-1 .contenedor-botones {
+        flex-direction: column;
+    }
+
+    .conquista-america-1 .arrow-down {
+        display: block;
+    }
+
+    .conquista-america-1 .arrow-right {
+        display: none;
+    }
+
+    .conquista-america-2 {
+        height: auto;
+        padding: 1.5rem;
+    }
+
+    .conquista-america-2 p {
+        margin: 0;
+    }
+
+    .conquista-america-2 div h1 {
+        font-size: 1.5rem;
+    }
+
+    .conquista-america-2 div p {
+        font-size: 0.8rem;
+        margin-bottom: 0rem;
+    }
+
+    .conquistadores {
+        flex-direction: column;
+    }
+
+    .conquistadores .contenedor-img-1 {
+        position: relative;
+        height: 10%;
+        width: 100%;
+        mask-image: linear-gradient(to bottom, transparent 10%, black 50%);
+    }
+
+    .conquistadores .contenedor-img-1 img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
 }

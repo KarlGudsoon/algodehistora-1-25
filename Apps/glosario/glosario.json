@@ -10,5 +10,9 @@
     "revolucion": {
         "titulo": "Revolución Industrial",
         "descripcion": "Proceso de transformación económica, social y tecnológica que se inició en el siglo XVIII en Gran Bretaña y se expandió al resto del mundo."
+    },
+    "empresaconquista": {
+        "titulo": "Empresas de Conquista",
+        "descripcion": "Iniciativas destinadas a explorar los territorios de ultramar alcanzados por la Corona española a fines del siglo XV y financiadas generalmente por comerciantes y banqueros. Estas eran reguladas por el Estado a través de capitulaciones. En estos contratos el capitán de la expedición se comprometía a explorar los territorios desconocidos, incorporarlos al Imperio español y evangelizar a la población; mientras que la Corona concedía al capitán parte de las tierras adquiridas y cargos en el territorio conquistado."
     }
 }
