@@ -1785,6 +1785,29 @@ li:hover ul#submenu {
   left: 0.9rem;
 }
 
+.linea-tiempo-universal .año {
+  width: 100%;
+  height: 170px;
+  border: 1px solid red;
+  padding: 0 1rem 0 1rem;
+  display: flex;
+  position: absolute;
+  top: 0;
+  align-items: center;
+  padding-left: 2rem;
+}
+
+.linea-tiempo-universal .hecho-historico {
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  background-color: white;
+  color: var(--primarycolor);
+  border-radius: 1rem;
+  position: absolute;
+  left: 0;
+}
+
 .container-linea-tiempo-2 {
   width: 100%;
   position: relative;
