@@ -1769,10 +1769,20 @@ li:hover ul#submenu {
   content: "";
   width: 10rem;
   height: 0;
-  border-top: 2px dashed white;
+  border-top: 7px dashed rgb(255, 255, 255, .1);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -0.5rem;
+  left: 2rem;
+}
+
+.linea-tiempo-universal .años span::after {
+  content: "";
+  width: 0.25rem;
+  height: 1rem;
+  background-color: rgb(255, 255, 255, .2);
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
 }
 
 .container-linea-tiempo-2 {
