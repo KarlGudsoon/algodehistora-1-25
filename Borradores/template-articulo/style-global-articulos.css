@@ -11,6 +11,30 @@
   --medieval: #f8b229;
   --moderna: #f11c35; 
   --contemporanea: #2e8b57; 
+
+  /* Linea de tiempo universal */
+
+
+  --1: 25px;
+  --2: 45px;
+  --3: 62px; 
+  --4: 81px;
+  --5: 100px;
+  --6: 119px;
+  --7: 137px;
+  --8: 156px;
+  --9: 175px;
+
+  --10: 200px;
+  --20: 400px;
+  --30: 600px;
+  --40: 800px;
+  --50: 1000px;
+  --60: 1200px;
+  --70: 1400px;
+  --80: 1600px;
+  --90: 1800px;
+
 }
 
 html {
@@ -1738,6 +1762,15 @@ li:hover ul#submenu {
   height: 400px;
 }
 
+.contenedor-linea-tiempo-universal #particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
 .linea-tiempo-universal {
   display: flex;
   transition: transform 0.5s ease-in-out;
@@ -1757,56 +1790,100 @@ li:hover ul#submenu {
   height: fit-content;
   padding: 0 1rem 0 1rem;
   display: flex;
-  gap: 10rem;
+  gap: 160px;
   position: relative;
 }
 
 .linea-tiempo-universal .años span {
   position: relative;
+  width: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .linea-tiempo-universal .años span::before {
   content: "";
-  width: 10rem;
+  width: 200px;
   height: 0;
-  border-top: 7px dashed rgb(255, 255, 255, .1);
+  border-top: 6px dashed rgb(255, 255, 255, .1);
   position: absolute;
   top: -0.5rem;
-  left: 2rem;
+  left: 20px;
 }
 
 .linea-tiempo-universal .años span::after {
   content: "";
-  width: .2rem;
+  width: 5px;
   height: 10px;
   background-color: rgb(255, 255, 255, 1);
   position: absolute;
-  top: -.7rem;
-  left: 0.9rem;
+  top: -10px;
 }
 
-.linea-tiempo-universal .año {
+.linea-tiempo-universal .contenedor-año {
   width: 100%;
-  height: 170px;
-  border: 1px solid red;
+  height: 100%;
   padding: 0 1rem 0 1rem;
   display: flex;
-  position: absolute;
-  top: 0;
   align-items: center;
   padding-left: 2rem;
   
 }
 
+.linea-tiempo-universal .contenedor-año .año {
+  width: 2000px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.año .seccion-top, .año .seccion-mid, .año .seccion-bottom {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
 .linea-tiempo-universal .hecho-historico {
-  width: fit-content;
+  width: max-content;
   height: fit-content;
   padding: 0.5rem 1rem 0.5rem 1rem;
   background-color: white;
-  color: var(--primarycolor);
+  color: #232323;
   border-radius: 1rem;
   position: absolute;
   left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.linea-tiempo-universal .hecho-historico::after {
+  content: attr(data-fecha);
+  position: absolute;
+  top: -55%;
+  left: 5%;
+  font: 300 1rem Roboto;
+  color: white;
+
+}
+
+.año .seccion-mid .hecho-historico::before {
+  content: "";
+  width: 1px;
+  height: 95px;
+  top: 50%;
+  left: 4px;
+  z-index: -1;
+  background-color: white;
+  position: absolute;
 }
 
 .container-linea-tiempo-2 {

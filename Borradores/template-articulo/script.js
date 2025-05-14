@@ -830,3 +830,7 @@ document.querySelectorAll(".close-icon").forEach(closeIcon => {
 });
 
 /// VISOR DE IMAGENES 🎞️
+
+particlesJS.load('particles-js', 'particles.json', function() {
+  console.log('¡Partículas cargadas!');
+});
