@@ -752,66 +752,39 @@
 
           </div>
         </section>
-        <section class="contenedor-linea-tiempo-universal inner" draggable="false">
-          
-          <div class="linea-tiempo-universal ">
-            <div id="particles-js"></div>
-            <div class="contenedor-año">
-              <div class="año 1800">
-                <div class="seccion-top">
-                </div>
-                <div class="seccion-mid">
-                  <span class="hecho-historico" data-fecha="1884" style="left: calc(var(--80) + var(--4));">Conferencia de Berlín</span>
-                </div> 
-                <div class="seccion-bottom">
-                </div>
-              </div>
-              <div class="año 1900">
-                <div class="seccion-top">
-                </div>
-                <div class="seccion-mid">
-                </div> 
-                <div class="seccion-bottom">
-                </div>
-              </div>
-            </div>
-            <div class="linea-horizontal"><span style="--color: var(--tertiarycolor)"></span></div>
-            <div class="años">
-              <span>1800</span>
-              <span>1810</span>
-              <span>1820</span>
-              <span>1830</span>
-              <span>1840</span>
-              <span>1850</span>
-              <span>1860</span>
-              <span>1870</span>
-              <span>1880</span>
-              <span>1890</span>
-              <span>1900</span>
-              <span>1910</span>
-              <span>1920</span>
-              <span>1930</span>
-              <span>1940</span>
-              <span>1950</span>
-              <span>1960</span>
-              <span>1970</span>
-              <span>1980</span>
-              <span>1990</span>
-            </div>
-            <div class="contenedor-año">
-              <div class="año">
-                <div class="seccion-top">
-                  
-                </div>
-                <div class="seccion-mid">
 
-                </div>
-                <div class="seccion-bottom">
-
-                </div>
+        
+        <section class="contenedor-linea-tiempo-universal"> 
+          <div id="particles-js"></div>
+          <div class="botones-periodos">
+            <button class="boton-linea-tiempo" id="btn-prehistoria" data-fecha="0"><img src="/icons/prehistoria/stone-tablet.svg"></button>
+            <button class="boton-linea-tiempo" id="btn-antigua" data-fecha="0"><img src="/icons/antigua/building-columns.svg"></button>
+            <button class="boton-linea-tiempo" id="btn-medieval" data-fecha="470"><img src="/icons/medieval/stone-tower.svg"></button>
+            <button class="boton-linea-tiempo" id="btn-moderna" data-fecha="1490"><img src="/icons/moderna/game-ship-wheel.svg"></button>
+            <button class="boton-linea-tiempo" id="btn-contemporanea" data-fecha="1790"><img src="/icons/contemporanea/factory.svg"></button>
+          </div>
+          <div class="contenedor-botones-tiempo">
+            <div class="year-input-container">
+              <input type="number" id="year-input" min="0" max="1990" placeholder="Escribe un año (0-1990)"><button id="go-year" hidden>Ir</button><span hidden id="adjusted-year"></span>
+            </div>
+            <div class="scroll-controller">
+              <input type="range" class="scroll-slider" min="0" max="100" value="0">
+            </div>
+            
+          </div>
+          <div class="inner-linea-tiempo-universal inner" draggable="false">
+            <div class="linea-tiempo-universal">
+              <div class="contenedor-siglo contenedor-siglo-superior" id="contenedor-siglo">
+                
+              </div>
+              <div class="linea-horizontal"><span style="--color: var(--tertiarycolor)"></span></div>
+              <div class="años" id="linea-tiempo-universal-años">
+                
+              </div>
+              <div class="contenedor-siglo contenedor-siglo-inferior">
+              
               </div>
             </div>
-
           </div>
         </section>
         <div class="widget-hitos-interno inset">
@@ -1176,6 +1149,7 @@
     <script type="text/javascript" src="/vanilla-tilt.min.js"></script>
     <script src="https://unpkg.com/popper.js@1"></script>
     <script src="https://unpkg.com/tippy.js@5"></script>
+    <script src="/Borradores/template-articulo/tippy.js"></script>
     <script src="/Articulos/moderna/origenes-chile/tippy.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>

@@ -834,3 +834,237 @@ document.querySelectorAll(".close-icon").forEach(closeIcon => {
 particlesJS.load('particles-js', 'particles.json', function() {
   console.log('¡Partículas cargadas!');
 });
+
+/// LINEA DE TIEMPO UNIVERSAL
+
+const contenedor = document.getElementById('linea-tiempo-universal-años');
+
+for (let año = 0; año <= 1990; año += 10) {
+ 
+  const span = document.createElement('span');
+  
+  span.textContent = año;
+  span.id = año;
+  span.setAttribute('data-fecha', año);
+  
+  contenedor.appendChild(span);
+}
+
+const contenedoresSiglos = document.querySelectorAll('.contenedor-siglo');
+
+// Función para convertir a números romanos
+function convertirARomano(num) {
+  const romanos = [
+    ["M", 1000], ["CM", 900], ["D", 500], ["CD", 400],
+    ["C", 100], ["XC", 90], ["L", 50], ["XL", 40],
+    ["X", 10], ["IX", 9], ["V", 5], ["IV", 4], ["I", 1]
+  ];
+
+  let resultado = "";
+  for (const [letra, valor] of romanos) {
+    while (num >= valor) {
+      resultado += letra;
+      num -= valor;
+    }
+  }
+  return resultado;
+}
+
+for (let año = 0; año <= 1900; año += 100) {
+  let numeroSiglo = Math.floor(año / 100) + 1;
+  let romano = convertirARomano(numeroSiglo);
+
+  // Crear el contenedor del siglo
+  const siglo = document.createElement('div');
+  siglo.classList.add("siglo");
+  siglo.setAttribute('data-siglo', romano);
+
+  // Crear sub-secciones
+  const top = document.createElement('div');
+  const mid = document.createElement('div');
+  const bottom = document.createElement('div');
+
+  top.classList.add("seccion-top");
+  mid.classList.add("seccion-mid");
+  bottom.classList.add("seccion-bottom");
+
+  // Insertar sub-secciones en el siglo
+  siglo.appendChild(top);
+  siglo.appendChild(mid);
+  siglo.appendChild(bottom);
+
+  // Clonar e insertar el siglo en todos los contenedores
+  contenedoresSiglos.forEach(contenedor => {
+    contenedor.appendChild(siglo.cloneNode(true));
+  });
+}
+
+
+// BOTONES PARA REDIRIGIR A UN AÑO ESPECIFICO
+
+document.querySelectorAll('.boton-linea-tiempo').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const targetFecha = this.dataset.fecha;
+    const targetElement = document.getElementById(`${targetFecha}`);
+    const carrusel = document.querySelector('.inner-linea-tiempo-universal');
+    
+    if (targetElement) {
+      // Calcular posición de desplazamiento (centrado)
+      const containerWidth = carrusel.offsetWidth;
+      const targetPosition = targetElement.offsetLeft;
+      const targetWidth = targetElement.offsetWidth;
+      const scrollTo = targetPosition - (containerWidth / 2) + (targetWidth / 2);
+      
+      // Desplazamiento suave
+      carrusel.scrollTo({
+        left: scrollTo,
+        behavior: 'smooth'
+      });
+      
+      // Resaltar año activo (opcional)
+      document.querySelectorAll('.año').forEach(a => a.classList.remove('active'));
+      targetElement.classList.add('active');
+    }
+  });
+});
+
+// SCROLL CONTROLLER 
+
+const carrusel = document.querySelector('.inner-linea-tiempo-universal');
+const scrollSlider = document.querySelector('.scroll-slider');
+
+// 1. Actualizar slider cuando se mueve el carrusel
+carrusel.addEventListener('scroll', () => {
+  const scrollWidth = carrusel.scrollWidth - carrusel.clientWidth;
+  const scrollPosition = carrusel.scrollLeft;
+  
+  // Calcular porcentaje (0-100)
+  const percentage = (scrollPosition / scrollWidth) * 100;
+  
+  // Actualizar valor del slider
+  scrollSlider.value = percentage;
+});
+
+// 2. Mover carrusel cuando se arrastra el slider
+scrollSlider.addEventListener('input', () => {
+  const scrollWidth = carrusel.scrollWidth - carrusel.clientWidth;
+  const scrollTo = (scrollSlider.value / 100) * scrollWidth;
+  
+  // Desplazamiento suave (compatible con todos navegadores)
+  carrusel.scrollTo({
+    left: scrollTo,
+    behavior: 'auto' // Cambia a 'smooth' para efecto suave
+  });
+});
+
+// 3. Calcular el max del slider cuando cambia el tamaño
+function updateSliderMax() {
+  const scrollWidth = carrusel.scrollWidth - carrusel.clientWidth;
+  scrollSlider.max = scrollWidth > 0 ? 100 : 0;
+}
+
+// Inicializar y actualizar en resize
+updateSliderMax();
+window.addEventListener('resize', updateSliderMax);
+
+
+/// SCROLL BUSCADOR
+
+const yearInput = document.getElementById('year-input');
+const adjustedYearDisplay = document.getElementById('adjusted-year');
+
+// Función para ajustar a la década
+function adjustToDecade(year) {
+  return Math.floor(year / 10) * 10;
+}
+
+// Función para desplazar al año
+function scrollToAdjustedYear(year) {
+  const adjustedYear = adjustToDecade(year);
+  const targetElement = document.getElementById(`${adjustedYear}`);
+  
+  if (targetElement) {
+    // Mostrar año ajustado
+    adjustedYearDisplay.textContent = `Mostrando década: ${adjustedYear}s`;
+
+    // Desplazamiento suave
+    const containerWidth = carrusel.offsetWidth;
+    const targetPosition = targetElement.offsetLeft;
+    const targetWidth = targetElement.offsetWidth;
+    const scrollTo = targetPosition - (containerWidth / 2) + (targetWidth / 2);
+
+    carrusel.scrollTo({
+      left: scrollTo,
+      behavior: 'smooth'
+    });
+
+    // Resaltar año
+    document.querySelectorAll('.año').forEach(a => a.classList.remove('active'));
+    targetElement.classList.add('active');
+  }
+}
+
+// Validación automática del input
+yearInput.addEventListener('input', () => {
+  let value = yearInput.value;
+
+  // Eliminar caracteres no numéricos
+  value = value.replace(/[^0-9]/g, '');
+
+  // Limitar a 4 dígitos
+  if (value.length > 4) {
+    value = value.slice(0, 4);
+  }
+
+  yearInput.value = value;
+
+  // Mostrar década ajustada en tiempo real
+  if (value.length >= 1) {
+    const numValue = parseInt(value) || 0;
+    const adjusted = adjustToDecade(Math.min(numValue, 1990));
+    adjustedYearDisplay.textContent = `Década: ${adjusted}s`;
+
+    // Mover automáticamente al elemento si es un año válido
+    if (numValue >= 0 && numValue <= 1990) {
+      scrollToAdjustedYear(numValue);
+    }
+  } else {
+    adjustedYearDisplay.textContent = '';
+  }
+});
+
+/// CREADOR DE HECHOS HISTORICOS
+
+fetch('/Apps/timeline/hitos.json')
+  .then(response => response.json())
+  .then(data => {
+    crearHechosHistoricos(data);
+  })
+  .catch(error => {
+    console.error('Error al cargar los hechos históricos:', error);
+  });
+
+function crearHechosHistoricos(datos) {
+  datos.forEach(item => {
+    const span = document.createElement('span');
+    span.classList.add('hecho-historico');
+  
+    span.style.left = `${item.año}`;
+
+    span.textContent = item.nombre;
+    span.setAttribute('data-fecha', item.fecha);
+
+    const contenedorSiglo = document.querySelector(`.${item.contenedor}`);
+    if (!contenedorSiglo) return;
+
+    // Busca el siglo adecuado
+    const siglo = contenedorSiglo.querySelector(`.siglo[data-siglo="${item.siglo}"]`);
+    if (!siglo) return;
+
+    // Busca la sección dentro del siglo
+    const seccion = siglo.querySelector(`.seccion-${item.posicion}`);
+    if (!seccion) return;
+
+    seccion.appendChild(span);
+  });
+}

@@ -1,0 +1,60 @@
+[
+    {
+        "nombre": "Caída del Imperio Romano",
+        "fecha": "476",
+        "siglo": "V",
+        "contenedor": "contenedor-siglo-superior",
+        "posicion": "mid",
+        "año": "calc(var(--70) + var(--6))"
+    },
+   
+    {
+        "nombre": "Descubrimiento de América",
+        "fecha": "1492",
+        "siglo": "XV",
+        "contenedor": "contenedor-siglo-superior",
+        "posicion": "mid",
+        "año": "calc(var(--90) + var(--2))"
+    },
+    {
+        "nombre": "Reforma Protestante",
+        "fecha": "1517",
+        "siglo": "XVI",
+        "contenedor": "contenedor-siglo-superior",
+        "posicion": "mid",
+        "año": "calc(var(--90) + var(--7))"
+    },
+    {
+        "nombre": "Revolución Industrial",
+        "fecha": "1760",
+        "siglo": "XVIII",
+        "contenedor": "contenedor-siglo-inferior",
+        "posicion": "top",
+        "año": "calc(var(--70) + var(--6))"
+    },
+    {
+        "nombre": "Independencia de Estados Unidos",
+        "fecha": "1776",
+        "siglo": "XVIII",
+        "contenedor": "contenedor-siglo-superior",
+        "posicion": "bottom",
+        "año": "calc(var(--70) + var(--6))"
+    },
+    {
+        "nombre": "Revolución Francesa",
+        "fecha": "1789",
+        "siglo": "XVIII",
+        "contenedor": "contenedor-siglo-superior",
+        "posicion": "mid",
+        "año": "calc(var(--70) + var(--9))"
+    },
+    {
+        "nombre": "Nacimiento de Abuela",
+        "fecha": "1959",
+        "siglo": "XX",
+        "contenedor": "contenedor-siglo-superior",
+        "posicion": "mid",
+        "año": "calc(var(--50) + var(--9))"
+    }
+  ]
+  
