@@ -1068,3 +1068,49 @@ function crearHechosHistoricos(datos) {
     seccion.appendChild(span);
   });
 }
+
+crearPasoPeriodo({
+  siglo: "XV",
+  periodo: "Edad Moderna",
+  imagen: "/img/moderna/fondo.webp",
+  posicion: "calc(var(--90) + var(--2))"
+});
+
+crearPasoPeriodo({
+  siglo: "XVIII",
+  periodo: "Edad Contemporanea",
+  imagen: "/img/contemporanea/libertad-guiando-pueblo.webp",
+  posicion: "calc(var(--80) + var(--9))"
+});
+
+crearPasoPeriodo({
+  siglo: "XIX",
+  periodo: "Imperialismo",
+  imagen: "/img/contemporanea/imperialismo.jpg",
+  posicion: "calc(var(--100) + var(--5))"
+});
+
+crearPasoPeriodo({
+  siglo: "V",
+  periodo: "Edad Medieval",
+  imagen: "/img/medieval/Caida-del-Imperio-Romano.webp",
+  posicion: "calc(var(--70) + var(--6))"
+});
+
+function crearPasoPeriodo({ siglo, periodo, imagen, posicion }) {
+  const contenedorSiglo = document.querySelector(`.siglo[data-siglo="${siglo}"]`);
+  if (!contenedorSiglo) return console.warn(`No se encontró el siglo: ${siglo}`);
+
+  const pasoPeriodo = document.createElement('div');
+  const textoPeriodo = document.createElement('span');
+
+  textoPeriodo.textContent = periodo;
+
+  pasoPeriodo.classList.add('paso-periodo');
+  pasoPeriodo.style.setProperty('--background-image-periodo', `url('${imagen}')`);
+  pasoPeriodo.style.left = posicion;
+
+  pasoPeriodo.setAttribute('data-periodo', periodo);
+  pasoPeriodo.appendChild(textoPeriodo);
+  contenedorSiglo.appendChild(pasoPeriodo);
+}

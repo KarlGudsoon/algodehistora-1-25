@@ -30,7 +30,7 @@
         "siglo": "XVIII",
         "contenedor": "contenedor-siglo-inferior",
         "posicion": "top",
-        "año": "calc(var(--70) + var(--6))"
+        "año": "var(--60)"
     },
     {
         "nombre": "Independencia de Estados Unidos",
@@ -46,7 +46,7 @@
         "siglo": "XVIII",
         "contenedor": "contenedor-siglo-superior",
         "posicion": "mid",
-        "año": "calc(var(--70) + var(--9))"
+        "año": "calc(var(--80) + var(--9))"
     },
     {
         "nombre": "Nacimiento de Abuela",
