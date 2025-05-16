@@ -1069,33 +1069,14 @@ function crearHechosHistoricos(datos) {
   });
 }
 
-crearPasoPeriodo({
-  siglo: "XV",
-  periodo: "Edad Moderna",
-  imagen: "/img/moderna/fondo.webp",
-  posicion: "calc(var(--90) + var(--2))"
-});
+/// PERÍODOS HISTÓRICOS EN LINEA DE TIEMPO
 
-crearPasoPeriodo({
-  siglo: "XVIII",
-  periodo: "Edad Contemporanea",
-  imagen: "/img/contemporanea/libertad-guiando-pueblo.webp",
-  posicion: "calc(var(--80) + var(--9))"
-});
-
-crearPasoPeriodo({
-  siglo: "XIX",
-  periodo: "Imperialismo",
-  imagen: "/img/contemporanea/imperialismo.jpg",
-  posicion: "calc(var(--100) + var(--5))"
-});
-
-crearPasoPeriodo({
-  siglo: "V",
-  periodo: "Edad Medieval",
-  imagen: "/img/medieval/Caida-del-Imperio-Romano.webp",
-  posicion: "calc(var(--70) + var(--6))"
-});
+fetch('/Apps/timeline/periodos.json')
+  .then(res => res.json())
+  .then(periodos => {
+    periodos.forEach(crearPasoPeriodo);
+  })
+  .catch(err => console.error("Error cargando periodos:", err));
 
 function crearPasoPeriodo({ siglo, periodo, imagen, posicion }) {
   const contenedorSiglo = document.querySelector(`.siglo[data-siglo="${siglo}"]`);
