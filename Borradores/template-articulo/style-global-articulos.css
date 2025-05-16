@@ -1775,6 +1775,7 @@ li:hover ul#submenu {
 
 .contenedor-botones-tiempo {
   position: absolute;
+  width: 100%;
   bottom: 0;
   display: flex;
   flex-direction: column;
@@ -1802,17 +1803,17 @@ li:hover ul#submenu {
 }
 
 .scroll-controller {
-  width: 80%;
-  margin: 1rem auto;
+  width: 100%;
   position: relative;
+  height: 100%;
 }
 
 .scroll-slider {
   width: 100%;
-  height: 10px;
+  height: 20px;
   -webkit-appearance: none;
   appearance: none;
-  background: #414141;
+  background: transparent;
   border-radius: 10px;
   z-index: 2;
   position: relative;
@@ -1820,11 +1821,23 @@ li:hover ul#submenu {
 
 .scroll-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 1rem 1rem 0rem 0;
+  background-color: black;
+  background-image: url("/icons/horizontal.svg");
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: grab;
+  filter: invert(1) brightness(90%);
+  transition: 0.2s ease;
+}
+
+.scroll-slider::-webkit-slider-thumb:hover {
+  filter: invert(1) brightness(100%);
+  scale: 1.05;
+  transform: translateY(-5px);
 }
 
 .scroll-slider::-moz-range-thumb {
@@ -1847,7 +1860,11 @@ li:hover ul#submenu {
   border-radius: 8px;
   width: 100px;
   font-size: 16px;
+  background-color: #464646;
   transition: border 0.3s;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: white;
 }
 
 #year-input:focus {
@@ -1956,6 +1973,7 @@ li:hover ul#submenu {
   align-items: center;
   transition: 0.2s ease;
   cursor: pointer;
+  z-index: 9;
 }
 
 .linea-tiempo-universal .hecho-historico:hover {
