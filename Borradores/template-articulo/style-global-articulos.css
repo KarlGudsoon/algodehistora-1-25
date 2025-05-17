@@ -1761,16 +1761,101 @@ li:hover ul#submenu {
   display: flex;
   justify-content: center;
   user-select: none;
+  background-color: #232323;
 }
 
 .inner-linea-tiempo-universal {
-  background-color: #232323;
   width: 100%;
   overflow:hidden;
   position: relative;
   user-select: none;
   height: 400px;
   
+}
+
+.periodo-medieval {
+  width: 20325px;
+  height: 100%;
+  position: absolute;
+  left: calc(8015px + var(--70) + var(--7));
+  view-timeline-name: --reveal;
+  view-timeline-axis: inline;
+  animation-name: periodoHistorico;
+  animation-timeline: --reveal;
+  animation-range: entry 0% cover 100%;
+  opacity: 1;
+  z-index: -1;
+}
+
+.periodo-medieval::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #f3bf16;
+  background-image: url("/img/medieval/mercadomedieval.webp");
+  background-position: center;
+  mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  opacity: 0%;
+}
+
+.periodo-medieval h1 {
+  position: sticky;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: white;
+  z-index: 9;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  background-color: var(--medieval);
+  view-timeline-name: --reveal;
+  view-timeline-axis: inline;
+  animation-name: periodoHistoricoH1;
+  animation-timeline: --reveal;
+  animation-range: entry 0% cover 100%;
+  opacity: 0;
+}
+
+@keyframes periodoHistorico {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes periodoHistoricoH1 {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .contenedor-botones-tiempo {
@@ -1789,11 +1874,32 @@ li:hover ul#submenu {
   gap: 0.5rem;
   position: relative;
   z-index: 9;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .boton-linea-tiempo {
   padding: 0.5rem;
+  border-radius: 15px;
+}
+
+.boton-linea-tiempo:nth-child(1) {
+  background-color: var(--prehistoria);
+}
+
+.boton-linea-tiempo:nth-child(2) {
+  background-color: var(--antigua);
+}
+
+.boton-linea-tiempo:nth-child(3) {
+  background-color: var(--medieval);
+}
+
+.boton-linea-tiempo:nth-child(4) {
+  background-color: var(--moderna);
+}
+
+.boton-linea-tiempo:nth-child(5) {
+  background-color: var(--contemporanea);
 }
 
 .boton-linea-tiempo img {

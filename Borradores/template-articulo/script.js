@@ -1095,3 +1095,6 @@ function crearPasoPeriodo({ siglo, periodo, imagen, posicion }) {
   pasoPeriodo.appendChild(textoPeriodo);
   contenedorSiglo.appendChild(pasoPeriodo);
 }
+
+
+
