@@ -1796,7 +1796,7 @@ li:hover ul#submenu {
   background-image: url("/img/medieval/mercadomedieval.webp");
   background-position: center;
   mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
-  opacity: 0%;
+  opacity: 15%;
 }
 
 .periodo-medieval h1 {
@@ -1809,7 +1809,7 @@ li:hover ul#submenu {
   border-radius: 1rem;
   text-align: center;
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: white;
   z-index: 9;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
