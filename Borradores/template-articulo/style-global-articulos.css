@@ -12,6 +12,10 @@
   --moderna: #f11c35; 
   --contemporanea: #2e8b57; 
 
+  --paleolitico-inferior: #e86b35;
+  --paleolitico-medio: #d95922;
+  --paleolitico-superior: #c45222;
+
   /* Linea de tiempo universal */
 
 
@@ -1780,7 +1784,7 @@ li:hover ul#submenu {
   left: calc(8015px + var(--70) + var(--7));
   view-timeline-name: --reveal;
   view-timeline-axis: inline;
-  animation-name: periodoHistorico;
+  animation-name: periodomedieval;
   animation-timeline: --reveal;
   animation-range: entry 0% cover 100%;
   opacity: 1;
@@ -1792,11 +1796,11 @@ li:hover ul#submenu {
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: #f3bf16;
-  background-image: url("/img/medieval/mercadomedieval.webp");
+  background-color: var(--medieval);
+  background-image: var(--imageperiodo);
   background-position: center;
   mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
-  opacity: 15%;
+  opacity: 10%;
 }
 
 .periodo-medieval h1 {
@@ -1816,28 +1820,32 @@ li:hover ul#submenu {
   background-color: var(--medieval);
   view-timeline-name: --reveal;
   view-timeline-axis: inline;
-  animation-name: periodoHistoricoH1;
+  animation-name: periodomedievalH1;
   animation-timeline: --reveal;
-  animation-range: entry 0% cover 100%;
+  animation-range: entry 20% cover 100%;
   opacity: 0;
 }
 
-@keyframes periodoHistorico {
+@keyframes periodomedieval {
   0% {
+    opacity: 0;
+  }
+  2% {
     opacity: 0;
   }
   10% {
     opacity: 1;
   }
-  90% {
+  95% {
     opacity: 1;
   }
+  
   100% {
     opacity: 0;
   }
 }
 
-@keyframes periodoHistoricoH1 {
+@keyframes periodomedievalH1 {
   0% {
     opacity: 0;
   }
@@ -1847,12 +1855,383 @@ li:hover ul#submenu {
   10% {
     opacity: 1;
   }
+  
   90% {
     opacity: 1;
   }
+
   95% {
     opacity: 0;
   }
+  100% {
+    opacity: 0;
+  }
+}
+
+.periodo-prehistoria {
+  width: 4350px;
+  height: 100%;
+  position: absolute;
+  left: 250px;
+  view-timeline-name: --reveal;
+  view-timeline-axis: inline;
+  animation-name: periodoPrehistoria;
+  animation-timeline: --reveal;
+  animation-range: entry 0% cover 100%;
+  opacity: 1;
+  z-index: -1;
+}
+
+.periodo-prehistoria::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--prehistoria);
+  background-image: var(--imageperiodo);
+  background-position: center;
+  mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  opacity: 10%;
+}
+
+.periodo-prehistoria h1 {
+  position: sticky;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: white;
+  z-index: 9;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  background-color: var(--prehistoria);
+  view-timeline-name: --reveal;
+  view-timeline-axis: inline;
+  animation-name: periodoPrehistoriaH1;
+  animation-timeline: --reveal;
+  animation-range: entry 30% cover 100%;
+  opacity: 0;
+}
+
+@keyframes periodoPrehistoria {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes periodoPrehistoriaH1 {
+  0% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.periodo-antigua {
+  width: 16100px;
+  height: 100%;
+  position: absolute;
+  left: 4650px;
+  view-timeline-name: --reveal;
+  view-timeline-axis: inline;
+  animation-name: periodoAntigua;
+  animation-timeline: --reveal;
+  animation-range: entry 0% cover 100%;
+  opacity: 1;
+  z-index: -1;
+}
+
+.periodo-antigua::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--antigua);
+  background-image: var(--imageperiodo);
+  background-position: center;
+  mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  opacity: 10%;
+}
+
+.periodo-antigua h1 {
+  position: sticky;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: white;
+  z-index: 9;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  background-color: var(--antigua);
+  view-timeline-name: --reveal;
+  view-timeline-axis: inline;
+  animation-name: periodoEdadAntiguaH1;
+  animation-timeline: --reveal;
+  animation-range: entry 0% cover 100%;
+  opacity: 0;
+}
+
+@keyframes periodoAntigua {
+  0% {
+    opacity: 0;
+  }
+
+  2% {
+    opacity: 0;
+  }
+  
+  10% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+ 
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes periodoEdadAntiguaH1 {
+  0% {
+    opacity: 0;
+  }
+  6% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 0;
+  }
+ 
+  100% {
+    opacity: 0;
+  }
+}
+
+.periodo-moderna {
+  width: 5950px;
+  height: 100%;
+  position: absolute;
+  left: 29850px;
+  view-timeline-name: --reveal;
+  view-timeline-axis: inline;
+  animation-name: periodomoderna;
+  animation-timeline: --reveal;
+  animation-range: entry 0% cover 100%;
+  opacity: 1;
+  z-index: -1;
+}
+
+.periodo-moderna::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--moderna);
+  background-image: var(--imageperiodo);
+  background-position: center;
+  mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  opacity: 10%;
+}
+
+.periodo-moderna h1 {
+  position: sticky;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: white;
+  z-index: 9999;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  background-color: var(--moderna);
+  view-timeline-name: --reveal;
+  view-timeline-axis: inline;
+  animation-name: periodoEdadmodernaH1;
+  animation-timeline: --reveal;
+  animation-range: entry 0% cover 100%;
+  opacity: 0;
+}
+
+@keyframes periodomoderna {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  
+ 
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes periodoEdadmodernaH1 {
+  0% {
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 0;
+  }
+ 
+ 
+  100% {
+    opacity: 0;
+  }
+}
+
+.periodo-contemporanea {
+  width: 4800px;
+  height: 100%;
+  position: absolute;
+  left: 35800px;
+  view-timeline-name: --reveal;
+  view-timeline-axis: inline;
+  animation-name: periodocontemporanea;
+  animation-timeline: --reveal;
+  animation-range: entry 0% cover 100%;
+  opacity: 1;
+  z-index: -1;
+}
+
+.periodo-contemporanea::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--contemporanea);
+  background-image: var(--imageperiodo);
+  background-position: center;
+  mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+  opacity: 10%;
+}
+
+.periodo-contemporanea h1 {
+  position: sticky;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: white;
+  z-index: 9;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  background-color: var(--contemporanea);
+  view-timeline-name: --reveal;
+  view-timeline-axis: inline;
+  animation-name: periodoEdadcontemporaneaH1;
+  animation-timeline: --reveal;
+  animation-range: entry 0% cover 100%;
+  opacity: 0;
+}
+
+@keyframes periodocontemporanea {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  
+ 
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes periodoEdadcontemporaneaH1 {
+  0% {
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 0;
+  }
+ 
+ 
   100% {
     opacity: 0;
   }
@@ -1957,6 +2336,20 @@ li:hover ul#submenu {
   display: flex;
   align-items: center;
   position: relative;
+  gap: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.year-input-container button {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #464646;
+  border: 0;
 }
 
 #year-input {
@@ -1967,7 +2360,6 @@ li:hover ul#submenu {
   font-size: 16px;
   background-color: #464646;
   transition: border 0.3s;
-  margin-bottom: 0.5rem;
   text-align: center;
   color: white;
 }
@@ -2033,14 +2425,139 @@ li:hover ul#submenu {
   z-index: 9;	
 }
 
+.paso-etapa {
+  height: 25px;
+  width: 200px;
+  bottom: 0;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  color: white;
+  position: absolute;
+  background-color: var(--coloretapa);
+  z-index: 1;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.paso-etapa::before {
+  content: attr(data-inicio);
+  position: absolute;
+  top: -80%;
+  padding-left: 5px;
+  left: 0;
+  height: fit-content;
+  width: fit-content;
+  z-index: 1;
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+.paso-etapa span {
+  background-color: var(--coloretapa);
+  box-shadow: 0px 0px rgb(0 0 0 / 0);
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  transition: 0.2s ease;
+  border: 1px solid rgb(255, 255, 255, .5);
+  border-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paso-etapa:hover {
+  filter: brightness(110%);
+}
+
+.paso-etapa:hover::before {
+  opacity: 1;
+}
+
+.paso-etapa:hover span {
+  transform: translateY(-3px);
+  box-shadow: 0px 3px rgb(0 0 0 / 0.35);
+}
+
+.paso-etapa:active span {
+  transform: translateY(0px);
+  box-shadow: 0px 0px rgb(0 0 0 / 0.35);
+}
+
+.paso-etapa-2 {
+  height: 100%;
+  width: 200px;
+  bottom: 0;
+  display: flex;
+  align-items: end;
+  overflow: visible;
+  color: white;
+  position: absolute;
+}
+
+.paso-etapa-2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--coloretapa);
+  border: 1px solid rgb(255, 255, 255, .5);
+  border-bottom: 0;
+  border-top: 0;
+  z-index: -2;
+  cursor: pointer;
+  transition: 0.2s ease;
+  opacity: 0.3;
+  mask-image: linear-gradient(to bottom,  transparent 0%, black 70%);
+}
+
+.paso-etapa-2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1.3rem;
+  background-color: var(--coloretapa);
+}
+
+.paso-etapa-2 span {
+  box-shadow: 0px 0px rgb(0 0 0 / 0);
+  width: auto;
+  height: fit-content;
+  font-size: 0.8rem;
+  opacity: 1;
+  z-index: 9;
+  transition: 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  margin-left: 2%;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+
+.paso-etapa-2 span:hover{
+  border-bottom: 1px solid white;
+  
+}
+
 .linea-tiempo-universal .años {
   width: 100%;
   height: fit-content;
-  padding: 0 1rem 0 1rem;
   display: flex;
   gap: 160px;
   position: relative;
   margin-top: 0.5rem;
+  padding-right: 160px;
 }
 
 .linea-tiempo-universal .años span {
@@ -2074,10 +2591,9 @@ li:hover ul#submenu {
 .linea-tiempo-universal .contenedor-siglo-inferior, .contenedor-siglo-superior {
   width: 100%;
   height: 100%;
-  padding: 0 1rem 0 1rem;
   display: flex;
   align-items: center;
-  padding-left: 2rem;
+  padding-left: 1rem;
   position: relative;
 }
 
@@ -2114,20 +2630,46 @@ li:hover ul#submenu {
   justify-content: center;
   align-items: center;
   transition: 0.2s ease;
-  cursor: pointer;
   z-index: 9;
+  cursor: default;
+}
+
+.linea-tiempo-universal .hecho-historico:hover a {
+  opacity: 1;
+}
+
+.linea-tiempo-universal .hecho-historico a {
+  background-color: var(--red);
+  color: white;
+  font: 300 0.8rem Roboto;
+  padding: 2px 5px 2px 5px;
+  border-radius: 8px 8px 0 0;
+  position: absolute;
+  top: -20px;
+  right: 5%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 0px var(--red);
+}
+
+.linea-tiempo-universal .hecho-historico a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px var(--red);
+}
+
+.linea-tiempo-universal .hecho-historico a:active {
+  transform: translateY(0px);
+  box-shadow: 0 0px var(--red);
 }
 
 .linea-tiempo-universal .hecho-historico:hover {
-  background-color: var(--primarycolor);
-  color: white;
-  
+  box-shadow: 0 0 5px rgba(255,255,255,0.8);
 }
 
 .linea-tiempo-universal .hecho-historico::after {
   content: attr(data-fecha);
   position: absolute;
-  top: -50%;
+  top: -20px;
   left: 5%;
   font: 300 0.8rem Roboto;
   color: white;
@@ -2137,26 +2679,16 @@ li:hover ul#submenu {
   transition: 0.2s ease;
 }
 
-.linea-tiempo-universal .hecho-historico:hover::after {
-  background-color: var(--primarycolor);
-  color: white;
-  
-}
-
 .siglo .seccion-mid .hecho-historico::before {
   content: "";
   width: 1px;
-  height: 91px;
+  height: 92px;
   top: 50%;
   left: 0;
   z-index: -1;
   background-color: white;
   position: absolute;
   transition: 0.2s ease;
-}
-
-.siglo .hecho-historico:hover::before {
-  background-color: var(--primarycolor);
 }
 
 .container-linea-tiempo-2 {

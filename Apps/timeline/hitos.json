@@ -1,6 +1,34 @@
-[
+[   {
+        "nombre": "Surgimiento de los primeros Homininos",
+        "era": "linea-tiempo-universal-ac",
+        "fecha": "2.85 Millones de años a.C.",
+        "siglo": "XI",
+        "contenedor": "contenedor-siglo-superior",
+        "posicion": "mid",
+        "año": "calc(var(--10) + var(--2))",
+        "url": "/Articulos/Prehistoria/template.html"
+    },
+    {
+        "nombre": "Surgimiento del Homo Sapiens",
+        "era": "linea-tiempo-universal-ac",
+        "fecha": "200.000 a.C.",
+        "siglo": "XI",
+        "contenedor": "contenedor-siglo-superior",
+        "posicion": "mid",
+        "año": "calc(var(--30) + var(--9)"
+    },
+    {
+        "nombre": "Invención de la Escritura",
+        "era": "linea-tiempo-universal-ac",
+        "fecha": "3300 a.C.",
+        "siglo": "IV",
+        "contenedor": "contenedor-siglo-superior",
+        "posicion": "mid",
+        "año": "calc(var(--80)"
+    },
     {
         "nombre": "Caída del Imperio Romano",
+        "era": "linea-tiempo-universal-dc",
         "fecha": "476",
         "siglo": "V",
         "contenedor": "contenedor-siglo-superior",
@@ -10,6 +38,7 @@
    
     {
         "nombre": "Descubrimiento de América",
+        "era": "linea-tiempo-universal-dc",
         "fecha": "1492",
         "siglo": "XV",
         "contenedor": "contenedor-siglo-superior",
@@ -18,6 +47,7 @@
     },
     {
         "nombre": "Reforma Protestante",
+        "era": "linea-tiempo-universal-dc",
         "fecha": "1517",
         "siglo": "XVI",
         "contenedor": "contenedor-siglo-superior",
@@ -25,7 +55,8 @@
         "año": "calc(var(--90) + var(--7))"
     },
     {
-        "nombre": "Revolución Industrial",
+        "nombre": "Primera Revolución Industrial",
+        "era": "linea-tiempo-universal-dc",
         "fecha": "1760",
         "siglo": "XVIII",
         "contenedor": "contenedor-siglo-inferior",
@@ -34,6 +65,7 @@
     },
     {
         "nombre": "Independencia de Estados Unidos",
+        "era": "linea-tiempo-universal-dc",
         "fecha": "1776",
         "siglo": "XVIII",
         "contenedor": "contenedor-siglo-superior",
@@ -42,6 +74,7 @@
     },
     {
         "nombre": "Revolución Francesa",
+        "era": "linea-tiempo-universal-dc",
         "fecha": "1789",
         "siglo": "XVIII",
         "contenedor": "contenedor-siglo-superior",
@@ -50,6 +83,7 @@
     },
     {
         "nombre": "Nacimiento de Abuela",
+        "era": "linea-tiempo-universal-dc",
         "fecha": "1959",
         "siglo": "XX",
         "contenedor": "contenedor-siglo-superior",

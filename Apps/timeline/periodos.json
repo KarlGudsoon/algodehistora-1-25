@@ -1,26 +1,114 @@
-[
+[   
     {
+      "era": "linea-tiempo-universal-ac",
+      "tipo": "paso-periodo",
+      "siglo": "XI",
+      "periodo": "Prehistoria",
+      "imagen": "/img/prehistoria/homininos.webp",
+      "posicion": "calc(var(--10) + var(--2))"
+    },  
+    {
+      "era": "linea-tiempo-universal-ac",
+      "tipo": "paso-etapa",
+      "inicio": "2.85 Mill a.C.",
+      "ancho": "550px",
+      "color": "var(--paleolitico-inferior)",
+      "siglo": "XI",
+      "periodo": "Paleolítico inferior",
+      "imagen": "/img/prehistoria/homininos.webp",
+      "posicion": "calc(var(--10) + var(--2))"
+    },
+    {
+      "era": "linea-tiempo-universal-ac",
+      "tipo": "paso-etapa",
+      "inicio": "127.000 a.C.",
+      "ancho": "145px",
+      "color": "var(--paleolitico-medio)",
+      "siglo": "XI",
+      "periodo": "Paleolítico medio",
+      "posicion": "calc(var(--30) + var(--9) + 20px)"
+    },  
+    {
+      "era": "linea-tiempo-universal-ac",
+      "tipo": "paso-etapa",
+      "inicio": "30.000 a.C.",
+      "ancho": "65px",
+      "color": "var(--paleolitico-superior)",
+      "siglo": "XI",
+      "periodo": "P. superior",
+      "posicion": "calc(var(--40) + var(--7) + 3px)"
+    }, 
+    {
+      "era": "linea-tiempo-universal-ac",
+      "tipo": "paso-etapa",
+      "inicio": "10.000 a.C.",
+      "ancho": "1195px",
+      "color": "rgb(20, 123, 183)",
+      "siglo": "XI",
+      "periodo": "Neolítico",
+      "posicion": "calc(var(--50) + 5px)"
+    }, 
+    {
+      "era": "linea-tiempo-universal-ac",
+      "tipo": "paso-etapa",
+      "inicio": "4.000 a.C.",
+      "ancho": "2400px",
+      "color": "#bd6532",
+      "siglo": "V",
+      "periodo": "Edad de los Metales",
+      "posicion": "calc(var(--60))"
+    }, 
+    {
+      "era": "linea-tiempo-universal-ac",
+      "tipo": "paso-periodo",
+      "siglo": "IV",
+      "periodo": "Edad Antigua",
+      "imagen": "/img/antigua/escuela_de_atenas.webp",
+      "posicion": "calc(var(--80))"
+    }, 
+    {
+      "era": "linea-tiempo-universal-dc",
+      "tipo": "paso-periodo",
+      "siglo": "V",
+      "periodo": "Edad Medieval", 
+      "imagen": "/img/medieval/Caida-del-Imperio-Romano.webp",
+      "posicion": "calc(var(--70) + var(--6))"
+    },
+    {
+      "era": "linea-tiempo-universal-dc",
+      "tipo": "paso-etapa-2",
+      "inicio": "siglos XV y XVI",
+      "ancho": "4000px",
+      "siglo": "XV",
+      "color": "rgb(220, 53, 69)",
+      "periodo": "Renacimiento", 
+      "imagen": "/img/medieval/Caida-del-Imperio-Romano.webp",
+      "posicion": "0"
+    },
+    {
+      "era": "linea-tiempo-universal-dc",
+      "tipo": "paso-periodo",
       "siglo": "XV",
       "periodo": "Edad Moderna",
       "imagen": "/img/moderna/fondo.webp",
       "posicion": "calc(var(--90) + var(--2))"
     },
     {
+      "era": "linea-tiempo-universal-dc",
+      "tipo": "paso-periodo",
       "siglo": "XVIII",
       "periodo": "Edad Contemporanea",
       "imagen": "/img/contemporanea/libertad-guiando-pueblo.webp",
       "posicion": "calc(var(--80) + var(--9))"
     },
     {
+      "era": "linea-tiempo-universal-dc",
+      "tipo": "paso-periodo",
       "siglo": "XIX",
       "periodo": "Imperialismo",
       "imagen": "/img/contemporanea/imperialismo.jpg",
       "posicion": "calc(var(--100) + var(--5))"
-    },
-    {
-      "siglo": "V",
-      "periodo": "Edad Medieval",
-      "imagen": "/img/medieval/Caida-del-Imperio-Romano.webp",
-      "posicion": "calc(var(--70) + var(--6))"
     }
+    
+    
   ]

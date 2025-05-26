@@ -837,9 +837,23 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /// LINEA DE TIEMPO UNIVERSAL
 
-const contenedor = document.getElementById('linea-tiempo-universal-años');
+const lineaTiempoAC = document.getElementById('linea-tiempo-universal-ac');
+const lineaTiempoDC = document.getElementById('linea-tiempo-universal-dc');
+const contenedorAC = lineaTiempoAC.querySelector('.años');
+const contenedorDC = lineaTiempoDC.querySelector('.años');
 
-for (let año = 0; año <= 1990; año += 10) {
+for (let año = 5000; año >= 100; año -= 100) {
+ 
+  const span = document.createElement('span');
+  
+  span.textContent = "-" + año;
+  span.id = "-" + año;
+  span.setAttribute('data-fecha', año);
+  
+  contenedorAC.appendChild(span);
+}
+
+for (let año = 0; año <= 2020; año += 10) {
  
   const span = document.createElement('span');
   
@@ -847,10 +861,11 @@ for (let año = 0; año <= 1990; año += 10) {
   span.id = año;
   span.setAttribute('data-fecha', año);
   
-  contenedor.appendChild(span);
+  contenedorDC.appendChild(span);
 }
 
-const contenedoresSiglos = document.querySelectorAll('.contenedor-siglo');
+const contenedoresSiglosDC = lineaTiempoDC.querySelectorAll('.contenedor-siglo');
+const contenedoresSiglosAC = lineaTiempoAC.querySelectorAll('.contenedor-siglo');
 
 // Función para convertir a números romanos
 function convertirARomano(num) {
@@ -870,7 +885,36 @@ function convertirARomano(num) {
   return resultado;
 }
 
-for (let año = 0; año <= 1900; año += 100) {
+for (let año = 5000; año >= 1000; año -= 1000) {
+  let numeroSiglo = Math.floor(año / 1000);
+  let romano = convertirARomano(numeroSiglo);
+
+  // Crear el contenedor del siglo
+  const siglo = document.createElement('div');
+  siglo.classList.add("siglo");
+  siglo.setAttribute('data-siglo', romano);
+
+  // Crear sub-secciones
+  const top = document.createElement('div');
+  const mid = document.createElement('div');
+  const bottom = document.createElement('div');
+
+  top.classList.add("seccion-top");
+  mid.classList.add("seccion-mid");
+  bottom.classList.add("seccion-bottom");
+
+  // Insertar sub-secciones en el siglo
+  siglo.appendChild(top);
+  siglo.appendChild(mid);
+  siglo.appendChild(bottom);
+
+  // Clonar e insertar el siglo en todos los contenedores
+  contenedoresSiglosAC.forEach(contenedor => {
+    contenedor.appendChild(siglo.cloneNode(true));
+  });
+}
+
+for (let año = 0; año <= 1990; año += 100) {
   let numeroSiglo = Math.floor(año / 100) + 1;
   let romano = convertirARomano(numeroSiglo);
 
@@ -894,7 +938,7 @@ for (let año = 0; año <= 1900; año += 100) {
   siglo.appendChild(bottom);
 
   // Clonar e insertar el siglo en todos los contenedores
-  contenedoresSiglos.forEach(contenedor => {
+  contenedoresSiglosDC.forEach(contenedor => {
     contenedor.appendChild(siglo.cloneNode(true));
   });
 }
@@ -903,25 +947,22 @@ for (let año = 0; año <= 1900; año += 100) {
 // BOTONES PARA REDIRIGIR A UN AÑO ESPECIFICO
 
 document.querySelectorAll('.boton-linea-tiempo').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const targetFecha = this.dataset.fecha;
-    const targetElement = document.getElementById(`${targetFecha}`);
+  btn.addEventListener('click', function(event) {
+    event.preventDefault(); // Evita el scroll de la página al href="#..."
+
+    const targetId = this.getAttribute('href').substring(1); // Quita el '#' del href
+    const targetElement = document.getElementById(targetId);
     const carrusel = document.querySelector('.inner-linea-tiempo-universal');
-    
-    if (targetElement) {
-      // Calcular posición de desplazamiento (centrado)
-      const containerWidth = carrusel.offsetWidth;
-      const targetPosition = targetElement.offsetLeft;
-      const targetWidth = targetElement.offsetWidth;
-      const scrollTo = targetPosition - (containerWidth / 2) + (targetWidth / 2);
-      
-      // Desplazamiento suave
-      carrusel.scrollTo({
-        left: scrollTo,
-        behavior: 'smooth'
+
+    if (targetElement && carrusel) {
+      // Solo desplazamiento horizontal dentro del carrusel
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',   // No cambia scroll vertical
+        inline: 'center'     // Alinea el elemento al borde izquierdo del carrusel
       });
-      
-      // Resaltar año activo (opcional)
+
+      // Resaltar año activo
       document.querySelectorAll('.año').forEach(a => a.classList.remove('active'));
       targetElement.classList.add('active');
     }
@@ -973,65 +1014,91 @@ window.addEventListener('resize', updateSliderMax);
 const yearInput = document.getElementById('year-input');
 const adjustedYearDisplay = document.getElementById('adjusted-year');
 
-// Función para ajustar a la década
 function adjustToDecade(year) {
   return Math.floor(year / 10) * 10;
 }
 
-// Función para desplazar al año
+function formatDecadeText(year) {
+  const adjusted = adjustToDecade(year);
+  return adjusted < 0 ? `Década: ${Math.abs(adjusted)} a.C.` : `Década: ${adjusted}s`;
+}
+
 function scrollToAdjustedYear(year) {
   const adjustedYear = adjustToDecade(year);
   const targetElement = document.getElementById(`${adjustedYear}`);
-  
+
   if (targetElement) {
-    // Mostrar año ajustado
-    adjustedYearDisplay.textContent = `Mostrando década: ${adjustedYear}s`;
+    adjustedYearDisplay.textContent = `Mostrando ${formatDecadeText(year)}`;
 
-    // Desplazamiento suave
-    const containerWidth = carrusel.offsetWidth;
-    const targetPosition = targetElement.offsetLeft;
-    const targetWidth = targetElement.offsetWidth;
-    const scrollTo = targetPosition - (containerWidth / 2) + (targetWidth / 2);
-
-    carrusel.scrollTo({
-      left: scrollTo,
-      behavior: 'smooth'
+    targetElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center'
     });
 
-    // Resaltar año
     document.querySelectorAll('.año').forEach(a => a.classList.remove('active'));
     targetElement.classList.add('active');
   }
 }
 
-// Validación automática del input
-yearInput.addEventListener('input', () => {
-  let value = yearInput.value;
+function validateAndFormatInput(value) {
+  value = value.replace(/[^0-9-]/g, '');
 
-  // Eliminar caracteres no numéricos
-  value = value.replace(/[^0-9]/g, '');
-
-  // Limitar a 4 dígitos
-  if (value.length > 4) {
-    value = value.slice(0, 4);
+  if ((value.match(/-/g) || []).length > 1) {
+    value = '-' + value.replace(/-/g, '');
+  }
+  if (value.includes('-') && value.indexOf('-') !== 0) {
+    value = value.replace(/-/g, '');
   }
 
+  if (value.length > 5) {
+    value = value.slice(0, 5);
+  }
+
+  return value;
+}
+
+function updateYearInputAndScroll(newYear) {
+  yearInput.value = newYear;
+  adjustedYearDisplay.textContent = formatDecadeText(newYear);
+  scrollToAdjustedYear(newYear);
+}
+
+yearInput.addEventListener('input', () => {
+  let value = yearInput.value;
+  value = validateAndFormatInput(value);
   yearInput.value = value;
 
-  // Mostrar década ajustada en tiempo real
-  if (value.length >= 1) {
+  if (value.length >= 1 && value !== '-') {
     const numValue = parseInt(value) || 0;
-    const adjusted = adjustToDecade(Math.min(numValue, 1990));
-    adjustedYearDisplay.textContent = `Década: ${adjusted}s`;
-
-    // Mover automáticamente al elemento si es un año válido
-    if (numValue >= 0 && numValue <= 1990) {
-      scrollToAdjustedYear(numValue);
-    }
+    adjustedYearDisplay.textContent = formatDecadeText(numValue);
+    if (!isNaN(numValue)) scrollToAdjustedYear(numValue);
   } else {
     adjustedYearDisplay.textContent = '';
   }
 });
+
+// Botones
+document.getElementById('prev-year').addEventListener('click', () => {
+  const currentYear = parseInt(yearInput.value) || 0;
+  updateYearInputAndScroll(currentYear - 1);
+});
+
+document.getElementById('next-year').addEventListener('click', () => {
+  const currentYear = parseInt(yearInput.value) || 0;
+  updateYearInputAndScroll(currentYear + 1);
+});
+
+document.getElementById('prev-decade').addEventListener('click', () => {
+  const currentYear = parseInt(yearInput.value) || 0;
+  updateYearInputAndScroll(currentYear - 10);
+});
+
+document.getElementById('next-decade').addEventListener('click', () => {
+  const currentYear = parseInt(yearInput.value) || 0;
+  updateYearInputAndScroll(currentYear + 10);
+});
+
 
 /// CREADOR DE HECHOS HISTORICOS
 
@@ -1047,14 +1114,24 @@ fetch('/Apps/timeline/hitos.json')
 function crearHechosHistoricos(datos) {
   datos.forEach(item => {
     const span = document.createElement('span');
+    const link = document.createElement('a');
+    
+    link.href = item.url || '#';
+    link.textContent = "Ver más";
+    
+    
     span.classList.add('hecho-historico');
-  
+    
     span.style.left = `${item.año}`;
 
     span.textContent = item.nombre;
     span.setAttribute('data-fecha', item.fecha);
 
-    const contenedorSiglo = document.querySelector(`.${item.contenedor}`);
+    span.appendChild(link);
+
+    const Era = document.getElementById(`${item.era}`);
+
+    const contenedorSiglo = Era.querySelector(`.${item.contenedor}`);
     if (!contenedorSiglo) return;
 
     // Busca el siglo adecuado
@@ -1078,8 +1155,9 @@ fetch('/Apps/timeline/periodos.json')
   })
   .catch(err => console.error("Error cargando periodos:", err));
 
-function crearPasoPeriodo({ siglo, periodo, imagen, posicion }) {
-  const contenedorSiglo = document.querySelector(`.siglo[data-siglo="${siglo}"]`);
+function crearPasoPeriodo({ era, tipo, ancho, color, inicio, siglo, periodo, imagen, posicion }) {
+  const Era = document.getElementById(era);
+  const contenedorSiglo = Era.querySelector(`.siglo[data-siglo="${siglo}"]`);
   if (!contenedorSiglo) return console.warn(`No se encontró el siglo: ${siglo}`);
 
   const pasoPeriodo = document.createElement('div');
@@ -1087,9 +1165,12 @@ function crearPasoPeriodo({ siglo, periodo, imagen, posicion }) {
 
   textoPeriodo.textContent = periodo;
 
-  pasoPeriodo.classList.add('paso-periodo');
+  pasoPeriodo.classList.add(tipo);
   pasoPeriodo.style.setProperty('--background-image-periodo', `url('${imagen}')`);
   pasoPeriodo.style.left = posicion;
+  pasoPeriodo.style.width = ancho;
+  pasoPeriodo.style.setProperty('--coloretapa', `${color}`)
+  pasoPeriodo.setAttribute('data-inicio', inicio);
 
   pasoPeriodo.setAttribute('data-periodo', periodo);
   pasoPeriodo.appendChild(textoPeriodo);
