@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linea de Tiempo Universal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="contenedor-linea-tiempo-universal"> 
+        <div id="particles-js"></div>
+        <div class="contenedor-botones-tiempo">
+          <div class="year-input-container">
+            <button id="prev-decade">«</button>
+            <button id="prev-year"><</button>
+            <input type="text" id="year-input" max="1990" placeholder="Año" autocomplete="off"><button id="go-year" hidden>Ir</button><span hidden id="adjusted-year"></span>
+            <button id="next-year">></button>
+            <button id="next-decade">»</button>
+          </div>
+          <div class="botones-periodos">
+            <button class="boton-linea-tiempo" id="btn-prehistoria" href="#-3M"><img src="/icons/prehistoria/stone-tablet.svg"></button>
+            <button class="boton-linea-tiempo" id="btn-antigua" href="#-3300" ><img src="/icons/antigua/building-columns.svg"></button>
+            <button class="boton-linea-tiempo" id="btn-medieval" href="#480" ><img src="/icons/medieval/stone-tower.svg"></button>
+            <button class="boton-linea-tiempo" id="btn-moderna" href="#1490"><img src="/icons/moderna/game-ship-wheel.svg"></button>
+            <button class="boton-linea-tiempo" id="btn-contemporanea" href="#1790"><img src="/icons/contemporanea/factory.svg"></button>
+          </div>
+          <div class="scroll-controller">
+            <input type="range" class="scroll-slider" min="0" max="100" value="0">
+          </div>  
+        </div>
+        <div class="inner-linea-tiempo-universal inner" draggable="false">
+          <div class="linea-tiempo-universal" id="linea-tiempo-universal-ac">
+            <div class="periodo-prehistoria" style="--imageperiodo: url('/img/prehistoria/fondo.webp');"><h1>PREHISTORIA</h1></div>
+            <div class="periodo-antigua" style="--imageperiodo: url('/img/antigua/escuela_de_atenas.webp');"><h1>EDAD ANTIGUA</h1></div>
+            <div class="contenedor-siglo contenedor-siglo-superior">
+              <div class="siglo" style="width: 1000px;" data-siglo="XI">
+                <div class="seccion-top"></div>
+                <div class="seccion-mid"></div>
+                <div class="seccion-bottom"></div>
+              </div>
+            </div>
+            <div class="linea-horizontal"><span style="--color: var(--tertiarycolor)"></span></div>
+            <div class="años">
+              <span id="-4M">-4 M.</span>
+              <span id="-3M">-3 M.</span>
+              <span id="-2M">-2 M.</span>
+              <span id="-1M">-1 M.</span>
+              <span id="-100000">-100000</span>
+              <span id="-50000">-10000</span>
+            </div>
+            <div class="contenedor-siglo contenedor-siglo-inferior">
+              <div class="siglo" style="width: 1000px;" data-siglo="XI">
+                <div class="seccion-top"></div>
+                <div class="seccion-mid"></div>
+                <div class="seccion-bottom"></div>
+              </div>
+            </div>
+          </div>
+          <div class="linea-tiempo-universal" id="linea-tiempo-universal-dc">
+            <div class="periodo-medieval" style="--imageperiodo: url('/img/medieval/mercadomedieval.webp')"><h1>EDAD MEDIEVAL</h1></div>
+            <div class="periodo-moderna" style="--imageperiodo: url('/img/moderna/Lorrain.seaport.webp')"><h1>EDAD MODERNA</h1></div>
+            <div class="periodo-contemporanea" style="--imageperiodo: url('/img/contemporanea/Charles_Hermans_masquerade-min.webp')"><h1>EDAD CONTEMPORANEA</h1></div>
+            
+            
+            <div class="contenedor-siglo contenedor-siglo-superior" id="contenedor-siglo">
+              
+            </div>
+            <div class="linea-horizontal"><span style="--color: var(--tertiarycolor)"></span></div>
+            <div class="años"></div>
+            <div class="contenedor-siglo contenedor-siglo-inferior">
+            
+            </div>
+          </div>
+        </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<script src="script.js"></script>

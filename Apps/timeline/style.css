@@ -1,0 +1,1136 @@
+:root {
+--blue: #1e90ff;
+--red2: #780618;
+--red: #e92a41;
+--yellow: #ffa218;
+--orange: #f86d31;
+--green: #66a329;
+
+--prehistoria: #f86d31;
+--antigua: #30a5e8;
+--medieval: #f8b229;
+--moderna: #f11c35; 
+--contemporanea: #2e8b57; 
+
+--paleolitico-inferior: #e86b35;
+--paleolitico-medio: #d95922;
+--paleolitico-superior: #c45222;
+
+/* Linea de tiempo universal */
+
+
+--1: 25px;
+--2: 45px;
+--3: 62px; 
+--4: 81px;
+--5: 100px;
+--6: 119px;
+--7: 137px;
+--8: 156px;
+--9: 175px;
+
+--10: 200px;
+--20: 400px;
+--30: 600px;
+--40: 800px;
+--50: 1000px;
+--60: 1200px;
+--70: 1400px;
+--80: 1600px;
+--90: 1800px;
+
+}
+
+@font-face {
+font-family: BreeSerif;
+src: url("/fonts/BreeSerif-Regular.ttf")
+    format("truetype");
+}
+
+@view-transition {
+navigation: auto;
+}
+
+@font-face {
+font-family: Roboto;
+src: url("/fonts/RobotoSlab-Regular.ttf")
+    format("truetype");
+}
+
+body {
+    background: var(--fondopagina);
+    font-family: Roboto;
+    color: white;
+    margin: 0;
+}
+
+a {
+    appearance: none;
+    text-decoration: none;
+    color: var(--color);
+  }
+  
+  a:hover {
+    color: var(--color);
+  }
+
+button {
+    background-color: var(--primarycolor);
+    border: 1px solid rgb(246, 210, 214, 0.75);
+    border-radius: 1rem;
+    color: white;
+    width: fit-content;
+    padding: 0.5rem 2rem;
+    font: 300 1rem Roboto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgb(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    transition: 0.2s ease;
+    user-select: none;
+  }
+  
+  button:hover {
+    scale: 1.05;
+  }
+  
+  button:active {
+    scale: 1;
+  }
+  
+  button::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(119,119,119,0) 0%, rgba(255,255,255,0.3) 50%, rgba(119,119,119,0) 100%);
+    mask-image: linear-gradient(120deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+    position: absolute;
+    top: 0;
+    left: -100%;
+    transition: 1s ease;
+  }
+  
+  button:hover::before {
+    left: 100%;
+  }
+  
+  @keyframes brillo-boton {
+    0% {
+        left: -100%;
+    }
+    25% {
+        left: 150%;
+    }
+    100% {
+        left: 150%;
+    }
+    
+  }
+
+.inner {
+    display: grid;
+    grid-auto-flow: column;
+    overflow: hidden;
+    transition: .5s ease;
+}
+
+.linea-horizontal {
+    background-color: var(--primarycolor);
+    height: 1px;
+    width: 100%;
+  }
+  
+  .linea-horizontal span {
+    height: 1px;
+    width: 100%;
+    display: block;
+    background-color: var(--color);
+    opacity: 0.5;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  }
+  
+  .contenedor-linea-tiempo-universal {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    background-color: #232323;
+  }
+  
+  .inner-linea-tiempo-universal {
+    width: 100%;
+    overflow:hidden;
+    position: relative;
+    user-select: none;
+    height: 100vh;
+    
+  }
+  
+  .periodo-medieval {
+    width: 20325px;
+    height: 100%;
+    position: absolute;
+    left: calc(8015px + var(--70) + var(--7));
+    view-timeline-name: --reveal;
+    view-timeline-axis: inline;
+    animation-name: periodomedieval;
+    animation-timeline: --reveal;
+    animation-range: entry 0% cover 100%;
+    opacity: 1;
+    z-index: -1;
+  }
+  
+  .periodo-medieval::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--medieval);
+    background-image: var(--imageperiodo);
+    background-position: center;
+    background-size: auto 100%;
+    mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+    opacity: 10%;
+  }
+  
+  .periodo-medieval h1 {
+    position: sticky;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: white;
+    z-index: 9;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    background-color: var(--medieval);
+    view-timeline-name: --reveal;
+    view-timeline-axis: inline;
+    animation-name: periodomedievalH1;
+    animation-timeline: --reveal;
+    animation-range: entry 20% cover 100%;
+    opacity: 0;
+  }
+  
+  @keyframes periodomedieval {
+    0% {
+      opacity: 0;
+    }
+    2% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+    
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes periodomedievalH1 {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    
+    90% {
+      opacity: 1;
+    }
+  
+    95% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .periodo-prehistoria {
+    width: 4350px;
+    height: 100%;
+    position: absolute;
+    left: 250px;
+    view-timeline-name: --reveal;
+    view-timeline-axis: inline;
+    animation-name: periodoPrehistoria;
+    animation-timeline: --reveal;
+    animation-range: entry 0% cover 100%;
+    opacity: 1;
+    z-index: -1;
+  }
+  
+  .periodo-prehistoria::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--prehistoria);
+    background-image: var(--imageperiodo);
+    background-position: center;
+    background-size: auto 100%;
+    mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+    opacity: 10%;
+  }
+  
+  .periodo-prehistoria h1 {
+    position: sticky;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: white;
+    z-index: 9;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    background-color: var(--prehistoria);
+    view-timeline-name: --reveal;
+    view-timeline-axis: inline;
+    animation-name: periodoPrehistoriaH1;
+    animation-timeline: --reveal;
+    animation-range: entry 30% cover 100%;
+    opacity: 0;
+  }
+  
+  @keyframes periodoPrehistoria {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes periodoPrehistoriaH1 {
+    0% {
+      opacity: 0;
+    }
+    15% {
+      opacity: 0;
+    }
+  
+    25% {
+      opacity: 1;
+    }
+    75% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .periodo-antigua {
+    width: 16100px;
+    height: 100%;
+    position: absolute;
+    left: 4650px;
+    view-timeline-name: --reveal;
+    view-timeline-axis: inline;
+    animation-name: periodoAntigua;
+    animation-timeline: --reveal;
+    animation-range: entry 0% cover 100%;
+    opacity: 1;
+    z-index: -1;
+  }
+  
+  .periodo-antigua::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--antigua);
+    background-image: var(--imageperiodo);
+    background-position: center;
+    background-size: auto 100%;
+    mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+    opacity: 10%;
+  }
+  
+  .periodo-antigua h1 {
+    position: sticky;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: white;
+    z-index: 9;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    background-color: var(--antigua);
+    view-timeline-name: --reveal;
+    view-timeline-axis: inline;
+    animation-name: periodoEdadAntiguaH1;
+    animation-timeline: --reveal;
+    animation-range: entry 0% cover 100%;
+    opacity: 0;
+  }
+  
+  @keyframes periodoAntigua {
+    0% {
+      opacity: 0;
+    }
+  
+    2% {
+      opacity: 0;
+    }
+    
+    10% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+   
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes periodoEdadAntiguaH1 {
+    0% {
+      opacity: 0;
+    }
+    6% {
+      opacity: 0;
+    }
+  
+    10% {
+      opacity: 1;
+    }
+    92% {
+      opacity: 1;
+    }
+    94% {
+      opacity: 0;
+    }
+   
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .periodo-moderna {
+    width: 5950px;
+    height: 100%;
+    position: absolute;
+    left: 29850px;
+    view-timeline-name: --reveal;
+    view-timeline-axis: inline;
+    animation-name: periodomoderna;
+    animation-timeline: --reveal;
+    animation-range: entry 0% cover 100%;
+    opacity: 1;
+    z-index: -1;
+  }
+  
+  .periodo-moderna::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--moderna);
+    background-image: var(--imageperiodo);
+    background-position: center;
+    background-size: auto 100%;
+    mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+    opacity: 10%;
+  }
+  
+  .periodo-moderna h1 {
+    position: sticky;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: white;
+    z-index: 9999;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    background-color: var(--moderna);
+    view-timeline-name: --reveal;
+    view-timeline-axis: inline;
+    animation-name: periodoEdadmodernaH1;
+    animation-timeline: --reveal;
+    animation-range: entry 0% cover 100%;
+    opacity: 0;
+  }
+  
+  @keyframes periodomoderna {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    
+   
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes periodoEdadmodernaH1 {
+    0% {
+      opacity: 0;
+    }
+  
+    15% {
+      opacity: 0;
+    }
+  
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+  
+    85% {
+      opacity: 0;
+    }
+   
+   
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .periodo-contemporanea {
+    width: 4800px;
+    height: 100%;
+    position: absolute;
+    left: 35800px;
+    view-timeline-name: --reveal;
+    view-timeline-axis: inline;
+    animation-name: periodocontemporanea;
+    animation-timeline: --reveal;
+    animation-range: entry 0% cover 100%;
+    opacity: 1;
+    z-index: -1;
+  }
+  
+  .periodo-contemporanea::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--contemporanea);
+    background-image: var(--imageperiodo);
+    background-position: center;
+    background-size: auto 100%;
+    mask-image: linear-gradient(to right, transparent 0%, black 2%, black 98%, transparent 100%);
+    opacity: 10%;
+  }
+  
+  .periodo-contemporanea h1 {
+    position: sticky;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: white;
+    z-index: 9;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    background-color: var(--contemporanea);
+    view-timeline-name: --reveal;
+    view-timeline-axis: inline;
+    animation-name: periodoEdadcontemporaneaH1;
+    animation-timeline: --reveal;
+    animation-range: entry 0% cover 100%;
+    opacity: 0;
+  }
+  
+  @keyframes periodocontemporanea {
+    0% {
+      opacity: 0;
+    }
+    5% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    
+   
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes periodoEdadcontemporaneaH1 {
+    0% {
+      opacity: 0;
+    }
+  
+    15% {
+      opacity: 0;
+    }
+  
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+  
+    85% {
+      opacity: 0;
+    }
+   
+   
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .contenedor-botones-tiempo {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+  }
+  
+  .botones-periodos {
+    display: flex;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 9;
+    margin-bottom: 0.5rem;
+  }
+  
+  .boton-linea-tiempo {
+    padding: 0.5rem;
+    border-radius: 15px;
+  }
+  
+  .boton-linea-tiempo:nth-child(1) {
+    background-color: var(--prehistoria);
+  }
+  
+  .boton-linea-tiempo:nth-child(2) {
+    background-color: var(--antigua);
+  }
+  
+  .boton-linea-tiempo:nth-child(3) {
+    background-color: var(--medieval);
+  }
+  
+  .boton-linea-tiempo:nth-child(4) {
+    background-color: var(--moderna);
+  }
+  
+  .boton-linea-tiempo:nth-child(5) {
+    background-color: var(--contemporanea);
+  }
+  
+  .boton-linea-tiempo img {
+    width: 20px;
+    height: 20px;
+    transition: .2s ease;
+  }
+  
+  .scroll-controller {
+    width: 100%;
+    position: relative;
+    height: 100%;
+  }
+  
+  .scroll-slider {
+    width: 100%;
+    height: 20px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border-radius: 10px;
+    z-index: 2;
+    position: relative;
+  }
+  
+  .scroll-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 40px;
+    height: 30px;
+    border-radius: 1rem 1rem 0rem 0;
+    background-color: black;
+    background-image: url("/icons/horizontal.svg");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: grab;
+    filter: invert(1) brightness(90%);
+    transition: 0.2s ease;
+  }
+  
+  .scroll-slider::-webkit-slider-thumb:hover {
+    filter: invert(1) brightness(100%);
+    scale: 1.05;
+  }
+  
+  .scroll-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: grab;
+  }
+  
+  .year-input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 0.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .year-input-container button {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #464646;
+    border: 0;
+  }
+  
+  #year-input {
+    padding: 5px 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    width: 100px;
+    font-size: 16px;
+    background-color: #464646;
+    transition: border 0.3s;
+    text-align: center;
+    color: white;
+  }
+  
+  #year-input:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  
+  .contenedor-linea-tiempo-universal #particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .linea-tiempo-universal {
+    transition: transform 0.5s ease-in-out;
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    user-select: none;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .paso-periodo {
+    height: 100%;
+    width: 200px;
+    overflow: visible;
+    color: white;
+    position: absolute;
+    border-left: 1px solid white;
+  }
+  
+  .paso-periodo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #1e3a8a;
+    background-image:  var(--background-image-periodo);
+    background-size: cover;
+    background-position: right;
+    mask-image: linear-gradient(to left,  transparent 0%, black 100%);
+    z-index: -1;
+  }
+  
+  .paso-periodo span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0.5rem;
+    width: min-content;
+    line-height: 1.1;
+    color: white;
+    z-index: 9;	
+  }
+  
+  .paso-etapa {
+    height: 25px;
+    width: 200px;
+    bottom: 0;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    color: white;
+    position: absolute;
+    background-color: var(--coloretapa);
+    z-index: 1;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  
+  .paso-etapa::before {
+    content: attr(data-inicio);
+    position: absolute;
+    top: -80%;
+    padding-left: 5px;
+    left: 0;
+    height: fit-content;
+    width: fit-content;
+    z-index: 1;
+    opacity: 0;
+    transition: 0.2s ease;
+  }
+  
+  .paso-etapa span {
+    background-color: var(--coloretapa);
+    box-shadow: 0px 0px rgb(0 0 0 / 0);
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    transition: 0.2s ease;
+    border: 1px solid rgb(255, 255, 255, .5);
+    border-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .paso-etapa:hover {
+    filter: brightness(110%);
+  }
+  
+  .paso-etapa:hover::before {
+    opacity: 1;
+  }
+  
+  .paso-etapa:hover span {
+    transform: translateY(-3px);
+    box-shadow: 0px 3px rgb(0 0 0 / 0.35);
+  }
+  
+  .paso-etapa:active span {
+    transform: translateY(0px);
+    box-shadow: 0px 0px rgb(0 0 0 / 0.35);
+  }
+  
+  .paso-etapa-2 {
+    height: 100%;
+    width: 200px;
+    bottom: 0;
+    display: flex;
+    align-items: end;
+    overflow: visible;
+    color: white;
+    position: absolute;
+  }
+  
+  .paso-etapa-2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-color: var(--coloretapa);
+    border: 1px solid rgb(255, 255, 255, .8);
+    border-bottom: 0;
+    border-top: 0;
+    z-index: -2;
+    cursor: pointer;
+    transition: 0.2s ease;
+    opacity: 0.3;
+    mask-image: linear-gradient(to bottom,  transparent 0%, transparent 15%, black 45%, black 55%, transparent 85%, transparent 100%);
+  }
+  
+  .paso-etapa-2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1.3rem;
+    background-color: var(--coloretapa);
+  }
+  
+  .paso-etapa-2 span {
+    box-shadow: 0px 0px rgb(0 0 0 / 0);
+    width: auto;
+    height: fit-content;
+    font-size: 0.8rem;
+    opacity: 1;
+    z-index: 9;
+    transition: 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    margin-left: 2%;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+  }
+  
+  .paso-etapa-2 span:hover{
+    border-bottom: 1px solid white;
+    
+  }
+  
+  .linea-tiempo-universal .años {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    gap: 160px;
+    position: relative;
+    margin-top: 0.5rem;
+    padding-right: 160px;
+  }
+  
+  .linea-tiempo-universal .años span {
+    position: relative;
+    width: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .linea-tiempo-universal .años span::before {
+    content: "";
+    width: 200px;
+    height: 0;
+    border-top: 6px dashed rgb(255, 255, 255, .1);
+    position: absolute;
+    top: -0.5rem;
+    left: 20px;
+  }
+  
+  .linea-tiempo-universal .años span::after {
+    content: "";
+    width: 5px;
+    height: 10px;
+    background-color: rgb(255, 255, 255, 1);
+    position: absolute;
+    top: -10px;
+  }
+  
+  .linea-tiempo-universal .contenedor-siglo-inferior, .contenedor-siglo-superior {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    position: relative;
+  }
+  
+  .linea-tiempo-universal .contenedor-siglo .siglo {
+    width: 2000px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .siglo .seccion-top, .siglo .seccion-mid, .siglo .seccion-bottom {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    position: relative;
+  }
+  
+  .linea-tiempo-universal .hecho-historico {
+    width: max-content;
+    height: fit-content;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    background-color: white;
+    color: #232323;
+    border-radius: 0 1rem 1rem 0;
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s ease;
+    z-index: 9;
+    cursor: default;
+  }
+  
+  .linea-tiempo-universal .hecho-historico:hover a {
+    opacity: 1;
+  }
+  
+  .linea-tiempo-universal .hecho-historico a {
+    background-color: var(--red);
+    color: white;
+    font: 300 0.8rem Roboto;
+    padding: 2px 5px 2px 5px;
+    border-radius: 8px 8px 0 0;
+    position: absolute;
+    top: -20px;
+    right: 5%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    box-shadow: 0 0px var(--red);
+  }
+  
+  .linea-tiempo-universal .hecho-historico a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px var(--red);
+  }
+  
+  .linea-tiempo-universal .hecho-historico a:active {
+    transform: translateY(0px);
+    box-shadow: 0 0px var(--red);
+  }
+  
+  .linea-tiempo-universal .hecho-historico:hover {
+    box-shadow: 0 0 5px rgba(255,255,255,0.8);
+  }
+  
+  .linea-tiempo-universal .hecho-historico::after {
+    content: attr(data-fecha);
+    position: absolute;
+    top: -20px;
+    left: 5%;
+    font: 300 0.8rem Roboto;
+    color: white;
+    background-color: #232323;
+    padding: 2px 5px 2px 5px;
+    border-radius: 8px 8px 0 0;
+    transition: 0.2s ease;
+  }
+  
+  .siglo .seccion-mid .hecho-historico::before {
+    content: "";
+    width: 1px;
+    height: 92px;
+    top: 50%;
+    left: 0;
+    z-index: -1;
+    background-color: white;
+    position: absolute;
+    transition: 0.2s ease;
+  }
+  
+  .container-linea-tiempo-2 {
+    width: 100%;
+    position: relative;
+  }
+  
+  .carousel {
+    background-color: var(--fondopagina);
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+  }
+  
+  .mask-carousel {
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  }
+  
+  .inner-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: auto;
+    display: flex;
+    padding: 1rem 3rem 1rem 3rem;
+    z-index: 1;
+    gap: 1rem;
+    user-select: none;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .item-carousel {
+    width: 300px;
+    height: 300px;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.2);
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primarycolor);
+  }

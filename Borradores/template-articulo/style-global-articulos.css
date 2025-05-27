@@ -52,19 +52,19 @@ body.no-scroll {
 
 
 @font-face {
-  font-family: BreeSerif;
-  src: url("/fonts/BreeSerif-Regular.ttf")
-    format("truetype");
+font-family: BreeSerif;
+src: url("/fonts/BreeSerif-Regular.ttf")
+  format("truetype");
 }
 
 @view-transition {
-  navigation: auto;
+navigation: auto;
 }
 
 @font-face {
-  font-family: Roboto;
-  src: url("/fonts/RobotoSlab-Regular.ttf")
-    format("truetype");
+font-family: Roboto;
+src: url("/fonts/RobotoSlab-Regular.ttf")
+  format("truetype");
 }
 
 .etiqueta-periodo {
@@ -2504,16 +2504,16 @@ li:hover ul#submenu {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 200%;
   background-color: var(--coloretapa);
-  border: 1px solid rgb(255, 255, 255, .5);
+  border: 1px solid rgb(255, 255, 255, .8);
   border-bottom: 0;
   border-top: 0;
   z-index: -2;
   cursor: pointer;
   transition: 0.2s ease;
   opacity: 0.3;
-  mask-image: linear-gradient(to bottom,  transparent 0%, black 70%);
+  mask-image: linear-gradient(to bottom,  transparent 0%, transparent 15%, black 45%, black 55%, transparent 85%, transparent 100%);
 }
 
 .paso-etapa-2::after {
