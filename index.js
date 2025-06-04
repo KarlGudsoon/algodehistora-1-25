@@ -125,7 +125,7 @@ fetch('index.json')
   })
   .catch(err => console.error("Error cargando periodos:", err));
 
-function crearArticulos({ periodo, url, titulo, fondo, personaje, fecha }) {
+function crearArticulos({ periodo, url, titulo, fondo, personaje, fecha, style }) {
   const container = document.getElementById(periodo);
   if (!container) return; // Evita errores si el ID no existe
 
@@ -145,6 +145,7 @@ function crearArticulos({ periodo, url, titulo, fondo, personaje, fecha }) {
   ContenidoEtiqueta.classList.add('card-contenido-etiqueta');
   const ContenidoTitulo = document.createElement('h1');
   const ArticuloFecha = document.createElement('span');
+  Articulo.style = style
 
   // Asignar contenido si existe
   if (titulo) ContenidoTitulo.textContent = titulo;
@@ -178,4 +179,16 @@ const containerPrincipal = document.getElementById("cardContainer1");
 containerPrincipal.classList.add("active");
 
 const cards = containerPrincipal.querySelectorAll('.card-contenido');
+cards.forEach(card => card.classList.add("active"));
+
+const container6 = document.getElementById("cardContainer6");
+container6.classList.add("active");
+
+const cards6 = container6.querySelectorAll('.card-contenido');
+cards.forEach(card => card.classList.add("active"));
+
+const container7 = document.getElementById("cardContainer7");
+container7.classList.add("active");
+
+const cards7 = container7.querySelectorAll('.card-contenido');
 cards.forEach(card => card.classList.add("active"));

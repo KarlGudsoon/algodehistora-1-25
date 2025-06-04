@@ -172,6 +172,105 @@ a:hover {
       
     }
   }
+
+.contenedor-cartas-carrusel {
+  display: flex;
+  width: 100%;
+}
+
+.contenedor-cartas-carrusel .contenedor-lateral-cartas:first-child {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 10rem;
+  height: 100%;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  background-color: transparent;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.contenedor-cartas-carrusel .contenedor-lateral-cartas:last-child {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 11rem;
+  height: 100%;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  background-color: transparent;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.contenedor-cartas-carrusel .contenedor-cartas {
+  flex-direction: column;
+  height: calc(var(--height) * var(--quantity));
+  flex-wrap: nowrap;
+  background-color: transparent;
+  z-index: -1;
+  gap: 0;
+  position: relative;
+  width: 300px;
+}
+
+.contenedor-cartas-carrusel .contenedor-cartas .card-contenido {
+  background-color: #c2283a;
+  position: absolute;
+  animation: scrollInfinite 20s linear infinite;
+  top: 100%;
+  animation-delay: calc((20s / var(--quantity)) * (var(--position) - 1));
+}
+
+@keyframes scrollInfinite {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: calc(var(--height) * -1);
+    }
+  
+}
+.contenedor-cartas-carrusel .contenedor-cartas.card-contenido {
+  background-color: #c2283a;
+  position: absolute;
+  animation: scrollInfinite2 20s linear infinite;
+  bottom: 100%;
+  animation-delay: calc((20s / var(--quantity)) * (var(--position) - 1));
+}
+
+@keyframes scrollInfinite2 {
+    0% {
+        bottom: 100%;
+    }
+    100% {
+        bottom: calc(var(--height) * -1);
+    }
+  
+}
+
+.contenedor-cartas-carrusel .contenedor-lateral-cartas:last-child .contenedor-cartas .card-contenido {
+  background-color: #c2283a;
+  position: absolute;
+  animation: scrollInfinite2 20s linear infinite;
+  top: 100%;
+  animation-delay: calc((20s / var(--quantity)) * (var(--position) - 1));
+}
+
+@keyframes scrollInfinite2 {
+    0% {
+      top: calc(var(--height) * -1);
+    }
+    100% {
+      top: 100%;
+    }
+}
+
+
+
   
 
 .carousel-container {
@@ -251,6 +350,7 @@ a:hover {
     justify-content: center;
     margin-top: 10px;
     gap: 10px;
+    background-color: var(--primary-color);
 }
 
 .indicator {
@@ -259,6 +359,7 @@ a:hover {
     height: 150px;
     cursor: pointer;
     opacity: 0.6;
+    background-color: #c2283a;
     transition: opacity 0.3s;
 }
 
