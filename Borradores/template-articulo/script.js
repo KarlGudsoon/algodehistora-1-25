@@ -186,6 +186,8 @@ function actualizarCarta(personaje, idPersonaje) {
   document.getElementById("fondo-frontal").src = personaje.fondoFrontal;
   document.getElementById("fondo-trasera").src = personaje.fondoTrasera;
 
+  document.getElementById("puntaje-carta-personaje").textContent = personaje.puntaje;
+
   const caracteristicasSpans = document.querySelectorAll(".caracteristicas-personaje-frontal");
   personaje.personalidad.forEach((caracteristica, index) => {
     if (caracteristicasSpans[index]) {
@@ -811,21 +813,28 @@ document.querySelectorAll(".img-view").forEach(function(elemento) {
       var containerImgViewer = document.querySelector(".container-img-viewer");
       var imgViewer = document.getElementById("img-viewer");
       var srcImg = this.src;
+      var altImg = this.alt;
+      var altImgViewer = document.getElementById("alt-img-viewer");
 
       containerImgViewer.classList.add("activo");
       imgViewer.src = srcImg;
+      altImgViewer.style.display = altImg ? "block" : "none";
+      altImgViewer.textContent = altImg || "";
+
+      if (containerImgViewer.classList.contains("activo")) {
+          document.body.classList.add("no-scroll");
+      } else {
+          document.body.classList.remove("no-scroll");
+      }
+      
      
   });
 })
 
-document.querySelector(".container-img-viewer").addEventListener("click", function() {
-  this.classList.remove("activo");
-});
-
-
 document.querySelectorAll(".close-icon").forEach(closeIcon => {
   closeIcon.addEventListener("click", function() {
       this.parentElement.classList.remove("activo");
+      document.body.classList.remove("no-scroll");
   });
 });
 

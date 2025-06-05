@@ -206,7 +206,18 @@ a:hover {
   opacity: 0.5;
 }
 
-.contenedor-cartas-carrusel .contenedor-cartas {
+.inner-contenedor-cartas-lateral-1, .inner-contenedor-cartas-lateral-2 {
+  display: flex;
+  opacity: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: var(--secondary-color);
+}
+
+.inner-contenedor-cartas-lateral-1, .inner-contenedor-cartas-lateral-2 {
   flex-direction: column;
   height: calc(var(--height) * var(--quantity));
   flex-wrap: nowrap;
@@ -217,7 +228,9 @@ a:hover {
   width: 300px;
 }
 
-.contenedor-cartas-carrusel .contenedor-cartas .card-contenido {
+
+
+.inner-contenedor-cartas-lateral-1 .card-contenido {
   background-color: #c2283a;
   position: absolute;
   animation: scrollInfinite 20s linear infinite;
@@ -234,25 +247,8 @@ a:hover {
     }
   
 }
-.contenedor-cartas-carrusel .contenedor-cartas.card-contenido {
-  background-color: #c2283a;
-  position: absolute;
-  animation: scrollInfinite2 20s linear infinite;
-  bottom: 100%;
-  animation-delay: calc((20s / var(--quantity)) * (var(--position) - 1));
-}
 
-@keyframes scrollInfinite2 {
-    0% {
-        bottom: 100%;
-    }
-    100% {
-        bottom: calc(var(--height) * -1);
-    }
-  
-}
-
-.contenedor-cartas-carrusel .contenedor-lateral-cartas:last-child .contenedor-cartas .card-contenido {
+.inner-contenedor-cartas-lateral-2 .card-contenido {
   background-color: #c2283a;
   position: absolute;
   animation: scrollInfinite2 20s linear infinite;
@@ -265,9 +261,12 @@ a:hover {
       top: calc(var(--height) * -1);
     }
     100% {
+        
       top: 100%;
     }
+  
 }
+
 
 
 

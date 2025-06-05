@@ -1,80 +1,84 @@
 {
     "sapiens": {
-    "rareza": "legendario",
-    "colorCarta": "punto-dorado",
-    "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
-    "titulo": "HOMO SAPIENS",
-    "color": "var(--prehistoria)",
-    "categoria": [
-      { "nombre": "Prehistoria", "clase": "etiqueta-prehistoria" }
-    ],
-    "imagen": "/img/prehistoria/humano.webp",
-    "fondoFrontal": "/img/prehistoria/neolitico.webp",
-    "fondoTrasera": "/img/prehistoria/dawnofman.jpeg",
-    "personalidad": [
-      { "nombre": "Pensador", "clase": "punto-dorado", "img": "/icons/cerebro.svg" },
-      { "nombre": "Agricultor", "clase": "punto-dorado", "img": "/icons/trigo.svg" },
-      { "nombre": "Intrépido", "clase": "punto-bronce", "img": "/icons/prehistoria/stone-tablet.svg" }
-    ],
-    "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
+      "puntaje": "10",
+      "rareza": "legendario",
+      "colorCarta": "punto-dorado",
+      "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
+      "titulo": "HOMO SAPIENS",
+      "color": "var(--prehistoria)",
+      "categoria": [
+        { "nombre": "Prehistoria", "clase": "etiqueta-prehistoria" }
+      ],
+      "imagen": "/img/prehistoria/humano.webp",
+      "fondoFrontal": "/img/prehistoria/neolitico.webp",
+      "fondoTrasera": "/img/prehistoria/dawnofman.jpeg",
+      "personalidad": [
+        { "nombre": "Pensador", "clase": "punto-dorado", "img": "/icons/cerebro.svg" },
+        { "nombre": "Agricultor", "clase": "punto-dorado", "img": "/icons/trigo.svg" },
+        { "nombre": "Intrépido", "clase": "punto-bronce", "img": "/icons/prehistoria/stone-tablet.svg" }
+      ],
+      "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
     },
     "neandertal": {
-    "rareza": "comun",
-    "colorCarta": "punto-plata",
-    "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
-    "titulo": "NEANDERTAL",
-    "color": "var(--prehistoria)",
-    "categoria": [
-      { "nombre": "Prehistoria", "clase": "etiqueta-prehistoria" }
-    ],
-    "imagen": "/img/prehistoria/Neandertal.png",
-    "fondoFrontal": "/img/prehistoria/pixelcut-export (6).jpeg",
-    "fondoTrasera": "/img/prehistoria/pixelcut-export (6).jpeg",
-    "personalidad": [
-      { "nombre": "Agresivo", "clase": "punto-bronce" },
-      { "nombre": "Cazador", "clase": "punto-dorado", "img": "/icons/prehistoria/stone-spear.svg" },
-      { "nombre": "Resistente", "clase": "punto-bronce" }
-    ],
-    "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
+      "puntaje": "7",
+      "rareza": "comun",
+      "colorCarta": "punto-plata",
+      "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
+      "titulo": "NEANDERTAL",
+      "color": "var(--prehistoria)",
+      "categoria": [
+        { "nombre": "Prehistoria", "clase": "etiqueta-prehistoria" }
+      ],
+      "imagen": "/img/prehistoria/Neandertal.png",
+      "fondoFrontal": "/img/prehistoria/pixelcut-export (6).jpeg",
+      "fondoTrasera": "/img/prehistoria/pixelcut-export (6).jpeg",
+      "personalidad": [
+        { "nombre": "Agresivo", "clase": "punto-bronce" },
+        { "nombre": "Cazador", "clase": "punto-dorado", "img": "/icons/prehistoria/stone-spear.svg" },
+        { "nombre": "Resistente", "clase": "punto-bronce" }
+      ],
+      "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
     },
 
     "aymara": {
-    "rareza": "bronce",
-    "colorCarta": "punto-bronce",
-    "imgSobre": "url(/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg)",
-    "titulo": "PUEBLO AYMARA",
-    "color": "var(--red)",
-    "categoria": [
-      { "nombre": "Precolombino", "clase": "etiqueta-medieval" }
-    ],
-    "imagen": "/img/moderna/descubrimiento-chile/personaje-aymara.webp",
-    "fondoFrontal": "/img/moderna/descubrimiento-chile/parque-lauca.webp",
-    "fondoTrasera": "/img/moderna/descubrimiento-chile/parque-lauca.webp",
-    "personalidad": [
-      { "nombre": "Agricultor", "clase": "punto-dorado" },
-      { "nombre": "Cultista", "clase": "punto-dorado" },
-      { "nombre": "Andino", "clase": "punto-bronce" }
-    ],
-    "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
+      "puntaje": "5",
+      "rareza": "bronce",
+      "colorCarta": "punto-bronce",
+      "imgSobre": "url(/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg)",
+      "titulo": "PUEBLO AYMARA",
+      "color": "var(--red)",
+      "categoria": [
+        { "nombre": "Precolombino", "clase": "etiqueta-medieval" }
+      ],
+      "imagen": "/img/moderna/descubrimiento-chile/personaje-aymara.webp",
+      "fondoFrontal": "/img/moderna/descubrimiento-chile/parque-lauca.webp",
+      "fondoTrasera": "/img/moderna/descubrimiento-chile/parque-lauca.webp",
+      "personalidad": [
+        { "nombre": "Agricultor", "clase": "punto-dorado" },
+        { "nombre": "Cultista", "clase": "punto-dorado" },
+        { "nombre": "Andino", "clase": "punto-bronce" }
+      ],
+      "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
     },
     "colon": {
-    "rareza": "legendario",
-    "colorCarta": "punto-dorado",
-    "imgSobre": "url(/img/moderna/fondo.webp)",
-    "titulo": "CRISTÓBAL COLÓN",
-    "color": "var(--moderna)",
-    "categoria": [
-      { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
-    ],
-    "imagen": "/img/otros/personajes-cartas/cristobal-colon2.webp",
-    "fondoFrontal": "/img/moderna/fondo.webp",
-    "fondoTrasera": "/img/moderna/fondo.webp",
-    "personalidad": [
-      { "nombre": "Navegante", "clase": "punto-plateado", "img": "/icons/brujula.svg" },
-      { "nombre": "Explorador", "clase": "punto-plateado", "img": "/icons/mapa.svg" },
-      { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
-    ],
-    "descripcion": "Cristóbal Colón fue un navegante genovés conocido por realizar el viaje que llevó al descubrimiento de América en 1492, bajo el auspicio de los Reyes Católicos de España."
+      "puntaje": "8",
+      "rareza": "legendario",
+      "colorCarta": "punto-dorado",
+      "imgSobre": "url(/img/moderna/fondo.webp)",
+      "titulo": "CRISTÓBAL COLÓN",
+      "color": "var(--moderna)",
+      "categoria": [
+        { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
+      ],
+      "imagen": "/img/otros/personajes-cartas/cristobal-colon2.webp",
+      "fondoFrontal": "/img/moderna/fondo.webp",
+      "fondoTrasera": "/img/moderna/fondo.webp",
+      "personalidad": [
+        { "nombre": "Navegante", "clase": "punto-plateado", "img": "/icons/brujula.svg" },
+        { "nombre": "Explorador", "clase": "punto-plateado", "img": "/icons/mapa.svg" },
+        { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
+      ],
+      "descripcion": "Cristóbal Colón fue un navegante genovés conocido por realizar el viaje que llevó al descubrimiento de América en 1492, bajo el auspicio de los Reyes Católicos de España."
     }
 }
   

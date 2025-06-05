@@ -930,7 +930,122 @@
     animation-fill-mode: both;
     animation-timeline: --reveal;
     animation-range: entry 25% cover 50%;
+    margin: 0 2rem 1rem 2rem;
 }
+
+.expedicion-chile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 0;
+    position: relative;
+    justify-content: center;
+}
+
+.capsula-descriptiva {
+    background-color: var(--primarycolor);
+    color: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+    min-width: 600px;
+    flex: 1;
+    min-height: 600px;
+    max-width: 1300px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.capsula-descriptiva::before {
+    content: "";
+    background: var(--background-image);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.capsula-descriptiva-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    padding: 2.5rem;
+}
+
+.capsula-descriptiva-1 h1 {
+    font: 900 2.5rem BreeSerif;
+    line-height: 1;
+}
+
+.capsula-descriptiva-1 p {
+    margin: 0;
+}
+
+.capsula-descriptiva-1 ul {
+    font: 900 1rem Roboto;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.capsula-descriptiva-1 li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.capsula-descriptiva-1 li img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    background-color: var(--red);
+    padding: 0.5rem;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+    transition: 0.2s ease;
+}
+
+.capsula-descriptiva-1 li img:hover {
+    scale: 1.1;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.5);
+}
+
+.capsula-descriptiva-1 span:nth-child(4) {
+    font: 900 1.5rem BreeSerif;
+}
+
+.capsula-descriptiva-2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    justify-content: end;
+    align-items: center;
+}
+
+.capsula-descriptiva-2 img {
+    width: 60%;
+    transform: rotateY(-180deg);
+}
+
+
 
 @keyframes fade-in {
     0% {
@@ -1086,5 +1201,30 @@
         height: 100%;
         object-fit: cover;
         object-position: center;
+    }
+
+    .conquista-chile {
+        margin: 0 1rem 0rem 1rem;
+    }
+
+    .expedicion-chile {
+        padding: 1rem;
+    }
+
+    .capsula-descriptiva {
+        min-width: 100%;
+        flex-direction: column;
+    }
+
+    .capsula-descriptiva p {
+        font-size: 0.8rem;
+    }
+
+    .capsula-descriptiva h1 {
+        font-size: 2rem;
+    }
+
+    .capsula-descriptiva span:nth-child(4) {
+        font-size: 1rem;
     }
 }
