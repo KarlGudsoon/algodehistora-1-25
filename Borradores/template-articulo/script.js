@@ -1186,5 +1186,24 @@ function crearPasoPeriodo({ era, tipo, ancho, color, inicio, siglo, periodo, ima
   contenedorSiglo.appendChild(pasoPeriodo);
 }
 
+/// TOOLTIP CON TIPPY.JS
 
+document.querySelectorAll('[data-tippy-content]').forEach(el => {
+  const followCursorAttr = el.getAttribute('data-follow-cursor');
+  const themeAttr = el.getAttribute('data-theme');
 
+  let followCursor = false;
+  if (followCursorAttr === 'true') {
+    followCursor = true;
+  } else if (followCursorAttr === 'horizontal' || followCursorAttr === 'vertical' || followCursorAttr === 'initial') {
+    followCursor = followCursorAttr;
+  }
+
+  tippy(el, {
+    content: el.getAttribute('data-tippy-content'),
+    followCursor: followCursor,
+    theme: themeAttr || 'default',
+  });
+});
+
+/// TOOLTIP CON TIPPY.JS

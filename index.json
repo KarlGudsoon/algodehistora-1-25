@@ -1,6 +1,7 @@
 [    
     {
         "periodo": "cardContainer1",
+        "id": "prehistoria",
         "url" : "/Articulos/Prehistoria/template.html",
         "titulo": "PREHISTORIA",
         "fondo" : "/img/prehistoria/prehistoria-fondo.webp",
@@ -166,6 +167,7 @@
 
     {
         "periodo": "cardContainer4",
+        "id": "descubrimiento-chile",
         "url" : "/Articulos/moderna/origenes-chile/",
         "titulo": "DESCUBRIMIENTO DE CHILE",
         "fondo" : "/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg",

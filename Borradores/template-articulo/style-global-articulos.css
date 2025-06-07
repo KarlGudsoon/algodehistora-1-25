@@ -3735,6 +3735,18 @@ button:hover::before {
 
 /* IMG VIEWER */
 
+/* RETRATO DE PERSONAJE HISTORICO */
+
+.retrato-personaje {
+  position: relative;
+  z-index: 9;
+  transition: 0.2s ease;
+}
+
+.retrato-persoaje:hover {
+  scale: 1.05;
+  filter: drop-shadow(0 0 1rem rgb(0, 0, 0, 0.5)); 
+}
 
 @media screen and (max-width: 700px) {
   .widget-mapa {

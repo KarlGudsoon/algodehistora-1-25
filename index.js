@@ -125,9 +125,9 @@ fetch('index.json')
   })
   .catch(err => console.error("Error cargando periodos:", err));
 
-function crearArticulos({ periodo, url, titulo, fondo, personaje, fecha, style }) {
+function crearArticulos({periodo, url, titulo, fondo, personaje, fecha, style }) {
   const container = document.getElementById(periodo);
-  if (!container) return; // Evita errores si el ID no existe
+  if (!container) return;
 
   const Articulo = document.createElement('a');
   const InnerArticulo = document.createElement('div');
@@ -146,6 +146,8 @@ function crearArticulos({ periodo, url, titulo, fondo, personaje, fecha, style }
   const ContenidoTitulo = document.createElement('h1');
   const ArticuloFecha = document.createElement('span');
   Articulo.style = style
+  Articulo.setAttribute('data-id', titulo.toLowerCase());
+  Articulo.classList.add('art');
 
   // Asignar contenido si existe
   if (titulo) ContenidoTitulo.textContent = titulo;
@@ -192,3 +194,19 @@ container7.classList.add("active");
 
 const cards7 = container7.querySelectorAll('.card-contenido');
 cards.forEach(card => card.classList.add("active"));
+
+// FILTRAR articulos POR NOMBRE
+
+function filtrarCuestionarios() {
+    let input = document.getElementById("buscador").value.toLowerCase();
+    let articulos = document.querySelectorAll(".art");
+  
+    articulos.forEach(articulo => {
+        let nombre = articulo.getAttribute("data-id");
+        if (nombre.includes(input)) {
+            articulo.style.display = "flex";
+        } else {
+            articulo.style.display = "none";
+        }
+    });
+  }
