@@ -2,7 +2,7 @@
     --periodopagina : #252525;
 
     --primarycolor : #e92a41;
-    --secondarycolor : #c72437;
+        --secondarycolor : #c72437;
     --tertiarycolor : #f6d2d6;
     --quaternarycolor : #a11a2a;
 
@@ -924,13 +924,164 @@
     transition: background-color 0.5s ease, scale 0.2s ease;
 }
 
+.expedicion-magallanes {
+    display: flex;
+    background-color: var(--primarycolor);
+    color: white;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+    width: auto;
+    max-height: auto;
+    overflow: hidden;
+    border-radius: 1rem;
+    margin: 0rem 2rem 1rem 2rem;
+    position: relative;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    min-height: 600px;
+}
+
+.magallanes-explicacion {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    z-index: 9;
+    padding: 3rem;
+}
+
+.magallanes-explicacion h1 {
+    font: 900 3rem BreeSerif;
+    color: white;
+    opacity: 0.5;
+    line-height: 1;
+    margin-bottom: 1rem;
+   
+}
+
+.magallanes-explicacion p {
+    font: 300 1rem Roboto;
+    color: white;
+    
+}
+
+.magallanes-explicacion-2 {
+    display: flex;
+    gap: 0.5rem;
+    min-height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+.magallanes-explicacion-2 p {
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgb(246, 210, 214, 0.75);
+    outline: 1px solid rgb(0, 0, 0, 0.1);
+    background:  rgba(233, 42, 64, 0.473);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    margin: 0;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.2);
+    min-height: 150px;
+}
+
+.magallanes-explicacion-2 img {
+    height: 150px;
+    border-radius: 1rem;
+    border: 1px solid rgb(246, 210, 214, 0.75);
+    outline: 1px solid rgb(0, 0, 0, 0.1);
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.2);
+}
+
+.magallanes-explicacion-4 {
+    z-index: 9;
+    max-width: 600px;
+    padding: 0;
+}
+
+.magallanes-explicacion-5 {
+    display: flex;
+}
+
+.magallanes-explicacion-5 img {
+    position: relative;
+    z-index: 9;
+    width: 50%;
+    pointer-events: none;
+    align-self: end;
+}
+
+.expedicion-magallanes-fondo {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    z-index: 0;
+    position: absolute;
+    object-fit: cover;
+    bottom: 0px;
+    right: 0;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.magallanes-mapa {
+    width: 600px;
+    height: 600px;
+    z-index: 9;
+    border-radius: 1rem;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgb(246, 210, 214, 0.75);
+    outline: 1px solid rgb(0, 0, 0, 0.1);
+    background: rgb(246, 210, 214, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    user-select: none;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.5);
+}
+
+.magallanes-mapa::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0rem solid rgb(255, 255, 255, 0.2);
+    z-index: 9;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.magallanes-mapa:hover::before  {
+    border: 0.5rem solid rgb(255, 255, 255, 0.2);
+}
+
+.magallanes-mapa object {
+    height: 100%;
+}
+
+.expedicion-magallanes::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.35);
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
 .conquista-chile {
     view-timeline-name: --reveal;
     animation-name: slide-up;
     animation-fill-mode: both;
     animation-timeline: --reveal;
     animation-range: entry 25% cover 50%;
-    margin: 0 2rem 1rem 2rem;
+    margin: 1rem 2rem 1rem 2rem;
 }
 
 .expedicion-chile {
@@ -1203,6 +1354,32 @@
         object-position: center;
     }
 
+    .expedicion-magallanes {
+        margin: 1rem 1rem;
+        margin-top: 0;
+    }
+
+    .expedicion-magallanes h1 {
+        font: 900 2rem BreeSerif;
+        color: white;
+        opacity: 0.5;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .expedicion-magallanes p {
+        font-size: 0.8rem;
+    }
+
+    .magallanes-mapa {
+        width: 100%;
+        height: 400px;
+    }
+
+    .magallanes-explicacion {
+        padding: 2rem;
+    }
+
     .conquista-chile {
         margin: 0 1rem 0rem 1rem;
     }
@@ -1227,4 +1404,6 @@
     .capsula-descriptiva span:nth-child(4) {
         font-size: 1rem;
     }
+
+    
 }

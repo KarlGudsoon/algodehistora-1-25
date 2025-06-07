@@ -3638,6 +3638,7 @@ button:hover::before {
   max-width: 1200px;
   height: auto;
   aspect-ratio: 16/9;
+  object-fit: contain;
 }
 
 .img-view {
@@ -3795,15 +3796,21 @@ button:hover::before {
     pointer-events: none;
     z-index: -1;
   }
+
+  .inicio-pagina {
+    height: 600px;
+    padding-right: 0;
+  }
   
   .texto-inicio-pagina{
     text-align: center;
     padding: 1rem;
+    width: 100%;
   }
 
   .texto-inicio-pagina h1 {
     width: auto;
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .texto-inicio-pagina p {
