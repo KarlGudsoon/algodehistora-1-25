@@ -1404,7 +1404,7 @@
     }
 
     .magallanes-mapa {
-        width: 100%;
+        min-width: auto;
         height: 400px;
         margin: 1rem;
     }
