@@ -828,33 +828,30 @@ a:hover {
 .redes-sociales span {
   font-size: 1rem;
   font-family: Roboto;
-  background-color: var(--primary-color);
   width: fit-content;
   align-items: center;
-  padding: 0.5rem 1rem;
   display: flex;
   gap: 0.5rem;
-  border-radius: 2rem;
   transition: 0.2s ease;
   position: relative;
   border: 0.1rem solid white;
   border-color: transparent;
   cursor: pointer;
   user-select: none;
+  opacity: 0.5;
 }
 
 .redes-sociales span img {
-  height: 1rem;
+  height: 2rem;
   border-radius: 0;
 }
 
 .redes-sociales span:hover {
-  border-color: white;
+  opacity: 1;
 }
 
 .redes-sociales span:active {
-  background-color: white;
-  color: black;
+  scale: 0.9;
 }
 
 footer {
