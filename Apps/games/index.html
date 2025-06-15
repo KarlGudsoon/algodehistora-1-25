@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de juegos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <h1>Biblioteca de juegos</h1>
+        <p>Esta es una colección de juegos que puedes jugar directamente en tu navegador.</p>
+        <input type="text" id="search" placeholder="Buscar juegos..." onkeyup="filterGames()">
+        <ul>
+            <li>
+                <a href="/Apps/revolucion-industrial-juego/template.html">
+                    <h1>RECORRIDO INDUSTRIAL</h1>
+                    <img src="/img/contemporanea/15-538617.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="/Apps/games/gwent/">
+                    <h1>GWENT HISTORICO</h1>
+                    <img src="/img/moderna/Lorrain.seaport.webp" alt="">
+                </a>
+            </li>
+            <li><a href="https://example.com/game3" target="_blank">Juego 3</a></li>
+            <li><a href="https://example.com/game4" target="_blank">Juego 4</a></li>
+        </ul>
+    </main>
+</body>
+</html>
+
+<script>
+
+function filterGames() {
+    const searchInput = document.getElementById('search').value.toLowerCase();
+    const gamesList = document.querySelectorAll('ul li');
+    
+    gamesList.forEach(game => {
+        const gameName = game.textContent.toLowerCase();
+        if (gameName.includes(searchInput)) {
+            game.style.display = '';
+        } else {
+            game.style.display = 'none';
+        }
+    });
+}
+
+</script>

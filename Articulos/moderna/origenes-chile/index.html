@@ -198,6 +198,16 @@
           </div>
         </div>
       </div>
+      <div class="widget-progreso-pagina" data-tippy-content="El progreso se mide por la cantidad de actividades realizadas y cartas obtenidas. Completando aquello se habilitará un cuestionario para finalizar el artículo." data-trigger="mouseenter focus click" data-theme="default">
+        <svg class="progress-ring" width="60" height="60">
+          <circle class="progress-ring-bg" cx="30" cy="30" r="26" />
+          <circle class="progress-ring-circle" cx="30" cy="30" r="26" />
+        </svg>
+        <div class="progress-text" id="progress-text">0%</div>
+        <div class="widget-cuestionario">
+          <img src="/icons/quiz.svg" alt="">
+        </div>
+      </div>
       
       
       <article>
@@ -208,7 +218,18 @@
               Chile es, actualmente, un país democrático. Mediante elecciones, los chilenos pueden elegir a sus gobernantes y tomar decisiones importantes para el país
             </p>
           </div>
-          <img src="/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg">
+          <div class="progreso-inicio-pagina">
+            <div class="progreso-cartas-personajes">
+              <div class="icon-progreso-pagina">
+                <img class="progreso-completado" src="/icons/check.svg">
+                <img src="/icons/colorcards.svg">
+              </div>
+              <span><u id="cartas-abiertas-pagina"></u>/<b id="cantidad-cartas-pagina"></b> Cartas de personaje historico</span> 
+            </div>
+            <button id="reiniciar-progreso"><img src="/icons/reload.svg" style="filter: invert(1);"> Reiniciar progreso</button>
+
+          </div>
+          <img class="fondo-inicio-pagina" src="/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg">
         </section>
         <section class="exp1 bg-1">
           <h1 id="titulo-explicacion1">GEOMORFOLOGÍA DE CHILE</h1>
@@ -260,7 +281,7 @@
           </div>
           <div class="geo-pueblos" id="pueblos-originarios">
             <div class="contenedor-pueblos">
-              <div class="carta-pueblo personaje" id="aymara">
+              <div class="carta-pueblo personaje" id="aymara" data-name="Aymara">
                 <h1>AYMARA</h1>
                 <img src="/img/moderna/descubrimiento-chile/aymara.webp">
               </div>
@@ -622,7 +643,7 @@
           <div class="conquista-america-1">
             <h1>VIAJES DE EXPLORACIÓN</h1>
             <p>
-              A pesar de que <b class="personaje" id="colon">Cristóbal Colón📜</b> llegó a América en 1492, 
+              A pesar de que <b class="personaje" id="colon" data-name="Cristóbal Colón">Cristóbal Colón <img src="/icons/colorcards.svg"></b> llegó a América en 1492, 
               él seguía creyendo que había llegado a tierras inexploradas de las Indias. Al 
               regresar a España, llevó consigo muestras de las 
               riquezas encontradas en esas tierras: oro, animales exóticos e incluso
@@ -678,7 +699,7 @@
             <h1>EXPEDICIÓN DE MAGALLANES-ELCANO</h1>
             <p>
               El primer avistamiento europeo del territorio que hoy conocemos como 
-              Chile ocurrió en el año 1520, durante la famosa expedición de <b class="personaje" id="magallanes">Fernando de Magallanes📜</b>
+              Chile ocurrió en el año 1520, durante la famosa expedición de <b class="personaje" id="magallanes" data-name="Fernando de Magallanes">Fernando de Magallanes <img src="/icons/colorcards.svg"></b>
               . Esta expedición no tenía como objetivo conquistar tierras
               americanas, sino encontrar una ruta hacia Asia navegando por el oeste,
               específicamente hacia las Islas de las Especias (hoy Indonesia).
@@ -1291,9 +1312,9 @@
         <span class="pais" id="chile">Chile</span>
         <span class="concepto" id="imaginacion">Imaginación Histórica</span>
         <span class="concepto" id="historia">Historia</span>
-        <span class="personaje" id="siderurgica">Industria Siderurgica</span>
-        <span class="personaje" id="sapiens">Homo Sapiens</span><br>
-        <span class="personaje" id="neandertal">Homo Neandertal</span><br>
+        <span class="personaje" id="siderurgica" data-name="Industria Siderurgica">Industria Siderurgica <img src="/icons/colorcards.svg"></span>
+        <span class="personaje" id="sapiens" data-name="Homo Sapiens">Homo Sapiens <img src="/icons/colorcards.svg"></span><br>
+        <span class="personaje" id="neandertal" data-name="Homo Neandertal">Homo Neandertal <img src="/icons/colorcards.svg"></span><br>
         <br><div class="arrow-horizontal" style="--width: 5rem; --color: white"></div>
         <br><div class="arrow-vertical" style="--height: 5rem; --color: white"></div>
         <br><div class="arrow-right" style="--width: 5rem; --color: white"></div>
@@ -1363,3 +1384,126 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   </body>
 </html>
+
+<script>
+
+const CantidadCartasPagina = document.querySelector('#cantidad-cartas-pagina');
+const CartasAbiertasPagina = document.querySelector('#cartas-abiertas-pagina');
+const PogresoCartasPagina = document.querySelector('.progreso-completado');
+const ReiniciarProgreso = document.querySelector('#reiniciar-progreso');
+const WidgetCuestionario = document.querySelector('.widget-cuestionario');
+const Cartas = document.querySelectorAll('.personaje');
+
+
+let cantidadCartas = document.querySelectorAll('.personaje').length;
+CantidadCartasPagina.textContent = cantidadCartas;
+
+let cartasAbiertasStorage = JSON.parse(localStorage.getItem('cartasAbiertas')) || [];
+let cartasAbiertas = cartasAbiertasStorage.length;
+
+CartasAbiertasPagina.textContent = cartasAbiertas;
+
+function actualizarProgreso(cartasAbiertas, totalCartas) {
+  const porcentaje = (cartasAbiertas / totalCartas) * 100;
+  const circle = document.querySelector('.progress-ring-circle');
+  const text = document.getElementById('progress-text');
+
+  const radio = 26;
+  const circunferencia = 2 * Math.PI * radio;
+  const offset = circunferencia - (porcentaje / 100) * circunferencia;
+
+  circle.style.strokeDashoffset = offset;
+  text.textContent = `${Math.round(porcentaje)}%`;
+
+  if (porcentaje < 65) {
+    circle.style.stroke = 'var(--yellow)'; // Rojo
+  }  else {
+    circle.style.stroke = '#00bfa6'; // Verde
+    
+  } 
+
+  if (porcentaje === 100) {
+    /*
+    confetti({
+      particleCount: 200,
+      spread: 800,
+      origin: { y: 0, x: 1, zIndex: 9999999999 },
+    });*/
+    
+    WidgetCuestionario.classList.add('active');
+  } 
+}
+
+actualizarProgreso(cartasAbiertas, cantidadCartas);
+
+let tippyInstance = tippy('#cartas-abiertas-pagina', {
+  content: '',
+  allowHTML: true,
+  trigger: 'mouseenter focus click',
+})[0];
+
+function TippyCartas() {
+  const personajes = Array.from(document.querySelectorAll('.personaje'));
+
+  const cartasNoAbiertas = personajes
+    .filter(el => !cartasAbiertasStorage.includes(el.id))
+    .map(el => el.getAttribute('data-name'));
+
+  const textoCartasNoAbiertas = cartasNoAbiertas.join(', ') || '¡Todas abiertas!';
+
+  tippyInstance.setContent("Cartas no abiertas: " + textoCartasNoAbiertas + ".");
+}
+
+
+Cartas.forEach((element) => {
+  if (cartasAbiertasStorage.includes(element.id)) {
+    element.classList.add('open');
+  }
+
+  if (cartasAbiertas === cantidadCartas) {
+    PogresoCartasPagina.style.display = 'block';
+  }
+});
+
+document.querySelectorAll('.personaje').forEach((element) => {
+  element.addEventListener('click', () => {
+    const id = element.id;
+    
+
+    if (!element.classList.contains('open')) {
+      element.classList.add('open');
+      cartasAbiertas++;
+
+      CartasAbiertasPagina.textContent = cartasAbiertas;
+
+      cartasAbiertasStorage.push(id);
+      localStorage.setItem('cartasAbiertas', JSON.stringify(cartasAbiertasStorage));
+    }
+
+    if (cartasAbiertas === cantidadCartas) {
+    PogresoCartasPagina.style.display = 'block';
+    }
+
+    TippyCartas();
+    actualizarProgreso(cartasAbiertas, cantidadCartas);
+    
+  });
+});
+
+ReiniciarProgreso.addEventListener('click', () => {
+    localStorage.removeItem('cartasAbiertas');
+    location.reload(); 
+  }
+);
+
+TippyCartas();
+
+
+
+
+
+
+
+
+
+</script>

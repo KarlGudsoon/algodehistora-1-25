@@ -1004,7 +1004,7 @@ footer {
 .contenedor-logo-footer span::before {
   content: "";
   height: 37%;
-  background-color: var(--red);
+  background-color: var(--primary-color);
   position: absolute;
   bottom: 14%;
   left: 8%;
@@ -1016,7 +1016,7 @@ footer {
 .contenedor-logo-footer span::after {
   width: 1%;
   height: 37%;
-  background-color: var(--red);
+  background-color: var(--primary-color);
   position: absolute;
   top: 11%;
   right: 13%;
@@ -1173,6 +1173,35 @@ footer {
     .app {
         width: 100px;
         height: 100px;
+    }
+
+    .footer-container {
+      min-width: 100%;
+    }
+
+    .footer-1 {
+      min-height: 100%;
+    }
+
+    .footer-2 {
+      min-height: 100%;
+    }
+
+    .footer-3 {
+      min-height: 100%;
+    }
+
+    .card-articulo-recomendado {
+      height: 250px;
+      max-width: 300px;
+    }
+
+    .card-articulo-recomendado h1 {
+      font-size: 1rem;
+    }
+
+    .card-articulo-recomendado p {
+      font-size: 0.8rem;
     }
 }
 
