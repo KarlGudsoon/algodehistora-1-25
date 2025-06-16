@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const caracteristicaFrontal = card.querySelector('.contenedor-caracteristicas');
     
     let startX;
-
     // Función para voltear la tarjeta
     const flipCard = () => {
       
@@ -65,6 +64,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+const contenedorPersonajes = document.querySelector('.contenedor-personaje');
+const cartasPersonajes = document.querySelector('.item');
+
+contenedorPersonajes.addEventListener('click', function(event) {
+  if (!cartasPersonajes.contains(event.target) & !sobreCarta.contains(event.target)) {
+    cartasPersonajes.classList.remove('active');
+    contenedorPersonajes.classList.remove('active');
+    sobreCarta.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+  }
+});
+
+
 
 document.querySelectorAll(".personaje").forEach((personaje, index) => {
   personaje.addEventListener("click", () => {
@@ -1207,3 +1220,27 @@ document.querySelectorAll('[data-tippy-content]').forEach(el => {
 });
 
 /// TOOLTIP CON TIPPY.JS
+
+// WIDGET UP 
+
+const widgetUp = document.querySelector('.widget-up');
+
+widgetUp.addEventListener('click', function() {
+  const scrollToTop = document.documentElement.scrollTop || document.body.scrollTop;
+  if (scrollToTop > 0) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+});
+
+// CUESTIONARIO FINAL DEL ARTICULO 
+
+let cerrarCuestionario = document.querySelector(".cerrar-contenedor");
+
+cerrarCuestionario.addEventListener("click", function() {
+  this.parentElement.classList.remove("active");
+  document.body.classList.remove("no-scroll");
+});
+

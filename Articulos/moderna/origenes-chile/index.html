@@ -150,9 +150,10 @@
         </p>
       </div>
       <div class="contenedor-personaje" id="contenedor-personaje">
-        <div class="sobre-carta" id="sobre-carta">   
-            <img id="imagen-sobre" src="/svg/logo-white.svg">
-            <h1 id="titulo-sobre"></h1>
+        <div class="sobre-carta" id="sobre-carta">  
+          <div id="msg-abrirsobre">Haz click en el sobre para abrir la carta <img src="/icons/up.svg"></div> 
+          <img id="imagen-sobre" src="/svg/logo-white.svg">
+          <h1 id="titulo-sobre"></h1>
         </div>
         <div class="item" id="personaje-historico" data-tilt>
           <div class="concepto-cerrar" id="carta-cerrar">-</div>
@@ -207,6 +208,9 @@
         <div class="widget-cuestionario">
           <img src="/icons/quiz.svg" alt="">
         </div>
+      </div>
+      <div class="widget-up">
+        <img src="/icons/up.svg" alt="Subir">
       </div>
       
       
@@ -1321,6 +1325,8 @@
         <br><div class="arrow-left" style="--width: 5rem; --color: white"></div>
         <br><div class="arrow-up" style="--height: 5rem; --color: white"></div>
         <br><div class="arrow-down" style="--height: 5rem; --color: white"></div>
+
+
         <footer>
           <div class="container-footer-1">
             <div class="footer-container footer-1">
@@ -1365,6 +1371,118 @@
           </div>
         </footer>
       </article>
+      <div class="cuestionario-final">
+        <div class="cerrar-contenedor"><img src="/icons/close.svg"></div>
+        <div class="cuestionario">
+          <section class="container-pregunta-nav">
+            <span>Cuestionario final</span>
+            <h1 class="titulo-articulo" ></h1>
+            <p>
+              Responde las siguientes preguntas para evaluar tus conocimientos sobre el tema. Debes responder todas las preguntas para obtener tu resultado final.
+            </p>
+            <div class="navigation">
+              <section class="datos">
+                <button id="submit" type="submit">ENVIAR</button>
+                <label><input id="resultado" name="resultado" hidden></label>
+              </section>
+            </div>
+          </section>
+          <div class="container-preguntas">
+            <div class="containerNavigation">
+              <div class="markerQuestion">
+                <span id="c-p0"><p>1</p></span>
+                <span id="c-p1"><p>2</p></span>
+                <span id="c-p2"><p>3</p></span>
+                <span id="c-p3"><p>4</p></span>
+                <span id="c-p4"><p>5</p></span>
+                <span id="currentQuestion" hidden></span>
+              </div>
+              <div class="container-navButton">
+                <div class="navButton" id="prev"><img src="/icons/up.svg"></div>
+                <div class="navButton" id="next"><img src="/icons/up.svg"></div>
+              </div>
+            </div>
+          
+            <section class="question" id="p0">
+                <h2>¿Cuales son los períodos de la Prehistoria?</h2>
+                <label>
+                    <input type="radio" value="1" name="p0" onclick="respuesta(0, this)"> Paleolítico, Mesolítico y Neolítico
+                </label>
+                <label>
+                    <input type="radio" value="2" name="p0" onclick="respuesta(0, this)"> Paleolítico y Neolítico
+                </label>
+                <label>
+                    <input type="radio" value="3" name="p0" onclick="respuesta(0, this)"> Paleolítico inferior, medio y superior
+                </label>
+                <label>
+                    <input type="radio" value="4" name="p0" onclick="respuesta(0, this)"> Ninguna de las anteriores
+                </label>
+                
+            </section>
+            <section class="question" id="p1">
+                <h2>Es la progresiva adquisición de las características que acabaron diferenciando a los homínidos del resto de primates.
+                </h2>
+                <label>
+                    <input type="radio" value="1" name="p1" onclick="respuesta(1, this)"> Evolución
+                </label>
+                <label>
+                    <input type="radio" value="2" name="p1" onclick="respuesta(1, this)"> Hominización
+                </label>
+                <label>
+                    <input type="radio" value="3" name="p1" onclick="respuesta(1, this)"> Humanización
+                </label>
+                <label>
+                    <input type="radio" value="4" name="p1" onclick="respuesta(1, this)"> Adaptación
+                </label>
+            </section>
+            <section class="question" id="p2">
+                <h2>¿Qué habilidad permite a los Homo Sapiens realizar cosas como rituales, enterramientos, arte, lenguaje, etc.?</h2>
+                <label>
+                    <input type="radio" value="1" name="p2" onclick="respuesta(2, this)"> Abstracción
+                </label>
+                <label>
+                    <input type="radio" value="2" name="p2" onclick="respuesta(2, this)"> Herramientas
+                </label>
+                <label>
+                    <input type="radio" value="3" name="p2" onclick="respuesta(2, this)"> Bipedismo
+                </label>
+                <label>
+                    <input type="radio" value="4" name="p2" onclick="respuesta(2, this)"> Adaptación
+                </label>
+            </section>
+            <section class="question" id="p3">
+                <h2>¿Por qué se caracterizó la especie humana Homo Habilis?</h2>
+                <label>
+                    <input type="radio" value="1" name="p3" onclick="respuesta(3, this)"> Descubrimiento del fuego
+                </label>
+                <label>
+                    <input type="radio" value="2" name="p3" onclick="respuesta(3, this)"> Vivir en cuevas
+                </label>
+                <label>
+                    <input type="radio" value="3" name="p3" onclick="respuesta(3, this)"> Creación de herramientas
+                </label>
+                <label>
+                    <input type="radio" value="4" name="p3" onclick="respuesta(3, this)"> Ninguna de las anteriores
+                </label>
+            </section>
+            <section class="question" id="p4">
+                <h2>¿Cuál fue la primera de las especies de Homos de emigrar de África hacia otros continentes?</h2>
+                <label>
+                    <input type="radio" value="1" name="p4" onclick="respuesta(4, this)"> Homo Habilis
+                </label>
+                <label>
+                    <input type="radio" value="2" name="p4" onclick="respuesta(4, this)"> Homo Erectus
+                </label>
+                <label>
+                    <input type="radio" value="3" name="p4" onclick="respuesta(4, this)"> Homo Sapiens
+                </label>
+                <label>
+                    <input type="radio" value="4" name="p4" onclick="respuesta(4, this)"> Homo Neanderthal
+                </label>
+            </section>
+          </div>
+        </div>
+      </div>
     </main>
     
     
@@ -1386,6 +1504,13 @@
 </html>
 
 <script>
+
+const tituloArticulo = "Descubrimiento de Chile";
+const elementostituloArticulo = document.querySelectorAll('.titulo-articulo');
+
+elementostituloArticulo.forEach((element) => {
+  element.textContent = tituloArticulo;
+});
 
 const CantidadCartasPagina = document.querySelector('#cantidad-cartas-pagina');
 const CartasAbiertasPagina = document.querySelector('#cartas-abiertas-pagina');
@@ -1498,9 +1623,11 @@ ReiniciarProgreso.addEventListener('click', () => {
 
 TippyCartas();
 
-
-
-
+WidgetCuestionario.addEventListener('click', function(){
+  const cuestionario = document.querySelector('.cuestionario-final');
+  cuestionario.classList.add('active');
+  document.body.classList.add('no-scroll');
+})
 
 
 
