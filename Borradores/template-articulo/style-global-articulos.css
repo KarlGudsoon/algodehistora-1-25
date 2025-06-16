@@ -1036,7 +1036,7 @@ li:hover ul#submenu {
   position: absolute;;
   height: 100%;
   width: 80%;
-  top: 0;
+  top: -70%; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1044,6 +1044,25 @@ li:hover ul#submenu {
   pointer-events: none;
   text-align: center;
   line-height: normal;
+  animation: float 3s ease-in-out infinite;
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+#msg-abrirsobre.active {
+  pointer-events: none;
+  opacity: 1;
+  bottom: 0;
+  
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 #msg-abrirsobre img {

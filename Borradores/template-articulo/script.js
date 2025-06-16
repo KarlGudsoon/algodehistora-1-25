@@ -659,6 +659,8 @@ var sobreCarta = document.querySelector('.sobre-carta');
     var sonidoSobre = new Audio("/audio/arrastrar.mp3");
     var sonidoMostrarCarta = new Audio("/audio/reluciente.mp3");
     var sonidoAbrir = new Audio("/audio/romperpapel.mp3");
+    const msgAbrirCarta = document.getElementById("msg-abrirsobre")
+
     sonidoAbrir.volume = 0.3;
     sonidoMostrarCarta.volume = 0.3;
     sonidoMostrarCarta.preload = "auto";
@@ -674,6 +676,7 @@ var sobreCarta = document.querySelector('.sobre-carta');
     }, 200);
 
     sobreCarta.classList.remove('active');
+    msgAbrirCarta.classList.remove('active');
 
     const card = document.querySelector('.item');
 

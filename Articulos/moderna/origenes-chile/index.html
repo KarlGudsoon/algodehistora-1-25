@@ -151,11 +151,12 @@
       </div>
       <div class="contenedor-personaje" id="contenedor-personaje">
         <div class="sobre-carta" id="sobre-carta">  
-          <div id="msg-abrirsobre">Haz click en el sobre para abrir la carta <img src="/icons/up.svg"></div> 
+          
           <img id="imagen-sobre" src="/svg/logo-white.svg">
           <h1 id="titulo-sobre"></h1>
         </div>
         <div class="item" id="personaje-historico" data-tilt>
+          <div id="msg-abrirsobre" class="active">Haz click en el sobre para abrir la carta <img src="/icons/up.svg"></div> 
           <div class="concepto-cerrar" id="carta-cerrar">-</div>
           <div class="etiqueta">
             <span>Personaje Histórico</span>
@@ -229,6 +230,13 @@
                 <img src="/icons/colorcards.svg">
               </div>
               <span><u id="cartas-abiertas-pagina"></u>/<b id="cantidad-cartas-pagina"></b> Cartas de personaje historico</span> 
+            </div>
+            <div class="progreso-cartas-personajes">
+              <div class="icon-progreso-pagina">
+                <img class="progreso-completado" src="/icons/check.svg">
+                <img src="/icons/eos-icons--master.svg">
+              </div>
+              <span> Cuestionario final</span> 
             </div>
             <button id="reiniciar-progreso"><img src="/icons/reload.svg" style="filter: invert(1);"> Reiniciar progreso</button>
 
