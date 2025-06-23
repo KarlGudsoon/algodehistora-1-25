@@ -206,7 +206,7 @@
           <circle class="progress-ring-circle" cx="30" cy="30" r="26" />
         </svg>
         <div class="progress-text" id="progress-text">0%</div>
-        <div class="widget-cuestionario">
+        <div class="widget-cuestionario" id="widget-cuestionario">
           <img src="/icons/quiz.svg" alt="">
         </div>
       </div>
@@ -231,10 +231,10 @@
               </div>
               <span><u id="cartas-abiertas-pagina"></u>/<b id="cantidad-cartas-pagina"></b> Cartas de personaje historico</span> 
             </div>
-            <div class="progreso-cartas-personajes">
+            <div class="progreso-cuestionario-final">
               <div class="icon-progreso-pagina">
                 <img class="progreso-completado" src="/icons/check.svg">
-                <img src="/icons/eos-icons--master.svg">
+                <img src="/icons/quiz-fill.svg">
               </div>
               <span> Cuestionario final</span> 
             </div>
@@ -1390,12 +1390,14 @@
             </p>
             <div class="navigation">
               <section class="datos">
-                <button id="submit" type="submit">ENVIAR</button>
-                <label><input id="resultado" name="resultado" hidden></label>
+                <button id="finalizar-cuestionario-final">ENVIAR</button>
+                <input id="resultado" name="resultado" hidden>
               </section>
             </div>
           </section>
+          
           <div class="container-preguntas">
+            
             <div class="containerNavigation">
               <div class="markerQuestion">
                 <span id="c-p0"><p>1</p></span>
@@ -1489,6 +1491,11 @@
                 </label>
             </section>
           </div>
+          <div class="resultado-cuestionario-final" style="overflow: auto;">
+            <div id="grafico-cuestionario"></div>
+            <button id='reintentar-cuestionario' style='margin-top: 1rem;'>🔁 Reintentar cuestionario</button>
+            <div id="resumen-respuestas"></div>
+          </div>
         </div>
       </div>
     </main>
@@ -1520,9 +1527,10 @@ elementostituloArticulo.forEach((element) => {
   element.textContent = tituloArticulo;
 });
 
+
 const CantidadCartasPagina = document.querySelector('#cantidad-cartas-pagina');
 const CartasAbiertasPagina = document.querySelector('#cartas-abiertas-pagina');
-const PogresoCartasPagina = document.querySelector('.progreso-completado');
+const PogresoCartasPagina = document.querySelector('.progreso-cartas-personajes .progreso-completado');
 const ReiniciarProgreso = document.querySelector('#reiniciar-progreso');
 const WidgetCuestionario = document.querySelector('.widget-cuestionario');
 const Cartas = document.querySelectorAll('.personaje');
@@ -1556,15 +1564,15 @@ function actualizarProgreso(cartasAbiertas, totalCartas) {
   } 
 
   if (porcentaje === 100) {
-    /*
+
     confetti({
       particleCount: 200,
-      spread: 800,
-      origin: { y: 0, x: 1, zIndex: 9999999999 },
-    });*/
-    
-    WidgetCuestionario.classList.add('active');
-  } 
+      spread: 150,
+      origin: { x: 0.5, y: 0 },
+    });
+
+    WidgetCuestionario.classList.add("active");
+}
 }
 
 actualizarProgreso(cartasAbiertas, cantidadCartas);
@@ -1625,6 +1633,7 @@ document.querySelectorAll('.personaje').forEach((element) => {
 
 ReiniciarProgreso.addEventListener('click', () => {
     localStorage.removeItem('cartasAbiertas');
+    localStorage.removeItem('resultadoFinal')
     location.reload(); 
   }
 );

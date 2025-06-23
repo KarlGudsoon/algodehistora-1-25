@@ -1247,3 +1247,14 @@ cerrarCuestionario.addEventListener("click", function() {
   document.body.classList.remove("no-scroll");
 });
 
+let enviarCuestionario = document.getElementById("finalizar-cuestionario-final");
+
+enviarCuestionario.addEventListener("click", function () {
+  const preguntas = document.querySelector(".container-preguntas");
+  const resultado = document.querySelector(".resultado-cuestionario-final")
+
+  preguntas.style.display = "none";
+  resultado.classList.add("active");
+
+  verificarAprobacion();
+});

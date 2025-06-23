@@ -134,7 +134,7 @@ questions.forEach((question) => {
     });
 });
 
-submitButton = document.querySelector("#submit")
+submitButton = document.querySelector("#finalizar-cuestionario-final")
 
 // Función para verificar si todas las preguntas han sido respondidas
 function checkAllQuestionsAnswered() {
@@ -169,6 +169,175 @@ questions.forEach((question) => {
         });
     }
 });
+
+function mostrarResumenFinal() {
+    const contenedorResumen = document.getElementById('resumen-respuestas');
+    const contenedorResultado = document.querySelector(".resultado-cuestionario-final")
+    contenedorResumen.innerHTML = ''; // limpiar por si ya existe algo
+    contenedorResumen.style.display = 'block';
+    contenedorResultado.style.justifyContent = "flex-start";
+  
+    questions.forEach((question, index) => {
+      const textoPregunta = question.querySelector('h2')?.textContent || `Pregunta ${index + 1}`;
+      const opciones = question.querySelectorAll('input[type="radio"]');
+      let textoRespuestaCorrecta = '';
+  
+      opciones.forEach((opcion, i) => {
+        if (parseInt(opcion.value) === correctas[index]) {
+          textoRespuestaCorrecta = opcion.parentNode.textContent.trim();
+        }
+      });
+  
+      const bloque = document.createElement('div');
+      bloque.classList.add('resumen-item');
+      bloque.innerHTML = `
+        <p><strong>${index + 1}. ${textoPregunta}</strong></p>
+        <p>✅ Respuesta correcta: <span style="color:green;">${textoRespuestaCorrecta}</span></p>
+        <hr>
+      `;
+  
+      contenedorResumen.appendChild(bloque);
+    });
+}
+
+document.getElementById("reintentar-cuestionario").addEventListener("click", () => {
+    // Reiniciar respuestas seleccionadas
+    opcion_elegida = [];
+    cantidad_correctas = 0;
+    document.getElementById("resultado").value = "";
+
+    // Desmarcar todos los radios y estilos
+    questions.forEach((question, index) => {
+        const radios = question.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => {
+            radio.checked = false;
+        });
+
+        // Quitar clases visuales
+        const labels = question.querySelectorAll("label");
+        labels.forEach(label => label.classList.remove("seleccionada"));
+    });
+
+    // Volver a la primera pregunta
+    currentQuestion = 0;
+    showQuestion(currentQuestion);
+    currentQuestionNumber();
+
+    // Ocultar resultado y resumen
+    document.querySelector(".resultado-cuestionario-final").classList.remove("active");
+    document.getElementById('resumen-respuestas').style.display = 'none';
+
+    // Reactivar el cuestionario
+    document.querySelector(".container-preguntas").style.display = "block";
+
+    // Desactivar botón finalizar hasta que se respondan todas
+    checkAllQuestionsAnswered();
+
+    const spans = document.querySelectorAll('.markerQuestion span');
+    spans.forEach(span => span.classList.remove('hecha'));
+});
+
+  
+
+// MEDIDOR DE APROBACIÓN
+
+function generarMedidor(promedio) {
+const radio = 60;
+const circunferencia = 2 * Math.PI * radio;
+const porcentaje = Math.min(Math.max(promedio, 0), 7); // Asegurar que esté entre 0 y 7
+const offset = circunferencia * (1 - porcentaje / 7);
+
+const porcentajeNota = ((porcentaje / 7) * 100).toFixed(0);
+
+// Elegir color según el promedio
+let color;
+if (promedio >= 5) {
+    color = "#0da761";
+} else if (promedio >= 4) {
+    color = "#f2a400"; // Amarillo
+} else {
+    color = "#eb3b3b"; // Rojo
+}
+
+return `
+    <svg width="280" height="250" viewBox="0 0 180 220" xmlns="http://www.w3.org/2000/svg" style="font-family: sans-serif;">
+    <circle cx="90" cy="90" r="${radio}" stroke="#ddd" stroke-width="12" fill="none"/>
+    <circle cx="90" cy="90" r="${radio}" stroke="${color}" stroke-width="12" fill="none"
+        stroke-dasharray="${circunferencia}" 
+        stroke-dashoffset="${offset}"
+        stroke-linecap="round"
+        transform="rotate(-90 90 90)" />
+    <text x="90" y="100" text-anchor="middle" font-family="Roboto" font-size="32" fill="#2e2e2e">${porcentajeNota}%</text>
+    <text x="90" y="190" text-anchor="middle" font-family= "Roboto" font-size="16" fill="#2e2e2e" font-weight="bold" letter-spacing="2">
+        ${promedio === 7 ? "PERFECTO" : promedio >= 4 ? "APROBADO" : "NO APROBADO"}
+    </text>
+    <text x="90" y="210" text-anchor="middle" font-size="12" fill="#2e2e2e" letter-spacing="2">PORCENTAJE DE APROBACIÓN</text>
+    </svg>`;
+}
+
+function calcularYMostrarPromedio() {
+const promedioInput = document.getElementById("resultado");
+const promedio = parseFloat(promedioInput.value);
+
+if (isNaN(promedio)) return; 
+
+// Guardar en localStorage
+localStorage.setItem("resultadoFinal", promedio);
+
+const grafico = generarMedidor(promedio);
+document.getElementById('grafico-cuestionario').innerHTML = grafico;
+}
+
+calcularYMostrarPromedio();
+
+document.getElementById("finalizar-cuestionario-final").addEventListener("click", calcularYMostrarPromedio);
+
+const resultadoGuardado = localStorage.getItem("resultadoFinal");
+console.log("Resultado recuperado:", resultadoGuardado);
+
+function Aprobado() {
+    const WidgetCuestionario = document.querySelector('.widget-cuestionario');
+    const WidgetProgresoPagina = document.querySelector(".widget-progreso-pagina")
+    
+    WidgetCuestionario.querySelector("img").src = "/icons/check-white.svg";
+    WidgetProgresoPagina.setAttribute("data-tippy-content", "Artículo completado")
+
+    mostrarResumenFinal();
+
+    const reiniciarCuestionario = document.getElementById("reintentar-cuestionario")
+    reiniciarCuestionario.classList.remove("active");
+}
+
+function verificarAprobacion() {
+    const resultadoGuardado = parseFloat(localStorage.getItem("resultadoFinal")); 
+
+    if (resultadoGuardado >= 4) {
+        document.getElementById('grafico-cuestionario').innerHTML = generarMedidor(resultadoGuardado);
+
+        const preguntas = document.querySelector(".container-preguntas");
+        const resultado = document.querySelector(".resultado-cuestionario-final");
+        const checkCuestionario = document.querySelector(".progreso-cuestionario-final .progreso-completado");
+        const ArticuloCompletadoTitulo = document.querySelector(".texto-inicio-pagina")
+
+        ArticuloCompletadoTitulo.classList.add("completado");
+
+        if (preguntas) preguntas.style.display = "none";
+        if (resultado) resultado.classList.add("active");
+
+        document.querySelector(".progress-ring-bg").style.fill = "#408464";
+
+        checkCuestionario.style.display = "block";
+
+        Aprobado();
+
+    } else {
+        const reiniciarCuestionario = document.getElementById("reintentar-cuestionario")
+        reiniciarCuestionario.classList.add("active"); 
+    }
+}
+
+verificarAprobacion();
+
 
 
 
