@@ -172,8 +172,9 @@ questions.forEach((question) => {
 
 function mostrarResumenFinal() {
     const contenedorResumen = document.getElementById('resumen-respuestas');
-    const contenedorResultado = document.querySelector(".resultado-cuestionario-final")
-    contenedorResumen.innerHTML = ''; // limpiar por si ya existe algo
+    const contenedorResultado = document.querySelector(".resultado-cuestionario-final");
+    const contenedorNav = document.querySelector(".cuestionario-descripcion");
+    contenedorResumen.innerHTML = '';
     contenedorResumen.style.display = 'block';
     contenedorResultado.style.justifyContent = "flex-start";
   
@@ -199,6 +200,19 @@ function mostrarResumenFinal() {
       contenedorResumen.appendChild(bloque);
     });
 }
+
+document.getElementById("finalizar-articulo").addEventListener("click", () => {
+    const cuestionario = document.querySelector(".cuestionario-final");
+
+    cuestionario.classList.remove("active");
+    document.body.classList.remove("no-scroll");
+
+    confetti({
+        particleCount: 200,
+        spread: 600,
+        origin: { x: 0.5, y: 0 },
+      });
+});
 
 document.getElementById("reintentar-cuestionario").addEventListener("click", () => {
     // Reiniciar respuestas seleccionadas
@@ -306,6 +320,8 @@ function Aprobado() {
 
     const reiniciarCuestionario = document.getElementById("reintentar-cuestionario")
     reiniciarCuestionario.classList.remove("active");
+
+    
 }
 
 function verificarAprobacion() {

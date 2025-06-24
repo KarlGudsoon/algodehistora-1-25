@@ -1391,7 +1391,7 @@ li:hover ul#submenu {
   bottom: 0;
   left: -5rem;
   pointer-events: none;
-  z-index: -1;
+  z-index: 999999999999999999;
 }
 
 .item.active {
@@ -3784,6 +3784,24 @@ a:hover {
 #reintentar-cuestionario.active {
   display: block;
 }
+
+#finalizar-articulo {
+  display: none;
+}
+
+#finalizar-articulo.active {
+  display: block;
+}
+
+#resumen-respuestas {
+  display: none;
+  overflow: auto;
+}
+
+#resumen-respuestas.active {
+  display: block;
+}
+
  
 
 .exp1 {

@@ -9,6 +9,16 @@
     },  
     {
       "era": "linea-tiempo-universal-ac",
+      "tipo": "paso-etapa-3",
+      "inicio": "siglos XV y XVI",
+      "ancho": "200px",
+      "siglo": "IV",
+      "color": "var(--prehistoria)",
+      "periodo": "", 
+      "posicion": "calc(var(--70)"
+    },
+    {
+      "era": "linea-tiempo-universal-ac",
       "tipo": "paso-etapa",
       "inicio": "2.85 Mill a.C.",
       "ancho": "550px",
@@ -17,6 +27,18 @@
       "periodo": "Paleolítico inferior",
       "imagen": "/img/prehistoria/homininos.webp",
       "posicion": "calc(var(--10) + var(--2))"
+    },
+    
+    {
+      "era": "linea-tiempo-universal-ac",
+      "tipo": "paso-etapa-4",
+      "inicio": "siglos XV y XVI",
+      "ancho": "200px",
+      "siglo": "IV",
+      "color": "var(--antigua)",
+      "periodo": "", 
+      "imagen": "/img/medieval/Caida-del-Imperio-Romano.webp",
+      "posicion": "calc(var(--80)"
     },
     {
       "era": "linea-tiempo-universal-ac",

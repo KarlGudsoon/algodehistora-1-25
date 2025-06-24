@@ -1383,6 +1383,7 @@
         <div class="cerrar-contenedor"><img src="/icons/close.svg"></div>
         <div class="cuestionario">
           <section class="container-pregunta-nav">
+            <div class="cuestionario-descripcion">
             <span>Cuestionario final</span>
             <h1 class="titulo-articulo" ></h1>
             <p>
@@ -1391,10 +1392,15 @@
             <div class="navigation">
               <section class="datos">
                 <button id="finalizar-cuestionario-final">ENVIAR</button>
+                
                 <input id="resultado" name="resultado" hidden>
               </section>
+              <button id='finalizar-articulo'>Finalizar Artículo</button>
+            </div>
             </div>
           </section>
+          
+          
           
           <div class="container-preguntas">
             
@@ -1493,8 +1499,10 @@
           </div>
           <div class="resultado-cuestionario-final" style="overflow: auto;">
             <div id="grafico-cuestionario"></div>
-            <button id='reintentar-cuestionario' style='margin-top: 1rem;'>🔁 Reintentar cuestionario</button>
             <div id="resumen-respuestas"></div>
+            <button id='reintentar-cuestionario' style='margin-top: 1rem;'>🔁 Reintentar cuestionario</button>
+            
+            
           </div>
         </div>
       </div>
@@ -1565,11 +1573,7 @@ function actualizarProgreso(cartasAbiertas, totalCartas) {
 
   if (porcentaje === 100) {
 
-    confetti({
-      particleCount: 200,
-      spread: 150,
-      origin: { x: 0.5, y: 0 },
-    });
+    
 
     WidgetCuestionario.classList.add("active");
 }

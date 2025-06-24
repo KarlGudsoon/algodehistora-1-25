@@ -763,6 +763,7 @@ button {
     transition: border 0.3s;
     text-align: center;
     color: white;
+    font-family: Roboto;
   }
   
   #year-input:focus {
@@ -913,7 +914,7 @@ button {
     z-index: -2;
     cursor: pointer;
     transition: 0.2s ease;
-    opacity: 0.3;
+    opacity: 0.2;
     mask-image: linear-gradient(to bottom,  transparent 0%, transparent 15%, black 45%, black 55%, transparent 85%, transparent 100%);
   }
   
@@ -949,6 +950,124 @@ button {
   .paso-etapa-2 span:hover{
     border-bottom: 1px solid white;
     
+  }
+
+  .paso-etapa-3 {
+    height: 100%;
+    width: 200px;
+    bottom: 0;
+    display: flex;
+    align-items: end;
+    overflow: visible;
+    color: white;
+    position: absolute;
+  }
+  
+  .paso-etapa-3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250%;
+    background-color: var(--coloretapa);
+    border: 1px solid rgb(255, 255, 255, .8);
+    border-bottom: 0;
+    border-top: 0;
+    z-index: -2;
+    cursor: pointer;
+    transition: 0.2s ease;
+    opacity: 0.3;
+    mask-image: linear-gradient(to left,  black 0%, transparent 100%);
+  }
+  
+  .paso-etapa-3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1.3rem;
+    display: none;
+    background-color: var(--coloretapa);
+  }
+  
+  .paso-etapa-3 span {
+    box-shadow: 0px 0px rgb(0 0 0 / 0);
+    width: auto;
+    height: fit-content;
+    font-size: 0.8rem;
+    opacity: 1;
+    z-index: 9;
+    transition: 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    margin-left: 2%;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+  }
+
+  .paso-etapa-4 {
+    height: 100%;
+    width: 200px;
+    bottom: 0;
+    display: flex;
+    align-items: end;
+    overflow: visible;
+    color: white;
+    position: absolute;
+  }
+  
+  .paso-etapa-4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 250%;
+    background-color: var(--coloretapa);
+    border: 1px solid rgb(255, 255, 255, .8);
+    border-bottom: 0;
+    border-top: 0;
+    z-index: -2;
+    cursor: pointer;
+    transition: 0.2s ease;
+    opacity: 0.3;
+    mask-image: linear-gradient(to right,  black 0%, transparent 100%);
+  }
+  
+  .paso-etapa-4::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1.3rem;
+    display: none;
+    background-color: var(--coloretapa);
+  }
+  
+  .paso-etapa-4 span {
+    box-shadow: 0px 0px rgb(0 0 0 / 0);
+    width: auto;
+    height: fit-content;
+    font-size: 0.8rem;
+    opacity: 1;
+    z-index: 9;
+    transition: 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    margin-left: 2%;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
   }
   
   .linea-tiempo-universal .años {
