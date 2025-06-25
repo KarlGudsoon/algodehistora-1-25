@@ -83,4 +83,31 @@ body {
       opacity: 1;
     }
   }
-  
+
+@keyframes temblor {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+.temblor-daño {
+  animation: temblor 0.8s ease;
+}
+
+.mano-ia {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.carta.ia {
+  width: 80px;
+  height: 120px;
+  background: url('/ruta/al/reverso.png') center/cover no-repeat;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}

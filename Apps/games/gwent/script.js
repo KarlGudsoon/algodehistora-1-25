@@ -19,6 +19,7 @@ let cartasDisponibles = [];
       turno = 0;
 
       mostrarMano();
+      mostrarManoIA();
     }
 
     function mostrarMano() {
@@ -38,61 +39,98 @@ let cartasDisponibles = [];
       });
     }
 
+    function mostrarManoIA() {
+      const contenedorIA = document.getElementById('mano-ia');
+      contenedorIA.innerHTML = '';
+    
+      manoIA.forEach(() => {
+        const cartaReverso = document.createElement('div');
+        cartaReverso.className = 'carta ia'; // Estilo para reverso o genérico
+        contenedorIA.appendChild(cartaReverso);
+      });
+    }
+
     function jugarCarta(indice) {
       const cartaJugador = manoJugador.splice(indice, 1)[0];
       const cartaIA = manoIA.shift();
-
-      aplicarEfectos(cartaJugador, 'jugador');
-      aplicarEfectos(cartaIA, 'ia');
-
-      mostrarMano();
-
+    
+      // Jugador juega inmediatamente
+      aplicarEfectos(cartaJugador, 'jugador', cartaIA);
       agregarCartaCampo('jugadas-jugador', cartaJugador);
-      agregarCartaCampo('jugadas-ia', cartaIA);
-
-      turno++;
-
-      if (turno >= manoJugador.length) {
-        setTimeout(mostrarResultado, 1000);
-      }
-    }
-
-    function aplicarEfectos(carta, quien) {
-      if (!carta.personalidad) return;
-
-      carta.personalidad.forEach(p => {
-        switch (p.nombre) {
-          case "Pensador":
-            const jugadas = document.querySelectorAll(`#jugadas-${quien} .carta p`);
-            jugadas.forEach(p => {
-              const puntos = parseInt(p.textContent);
-              p.textContent = (puntos + 1) + ' pts';
-            });
-            break;
-
-          case "Agricultor":
-            const cartasPrevias = document.querySelectorAll(`#jugadas-${quien} .carta h4`);
-            const mismaCategoria = Array.from(cartasPrevias).some(h =>
-              h.textContent !== carta.titulo &&
-              carta.categoria?.[0]?.nombre &&
-              h.textContent.includes(carta.categoria[0].nombre)
-            );
-            if (mismaCategoria) {
-              carta.puntaje = String(parseInt(carta.puntaje) * 2);
-            }
-            break;
-
-          case "Intrépido":
-            if (quien === 'jugador' && manoJugador.length < cartasDisponibles.length) {
-              const restantes = cartasDisponibles.filter(c => !manoJugador.includes(c) && !manoIA.includes(c));
-              if (restantes.length > 0) {
-                manoJugador.push(restantes[Math.floor(Math.random() * restantes.length)]);
-              }
-            }
-            break;
+      mostrarMano();
+    
+      // 💡 Retrasar jugada IA
+      setTimeout(() => {
+        aplicarEfectos(cartaIA, 'ia');
+        agregarCartaCampo('jugadas-ia', cartaIA);
+      
+        // 👇 Quita una carta del reverso visible
+        const contenedorIA = document.getElementById('mano-ia');
+        if (contenedorIA.firstChild) {
+          contenedorIA.removeChild(contenedorIA.firstChild);
         }
-      });
+      
+        turno++;
+      
+        if (turno >= manoJugador.length) {
+          setTimeout(mostrarResultado, 1000);
+        }
+      }, 600);// ⏱️ 600 milisegundos de espera (puedes ajustar)
     }
+
+    function aplicarEfectos(carta, quien, cartaIA = null) {
+      if (!carta.especialidad) return;
+    
+      const especialidad = carta.especialidad.toLowerCase();
+    
+      switch (especialidad) {
+        case "pensador":
+          const jugadas = document.querySelectorAll(`#jugadas-${quien} .carta p`);
+          jugadas.forEach(p => {
+            const puntos = parseInt(p.textContent);
+            p.textContent = (puntos + 1) + ' pts';
+          });
+          break;
+    
+        case "agricultor":
+          if (quien === 'jugador' && manoJugador.length < cartasDisponibles.length) {
+            const restantes = cartasDisponibles.filter(c =>
+              !manoJugador.includes(c) &&
+              !manoIA.includes(c) &&
+              !document.querySelector(`#jugadas-jugador .carta img[src="${c.imagen}"]`) &&
+              !document.querySelector(`#jugadas-ia .carta img[src="${c.imagen}"]`)
+            );
+            if (restantes.length > 0) {
+              const nuevaCarta = restantes[Math.floor(Math.random() * restantes.length)];
+              manoJugador.push(nuevaCarta);
+              alert("🌾 ¡Agricultor! Obtienes una carta extra.");
+            }
+          }
+          break;
+    
+          case "intrépido":
+            case "intrepido":
+              if (quien === 'jugador') {
+                const zonaIA = document.getElementById('jugadas-ia');
+                const primeraCartaIA = zonaIA.querySelector('.carta');
+            
+                if (primeraCartaIA) {
+                  const puntajeEl = primeraCartaIA.querySelector('p');
+                  const puntajeActual = parseInt(puntajeEl.textContent);
+                  const nuevoPuntaje = Math.max(0, puntajeActual - 2);
+                  puntajeEl.textContent = `${nuevoPuntaje} pts`;
+            
+                  // ✨ Efecto de temblor
+                  primeraCartaIA.classList.add('temblor-daño');
+                  setTimeout(() => {
+                    primeraCartaIA.classList.remove('temblor-daño');
+                  }, 500);
+                }
+              }
+              break;
+          }            
+    }
+    
 
     function agregarCartaCampo(id, carta) {
       const zona = document.getElementById(id);
@@ -104,7 +142,7 @@ let cartasDisponibles = [];
         <p>${carta.puntaje} pts</p>
       `;
 
-      div.style.animation = "entrar 0.5s ease";
+      
 
       if (carta.personalidad) {
         carta.personalidad.forEach(p => {

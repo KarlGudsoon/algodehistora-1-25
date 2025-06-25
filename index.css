@@ -488,6 +488,7 @@ a:hover {
 
 .contenedor-periodos button.active {
   filter: brightness(100%);
+  scale: 1.05;
 }
 
 .contenedor-periodos button p {
