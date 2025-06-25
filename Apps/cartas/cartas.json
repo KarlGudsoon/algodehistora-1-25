@@ -6,6 +6,7 @@
       "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
       "titulo": "HOMO SAPIENS",
       "color": "var(--prehistoria)",
+      "especialidad": "Agricultor",
       "categoria": [
         { "nombre": "Prehistoria", "clase": "etiqueta-prehistoria" }
       ],
@@ -26,6 +27,7 @@
       "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
       "titulo": "NEANDERTAL",
       "color": "var(--prehistoria)",
+      "especialidad": "Intrépido",
       "categoria": [
         { "nombre": "Prehistoria", "clase": "etiqueta-prehistoria" }
       ],
@@ -47,6 +49,7 @@
       "imgSobre": "url(/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg)",
       "titulo": "PUEBLO AYMARA",
       "color": "var(--red)",
+      "especialidad": "Pensador",
       "categoria": [
         { "nombre": "Precolombino", "clase": "etiqueta-medieval" }
       ],
@@ -67,6 +70,7 @@
       "imgSobre": "url(/img/moderna/fondo.webp)",
       "titulo": "CRISTÓBAL COLÓN",
       "color": "var(--moderna)",
+      "especialidad": "Pensador",
       "categoria": [
         { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
       ],
@@ -87,6 +91,7 @@
       "imgSobre": "url(/img/moderna/fondo.webp)",
       "titulo": "FERNANDO MAGALLANES",
       "color": "var(--moderna)",
+      "especialidad": "Intrépido",
       "categoria": [
         { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
       ],

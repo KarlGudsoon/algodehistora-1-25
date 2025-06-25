@@ -49,7 +49,8 @@ function deactivate(container, button) {
 
 // Función para desactivar todos los contenedores y botones
 function deactivateAll() {
-    toggleButtons.forEach((btn) => btn.classList.remove('active'));
+    toggleButtons.forEach((btn) => 
+        btn.classList.remove('active'));
 
     const allContainers = document.querySelectorAll('.contenedor-cartas');
     allContainers.forEach((container) => {

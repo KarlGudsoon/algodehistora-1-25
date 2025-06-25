@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const personajeHistoricoItemTrasera = card.querySelector('.personaje-historico-item-trasera')
     const descripcionItem = card.querySelector('.descripcion-personaje-trasera')
     const caracteristicaFrontal = card.querySelector('.contenedor-caracteristicas');
+    const especialidad = card.querySelector('.contenedor-especialidad');
     
     let startX;
     // Función para voltear la tarjeta
@@ -30,6 +31,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (caracteristicaFrontal) {
         caracteristicaFrontal.classList.toggle('flipped');
+      }
+
+      if (especialidad) {
+        especialidad.classList.toggle('flipped');
       }
 
       if (personajeItem) {
@@ -219,7 +224,6 @@ function actualizarCarta(personaje, idPersonaje) {
       
       // Actualizar clases
       caracteristicasSpans[index].className = "caracteristicas-personaje-frontal";
-      //caracteristicasSpans[index].classList.add(caracteristica.clase);
     }
   });
 
@@ -232,12 +236,23 @@ function actualizarCarta(personaje, idPersonaje) {
     personalidadDiv.appendChild(span);
   });
 
-  /* const contenedorIcons = document.getElementById("iconos-personaje");
-  const spans = contenedorIcons.querySelectorAll("span");
-  spans.forEach(span => {
-    span.style.background = personaje.color;
-  });
-*/
+  const esp = personaje.especialidad.toLowerCase();
+  const especialidad = document.querySelector(".especialidad-personaje span")
+  const especialidadImg = document.querySelector(".especialidad-personaje img")
+
+  if (esp === 'agricultor') {
+    especialidad.textContent = personaje.especialidad;
+    especialidadImg.src = "/icons/trigo.svg"; 
+  } else if (esp === 'intrepido' || esp === 'intrépido') {
+    especialidad.textContent = personaje.especialidad;
+    especialidadImg.src = "/icons/game-icons--angry-eyes.svg"; 
+  } else if (esp === 'pensador') {
+    especialidad.textContent = personaje.especialidad;
+    especialidadImg.src = "/icons/cerebro.svg";
+  } else {
+    especialidad.style.backgroundColor = "";
+  }
+
 
   document.querySelector(".lugar-personaje").id = `lugar-${idPersonaje}`;
   document.querySelector(".reconocimiento-personaje").id = `reconocimiento-${idPersonaje}`;

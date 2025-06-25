@@ -464,7 +464,7 @@ a:hover {
     background-color: var(--secondary-color);
 }
 
-.contenedor-periodos span {
+.contenedor-periodos button {
     z-index: 999999;
     display: flex;
     flex-wrap: wrap;
@@ -478,11 +478,19 @@ a:hover {
     background-color: var(--primary-color);
     cursor: pointer;
     transition: 0.2s ease;
-    box-shadow: 0 4px black;
     overflow: hidden;
+    filter: brightness(75%);
 }
 
-.contenedor-periodos span p {
+.contenedor-periodos button:hover{
+  filter: brightness(100%);
+}
+
+.contenedor-periodos button.active {
+  filter: brightness(100%);
+}
+
+.contenedor-periodos button p {
   font-size: 1rem;
   text-align: center;
   text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
@@ -490,7 +498,7 @@ a:hover {
   user-select: none;
 }
 
-.contenedor-periodos span img {
+.contenedor-periodos button img {
   height: 75px;
   opacity: 0.1;
   filter: brightness(0);
@@ -500,77 +508,22 @@ a:hover {
 
 #prehistoria {
   background-color: #f86d31;
-  box-shadow: 0 2px #bb5225;
-}
-
-#prehistoria:hover {
-  box-shadow: 0 6px #bb5225;
-  transform: translateY(-4px);
-}
-
-#prehistoria:active {
-  transform: translateY(0px);
-  box-shadow: 0 2px #bb5225;
 }
 
 #edad-antigua {
   background-color: #30a5e8;
-  box-shadow: 0 2px #2477a7;
-}
-
-#edad-antigua:hover {
-  box-shadow: 0 6px #2477a7;
-  transform: translateY(-4px);
-}
-
-#edad-antigua:active {
-  transform: translateY(0px);
-  box-shadow: 0 2px #2477a7;
 }
 
 #edad-medieval {
   background-color: #f8b229;
-  box-shadow: 0 2px #a87a1c;
-}
-
-#edad-medieval:hover {
-  box-shadow: 0 6px #a87a1c;
-  transform: translateY(-4px);
-}
-
-#edad-medieval:active {
-  transform: translateY(0px);
-  box-shadow: 0 2px #a87a1c;
 }
 
 #edad-moderna {
   background-color: #f11c35;
-  box-shadow: 0 2px #b81c2e;
-}
-
-#edad-moderna:hover {
-  box-shadow: 0 6px #b81c2e;
-  transform: translateY(-4px);
-}
-
-#edad-moderna:active {
-  transform: translateY(0px);
-  box-shadow: 0 0px #b81c2e;
 }
 
 #contemporanea {
   background-color: #2e8b57;
-  box-shadow: 0 2px #1f5f3b;
-}
-
-#contemporanea:hover {
-  box-shadow: 0 6px #1f5f3b;
-  transform: translateY(-4px);
-}
-
-#contemporanea:active {
-  transform: translateY(0px);
-  box-shadow: 0 2px #1f5f3b;
 }
 
 .contenedor-cartas {
