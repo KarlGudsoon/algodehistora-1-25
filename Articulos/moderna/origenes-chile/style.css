@@ -40,6 +40,10 @@
     
 }
 
+h1 {
+    font-family: BreeSerif;
+}
+
 .contenedor-lenguetas {
     display: flex;
     justify-content: center;
@@ -1228,6 +1232,266 @@
     transform: rotateY(-180deg);
 }
 
+.container-fundacion-santiago {
+    min-height: 400px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 2rem 2rem 0 0;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+}
+
+.container-fundacion-santiago::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.container-fundacion-santiago .fondo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+    position: absolute;
+    z-index: -2;
+}
+
+.container-fundacion-santiago .capsula-1 {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem;
+}
+
+.container-fundacion-santiago .capsula-1 h1 {
+    width: 400px;
+    line-height: 1;
+    font-weight: 900;
+    font-size: 3rem;
+}
+
+.container-fundacion-santiago .capsula-1 p {
+    width: 400px;
+}
+
+.contenedor-fundacion-santiago {
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 0;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+}
+
+.contenedor-fundacion-santiago::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.contenedor-fundacion-santiago .fondo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
+    position: absolute;
+    z-index: -2;
+}
+
+.contenedor-fundacion-santiago .capsula-1 {
+    max-width: 500px;
+    align-items: center;
+    padding: 4rem;
+    flex: 1;
+}
+
+.contenedor-fundacion-santiago .capsula-1 h1 {
+    line-height: 1;
+    font-weight: 900;
+    font-size: 3rem;
+}
+
+.contenedor-fundacion-santiago .capsula-2 {
+    padding: 1rem;
+    width: 300px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+.contenedor-fundacion-santiago .capsula-2 h1 {
+    font-weight: 900;
+    line-height: 1;
+}
+
+.contenedor-arauco {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 2rem;
+    background-color: #232323;
+    z-index: 2;
+    position: relative;
+}
+
+.contenedor-arauco h1 {
+    font: 900 2.5rem BreeSerif;
+    line-height: 1;
+}
+
+.contenedor-arauco p {
+    max-width: 500px;
+}
+
+.explicacion-guerra-arauco {
+    min-height: 600px;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.explicacion-guerra-arauco::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    box-shadow: inset 0 0 1rem rgb(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.contenedor-guerra-arauco {
+    min-height: 600px;
+    width: 600px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-image: url(../../../img/moderna/descubrimiento-chile/vueltademalon.webp);
+    background-position: center;
+}
+
+.contenedor-guerra-arauco::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.35);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.contenedor-tipo-guerra {
+    flex: 1;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.contenedor-tipo-guerra .tipo-guerra {
+    height: 300px;
+    max-width: 300px;
+    padding: 1rem;
+    background-color: var(--backgroundColor);
+    backdrop-filter: blur(15px);
+    min-width: 100px;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(255, 255, 255, 0.2);
+}
+
+.contenedor-tipo-guerra .tipo-guerra h1 {
+    font: 900 2rem BreeSerif;
+    line-height: 1;
+}
+
+.contendientes-guerra-arauco {
+    width: 100%;
+    height: auto;
+    background-color: #232323;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    z-index: 0;
+}
+
+.etapas-guerra-arauco {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font: 900 2rem BreeSerif;
+    line-height: 1;
+    margin: 0;
+}
+
+.contendientes-guerra-arauco .contendiente {
+    flex: 1;
+    min-width: 300px;
+    width: 100%;
+    height: 100px;
+    background-image: var(--backgroundImage);
+    background-size: cover;
+    border-radius: 1rem;
+    padding: 1rem;
+    border: 1px solid rgb(255, 255, 255, 0.5);
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.contendientes-guerra-arauco .contendiente:hover {
+    transform: translateY(-4px);
+}
+
+.contendientes-guerra-arauco .contendiente h1 {
+    max-width: 100px;
+    font: 900 2rem BreeSerif;
+    line-height: 1;
+}
+
+.mapa-guerra-arauco {
+    background-color: var(--fondopagina);
+    min-height: 600px;
+    min-width: 300px;
+    flex: 1;
+    
+}
+
 
 
 @keyframes fade-in {
@@ -1441,6 +1705,25 @@
 
     .capsula-descriptiva span:nth-child(4) {
         font-size: 1rem;
+    }
+
+    .contenedor-fundacion-santiago {
+        justify-content: center;
+        min-height: 800px;
+        height: auto;
+    }
+
+    .contenedor-fundacion-santiago .capsula-1 {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .contenedor-fundacion-santiago .capsula-2 {
+        padding: 1rem;
+        width: auto;
+        margin: 0 1rem 0 1rem;
+        border-radius: 1rem 1rem 0 0;
+        align-self: end;
     }
 
     

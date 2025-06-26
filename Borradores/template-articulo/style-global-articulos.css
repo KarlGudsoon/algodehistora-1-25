@@ -3897,6 +3897,7 @@ a:hover {
   height: 120%;
   position: absolute;
   bottom: 0;
+  filter: drop-shadow(0 0 1rem rgb(0, 0, 0, 0.5));
 }
 
 .contenedor-img-1 {
@@ -4514,6 +4515,21 @@ button:hover::before {
   scale: 1.05;
   filter: drop-shadow(0 0 1rem rgb(0, 0, 0, 0.5)); 
 }
+
+/* RETRATO DE PERSONAJE HISTORICO */
+
+/* CARD GLASS */
+
+.card-glass {
+  background-color: var(--backgroundColor);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgb(255, 255, 255, .5);
+
+
+}
+
+
+/* CARD GLASS */
 
 @media screen and (max-width: 700px) {
 

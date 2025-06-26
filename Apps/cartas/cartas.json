@@ -104,6 +104,27 @@
         { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
       ],
       "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes."
+    },
+    "obrero": {
+      "puntaje": "5",
+      "rareza": "comun",
+      "colorCarta": "punto-plata",
+      "imgSobre": "url(/img/moderna/fondo.webp)",
+      "titulo": "OBRERO INDUSTRIAL",
+      "color": "var(--contemporanea)",
+      "especialidad": "Compañero",
+      "categoria": [
+        { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
+      ],
+      "imagen": "/img/contemporanea/obrero-siderurgica.png",
+      "fondoFrontal": "/img/moderna/descubrimiento-chile/expedicionmagallanesyelcano.webp",
+      "fondoTrasera": "/img/moderna/descubrimiento-chile/expedicionmagallanesyelcano.webp",
+      "personalidad": [
+        { "nombre": "Navegante", "clase": "punto-plata", "img": "/icons/brujula.svg" },
+        { "nombre": "Explorador", "clase": "punto-plateado", "img": "/icons/mapa.svg" },
+        { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
+      ],
+      "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes."
     }
 }
   

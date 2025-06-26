@@ -111,3 +111,31 @@ body {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
+
+.campo.jugador {
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  min-height: 150px;
+  transition: border 0.3s ease;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.campo.jugador.over {
+  border-color: green;
+}
+
+.sumar-puntos {
+  color: green !important;
+  transition: 0.5s ease;
+}
+
+.brillo-bonus {
+  animation: brillo 1s ease;
+  animation-delay: 0.2s ;
+}
+
+@keyframes brillo {
+  0% { box-shadow: 0 0 5px gold; }
+  100% { box-shadow: none; }
+}
