@@ -230,6 +230,36 @@ footer {
   right: 28%;
 }
 
+.cerrar-capsula {
+  width: 25px;
+  height: 25px;
+  background-color: var(--primarycolor);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 1rem;
+  margin: 1rem;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
+.cerrar-capsula:hover {
+  scale: 1.05;
+}
+.cerrar-capsula:active {
+  scale: 0.95;
+}
+
+.cerrar-capsula img {
+  width: 90%;
+  height: 90%;
+}
+
 
 @font-face {
 font-family: BreeSerif;
@@ -525,19 +555,6 @@ li:hover ul#submenu {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 }
 
-.widget-hitos-interno {
-  width: 100%;
-  height: 250px;
-  background: #cd1c38;
-  pointer-events: auto;
-  list-style: none;
-  margin: 0;
-  position: relative;
-  display: flex;
-  transition: .5s ease;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
-}
-
 .hitos1 {
   background: #e11d3c;
   width: 225px;
@@ -582,6 +599,65 @@ li:hover ul#submenu {
 
 .hitos1:hover {
   background: #cb1935;
+}
+
+.widget-hitos-interno {
+  width: 100%;
+  height: 250px;
+  pointer-events: auto;
+  list-style: none;
+  color: var(--color);
+  margin: 0;
+  position: relative;
+  display: flex;
+  transition: .5s ease;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+}
+
+.widget-hitos-interno .hitos1 {
+  background: var(--ColorHito1);
+  width: 225px;
+  height: 100%;
+  border-right: 1px solid var(--ColorHito2);
+  font-size: 12px;
+  position: relative;
+  transition: .5s ease;
+  user-select: none;
+  cursor: grab;
+}
+
+.widget-hitos-interno .hitos1 h1 {
+  padding: 5px;
+  margin: 0;
+}
+
+.widget-hitos-interno .hitos1 p {
+  padding: 5px;
+}
+
+.widget-hitos-interno .hitos1:active {
+  cursor: grabbing;
+}
+
+.widget-hitos-interno .hitos1 span {
+  text-align: center;
+  width: 100%;
+  display: block;
+  background: rgb(0 0 0 / 0.35);
+  padding: 2px;
+  font-size: 16px;
+}
+
+.widget-hitos-interno .hitos1 img {
+  width: 55%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.widget-hitos-interno .hitos1:hover {
+  filter: brightness(1.2);
 }
 
 .hitos2 {

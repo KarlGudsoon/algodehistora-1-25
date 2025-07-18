@@ -708,6 +708,8 @@ document.getElementById("carta-cerrar").addEventListener("click", function() {
     sonidoSobre.play();
 });
 
+/*
+
 // ZOOM INTERACTIVO 🖱️
 
 var scale = 1,
@@ -836,6 +838,7 @@ zoom.addEventListener("touchend", function (e) {
         isPinching = false;
     }
 });
+*/
 
 /// VISOR DE IMAGENES 🎞️
 
@@ -874,6 +877,8 @@ document.querySelectorAll(".close-icon").forEach(closeIcon => {
 particlesJS.load('particles-js', 'particles.json', function() {
   console.log('¡Partículas cargadas!');
 });
+
+/*
 
 /// LINEA DE TIEMPO UNIVERSAL
 
@@ -1216,6 +1221,7 @@ function crearPasoPeriodo({ era, tipo, ancho, color, inicio, siglo, periodo, ima
   pasoPeriodo.appendChild(textoPeriodo);
   contenedorSiglo.appendChild(pasoPeriodo);
 }
+*/
 
 /// TOOLTIP CON TIPPY.JS
 
