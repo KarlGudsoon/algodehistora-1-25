@@ -867,6 +867,16 @@ h1 {
     display: flex;
     position: relative;
     overflow: hidden;
+    transition: .2s ease, outline-offset 0.1s linear;
+    cursor: pointer;
+    outline: 1px solid rgba(255, 255, 255, 0.473);
+    outline-offset: 0px;
+}
+
+.conquista-america-2 .conquistadores:hover {
+    scale: 1.02;
+    outline: 1px solid white;
+    outline-offset: 5px;
 }
 
 .descripcion-conquistadores {
@@ -1606,7 +1616,7 @@ h1 {
     top: 0;
     left: 0;
     pointer-events: none;
-    background-color: #d6d6d6f1;
+    background-color: rgb(182 163 142);
     opacity: 0;
     width: 100%;
     height: 100%;
@@ -1615,6 +1625,30 @@ h1 {
     padding: 1rem;
     transition: 0.2s ease;
 }
+
+.contenedor-parlamento .capsula-2::-webkit-scrollbar {
+    width: 10px;     /* vertical */
+    height: 8px;    /* horizontal */
+  }
+  
+  /* Fondo de la barra */
+.contenedor-parlamento .capsula-2::-webkit-scrollbar-track {
+    background: #f1f1f136;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  
+  /* "Thumb" → el bloque que se mueve */
+.contenedor-parlamento .capsula-2::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0, 0.25); 
+    height: 5px;
+    border-radius: 10px;
+  }
+  
+  /* Hover en el thumb */
+.contenedor-parlamento .capsula-2::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 0, 0, 0.35); 
+  }
 
 .contenedor-parlamento .capsula-2.active {
     opacity: 1;
@@ -1838,13 +1872,18 @@ h1 {
 
     .contenedor-fundacion-santiago {
         justify-content: center;
-        min-height: 800px;
+        min-height: 600px;
         height: auto;
     }
 
     .contenedor-fundacion-santiago .capsula-1 {
         padding: 1rem;
         width: 100%;
+        font-size: 0.8rem;
+    }
+
+    .contenedor-fundacion-santiago .capsula-1 h1 {
+        font-size: 2rem;
     }
 
     .contenedor-fundacion-santiago .capsula-2 {

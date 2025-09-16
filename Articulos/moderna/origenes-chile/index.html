@@ -191,7 +191,7 @@
               <p id="descripcion-personaje"></p>
             </div>
             <div class="descripcion-personaje-caracteristicas" id="iconos-personaje">
-              <span class="lugar-personaje"><img src="/svg/mundo.svg"></span>
+              <span class="lugar-personaje"><img src="/svg/mundo.svg"><img src="" id="img-lugar-personaje"></span>
               <span class="reconocimiento-personaje"><img src="/svg/ribbon.svg"></span>
               <span class="tiempo-personaje"><img draggable="false" src="/svg/tiempo.svg"></span>
             </div>
@@ -218,6 +218,14 @@
       </div>
       <div class="widget-up">
         <img src="/icons/up.svg" alt="Subir">
+      </div>
+
+      <div class="container-capsula-descriptiva-grande">
+        <div class="capsula-descriptiva-grande" id="cortes">
+          <div class="cerrar-capsula">-</div>
+
+        </div>
+
       </div>
       
       
@@ -686,7 +694,7 @@
               las campañas de Cortés en México y Pizarro en Perú.
             </p>
             <div class="conquistadores">
-              <div class="descripcion-conquistadores">
+              <div class="descripcion-conquistadores capsula" data-capsula="cortes">
                 <h1>HERNÁN CORTÉS</h1>
                 <p>
                   En 1519, Hernán Cortés llegó a México y conquistó el Imperio Azteca. 
@@ -802,7 +810,7 @@
             <div class="capsula-descriptiva-1">
               <span class="etiqueta-personalizada" style="--colorFondo: #9e1b2b;">Conquista de Chile</span>
               <div style="display: flex; gap: 1rem; align-items: center;">
-                <h1 style="max-width: 380px; margin-bottom: 0;">EXPEDICIÓN DE DIEGO DE ALMAGRO</h1>
+                <h1 style="max-width: 380px; margin-bottom: 0;">EXPEDICIÓN DE PEDRO DE VALDIVIA</h1>
                 <div class="contenedor-fecha-periodo"  style="margin: 0; justify-content: center;">
                   <div class="fecha-periodo" simple="true">
                     <h1 class="fecha-inicio">1535</h1>  
@@ -1171,7 +1179,7 @@
     <script type="text/javascript" src="/vanilla-tilt.min.js"></script>
     <script src="https://unpkg.com/popper.js@1"></script>
     <script src="https://unpkg.com/tippy.js@5"></script>
-    <script src="/Borradores/template-articulo/tippy.js"></script>
+    <script src="tippy.js"></script>
     <script src="/Articulos/moderna/origenes-chile/tippy.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>

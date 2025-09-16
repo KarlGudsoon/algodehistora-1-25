@@ -168,6 +168,12 @@ function inicializarEventos(personajes) {
   });
 }
 
+// Inicializar tooltips al cargar el DOM
+const lugarTippy = tippy('.lugar-personaje', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+const reconocimientoTippy = tippy('.reconocimiento-personaje', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+const tiempoTippy = tippy('.tiempo-personaje', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+
+
 function actualizarCarta(personaje, idPersonaje) {
   const rarezas = ["basico", "bronce", "comun", "raro", "epico", "legendario"];
   const colorCarta = ["punto-dorado", "punto-plata", "punto-bronce"]
@@ -253,20 +259,34 @@ function actualizarCarta(personaje, idPersonaje) {
     especialidad.style.backgroundColor = "";
   }
 
+  // lugar
+  lugarTippy[0].setContent(personaje.lugar || "Sin información");
+  lugarTippy[0].setProps({ theme: personaje.rareza });
 
-  document.querySelector(".lugar-personaje").id = `lugar-${idPersonaje}`;
-  document.querySelector(".reconocimiento-personaje").id = `reconocimiento-${idPersonaje}`;
-  document.querySelector(".tiempo-personaje").id = `tiempo-${idPersonaje}`;
+  // reconocimiento
+  const listaReconocimiento = `
+    <ul style="margin:0; padding:0 20px; list-style:disc;">
+      ${personaje.reconocimiento.map(item => `<li>${item}</li>`).join('')}
+    </ul>
+  `;
+  reconocimientoTippy[0].setContent(listaReconocimiento);
+  reconocimientoTippy[0].setProps({ theme: personaje.rareza });
+
+  // tiempo
+  tiempoTippy[0].setContent(personaje.tiempo || "Sin información");
+  tiempoTippy[0].setProps({ theme: personaje.rareza });
 
   document.querySelector(".lugar-personaje").classList.remove(...colorCarta);
+  document.getElementById("img-lugar-personaje").src = personaje.bandera || "/icons/mundo.svg";
   document.querySelector(".reconocimiento-personaje").classList.remove(...colorCarta);
   document.querySelector(".tiempo-personaje").classList.remove(...colorCarta);
-
 
   document.querySelector(".lugar-personaje").classList.add(personaje.colorCarta);
   document.querySelector(".reconocimiento-personaje").classList.add(personaje.colorCarta);
   document.querySelector(".tiempo-personaje").classList.add(personaje.colorCarta);
 }
+
+
 
 
 
@@ -855,13 +875,18 @@ document.querySelectorAll(".img-view").forEach(function(elemento) {
       altImgViewer.style.display = altImg ? "block" : "none";
       altImgViewer.textContent = altImg || "";
 
+      document.querySelector(".container-img-viewer").addEventListener("click", function(e) {
+        if (e.target === this) { // Cierra solo si se hace clic fuera de la imagen
+            this.classList.remove("activo");
+            document.body.classList.remove("no-scroll");
+        }
+    });
+
       if (containerImgViewer.classList.contains("activo")) {
           document.body.classList.add("no-scroll");
       } else {
           document.body.classList.remove("no-scroll");
       }
-      
-     
   });
 })
 
@@ -1279,3 +1304,17 @@ enviarCuestionario.addEventListener("click", function () {
 
   verificarAprobacion();
 });
+
+// CAPSULA DESCRIPTIVA GRANDE
+
+document.querySelectorAll('.capsula').forEach(TriggerCapsula => {
+  TriggerCapsula.addEventListener('click', function() {
+    let capsula = this.getAttribute('data-capsula');
+    let capsulaDescriptiva = document.getElementById(`${capsula}`);
+    capsulaDescriptiva.classList.add('active');
+  });
+}
+);
+
+// CAPSULA DESCRIPTIVA GRANDE
+

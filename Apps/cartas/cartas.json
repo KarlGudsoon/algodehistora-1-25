@@ -71,6 +71,9 @@
       "titulo": "CRISTÓBAL COLÓN",
       "color": "var(--moderna)",
       "especialidad": "Pensador",
+      "lugar": "Genovés de nacimiento, pero navegó para españa",
+      "reconocimiento": ["Lideró el primer intento de dar la vuelta al mundo", "Descubrió América"],
+      "tiempo": "Nació en 1421 - Murió en 1506",
       "categoria": [
         { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
       ],
@@ -92,6 +95,10 @@
       "titulo": "FERNANDO MAGALLANES",
       "color": "var(--moderna)",
       "especialidad": "Intrépido",
+      "bandera": "/img/banderas/Flag_of_Portugal_(1578).svg",
+      "lugar": "Portugués de nacimiento, navegó para España",
+      "reconocimiento": ["Comandó la primera circunnavegación del globo", "Descubrió el Estrecho de Magallanes"],
+      "tiempo": "Nació en 1480 - Murió en 1521",
       "categoria": [
         { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
       ],
