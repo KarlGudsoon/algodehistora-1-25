@@ -169,6 +169,47 @@ function inicializarEventos(personajes) {
 }
 
 // Inicializar tooltips al cargar el DOM
+const valoracionTippy = tippy('#puntaje-carta-personaje', { content: "Puntaje de la carta", trigger: "click", allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+
+let tipoEspecialidad = document.querySelector(".especialidad-nombre");
+
+const descripcionesEspecialidad = {
+  'Agricultor': 'Experto en cultivo y manejo de tierras. Al utilizarla obtienes una carta extra de tu mazo.',
+  'Intrépido': 'Intrépido: Valiente y audaz, siempre dispuesto a enfrentar desafíos y explorar lo desconocido con determinación y coraje.',
+  'Pensador': 'Pensador: Intelectual y reflexivo, capaz de analizar problemas complejos y proponer soluciones innovadoras.'
+};
+
+let especialidadTippy = tippy('.contenedor-especialidad', {allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+
+
+
+const descripcionesCaracteristicas = {
+  'Agricultor': 'Experto en cultivo y manejo de tierras. Al utilizarla obtienes una carta extra de tu mazo.',
+  'Navegante': 'Hábil en la navegación y exploración marítima, capaz de descubrir nuevas rutas y territorios.',
+  'Visionario': 'Posee una perspectiva única y adelantada a su tiempo, capaz de anticipar tendencias y cambios futuros.',
+  'Guerrero': 'Valiente y hábil en el combate, defensor de su pueblo y sus ideales.',
+  'Líder': 'Carismático y capaz de inspirar y guiar a otros hacia un objetivo común.',
+  'Artista': 'Creativo y expresivo, capaz de plasmar emociones e ideas a través de diversas formas de arte.',
+  'Científico': 'Dedicado a la investigación y el descubrimiento, busca entender el mundo a través del método científico.',
+  'Filósofo': 'Pensador profundo que reflexiona sobre la existencia, el conocimiento y la ética.',
+  'Explorador': 'Aventurero y curioso, siempre en busca de nuevas tierras y experiencias.',
+};
+
+const spans = document.querySelectorAll(".carta-personalidad span");
+
+// Creamos los tooltips y los guardamos en un array para poder actualizar su contenido
+const tippies = Array.from(spans).map(span => 
+  tippy(span, { 
+    allowHTML: true, 
+    interactive: true, 
+    theme: 'basico', 
+    placement: 'top', 
+    appendTo: document.body, 
+    zIndex: 99999999999
+  })
+);
+
+
 const lugarTippy = tippy('.lugar-personaje', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
 const reconocimientoTippy = tippy('.reconocimiento-personaje', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
 const tiempoTippy = tippy('.tiempo-personaje', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
@@ -212,6 +253,12 @@ function actualizarCarta(personaje, idPersonaje) {
 
   document.getElementById("puntaje-carta-personaje").textContent = personaje.puntaje;
 
+  if (personaje.puntaje < 8 ) {
+    document.getElementById("puntaje-carta-personaje").style.borderColor = "#e2e0dd";
+  } else {
+    document.getElementById("puntaje-carta-personaje").style.borderColor = "#efb810";
+  }
+
   const caracteristicasSpans = document.querySelectorAll(".caracteristicas-personaje-frontal");
   personaje.personalidad.forEach((caracteristica, index) => {
     if (caracteristicasSpans[index]) {
@@ -233,17 +280,25 @@ function actualizarCarta(personaje, idPersonaje) {
     }
   });
 
-  const personalidadDiv = document.getElementById("personalidad-personaje");
-  personalidadDiv.innerHTML = "";
-  personaje.personalidad.forEach(caracteristica => {
-    const span = document.createElement("span");
-    span.textContent = caracteristica.nombre;
-    span.classList.add(caracteristica.clase);
-    personalidadDiv.appendChild(span);
+  const spans = document.querySelectorAll(".carta-personalidad span");
+
+// Recorremos spans y el array de personalidad al mismo tiempo
+  spans.forEach((span, index) => {
+    const caracteristica = personaje.personalidad[index];
+
+    if (caracteristica) {
+      span.textContent = caracteristica.nombre;
+      span.className = ""; // limpiar clases previas
+      span.classList.add(caracteristica.clase);
+    } else {
+      // Si no hay más características en el array, opcionalmente limpiar el span
+      span.textContent = "";
+      span.className = "";
+    }
   });
 
   const esp = personaje.especialidad.toLowerCase();
-  const especialidad = document.querySelector(".especialidad-personaje span")
+  const especialidad = document.querySelector(".especialidad-nombre")
   const especialidadImg = document.querySelector(".especialidad-personaje img")
 
   if (esp === 'agricultor') {
@@ -259,16 +314,37 @@ function actualizarCarta(personaje, idPersonaje) {
     especialidad.style.backgroundColor = "";
   }
 
+  // especialidad
+  let especialidadTexto = tipoEspecialidad.textContent.trim();
+  let descripcionEspecialidad = descripcionesEspecialidad[especialidadTexto] || "Sin descripción disponible.";
+
+  especialidadTippy[0].setContent(descripcionEspecialidad);
+
+  // características
+  
+  spans.forEach((span, index) => {
+    const caracteristicaClase = personaje.personalidad[index];
+
+    let texto = span.textContent.trim();
+    let descripcion = descripcionesCaracteristicas[texto] || "Sin descripción disponible.";
+    tippies[index].setContent(descripcion);
+    tippies[index].setProps({theme: caracteristicaClase.clase});
+    console.log(caracteristicaClase);
+  });
+
   // lugar
   lugarTippy[0].setContent(personaje.lugar || "Sin información");
   lugarTippy[0].setProps({ theme: personaje.rareza });
 
   // reconocimiento
-  const listaReconocimiento = `
-    <ul style="margin:0; padding:0 20px; list-style:disc;">
-      ${personaje.reconocimiento.map(item => `<li>${item}</li>`).join('')}
-    </ul>
-  `;
+  const listaReconocimiento = personaje.reconocimiento && personaje.reconocimiento.length > 0
+    ? `
+      <ul style="margin:0; padding:0 20px; list-style:disc;">
+        ${personaje.reconocimiento.map(item => `<li>${item}</li>`).join('')}
+      </ul>
+    `
+    : `<p style="margin:0; padding:0;">Sin información</p>`;
+
   reconocimientoTippy[0].setContent(listaReconocimiento);
   reconocimientoTippy[0].setProps({ theme: personaje.rareza });
 
@@ -276,8 +352,14 @@ function actualizarCarta(personaje, idPersonaje) {
   tiempoTippy[0].setContent(personaje.tiempo || "Sin información");
   tiempoTippy[0].setProps({ theme: personaje.rareza });
 
+  const banderaCarta = document.getElementById("img-lugar-personaje");
+    if(personaje.bandera) {
+      banderaCarta.src = personaje.bandera;
+    } else {
+      banderaCarta.style.display = "none"
+    }
+
   document.querySelector(".lugar-personaje").classList.remove(...colorCarta);
-  document.getElementById("img-lugar-personaje").src = personaje.bandera || "/icons/mundo.svg";
   document.querySelector(".reconocimiento-personaje").classList.remove(...colorCarta);
   document.querySelector(".tiempo-personaje").classList.remove(...colorCarta);
 
@@ -494,6 +576,7 @@ paises.forEach((pais) => {
 
 function manejarCierre(event) {
     var concepto = event.target.parentElement;
+    var contenedorPadre = concepto.parentElement;
     var containerCard = document.getElementById("contenedor-personaje");
     var Card = document.getElementById("personaje-historico");
     const cardPersonaje = document.querySelectorAll('.item');
@@ -510,8 +593,13 @@ function manejarCierre(event) {
 
     
     if (concepto) {
-        concepto.classList.remove("active");
-        
+        concepto.classList.remove("active");  
+    }
+
+    
+
+    if (contenedorPadre) {
+        contenedorPadre.classList.remove("active");
     }
 
     if (containerCard) {
@@ -1307,12 +1395,41 @@ enviarCuestionario.addEventListener("click", function () {
 
 // CAPSULA DESCRIPTIVA GRANDE
 
+let containerCapsula = document.querySelector('.container-capsula-descriptiva-grande');
+let capsulaGrande = document.querySelector('.capsula-descriptiva-grande');
+
 document.querySelectorAll('.capsula').forEach(TriggerCapsula => {
   TriggerCapsula.addEventListener('click', function() {
+    document.body.classList.add('no-scroll');
+    containerCapsula.classList.add('active');
+
     let capsula = this.getAttribute('data-capsula');
     let capsulaDescriptiva = document.getElementById(`${capsula}`);
+    
     capsulaDescriptiva.classList.add('active');
   });
+});
+
+containerCapsula.addEventListener('click', function(e) {
+  if (e.target === this) { // Cierra solo si se hace clic fuera de la cápsula
+    this.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+
+    let capsulaActiva = this.querySelector('.capsula-descriptiva-grande.active');
+    if (capsulaActiva) {
+      capsulaActiva.classList.remove('active');
+    }
+  }
+});
+
+capsulaGrande.querySelector('.cerrar-capsula').addEventListener('click', function() {
+  containerCapsula.classList.remove('active');
+  document.body.classList.remove('no-scroll');
+
+  let capsulaActiva = containerCapsula.querySelector('.capsula-descriptiva-grande.active');
+  if (capsulaActiva) {
+    capsulaActiva.classList.remove('active');
+  }
 }
 );
 

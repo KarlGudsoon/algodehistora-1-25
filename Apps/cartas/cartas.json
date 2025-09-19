@@ -81,9 +81,9 @@
       "fondoFrontal": "/img/moderna/fondo.webp",
       "fondoTrasera": "/img/moderna/fondo.webp",
       "personalidad": [
-        { "nombre": "Navegante", "clase": "punto-plateado", "img": "/icons/brujula.svg" },
-        { "nombre": "Explorador", "clase": "punto-plateado", "img": "/icons/mapa.svg" },
-        { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
+        { "nombre": "Navegante", "clase": "punto-plata", "img": "/icons/brujula.svg" },
+        { "nombre": "Explorador", "clase": "punto-plata", "img": "/icons/mapa.svg" },
+        { "nombre": "Visionario", "clase": "punto-dorado", "img": "/icons/telescopio.svg" }
       ],
       "descripcion": "Cristóbal Colón fue un navegante genovés conocido por realizar el viaje que llevó al descubrimiento de América en 1492, bajo el auspicio de los Reyes Católicos de España."
     },
