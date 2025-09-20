@@ -107,7 +107,7 @@
       "fondoTrasera": "/img/moderna/descubrimiento-chile/expedicionmagallanesyelcano.webp",
       "personalidad": [
         { "nombre": "Navegante", "clase": "punto-plata", "img": "/icons/brujula.svg" },
-        { "nombre": "Explorador", "clase": "punto-plateado", "img": "/icons/mapa.svg" },
+        { "nombre": "Explorador", "clase": "punto-basico", "img": "/icons/mapa.svg" },
         { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
       ],
       "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes."

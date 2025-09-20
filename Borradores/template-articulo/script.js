@@ -179,7 +179,7 @@ const descripcionesEspecialidad = {
   'Pensador': 'Pensador: Intelectual y reflexivo, capaz de analizar problemas complejos y proponer soluciones innovadoras.'
 };
 
-let especialidadTippy = tippy('.contenedor-especialidad', {allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+let especialidadTippy = tippy('.especialidad-personaje', {allowHTML: true, interactive: true, theme: 'punto-basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
 
 
 
@@ -328,7 +328,7 @@ function actualizarCarta(personaje, idPersonaje) {
     let texto = span.textContent.trim();
     let descripcion = descripcionesCaracteristicas[texto] || "Sin descripción disponible.";
     tippies[index].setContent(descripcion);
-    tippies[index].setProps({theme: caracteristicaClase.clase});
+    tippies[index].setProps({theme: caracteristicaClase.clase || 'basico'});
     console.log(caracteristicaClase);
   });
 
@@ -1396,7 +1396,6 @@ enviarCuestionario.addEventListener("click", function () {
 // CAPSULA DESCRIPTIVA GRANDE
 
 let containerCapsula = document.querySelector('.container-capsula-descriptiva-grande');
-let capsulaGrande = document.querySelector('.capsula-descriptiva-grande');
 
 document.querySelectorAll('.capsula').forEach(TriggerCapsula => {
   TriggerCapsula.addEventListener('click', function() {
@@ -1405,6 +1404,14 @@ document.querySelectorAll('.capsula').forEach(TriggerCapsula => {
 
     let capsula = this.getAttribute('data-capsula');
     let capsulaDescriptiva = document.getElementById(`${capsula}`);
+    let imgCapsula = capsulaDescriptiva.querySelector('.descripcion-grande-2 img');
+    let descripcionCapsula1 = capsulaDescriptiva.querySelector('.descripcion-grande-1');
+    descripcionCapsula1.classList.add('active');
+    imgCapsula.classList.add('active');
+
+    capsulaDescriptiva.querySelectorAll('.descripcion-grande-3 .contenedor-img').forEach(img => {
+      img.classList.add('active');
+    });
     
     capsulaDescriptiva.classList.add('active');
   });
@@ -1418,20 +1425,36 @@ containerCapsula.addEventListener('click', function(e) {
     let capsulaActiva = this.querySelector('.capsula-descriptiva-grande.active');
     if (capsulaActiva) {
       capsulaActiva.classList.remove('active');
+      capsulaActiva.querySelector('.descripcion-grande-2 img').classList.remove('active');
+      capsulaActiva.querySelector('.descripcion-grande-1').classList.remove('active');
+
+      capsulaActiva.querySelectorAll('.descripcion-grande-3 .contenedor-img').forEach(img => {
+        img.classList.remove('active');
+      });
     }
   }
 });
 
-capsulaGrande.querySelector('.cerrar-capsula').addEventListener('click', function() {
-  containerCapsula.classList.remove('active');
-  document.body.classList.remove('no-scroll');
+// Selecciona todos los botones de cerrar dentro de capsulaGrande
+document.querySelectorAll('.cerrar-capsula').forEach(botonCerrar => {
+  botonCerrar.addEventListener('click', function() {
+    containerCapsula.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+    let capsulaGrandeActiva = this.parentElement;
 
-  let capsulaActiva = containerCapsula.querySelector('.capsula-descriptiva-grande.active');
-  if (capsulaActiva) {
-    capsulaActiva.classList.remove('active');
-  }
-}
-);
+    capsulaGrandeActiva.querySelector('.descripcion-grande-1').classList.remove('active');
+    capsulaGrandeActiva.querySelector('.descripcion-grande-2 img').classList.remove('active');
+    capsulaGrandeActiva.querySelectorAll('.descripcion-grande-3 .contenedor-img').forEach(img => {
+      img.classList.remove('active');
+    });
+
+    containerCapsula.querySelectorAll('.capsula-descriptiva-grande.active').forEach(capsulaActiva => {
+      capsulaActiva.classList.remove('active');
+    });
+  });
+});
+
+
 
 // CAPSULA DESCRIPTIVA GRANDE
 
