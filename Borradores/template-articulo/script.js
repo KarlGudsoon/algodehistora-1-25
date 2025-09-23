@@ -1458,3 +1458,32 @@ document.querySelectorAll('.cerrar-capsula').forEach(botonCerrar => {
 
 // CAPSULA DESCRIPTIVA GRANDE
 
+// NIEVE 
+
+function copoNieve() {
+  let contenedorNieve = document.querySelector('.nieve');
+  const copo = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  copo.setAttribute("class", "copo");
+  copo.setAttribute("viewBox", "0 0 24 24");
+
+  copo.style.left = Math.random() * contenedorNieve.offsetWidth + "px";
+  copo.style.animationDuration = (10 + Math.random() * 10) + "s";
+  copo.style.animationDelay = Math.random() * 10 + "s";
+  copo.style.translate = `translateZ(${Math.random() * 100}px)`;
+
+  copo.innerHTML = `
+  <circle cx="2" cy="2" r="2" fill="white"/>
+`;
+  contenedorNieve.appendChild(copo);
+
+  copo.addEventListener("animationend", function() {
+    copo.remove();
+    copoNieve();
+  }
+  );
+
+}
+
+for (let i = 0; i < 75; i++) {
+  copoNieve();
+}

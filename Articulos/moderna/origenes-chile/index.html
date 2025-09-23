@@ -574,31 +574,31 @@
         <section class="exp4 bg-1" id="origen-palabra">
           <h1>ORÍGEN DE LA PALABRA"CHILE"</h1>
           <div class="contenedor-teorias">
-            <div class="teoria">
-              <h1>LA PALABRA "CHILE"</h1>
+            <div class="teoria" data-tilt data-tilt-max="10">
+              <div class="contenedor-nubes">
+                <img class="nube" src="/img/otros/nube.webp">
+                <img class="nube" src="/img/otros/nube.webp">
+              </div>
+              
+              <div class="nieve"></div>
+              <h1>"chiri" (quechua)</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                Perspiciatis esse voluptates quo deserunt recusandae quasi, 
-                impedit nihil sequi voluptate totam sint laborum voluptas 
-                beatae reprehenderit vel accusamus maxime ea fuga.
+                En la segunda mitad del siglo XVI, la teoría de que el apelativo sería originario de la palabra quechua chiri ('frío, helado') fue referida por el cronista e historiador Agustín de Zárate.
               </p>
+              <img class="cordillera" src="/img/moderna/descubrimiento-chile/cordillera.webp">
             </div>
-            <div class="teoria">
-              <h1>LA PALABRA "CHILE"</h1>
+            <div class="teoria" data-tilt>
+              <h1>chili o trile (mapuche)</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                Perspiciatis esse voluptates quo deserunt recusandae quasi, 
-                impedit nihil sequi voluptate totam sint laborum voluptas 
-                beatae reprehenderit vel accusamus maxime ea fuga.
+                Durante el siglo XVIII, se afirmó que el término se originaría en la voz chili, una onomatopeya mapuche del canto del trile, un pájaro endémico de manchas amarillas en las alas.
               </p>
+              <img class="trile tippy-follow" src="/img/moderna/descubrimiento-chile/trile.webp" data-tippy-content="Trile, pajaro endémico de Chile" data-theme="punto-basico" >
+              <img class="cordillera" src="/img/moderna/descubrimiento-chile/rio-maullin.webp">
             </div>
-            <div class="teoria">
-              <h1>LA PALABRA "CHILE"</h1>
+            <div class="teoria" data-tilt>
+              <h1>chilli (aimara)</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                Perspiciatis esse voluptates quo deserunt recusandae quasi, 
-                impedit nihil sequi voluptate totam sint laborum voluptas 
-                beatae reprehenderit vel accusamus maxime ea fuga.
+                La palabra "chile" podría venir de la voz deformada Chilli, que podría significar "confín del mundo" o "el lugar más alejado o más hondo de la tierra".
               </p>
             </div>
           </div>
@@ -1294,6 +1294,12 @@ function actualizarProgreso(cartasAbiertas, totalCartas) {
 }
 
 actualizarProgreso(cartasAbiertas, cantidadCartas);
+
+let tippyFollow = tippy('.tippy-follow', {
+  allowHTML: true,
+  followCursor: true,
+  theme: 'punto-basico',
+})[0];
 
 let tippyInstance = tippy('#cartas-abiertas-pagina', {
   content: '',

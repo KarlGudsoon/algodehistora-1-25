@@ -379,34 +379,151 @@ h1 {
 
 .teoria {
     background-color: #fd2e46;
-    -webkit-backdrop-filter: blur(15px); /* Para compatibilidad con Safari */
-    backdrop-filter: blur(15px);
     border: 1px solid rgb(246, 210, 214, 0.75);
     outline: 1px solid rgb(0, 0, 0, 0.1);
     box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
     padding: 2rem;
     max-width: 350px;
+    height: 315px;
     border-radius: 1rem;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    position: relative;
+    transition: scale 0.2s ease, background-color 0.5s ease;
+}
+
+.teoria:hover {
+    scale: 1.075;
+    z-index: 2;
+}
+
+.teoria:nth-child(1):hover {
+    background-color: rgb(55, 136, 212);
+}
+
+.teoria .nieve {
+    opacity: 0;
+    user-select: none;
+}
+
+.teoria .contenedor-nubes {
+    position: absolute;
+    top: -75px;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 125px;
+    z-index: 9;
+    pointer-events: none;
+    display: flex;
+    transform: translateZ(25px);
+    transition: 0.5s ease;
+    user-select: none;
+}
+
+.teoria:hover .contenedor-nubes {
+    opacity: 1;
+}
+
+.teoria .nube {
+    left: 0;
+    flex: 1;
+    height: 100%;
+    z-index: 9;
+    opacity: 0.8;
+    transition: 0.5s ease;
+    transform: translateZ(25px);
+    filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0, 0.75));
+    animation: float 6s ease-in-out infinite;
+}
+
+.teoria:hover .nube:nth-child(1) {
+    translate: -5% 0;
+}
+
+.teoria:hover .nube:nth-child(2) {
+    translate: -50% 0;
+}
+
+.teoria .nube:nth-child(1){
+    translate: -50% 0;
+    transition-delay: 0.1s;
+}
+
+.teoria .nube:nth-child(2){
+    translate: -100% 0;
+}
+
+.teoria:hover .nieve {
+    opacity: 0.5;
+}
+
+
+.teoria:hover .trile {
+    scale: 2;
+    animation-play-state: running;
+    bottom: 75%;
+    left: 75%;
+    opacity: 1;
 }
 
 .teoria h1 {
     font: 900 2rem BreeSerif;
-    color: black;
-    opacity: 0.35;
+    color: rgb(0, 0, 0, 0.5);
     line-height: 1;
     margin: 0;
     text-align: left;
+    text-transform: uppercase;
+    z-index: 2;
 }
 
 .teoria p {
     font: 300 1rem Roboto;
     color: white;
     margin: 0;
-    
+    z-index: 2;
+}
+
+.teoria .cordillera {
+    width: 100%;
+    position: absolute;
+    border-radius: 0 0 1rem 1rem;
+    margin: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    opacity: 0.75;
+    transition: 0.5s ease;
+    animation: none;
+    animation-play-state: paused;
+    pointer-events: none;
+}
+
+.teoria:hover .cordillera {
+    scale: 1.05;
+    opacity: 1;
+    transform: translateZ(25px);
+}
+
+.teoria .trile {
+    width: 75px;
+    bottom: 0;
+    left: 0;
+    transform: translateZ(35px);
+    position: absolute;
+    z-index: 9;
+    margin: 1rem;
+    filter: drop-shadow(5px 5px 5px rgb(0, 0, 0, 0.75));
+    transition: 0.5s ease;
+    animation: float 3s ease-in-out infinite;
+    animation-play-state: paused;
+    border-radius: 0 0 1rem 1rem; 
+    transition: 0.5s ease;
+    opacity: 0;
 }
 
 .nota-profesor {
