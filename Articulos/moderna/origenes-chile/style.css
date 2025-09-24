@@ -464,9 +464,9 @@ h1 {
 
 
 .teoria:hover .trile {
-    scale: 2;
+    scale: 1.5;
     animation-play-state: running;
-    bottom: 75%;
+    top: -10%;
     left: 75%;
     opacity: 1;
 }
@@ -510,21 +510,59 @@ h1 {
 }
 
 .teoria .trile {
-    width: 75px;
-    bottom: 0;
+    width: 100px;
+    top: 0;
     left: 0;
-    transform: translateZ(35px);
+    transform: translateZ(25px);
     position: absolute;
     z-index: 9;
     margin: 1rem;
     filter: drop-shadow(5px 5px 5px rgb(0, 0, 0, 0.75));
     transition: 0.5s ease;
-    animation: float 3s ease-in-out infinite;
     animation-play-state: paused;
-    border-radius: 0 0 1rem 1rem; 
     transition: 0.5s ease;
     opacity: 0;
+    cursor: pointer;
 }
+
+.teoria .trile:hover {
+    scale: 1.75;
+}
+
+.teoria .trile:active {
+    scale: 1.5;
+}
+
+.teoria .cielo {
+    border-radius: 1rem;
+    z-index: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: none;
+    transition: 0.5s ease;
+    user-select: none;
+    pointer-events: none;
+}
+
+.teoria:hover .cielo {
+    opacity: 1;
+ }
+
+ .teoria .hojas {
+    opacity: 0;
+    z-index: 9;
+    transition: 0.2s ease;
+    user-select: none;
+    pointer-events: none;
+ }
+
+ .teoria:hover .hojas {
+    opacity: 1;
+ }
 
 .nota-profesor {
     background-color: var(--periodopagina);

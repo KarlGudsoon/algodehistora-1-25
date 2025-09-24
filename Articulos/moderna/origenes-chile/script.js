@@ -501,3 +501,22 @@ cerrarCapsula.addEventListener("click", function() {
   this.parentElement.classList.remove("active");
   document.body.classList.remove("no-scroll");
 });
+
+// EXTRA REPRODUCIR SONIDO
+
+function toggleAudio() {
+let triggers = document.querySelectorAll(".trigger-sonido");
+
+triggers.forEach(btn => {
+    btn.addEventListener("click", () => {
+    let srcSonido = btn.getAttribute("data-sonido");
+    let sonido = new Audio(srcSonido);
+    sonido.volume = 0.2;
+    sonido.play();
+    });
+});
+}
+
+toggleAudio();
+
+  
