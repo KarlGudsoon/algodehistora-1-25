@@ -75,10 +75,7 @@ const cartasPersonajes = document.querySelector('.item');
 
 contenedorPersonajes.addEventListener('click', function(event) {
   if (!cartasPersonajes.contains(event.target) & !sobreCarta.contains(event.target)) {
-    cartasPersonajes.classList.remove('active');
-    contenedorPersonajes.classList.remove('active');
-    sobreCarta.classList.remove('active');
-    document.body.classList.remove('no-scroll');
+    cerrarCarta();
   }
 });
 
@@ -577,173 +574,22 @@ paises.forEach((pais) => {
 function manejarCierre(event) {
     var concepto = event.target.parentElement;
     var contenedorPadre = concepto.parentElement;
-    var containerCard = document.getElementById("contenedor-personaje");
-    var Card = document.getElementById("personaje-historico");
-    const cardPersonaje = document.querySelectorAll('.item');
-    
-    cardPersonaje.forEach(card => {
-      card.classList.remove('flipped');
 
-      card.classList.remove('animate__tada');
-  
-      card.querySelectorAll('.flipped').forEach(element => {
-          element.classList.remove('flipped');
-      });
-    });
-
-    
     if (concepto) {
         concepto.classList.remove("active");  
     }
-
-    
 
     if (contenedorPadre) {
         contenedorPadre.classList.remove("active");
     }
 
-    if (containerCard) {
-      setTimeout(() => {
-        containerCard.classList.remove("active");
-      }
-      , 500);
-      
-    }
+    document.body.classList.remove("no-scroll");
 
-    if (Card) {
-      Card.classList.remove("active");
-    }
-
-    setTimeout(() => {
-      document.body.classList.remove("no-scroll");
-    }
-    , 500);
-
-    
-
-     
 }
-
 
 conceptoCerrar.forEach(function(cerrar) {
     cerrar.addEventListener("click", manejarCierre);
 });
-
-
-// ABRIR SOBRE 
-
-const DECISION_THRESHOLD = 150
-
-  let isAnimating = false
-  let pullDeltaX = 0 // distance from the card being dragged
-
-  function startDrag(event) {
-    if (isAnimating) return
-
-    // get the first article element
-    const actualCard = event.target.closest('.sobre')
-    if (!actualCard) return
-
-    // get initial position of mouse or finger
-    const startX = event.pageX ?? event.touches[0].pageX
-
-    // listen the mouse and touch movements
-    document.addEventListener('mousemove', onMove)
-    document.addEventListener('mouseup', onEnd)
-
-    document.addEventListener('touchmove', onMove, { passive: true })
-    document.addEventListener('touchend', onEnd, { passive: true })
-
-    function onMove(event) {
-      // current position of mouse or finger
-      const currentX = event.pageX ?? event.touches[0].pageX
-
-      // the distance between the initial and current position
-      pullDeltaX = currentX - startX
-
-      // there is no distance traveled in X axis
-      if (pullDeltaX === 0) return
-
-      // change the flag to indicate we are animating
-      isAnimating = true
-
-      // calculate the rotation of the card using the distance
-      const deg = pullDeltaX / 10
-      const opa = 1 - Math.abs(pullDeltaX) / 400;
-
-      // apply the transformation to the card
-      actualCard.style.transform = `translateX(${pullDeltaX}px)`
-      actualCard.style.opacity = opa;
-
-      // change the cursor to grabbing
-      actualCard.style.cursor = 'grabbing'
-      
-      var body = document.querySelector("body");
-      body.style.userSelect = 'none'
-      
-
-      // change opacity of the choice info
-      const opacity = Math.abs(pullDeltaX) / 100
-      const isRight = pullDeltaX > 0
-
-      const choiceEl = isRight
-        ? document.querySelector('.widget-card-personaje')
-        : document.querySelector('.widget-card-personaje')
-
-      choiceEl.style.opacity = opacity
-    }
-
-    function onEnd(event) {
-      // remove the event listeners
-      document.removeEventListener('mousemove', onMove)
-      document.removeEventListener('mouseup', onEnd)
-
-      document.removeEventListener('touchmove', onMove)
-      document.removeEventListener('touchend', onEnd)
-      
-      var body = document.querySelector("body");
-      body.style.userSelect = 'auto'
-
-      // saber si el usuario tomo una decisión
-      const decisionMade = Math.abs(pullDeltaX) >= DECISION_THRESHOLD
-
-      if (decisionMade) {
-        const goRight = pullDeltaX >= 0
-
-        // add class according to the decision
-        actualCard.classList.add(goRight ? 'go-right' : 'go-left')
-        actualCard.addEventListener('transitionend', () => {
-          actualCard.remove()
-        })
-      } else {
-        actualCard.classList.add('reset')
-        actualCard.classList.remove('go-right', 'go-left')
-
-        actualCard.querySelectorAll('.choice').forEach(choice => {
-          choice.style.opacity = 0
-        })
-      }
-
-      // reset the variables
-      actualCard.addEventListener('transitionend', () => {
-        actualCard.removeAttribute('style')
-        actualCard.classList.remove('reset')
-
-        pullDeltaX = 0
-        isAnimating = false
-      })
-
-      // reset the choice info opacity
-      actualCard
-        .querySelectorAll(".choice")
-        .forEach((el) => (el.style.opacity = 0));
-    }
-  }
-
-  document.addEventListener('mousedown', startDrag)
-  document.addEventListener('touchstart', startDrag, { passive: true })
-
-
 
 var containers = document.querySelectorAll('.widget-personaje-flip');
 
@@ -778,42 +624,60 @@ containers.forEach(function(container) {
 
 var sobreCarta = document.querySelector('.sobre-carta');
   
-  sobreCarta.addEventListener('click', function() {
-    var sonidoSobre = new Audio("/audio/arrastrar.mp3");
-    var sonidoMostrarCarta = new Audio("/audio/reluciente.mp3");
-    var sonidoAbrir = new Audio("/audio/romperpapel.mp3");
-    const msgAbrirCarta = document.getElementById("msg-abrirsobre")
+sobreCarta.addEventListener('click', function() {
+  var sonidoSobre = new Audio("/audio/arrastrar.mp3");
+  var sonidoMostrarCarta = new Audio("/audio/reluciente.mp3");
+  var sonidoAbrir = new Audio("/audio/romperpapel.mp3");
+  const msgAbrirCarta = document.getElementById("msg-abrirsobre")
 
-    sonidoAbrir.volume = 0.3;
-    sonidoMostrarCarta.volume = 0.3;
-    sonidoMostrarCarta.preload = "auto";
-    sonidoSobre.volume = 0.5;
-    sonidoSobre.preload = "auto";
+  sonidoAbrir.volume = 0.3;
+  sonidoMostrarCarta.volume = 0.3;
+  sonidoMostrarCarta.preload = "auto";
+  sonidoSobre.volume = 0.5;
+  sonidoSobre.preload = "auto";
 
-    sonidoSobre.play();
+  sonidoSobre.play();
 
-    sonidoAbrir.play();
+  sonidoAbrir.play();
 
-    setTimeout(() => {
-      sonidoMostrarCarta.play();
-    }, 200);
+  setTimeout(() => {
+    sonidoMostrarCarta.play();
+  }, 200);
 
-    sobreCarta.classList.remove('active');
-    msgAbrirCarta.classList.remove('active');
+  sobreCarta.classList.remove('active');
+  msgAbrirCarta.classList.remove('active');
 
-    const card = document.querySelector('.item');
+  const card = document.querySelector('.item');
 
-    card.classList.add('animate__tada');
-  });
+  card.classList.add('animate__tada');
+});
 
   
 // ABRIR SOBRE (2) / EXIT ANIMATION //
 
+function cerrarCarta() {
+  var containerCard = document.getElementById("contenedor-personaje");
+  var Card = document.querySelector(".item")
+  var sobreCarta = document.querySelector('.sobre-carta');
+  const msgAbrirCarta = document.getElementById("msg-abrirsobre")
+
+  Card.classList.remove('flipped');
+  Card.querySelectorAll('.flipped').forEach(el => el.classList.remove('flipped'));
+  Card.classList.remove('active');
+  Card.classList.remove('animate__tada');
+  containerCard.classList.remove("active");
+  sobreCarta.classList.remove('active');
+  msgAbrirCarta.classList.remove('active');
+  document.body.classList.remove("no-scroll");
+}
+
 document.getElementById("carta-cerrar").addEventListener("click", function() {
   var sonidoSobre = new Audio("/audio/arrastrar.mp3");
-    sonidoSobre.volume = 0.5;
-    sonidoSobre.preload = "auto";
-    sonidoSobre.play();
+  sonidoSobre.volume = 0.5;
+  sonidoSobre.preload = "auto";
+  sonidoSobre.play();
+
+  cerrarCarta()
 });
 
 /*
