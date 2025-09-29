@@ -78,6 +78,7 @@
         { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
       ],
       "imagen": "/img/otros/personajes-cartas/cristobal-colon2.webp",
+      "imgClass": "CristobalColon",
       "fondoFrontal": "/img/moderna/fondo.webp",
       "fondoTrasera": "/img/moderna/fondo.webp",
       "personalidad": [

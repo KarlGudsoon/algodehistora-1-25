@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   cardCarousel.forEach(card => {
     const etiquetaItem = card.querySelector('.etiqueta');
     const personajeItem = card.querySelector('.personaje-item');
-    const personajeHistoricoItem = card.querySelector('.personaje-historico-item');
+    const personajeHistoricoItem = card.querySelector('.img-personaje-frontal');
     const personajeHistoricoItemTrasera = card.querySelector('.personaje-historico-item-trasera')
     const descripcionItem = card.querySelector('.descripcion-personaje-trasera')
     const caracteristicaFrontal = card.querySelector('.contenedor-caracteristicas');
@@ -243,6 +243,8 @@ function actualizarCarta(personaje, idPersonaje) {
 
   // Asignar imágenes ya precargadas
   document.getElementById("imagen-personaje").src = personaje.imagen;
+  document.querySelector(".img-personaje-frontal").id = personaje.imgClass;
+
   document.getElementById("imagen-personaje-trasera").src = personaje.imagen;
 
   document.getElementById("fondo-frontal").src = personaje.fondoFrontal;
@@ -352,6 +354,7 @@ function actualizarCarta(personaje, idPersonaje) {
   const banderaCarta = document.getElementById("img-lugar-personaje");
     if(personaje.bandera) {
       banderaCarta.src = personaje.bandera;
+      banderaCarta.style.display = "block"
     } else {
       banderaCarta.style.display = "none"
     }
@@ -655,6 +658,11 @@ sobreCarta.addEventListener('click', function() {
   
 // ABRIR SOBRE (2) / EXIT ANIMATION //
 
+function expandirCarta() {
+  var Card = document.querySelector(".item")
+  Card.classList.toggle('expanded');
+}
+
 function cerrarCarta() {
   var containerCard = document.getElementById("contenedor-personaje");
   var Card = document.querySelector(".item")
@@ -665,6 +673,7 @@ function cerrarCarta() {
   Card.querySelectorAll('.flipped').forEach(el => el.classList.remove('flipped'));
   Card.classList.remove('active');
   Card.classList.remove('animate__tada');
+  Card.classList.remove('expanded');
   containerCard.classList.remove("active");
   sobreCarta.classList.remove('active');
   msgAbrirCarta.classList.remove('active');
@@ -678,6 +687,10 @@ document.getElementById("carta-cerrar").addEventListener("click", function() {
   sonidoSobre.play();
 
   cerrarCarta()
+});
+
+document.getElementById("carta-expandir").addEventListener("click", function() {
+  expandirCarta()
 });
 
 /*
@@ -1320,7 +1333,93 @@ document.querySelectorAll('.cerrar-capsula').forEach(botonCerrar => {
 
 
 
-// CAPSULA DESCRIPTIVA GRANDE
+// CAPSULA DE PAÍS
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Cargar JSON de paises
+  fetch("/Apps/cartas/paises.json")
+    .then(response => response.json())
+    .then(data => {
+      cargarPaises(data);
+    })
+    .catch(error => console.error("Error al cargar el JSON:", error));
+});
+
+function cargarPaises(paises) {
+  document.querySelectorAll(".paises").forEach(elemento => {
+    elemento.addEventListener("click", () => {
+      const idPais = elemento.getAttribute("data-pais"); 
+      
+      if (paises[idPais]) {
+        actualizarPais(paises[idPais], idPais);
+        document.querySelector(".contenedor-capsula-pais").classList.add("active");
+        document.querySelector(".capsula-pais").classList.add("active");
+        sonidoSeleccion();
+      
+      } else {
+        console.error("Pais no encontrado en JSON:", idPais);
+      }
+    });
+  });
+}
+
+const logro1Tippy = tippy('#logros-pais-1', { allowHTML: true, interactive: true, theme: 'punto-basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+const logro2Tippy = tippy('#logros-pais-2', { allowHTML: true, interactive: true, theme: 'punto-basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+const logro3Tippy = tippy('#logros-pais-3', { allowHTML: true, interactive: true, theme: 'punto-basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+
+function actualizarPais(pais, idPais) {
+  document.querySelector(".capsula-pais").style.backgroundColor = pais.colorFondo || "rgba(105, 105, 105, 0.562)";
+  document.getElementById("capsula-pais-nombre").textContent = pais.nombre;
+  document.getElementById("capsula-pais-descripcion").textContent = pais.descripcion;
+
+  let etiqueta = document.getElementById("capsula-pais-etiqueta");
+  etiqueta.textContent = pais.etiqueta[0];
+  etiqueta.classList.add(pais.etiqueta[1]);
+
+  document.getElementById("capsula-pais-fecha-inicio").textContent = pais.tiempo[0];
+  document.getElementById("capsula-pais-fecha-termino").textContent = pais.tiempo[1];
+
+  document.getElementById("capsula-pais-bandera").src = pais.bandera;
+  document.getElementById("capsula-pais-fondo").src = pais.fondo;
+  document.getElementById("capsula-pais-personaje").src = pais.personaje;
+
+  document.querySelectorAll(".logros-pais li").forEach(li => li.style.backgroundColor = pais.colorFondo || "rgba(105, 105, 105, 0.562)");
+  document.querySelector("#logros-pais-1 img").src = pais.logro1[1];
+  document.querySelector("#logros-pais-2 img").src = pais.logro2[1];
+  document.querySelector("#logros-pais-3 img").src = pais.logro3[1];
+  
+  logro1Tippy[0].setContent(pais.logro1[0]);
+  logro2Tippy[0].setContent(pais.logro2[0]);
+  logro3Tippy[0].setContent(pais.logro3[0]);
+
+}
+
+// Cerrar capsula pais
+document.getElementById("capsula-pais-cerrar").addEventListener("click", () => {
+  document.querySelector(".contenedor-capsula-pais").classList.remove("active");
+  document.querySelector(".capsula-pais").classList.remove("active");
+  sonidoSeleccion();
+});
+
+document.querySelector(".contenedor-capsula-pais").addEventListener("click", function(e) {
+  if (e.target === this) { // Cierra solo si se hace clic fuera de la cápsula
+    this.classList.remove("active");
+    document.querySelector(".capsula-pais").classList.remove("active");
+    sonidoSeleccion();
+  }
+});
+
+// Carta paises
+
+document.querySelector('.item-pais').addEventListener('dblclick', function() {
+  this.classList.toggle('flipped');
+  this.querySelector(".frontal").classList.toggle('flipped');
+  this.querySelector(".trasera").classList.toggle('flipped');
+  this.querySelector(".etiqueta").classList.toggle('flipped');
+  this.querySelector(".personaje-historico-item").classList.toggle('flipped');
+});
+
+
 
 // NIEVE 
 
@@ -1378,4 +1477,27 @@ function caerHojas() {
 
 for (let i = 0; i < 15; i++) {
   caerHojas();
+}
+
+// EFECTO TIPO MAQUINA DE ESCRIBIR
+
+function typeWriter(element, text, delay = 50) {
+  let index = 0;
+  function type() {
+    if (index < text.length) {
+      element.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, delay);
+    }
+  }
+  type();
+}
+
+// SONIDO DE SELECCIÓN
+
+function sonidoSeleccion() {
+  let sonido = new Audio("/audio/seleccion2.mp3");
+  sonido.volume = 0.3;
+  sonido.preload = "auto";
+  sonido.play();
 }

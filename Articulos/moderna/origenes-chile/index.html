@@ -150,14 +150,14 @@
         </p>
       </div>
       <div class="contenedor-personaje" id="contenedor-personaje">
-        <div class="sobre-carta" id="sobre-carta" data-tilt>  
-          
+        <div class="sobre-carta" id="sobre-carta">  
           <img id="imagen-sobre" src="/svg/logo-white.svg">
           <h1 id="titulo-sobre"></h1>
         </div>
         <div class="item" id="personaje-historico" data-tilt>
           <div id="msg-abrirsobre">Haz click en el sobre para abrir la carta <img src="/icons/up.svg"></div> 
           <div class="concepto-cerrar" id="carta-cerrar">-</div>
+          <div id="carta-expandir">«»</div>
           <div class="etiqueta">
             <span>Personaje Histórico</span>
             <h1 id="nombre-personaje"></h1>
@@ -175,7 +175,9 @@
             </div>
             <span class="especialidad-nombre"></span>
           </div>
-          <img id="imagen-personaje" class="personaje-historico-item" draggable="false">
+          <div class="img-personaje-frontal">
+            <img id="imagen-personaje" class="personaje-historico-item" draggable="false">
+          </div>
           <div id="face-frontal" class="face frontal">
             
             <div class="fondo-frontal">
@@ -209,6 +211,69 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="contenedor-capsula-pais">
+        <div class="capsula-pais">
+          <div class="descripcion-pais">
+            <div class="titulo-pais">
+              <h1 id="capsula-pais-nombre">NOMBRE DEL PAÍS</h1>
+            </div>
+            <p id="capsula-pais-descripcion">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+              Eaque saepe ullam magnam minus exercitationem sunt aliquid,
+              ex iste eligendi earum perspiciatis labore beatae similique 
+              doloribus velit officiis delectus reiciendis provident.
+            </p>
+            <span id="capsula-pais-etiqueta">[Etiqueta del país]</span>
+          </div>
+          <div class="descripcion-pais">
+            <div class="contenedor-fecha-periodo"  style="margin: 0; justify-content: center; align-items: center; flex-direction: row;">
+              <div class="fecha-periodo">
+                <h1 class="fecha-inicio" id="capsula-pais-fecha-inicio">1535</h1>  
+              </div>
+              <span class="separador-periodo" ></span>
+              <div class="fecha-periodo">
+                <h1 class="fecha-termino" id="capsula-pais-fecha-termino">1537</h1>
+              </div>
+            </div>
+            <ul class="caracteristicas-pais">
+              <li><img src="/icons/moneda.svg"><span id="capsula-economia-pais">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span></li>
+              <li><img src="/icons/gobierno.svg"><span id="capsula-gobierno-pais">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span></li>
+              <li><img src="/icons/subway--world-1.svg"><span id="capsula-territorio-pais">Lorem ipsum dolor, sit amet consectetur adipisicing elit. </span></li>
+            </ul>
+          </div>
+          <div class="descripcion-pais">
+            <img class="img-pais-personaje" id="capsula-pais-personaje" src="/img/otros/personajes-cartas/cristobal-colon.webp" alt="">
+            <img id="capsula-pais-bandera" src="/img/banderas/Flag_of_Germany_1867–1918.webp" >
+            <img id="capsula-pais-fondo" src="/img/moderna/descubrimiento-chile/conquistademexico.webp">
+            <ul class="logros-pais">
+              <li id="logros-pais-1"><img ></li>
+              <li id="logros-pais-2"><img ></li>
+              <li id="logros-pais-3"><img ></li>
+            </ul>
+          </div>
+          <div id="capsula-pais-cerrar">-</div>
+        </div>
+      </div>
+      <div class="contenedor-item-pais">
+        <div class="item-pais" data-tilt>
+          <div class="concepto-cerrar">-</div>
+          <div class="etiqueta">
+            <span>Civilización Americana</span>
+            <h1 id="nombre-personaje">IMPERIO INCA</h1>
+            <span id="categoria-personaje" class="etiqueta-precolombino">Imperio Precolombino</span>
+          </div>
+          <div class="img-personaje-frontal">
+            <img id="imagen-personaje" src="/img/moderna/descubrimiento-chile/f966b614-0f3d-46c5-a443-8fddf34518fe.webp" class="personaje-historico-item" draggable="false">
+          </div>
+          <div class="face frontal">
+            <img src="/img/moderna/descubrimiento-chile/9c7cecfd-5b8a-4916-82f4-34e3fb119004.webp">
+          </div>
+          <div class="face trasera">
+            <img src="/img/moderna/descubrimiento-chile/9c7cecfd-5b8a-4916-82f4-34e3fb119004.webp">
+          </div>
+        </div>
+
       </div>
       <div class="widget-progreso-pagina" data-tippy-content="El progreso se mide por la cantidad de actividades realizadas y cartas obtenidas. Completando aquello se habilitará un cuestionario para finalizar el artículo." data-trigger="mouseenter focus click" data-theme="default">
         <svg class="progress-ring" width="60" height="60">
@@ -625,7 +690,7 @@
             <div class="pais" id="pais-inca">
               <span class="pais-cerrar">-</span>
               <div class="pais-seccion" id="pais-descripcion">
-                <h1>IMPERIO INCA</h1>
+                <h1 class="paises" data-pais="imperioinca">IMPERIO INCA</h1>
                 <p>Esto es un párrafo listo para contener creatividad, experiencias e historias geniales.</p>
                 <div class="etiqueta-pais"><span class="etiqueta-precolombino">Imperio Precolombino</span>
                 </div>

@@ -1,0 +1,25 @@
+<svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" >
+  <defs>
+    <!-- ruido que animamos -->
+    <filter id="wavy">
+      <feTurbulence id="turb" baseFrequency="0.012" numOctaves="2" seed="2" type="fractalNoise">
+        <animate attributeName="baseFrequency" dur="6s" values="0.012;0.02;0.012" repeatCount="indefinite"/>
+        <animate attributeName="seed" dur="10s" values="2;8;2" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" scale="18" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- Mástil -->
+  <rect x="12" y="8" width="12" height="244" fill="#222" rx="3"/>
+  <!-- Bandera (rectángulo con franjas) y aplicamos el filtro -->
+  <g filter="url(#wavy)">
+    <rect x="36" y="24" width="340" height="212" rx="6" fill="#d32f2f"/>
+    <rect x="36" y="24" width="340" height="70.667" rx="0" fill="#d32f2f"/>
+    <rect x="36" y="24" y="24" width="340" height="70.666" y="24" fill="#d32f2f"/>
+    <!-- franjas tricolor: (rojo, blanco, azul) -->
+    <rect x="36" y="24" width="340" height="70.667" fill="#d32f2f"/>
+    <rect x="36" y="94.667" width="340" height="70.666" fill="#fff"/>
+    <rect x="36" y="165.333" width="340" height="70.667" fill="#0d47a1"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+{
+    "imperioinca": {
+      "nombre": "IMPERIO INCA",
+      "colorFondo": "rgba(32, 102, 5, 0.562)",
+      "descripcion": "El Imperio Inca, llamado Tahuantinsuyo, fue el imperio más grande de la América precolombina, que se extendió desde Ecuador hasta Chile y Argentina entre los siglos XV y XVI, con su centro en la ciudad de Cusco.",
+      "etiqueta": ["Imperio Precolombino", "etiqueta-precolombino"],
+      "bandera": "/img/banderas/estandarte-inca.svg",
+      "economia": "Economía basada en la agricultura, el comercio y el tributo.",
+      "territorio": "Ubicación: Región andina de América del Sur, principalmente en Perú, Ecuador, Bolivia y partes de Chile y Argentina.",
+      "logro1": ["Construcción de una vasta red de caminos y puentes.", "/icons/recorrido.svg"],
+      "logro2": ["Desarrollo de técnicas agrícolas avanzadas, como las terrazas.", "/icons/trigo.svg"],
+      "logro3": ["Sistema de administración eficiente y centralizada.", "/icons/inca.svg"],
+      "tiempo": ["Siglo XV", "1533"],
+      "personaje": "/img/otros/paises/imperio-inca.webp",
+      "fondo": "/img/moderna/descubrimiento-chile/9c7cecfd-5b8a-4916-82f4-34e3fb119004.webp"
+    }
+}
