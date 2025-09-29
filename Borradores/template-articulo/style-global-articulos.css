@@ -5727,6 +5727,35 @@ button:hover::before {
     max-width: 400px;
     height: auto;
   }
+
+  .contenedor-capsula-pais {
+    align-items: center;
+  }
+
+  .contenedor-capsula-pais.active {
+    backdrop-filter: blur(15px);
+    background-color: rgb(0 0 0 / 0.2);
+  }
+
+  .capsula-pais {
+    width: 95%;
+    height: 90%;
+    flex-direction: column;
+    bottom: -100%;
+  }
+
+  .capsula-pais.active {
+    bottom: 0;
+  }
+
+  .capsula-pais .descripcion-pais {
+    height: auto;
+    padding: 1rem;
+  }
+
+  #capsula-pais-fondo {
+    mask-image: linear-gradient(to bottom, transparent 0%, black 70%);
+  }
 }
 
 @media print {
