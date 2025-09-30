@@ -1363,10 +1363,6 @@ function cargarPaises(paises) {
   });
 }
 
-const logro1Tippy = tippy('#logros-pais-1', { allowHTML: true, interactive: true, theme: 'punto-basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
-const logro2Tippy = tippy('#logros-pais-2', { allowHTML: true, interactive: true, theme: 'punto-basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
-const logro3Tippy = tippy('#logros-pais-3', { allowHTML: true, interactive: true, theme: 'punto-basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
-
 function actualizarPais(pais, idPais) {
   document.querySelector(".capsula-pais").style.backgroundColor = pais.colorFondo || "rgba(105, 105, 105, 0.562)";
   document.getElementById("capsula-pais-nombre").textContent = pais.nombre;
@@ -1379,20 +1375,59 @@ function actualizarPais(pais, idPais) {
   document.getElementById("capsula-pais-fecha-inicio").textContent = pais.tiempo[0];
   document.getElementById("capsula-pais-fecha-termino").textContent = pais.tiempo[1];
 
-  document.getElementById("capsula-pais-bandera").src = pais.bandera;
+  let bandera= document.getElementById("capsula-pais-bandera");
+  bandera.src = pais.bandera;
+  bandera.alt = `Bandera de ${pais.nombre}`;
+
+
+
   document.getElementById("capsula-pais-fondo").src = pais.fondo;
   document.getElementById("capsula-pais-personaje").src = pais.personaje;
 
   document.querySelectorAll(".logros-pais li").forEach(li => li.style.backgroundColor = pais.colorFondo || "rgba(105, 105, 105, 0.562)");
+  document.querySelector("#logros-pais-1").setAttribute("data-logro-pais-exp", pais.logro1[0]);
+  document.querySelector("#logros-pais-2").setAttribute("data-logro-pais-exp", pais.logro2[0]);
+  document.querySelector("#logros-pais-3").setAttribute("data-logro-pais-exp", pais.logro3[0]);
   document.querySelector("#logros-pais-1 img").src = pais.logro1[1];
   document.querySelector("#logros-pais-2 img").src = pais.logro2[1];
   document.querySelector("#logros-pais-3 img").src = pais.logro3[1];
   
-  logro1Tippy[0].setContent(pais.logro1[0]);
-  logro2Tippy[0].setContent(pais.logro2[0]);
-  logro3Tippy[0].setContent(pais.logro3[0]);
+  
+
 
 }
+
+// Hover logros pais
+
+document.querySelectorAll(".logros-pais li").forEach(li => {
+  li.addEventListener("mouseenter", () => {
+    let logro = li.getAttribute("data-logro-pais");
+    let logroExp = li.getAttribute("data-logro-pais-exp");
+    let imgLogro = document.querySelector(`.capsula-pais-img img[data-logro-pais="${logro}"]`);
+    let imgFondo = document.getElementById("capsula-pais-fondo");
+    let logrosExp = document.getElementById("capsula-pais-logros-exp");
+    logrosExp.textContent = logroExp;
+    logrosExp.style.opacity = "1";
+
+    if (imgLogro) {
+      imgLogro.classList.add("active");
+      imgFondo.style.opacity = "0";
+    }
+  });
+
+  li.addEventListener("mouseleave", () => {
+    let logro = li.getAttribute("data-logro-pais");
+    let imgLogro = document.querySelector(`.capsula-pais-img img[data-logro-pais="${logro}"]`);
+    let imgFondo = document.getElementById("capsula-pais-fondo");
+    let logrosExp = document.getElementById("capsula-pais-logros-exp");
+    logrosExp.style.opacity = "0";
+
+    if (imgLogro) {
+      imgLogro.classList.remove("active");
+      imgFondo.style.opacity = "1";
+    }
+  });
+});
 
 // Cerrar capsula pais
 document.getElementById("capsula-pais-cerrar").addEventListener("click", () => {
