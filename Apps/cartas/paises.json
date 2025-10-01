@@ -13,5 +13,20 @@
       "tiempo": ["Siglo XV", "1533"],
       "personaje": "",
       "fondo": "/img/moderna/descubrimiento-chile/9c7cecfd-5b8a-4916-82f4-34e3fb119004.webp"
+    },
+    "imperioespañol": {
+      "nombre": "Imperio Español",
+      "colorFondo": "rgba(188, 22, 42, 0.6)",
+      "descripcion": "El Imperio Español fue uno de los imperios más grandes de la historia, abarcando territorios en Europa, América, Asia y África desde el siglo XV hasta el siglo XIX.",
+      "etiqueta": ["Imperio Colonial", "etiqueta-colonial"],
+      "bandera": "/img/banderas/bandera-imperio-español.webp",
+      "economia": "Economía basada en la explotación de metales preciosos como oro y plata, el comercio transatlántico, la agricultura de plantación en América y el sistema de encomiendas.",
+      "territorio": "Territorios en Europa (España, Portugal por unión dinástica), gran parte de América (desde México hasta el Cono Sur, además del Caribe), Filipinas y otras islas en Asia, así como enclaves en África.",
+      "logro1": ["Primer imperio global con territorios en los cinco continentes.", "/icons/subway--world-1.svg"],
+      "logro2": ["Desarrollo del comercio transatlántico y la ruta de Manila-Acapulco.", "/icons/moneda.svg"],
+      "logro3": ["Difusión de la lengua española, el cristianismo y la cultura europea en América y Asia.", "/icons/corona.png"],
+      "tiempo": ["1492", "1976"],
+      "personaje": "",
+      "fondo": "/img/moderna/descubrimiento-chile/9c7cecfd-5b8a-4916-82f4-34e3fb119004.webp"
     }
 }

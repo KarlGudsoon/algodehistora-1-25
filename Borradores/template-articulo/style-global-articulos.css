@@ -5825,6 +5825,7 @@ button:hover::before {
 
   .capsula-pais.active {
     bottom: 0;
+    
   }
 
   .capsula-pais .descripcion-pais {
