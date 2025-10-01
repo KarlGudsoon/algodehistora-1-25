@@ -1341,12 +1341,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(data => {
       cargarPaises(data);
-      precargarImagenes(data);
+      precargarImagenesPais(data);
     })
     .catch(error => console.error("Error al cargar el JSON:", error));
 });
 
-function precargarImagenes(paises) {
+function precargarImagenesPais(paises) {
   Object.values(paises).forEach(pais => {
     precargarImagen(pais.bandera);
     precargarImagen(pais.logro1[1]);
