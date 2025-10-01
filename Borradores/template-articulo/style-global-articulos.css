@@ -2380,6 +2380,24 @@ li:hover ul#submenu {
   text-transform: uppercase;
 }
 
+#capsula-pais-nombre.skeleton-ui {
+  background: linear-gradient(90deg,#e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  width: 100%;
+  height: 2rem;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 .descripcion-pais {
   width: 100%;
   height: 100%;

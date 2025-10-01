@@ -1341,9 +1341,21 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(response => response.json())
     .then(data => {
       cargarPaises(data);
+      precargarImagenes(data);
     })
     .catch(error => console.error("Error al cargar el JSON:", error));
 });
+
+function precargarImagenes(paises) {
+  Object.values(paises).forEach(pais => {
+    precargarImagen(pais.bandera);
+    precargarImagen(pais.logro1[1]);
+    precargarImagen(pais.logro2[1]);
+    precargarImagen(pais.logro3[1]);
+    precargarImagen(pais.fondo);
+    precargarImagen(pais.personaje);
+  });
+}
 
 function cargarPaises(paises) {
   document.querySelectorAll(".paises").forEach(elemento => {
@@ -1369,6 +1381,7 @@ function actualizarPais(pais, idPais) {
   document.getElementById("capsula-pais-descripcion").textContent = pais.descripcion;
 
   let etiqueta = document.getElementById("capsula-pais-etiqueta");
+  etiqueta.className = ""; 
   etiqueta.textContent = pais.etiqueta[0];
   etiqueta.classList.add(pais.etiqueta[1]);
 
@@ -1378,8 +1391,6 @@ function actualizarPais(pais, idPais) {
   let bandera= document.getElementById("capsula-pais-bandera");
   bandera.src = pais.bandera;
   bandera.alt = `Bandera de ${pais.nombre}`;
-
-
 
   document.getElementById("capsula-pais-fondo").src = pais.fondo;
   document.getElementById("capsula-pais-personaje").src = pais.personaje;
@@ -1391,10 +1402,6 @@ function actualizarPais(pais, idPais) {
   document.querySelector("#logros-pais-1 img").src = pais.logro1[1];
   document.querySelector("#logros-pais-2 img").src = pais.logro2[1];
   document.querySelector("#logros-pais-3 img").src = pais.logro3[1];
-  
-  
-
-
 }
 
 // Hover logros pais
