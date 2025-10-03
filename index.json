@@ -170,6 +170,7 @@
         "id": "descubrimiento-chile",
         "url" : "/Articulos/moderna/origenes-chile/",
         "titulo": "CONQUISTA DE CHILE",
+        "descripcion": "Desde el primer avistamiento de Chile hasta la fundación de Santiago",
         "fondo" : "/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg",
         "personaje" : "/img/moderna/descubrimiento-chile/pedro-valdivia.png",
         "fecha" : "1520 - 1541"

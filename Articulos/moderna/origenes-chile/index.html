@@ -21,8 +21,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <link rel="stylesheet" href="/Borradores/template-articulo/style-global-articulos.css" />
-    <link rel="stylesheet" href="/Articulos/moderna/origenes-chile/style.css" />
-
+    <link rel="stylesheet" href="style.css" />
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
@@ -368,7 +367,14 @@
                 <img class="progreso-completado" src="/icons/check.svg">
                 <img src="/icons/colorcards.svg">
               </div>
-              <span><u id="cartas-abiertas-pagina"></u>/<b id="cantidad-cartas-pagina"></b> Cartas de personaje historico</span> 
+              <span><u id="cartas-abiertas-pagina"></u>/<b id="cantidad-cartas-pagina"></b> Cartas de personaje historico</span>
+            </div>
+            <div class="progreso-cartas-personajes .progreso-paises">
+              <div class="icon-progreso-pagina">
+                <img class="progreso-completado progreso-paises-completado" src="/icons/check.svg">
+                <img src="/icons/bandera.svg">
+              </div>
+              <span><u id="pais-abiertas-pagina"></u>/<b id="cantidad-pais-pagina"></b> Paises descubiertos</span>
             </div>
             <div class="progreso-cuestionario-final">
               <div class="icon-progreso-pagina">
@@ -696,7 +702,7 @@
             <div class="pais" id="pais-inca">
               <span class="pais-cerrar">-</span>
               <div class="pais-seccion" id="pais-descripcion">
-                <h1 class="paises" data-pais="imperioinca">IMPERIO INCA <img src="/icons/bandera.svg"></h1>
+                <h1 class="paises" id="imperioinca" data-pais="imperioinca">IMPERIO INCA <img src="/icons/bandera.svg"></h1>
                 <p>Esto es un párrafo listo para contener creatividad, experiencias e historias geniales.</p>
                 <div class="etiqueta-pais"><span class="etiqueta-precolombino">Imperio Precolombino</span>
                 </div>
@@ -753,7 +759,7 @@
             <h1>DESCUBRIMIENTO DE AMÉRICA</h1>
             <p>
               En Europa, Cristobal Colón convencido que la tierra era esferica,
-              zarpó de España con el proposito de conectar al <span class="paises" data-pais="imperioespañol">Imperio Español <img src="/icons/bandera.svg"></span>
+              zarpó de España con el proposito de conectar al <span class="paises" id="imperioespañol" data-pais="imperioespañol">Imperio Español <img src="/icons/bandera.svg"></span>
               con el mercado de las indias.
             </p>
           </div>
@@ -1323,6 +1329,7 @@ elementostituloArticulo.forEach((element) => {
   element.textContent = tituloArticulo;
 });
 
+// Progreso de cartas
 
 const CantidadCartasPagina = document.querySelector('#cantidad-cartas-pagina');
 const CartasAbiertasPagina = document.querySelector('#cartas-abiertas-pagina');
@@ -1332,6 +1339,8 @@ const WidgetCuestionario = document.querySelector('.widget-cuestionario');
 const Cartas = document.querySelectorAll('.personaje');
 
 
+
+
 let cantidadCartas = document.querySelectorAll('.personaje').length;
 CantidadCartasPagina.textContent = cantidadCartas;
 
@@ -1339,6 +1348,66 @@ let cartasAbiertasStorage = JSON.parse(localStorage.getItem('cartasAbiertas')) |
 let cartasAbiertas = cartasAbiertasStorage.length;
 
 CartasAbiertasPagina.textContent = cartasAbiertas;
+
+// Progreso de paises
+
+const CantidadPaisesPagina = document.querySelector('#cantidad-pais-pagina');
+const CantidadPaisesAbiertos = document.querySelector('#pais-abiertas-pagina');
+const ProgresoPaisesPagina = document.querySelector('.progreso-paises-completado');
+const Paises = document.querySelectorAll('.paises');
+
+let cantidadPaises = document.querySelectorAll('.paises').length;
+CantidadPaisesPagina.textContent = cantidadPaises;
+
+let paisesAbiertosStorage = JSON.parse(localStorage.getItem('paisesAbiertos')) || [];
+let paisesAbiertos = paisesAbiertosStorage.length;
+
+CantidadPaisesAbiertos.textContent = paisesAbiertos;
+
+let progresoObtenido = cartasAbiertas + paisesAbiertos;
+let progresoTotal = cantidadCartas + cantidadPaises;
+
+function progreso() {
+  progresoObtenido = cartasAbiertas + paisesAbiertos;
+  progresoTotal = cantidadCartas + cantidadPaises;
+}
+
+progreso();
+
+document.querySelectorAll('.paises').forEach((element) => {
+  element.addEventListener('click', () => {
+    const id = element.id;
+    
+
+    if (!element.classList.contains('open')) {
+      element.classList.add('open');
+      paisesAbiertos++;
+
+      CantidadPaisesAbiertos.textContent = paisesAbiertos;
+
+      paisesAbiertosStorage.push(id);
+      localStorage.setItem('paisesAbiertos', JSON.stringify(paisesAbiertosStorage));
+    }
+
+    if (paisesAbiertos === cantidadPaises) {
+      ProgresoPaisesPagina.style.display = 'block';
+    }
+
+    progreso();
+    actualizarProgreso(progresoObtenido, progresoTotal);
+    
+  });
+});
+
+Paises.forEach((element) => {
+  if (paisesAbiertosStorage.includes(element.id)) {
+    element.classList.add('open');
+  }
+
+  if (paisesAbiertos === cantidadPaises) {
+    ProgresoPaisesPagina.style.display = 'block';
+  }
+});
 
 function actualizarProgreso(cartasAbiertas, totalCartas) {
   const porcentaje = (cartasAbiertas / totalCartas) * 100;
@@ -1367,7 +1436,7 @@ function actualizarProgreso(cartasAbiertas, totalCartas) {
 }
 }
 
-actualizarProgreso(cartasAbiertas, cantidadCartas);
+actualizarProgreso(progresoObtenido, progresoTotal);
 
 let tippyFollow = tippy('.tippy-follow', {
   allowHTML: true,
@@ -1420,17 +1489,19 @@ document.querySelectorAll('.personaje').forEach((element) => {
     }
 
     if (cartasAbiertas === cantidadCartas) {
-    PogresoCartasPagina.style.display = 'block';
+      PogresoCartasPagina.style.display = 'block';
     }
 
     TippyCartas();
-    actualizarProgreso(cartasAbiertas, cantidadCartas);
+    progreso();
+    actualizarProgreso(progresoObtenido, progresoTotal);
     
   });
 });
 
 ReiniciarProgreso.addEventListener('click', () => {
     localStorage.removeItem('cartasAbiertas');
+    localStorage.removeItem('paisesAbiertos');
     localStorage.removeItem('resultadoFinal')
     location.reload(); 
   }
@@ -1443,9 +1514,6 @@ WidgetCuestionario.addEventListener('click', function(){
   cuestionario.classList.add('active');
   document.body.classList.add('no-scroll');
 })
-
-
-
 
 
 </script>

@@ -126,7 +126,7 @@ fetch('index.json')
   })
   .catch(err => console.error("Error cargando periodos:", err));
 
-function crearArticulos({periodo, url, titulo, fondo, personaje, fecha, style }) {
+function crearArticulos({periodo, url, titulo, descripcion, fondo, personaje, fecha, style }) {
   const container = document.getElementById(periodo);
   if (!container) return;
 
@@ -145,6 +145,8 @@ function crearArticulos({periodo, url, titulo, fondo, personaje, fecha, style })
   const ContenidoEtiqueta = document.createElement('div');
   ContenidoEtiqueta.classList.add('card-contenido-etiqueta');
   const ContenidoTitulo = document.createElement('h1');
+  const ArticuloDescripcion = document.createElement('p');
+  ArticuloDescripcion.classList.add("card-contenido-descripcion");
   const ArticuloFecha = document.createElement('span');
   Articulo.style = style
   Articulo.setAttribute('data-id', titulo.toLowerCase());
@@ -152,6 +154,7 @@ function crearArticulos({periodo, url, titulo, fondo, personaje, fecha, style })
 
   // Asignar contenido si existe
   if (titulo) ContenidoTitulo.textContent = titulo;
+  if (descripcion) ArticuloDescripcion.textContent = descripcion;
   if (fecha) ArticuloFecha.textContent = fecha;
   if (url) Articulo.href = url;
 
@@ -175,6 +178,7 @@ function crearArticulos({periodo, url, titulo, fondo, personaje, fecha, style })
   ContenidoImagen.appendChild(imgContenidoImagen);
   InnerArticulo.appendChild(ContenidoEtiqueta);
   ContenidoEtiqueta.appendChild(ContenidoTitulo);
+  InnerArticulo.appendChild(ArticuloDescripcion);
   ContenidoEtiqueta.appendChild(ArticuloFecha);
 }
 

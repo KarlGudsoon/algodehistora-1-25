@@ -6,7 +6,7 @@
 
 @view-transition {
     navigation: auto;
-  }
+}
 
 @font-face {
     font-family: BreeSerif;
@@ -586,6 +586,20 @@ a:hover {
   text-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 1);
   font: 900 2rem BreeSerif;
   line-height: 1;
+  margin: 0;
+}
+
+.card-contenido-descripcion {
+  font: 300 0.8rem Roboto;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  z-index: 9;
+  text-align: center;
+  transform: translateZ(30px);
+  margin-bottom: 1rem;
+  opacity: 0;
+  transition: 0.3s ease;
 }
 
 .card-contenido-etiqueta span {
@@ -599,6 +613,10 @@ a:hover {
   }
   
   .card-contenido:hover span {
+    opacity: 1;
+  }
+
+  .card-contenido:hover .card-contenido-descripcion {
     opacity: 1;
   }
   
