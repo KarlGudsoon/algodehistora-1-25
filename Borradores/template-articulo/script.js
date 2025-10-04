@@ -1543,3 +1543,33 @@ function sonidoSeleccion() {
   sonido.preload = "auto";
   sonido.play();
 }
+
+// PESTAÑEO DE PERSONAJE
+
+document.querySelectorAll(".blink").forEach(blink => {
+  const srcOriginal = blink.src;
+  const srcBlink = blink.getAttribute("data-blink")
+  let numero = Math.floor(Math.random() * 2001)
+
+  setTimeout(() => {
+    setInterval(() => {
+    setTimeout(() => {
+      blink.src = srcBlink;
+    }, 500)
+    setTimeout(() => {
+      blink.src = srcOriginal;
+    }, 600)
+    setTimeout(() => {
+      blink.src = srcBlink;
+    }, 700)
+    setTimeout(() => {
+      blink.src = srcOriginal;
+    }, 800)
+  }, 2500)
+  }, numero)
+
+  console.log(numero)
+
+  
+  
+})
