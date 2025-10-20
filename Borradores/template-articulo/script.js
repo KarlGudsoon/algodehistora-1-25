@@ -148,6 +148,30 @@ function precargarImagen(url) {
   img.src = url;
 }
 
+
+function blinkPersonaje(blink, personaje) {
+  const srcOriginal = blink.src;
+  const srcBlink = blink.getAttribute("data-blink");
+  let numero = Math.floor(Math.random() * 2001);
+
+  // Limpia cualquier intervalo anterior
+  if (blink._blinkIntervalId) {
+    clearInterval(blink._blinkIntervalId);
+    blink._blinkIntervalId = null;
+  }
+
+  if (personaje.blink) {
+    setTimeout(() => {
+      blink._blinkIntervalId = setInterval(() => {
+        setTimeout(() => { blink.src = srcBlink; }, 500);
+        setTimeout(() => { blink.src = srcOriginal; }, 600);
+        setTimeout(() => { blink.src = srcBlink; }, 700);
+        setTimeout(() => { blink.src = srcOriginal; }, 800);
+      }, 2000);
+    }, numero);
+  }
+}
+
 function inicializarEventos(personajes) {
   document.querySelectorAll(".personaje").forEach(elemento => {
     elemento.addEventListener("click", () => {
@@ -158,6 +182,16 @@ function inicializarEventos(personajes) {
         document.getElementById("contenedor-personaje").classList.add("active");
         document.getElementById("personaje-historico").classList.add("active");
         document.body.classList.add("no-scroll");
+
+        let imgPersonaje = document.getElementById("imagen-personaje");
+
+        
+        blinkPersonaje(imgPersonaje, personajes[idPersonaje]);
+        
+        
+
+        
+
       } else {
         console.error("Personaje no encontrado en JSON:", idPersonaje);
       }
@@ -243,6 +277,17 @@ function actualizarCarta(personaje, idPersonaje) {
 
   // Asignar imágenes ya precargadas
   document.getElementById("imagen-personaje").src = personaje.imagen;
+  
+
+  if (personaje.blink) {
+    document.getElementById("imagen-personaje").setAttribute("data-blink", personaje.blink);
+    document.getElementById("imagen-personaje").classList.add("blink");
+  } else {
+    document.getElementById("imagen-personaje").classList.remove("blink");
+    document.getElementById("imagen-personaje").src = personaje.imagen;
+    document.getElementById("imagen-personaje").removeAttribute("data-blink");
+  }
+
   document.querySelector(".img-personaje-frontal").id = personaje.imgClass;
 
   document.getElementById("imagen-personaje-trasera").src = personaje.imagen;
@@ -678,6 +723,15 @@ function cerrarCarta() {
   sobreCarta.classList.remove('active');
   msgAbrirCarta.classList.remove('active');
   document.body.classList.remove("no-scroll");
+
+  var imgPersonaje = document.getElementById("imagen-personaje");
+  if (imgPersonaje && imgPersonaje._blinkIntervalId) {
+    clearInterval(imgPersonaje._blinkIntervalId);
+    imgPersonaje._blinkIntervalId = null;
+    imgPersonaje.removeAttribute("data-blink");
+  }
+
+
 }
 
 document.getElementById("carta-cerrar").addEventListener("click", function() {
@@ -1375,6 +1429,9 @@ function cargarPaises(paises) {
   });
 }
 
+const fechaInicio = tippy('#capsula-pais-fecha-inicio', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+const fechaTermino = tippy('#capsula-pais-fecha-termino', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+
 function actualizarPais(pais, idPais) {
   document.querySelector(".capsula-pais").style.backgroundColor = pais.colorFondo || "rgba(105, 105, 105, 0.562)";
   document.getElementById("capsula-pais-nombre").textContent = pais.nombre;
@@ -1402,6 +1459,9 @@ function actualizarPais(pais, idPais) {
   document.querySelector("#logros-pais-1 img").src = pais.logro1[1];
   document.querySelector("#logros-pais-2 img").src = pais.logro2[1];
   document.querySelector("#logros-pais-3 img").src = pais.logro3[1];
+
+  fechaInicio[0].setContent(pais.acontecimientos ? pais.acontecimientos[0] : "Sin información");
+  fechaTermino[0].setContent(pais.acontecimientos ? pais.acontecimientos[1] : "Sin información");
 }
 
 // Hover logros pais
@@ -1553,23 +1613,19 @@ document.querySelectorAll(".blink").forEach(blink => {
 
   setTimeout(() => {
     setInterval(() => {
-    setTimeout(() => {
-      blink.src = srcBlink;
-    }, 500)
-    setTimeout(() => {
-      blink.src = srcOriginal;
-    }, 600)
-    setTimeout(() => {
-      blink.src = srcBlink;
-    }, 700)
-    setTimeout(() => {
-      blink.src = srcOriginal;
-    }, 800)
-  }, 2500)
+      setTimeout(() => {
+        blink.src = srcBlink;
+      }, 500)
+      setTimeout(() => {
+        blink.src = srcOriginal;
+      }, 600)
+      setTimeout(() => {
+        blink.src = srcBlink;
+      }, 700)
+      setTimeout(() => {
+        blink.src = srcOriginal;
+      }, 800)
+    }, 2000)
   }, numero)
-
-  console.log(numero)
-
-  
-  
 })
+

@@ -11,6 +11,7 @@
       "logro2": ["Desarrollo de técnicas agrícolas avanzadas, como las terrazas.", "/icons/trigo.svg"],
       "logro3": ["Sistema de administración eficiente y centralizada.", "/icons/inca.svg"],
       "tiempo": ["Siglo XV", "1533"],
+        
       "personaje": "",
       "fondo": "/img/moderna/descubrimiento-chile/9c7cecfd-5b8a-4916-82f4-34e3fb119004.webp"
     },
@@ -26,6 +27,7 @@
       "logro2": ["Desarrollo del comercio transatlántico y la ruta de Manila-Acapulco.", "/icons/moneda.svg"],
       "logro3": ["Difusión de la lengua española, el cristianismo y la cultura europea en América y Asia.", "/icons/corona.png"],
       "tiempo": ["1492", "1898"],
+      "acontecimientos": ["Origen", "Termino"],
       "personaje": "",
       "fondo": "/img/moderna/descubrimiento-chile/9c7cecfd-5b8a-4916-82f4-34e3fb119004.webp"
     }

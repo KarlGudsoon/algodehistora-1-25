@@ -104,6 +104,7 @@
         { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
       ],
       "imagen": "/img/moderna/descubrimiento-chile/fernandomagallanes.webp",
+      "blink": "/img/moderna/descubrimiento-chile/fernandomagallanes(blink).webp",
       "fondoFrontal": "/img/moderna/descubrimiento-chile/expedicionmagallanesyelcano.webp",
       "fondoTrasera": "/img/moderna/descubrimiento-chile/expedicionmagallanesyelcano.webp",
       "personalidad": [
