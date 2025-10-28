@@ -1629,3 +1629,37 @@ document.querySelectorAll(".blink").forEach(blink => {
   }, numero)
 })
 
+// ACTIVADOR DE MAPA INTERACTIVO
+
+document.querySelectorAll(".button-map").forEach(boton => {
+  boton.addEventListener("click", function() {
+    const mapa = this.parentElement;
+    if (!mapa) return;
+
+    // Buscar activador dentro del mismo contenedor; si no existe, usar el global como fallback
+    const activador = mapa.querySelector(".capa-activador-mapa") || document.querySelector(".capa-activador-mapa");
+    if (activador) activador.classList.toggle("activo");
+
+    mapa.classList.toggle("mapa-activo");
+    document.body.classList.toggle("no-scroll");
+  });
+});
+
+document.querySelectorAll(".capa-activador-mapa").forEach(activador => {
+    activador.addEventListener("click", function() {
+    var mapaNombre = this.getAttribute("data-mapa")
+    var mapa = document.getElementById(mapaNombre)
+
+    if (this.classList.contains("activo")) {
+        this.classList.remove("activo");
+    } else {
+        this.classList.add("activo");
+    }
+        
+
+    mapa.classList.add("mapa-activo");
+    document.body.classList.add("no-scroll"); // Agregar o quitar la clase "no-scroll" al body
+});
+
+})
+

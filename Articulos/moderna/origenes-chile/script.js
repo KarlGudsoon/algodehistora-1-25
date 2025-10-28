@@ -440,34 +440,7 @@ document.querySelectorAll('.mapa_pueblo').forEach(el => {
     });
 });
 
-document.getElementById("abrir-mapa").addEventListener("click", function() {
-    var mapa = document.getElementById("mapa-descubrimiento-america");
-    var activador = document.querySelector(".capa-activador-mapa");
 
-    if (activador.classList.contains("activo")) {
-        activador.classList.remove("activo");
-    }
-    else {
-        activador.classList.add("activo");
-    }
-
-    mapa.classList.toggle("activo");
-    document.body.classList.toggle("no-scroll"); // Agregar o quitar la clase "no-scroll" al body
-});
-
-document.querySelector(".capa-activador-mapa").addEventListener("click", function() {
-    var mapa = document.getElementById("mapa-descubrimiento-america");
-
-    if (this.classList.contains("activo")) {
-        this.classList.remove("activo");
-    } else {
-        this.classList.add("activo");
-    }
-        
-
-    mapa.classList.add("activo");
-    document.body.classList.add("no-scroll"); // Agregar o quitar la clase "no-scroll" al body
-});
 
 document.getElementById("india-america").addEventListener("mouseenter", function() {
     const spanTexto = this.querySelector("span");
