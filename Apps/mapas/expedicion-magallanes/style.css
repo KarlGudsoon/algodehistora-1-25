@@ -183,6 +183,7 @@ html, body {
 
 #_1 {
     clip-path: circle(0% at right top);
+    transition: all 2s ease-in-out;
 }
 
 #_1.active {
@@ -191,6 +192,7 @@ html, body {
 
 #_2 {
     clip-path: circle(0% at top);
+    transition: all 2s ease-in-out;
 }
 
 #_2.active {
@@ -198,19 +200,21 @@ html, body {
 }
 
 #_3 {
-    clip-path: circle(0% at top);
+    clip-path: inset(0 0 100% 0);
+    transition: all 1s ease-in-out;
 }
 
 #_3.active {
-    clip-path: circle(150% at top);
+    clip-path: inset(0 0 0% 0);
 }
 
 #_4 {
-    clip-path: circle(0% at right);
+    clip-path: inset(0 0 0 100%);
+    transition: all 4s ease-in-out;
 }
 
 #_4.active {
-    clip-path: circle(150% at right);
+    clip-path: inset(0 0 0 0);
 }
 
 #_5 {
@@ -222,19 +226,21 @@ html, body {
 }
 
 #_6 {
-    clip-path: circle(0% at right);
+    clip-path: inset(0 0 0 100%);
+    transition: all 6s ease-in-out;
 }
 
 #_6.active {
-    clip-path: circle(150% at right);
+    clip-path: inset(0 0 0 0%);
 }
 
 #_7 {
     clip-path: circle(0% at right);
+    transition: all 7s ease-in-out;
 }
 
 #_7.active {
-    clip-path: circle(0% at right);
+    clip-path: circle(150% at right);
 }
 
 @media only screen and (max-width: 600px) {

@@ -146,12 +146,6 @@ function hecho1() {
     zoom.style.transition = "transform 0.5s ease-in-out";
     zoom.style.pointerEvents = "none";
 
-    setTimeout(() => {
-        scale = 1;
-        pointX = 0;
-        pointY = 0;
-        setTransform();
-    }, 3500);
 
     setTimeout(() => {
         zoom.style.transition = "none";
@@ -169,7 +163,7 @@ function hecho2() {
 
     setTimeout(()=> {
         hecho2.classList.add("active");
-    }, 1500)
+    }, 2000)
 
     scale = 1;
     pointX = -300;
@@ -188,7 +182,7 @@ function hecho2() {
 function hecho3() {
     let hecho = document.getElementById("_3");
     let hecho2 = document.getElementById("_4");
-    let mapa = document.getElementById("world-map");
+    let hecho3 = document.getElementById("_5");
    
     setTimeout(()=> {
         hecho.classList.add("active");
@@ -196,12 +190,13 @@ function hecho3() {
 
     setTimeout(()=> {
         hecho2.classList.add("active");
+        hecho3.classList.add("active");
     }, 1500)
 
     if (innerWidth < 1000) {
         scale = 2;
-        pointX = -500;
-        pointY = -1000;
+        pointX = -450;
+        pointY = -1100;
     } else {
         scale = 2;
         pointX = -1300;
@@ -214,19 +209,71 @@ function hecho3() {
 
     zoom.style.pointerEvents = "none";
 
-    setTimeout(() => {
-        zoom.style.pointerEvents = "auto";
-        zoom.style.transition = "none";
-    }, 1500);
 }
+
+function hecho4() {
+    let hecho = document.getElementById("_6");
+    let hecho2 = document.getElementById("_2");
+   
+    setTimeout(()=> {
+        hecho.classList.add("active");
+    }, 500)
+
+    scale = 1;
+    pointX = 0;
+    pointY = -300;
+    setTransform();
+
+    setTimeout(()=> {
+        scale = 1;
+        pointX = 500;
+        pointY = -200;
+        setTransform();
+        zoom.style.transition = "transform 5s ease-in-out";
+    }, 2000)
+
+    zoom.style.transition = "transform 0.5s ease-in-out";
+    zoom.style.pointerEvents = "none";
+}
+
+function hecho5() {
+    let hecho = document.getElementById("_7");
+   
+    setTimeout(()=> {
+        hecho.classList.add("active");
+    }, 500)
+
+    scale = 1;
+    pointX = 500;
+    pointY = -200;
+    setTransform();
+
+    setTimeout(()=> {
+        scale = 1;
+        pointX = 1000;
+        pointY = -200;
+        setTransform();
+        zoom.style.transition = "transform 5s ease-in-out";
+    }, 500)
+
+    zoom.style.transition = "transform 0.5s ease-in-out";
+    zoom.style.pointerEvents = "none";
+
+}
+
 
 setTimeout(hecho1, 500)
 
-setTimeout(hecho2, 5000)
+setTimeout(hecho2, 6000)
 
-setTimeout(hecho3, 8000)
+setTimeout(hecho3, 10000)
 
 
+
+setTimeout(hecho4, 18000)
+
+
+setTimeout(hecho5, 21000)
 
 
 
