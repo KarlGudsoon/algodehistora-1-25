@@ -1,0 +1,300 @@
+:root {
+    --blue: #1e90ff;
+    --red2: #780618;
+    --red: #e92a41;
+    --yellow: #ffa218;
+    --orange: #f86d31;
+  }
+  @font-face {
+    font-family: BreeSerif;
+    src: url("/fonts/BreeSerif-Regular.ttf")
+      format("truetype");
+  }
+  
+  @font-face {
+    font-family: Roboto;
+    src: url("/fonts/RobotoSlab-Regular.ttf")
+      format("truetype");
+  }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100dvh;
+    background-color: #154d7a;
+    
+}
+
+#zoom {
+    width: 100%;
+    height: 100%;
+    transform-origin: 0px 0px;
+    transform: scale(1) translate(0px, 0px);
+    cursor: grab;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+}
+  
+#zoom svg {
+    height: 100vh;
+    width: auto;
+    scale: 2;
+    user-select: none;
+    transition: .5s ease-in-out;
+}
+
+.zoom_outer {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    z-index: 1;
+}
+
+.tripleeje {
+    fill: #e92a41;
+}
+
+.mapa-bloque {
+    display: none;
+}
+  
+.mapa-bloque.activo {
+    display: block;
+}
+
+#ALEMANIA1939 .cls-1 {
+    background-image: url("/img/contemporanea/1267px-Claude_Monet_-_The_Gare_Saint-Lazare\,_Arrival_of_a_Train-min.jpg");
+}
+
+.boton-capas {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background-color: #e92a41;
+    border-radius: 50%;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.boton-capas:hover {
+    background-color: #ffa218;
+}
+.boton-capas:active {
+    background-color: #f86d31;
+}
+
+.boton-capas img {
+    height: 80%;
+    filter: invert(0);
+    opacity: 0.35;
+}
+
+.container-capas-content {
+    position: fixed;
+    bottom: 70px;
+    right: 10px;
+    width: 200px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container-capas-content-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family: BreeSerif;
+    font-size: 1rem;
+    color: #e92a41;
+    margin: 0;
+}
+
+.container-capas-content-header h2 {
+    margin: 0;
+}
+
+.container-capas-content-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nota-mapa {
+    font-family: Roboto;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 1rem;
+    color: white;
+    margin: 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    max-width: 350px;
+    padding: 1rem;
+}
+
+.nota-mapa h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: BreeSerif;
+    text-transform: uppercase;
+}
+
+.nota-mapa p {
+    margin: 0.5rem 0 0 0;
+    font-size: 1rem;
+    line-height: 1.2rem;
+}
+
+#_0, #_1, #_2, #_3, #_4, #_5, #_6, #_7 {
+    transition: all 1.5s ease-in-out;
+}
+
+#_0 {
+    opacity: 0;
+}
+
+#_0.active {
+    opacity: 1 !important;
+}
+
+#_1 {
+    clip-path: circle(0% at right top);
+}
+
+#_1.active {
+    clip-path: circle(150% at right top);
+}
+
+#_2 {
+    clip-path: circle(0% at top);
+}
+
+#_2.active {
+    clip-path: circle(200% at right);
+}
+
+#_3 {
+    clip-path: circle(0% at top);
+}
+
+#_3.active {
+    clip-path: circle(150% at top);
+}
+
+#_4 {
+    clip-path: circle(0% at right);
+}
+
+#_4.active {
+    clip-path: circle(150% at right);
+}
+
+#_5 {
+    opacity: 0;
+}
+
+#_5.active {
+    opacity: 1;
+}
+
+#_6 {
+    clip-path: circle(0% at right);
+}
+
+#_6.active {
+    clip-path: circle(150% at right);
+}
+
+#_7 {
+    clip-path: circle(0% at right);
+}
+
+#_7.active {
+    clip-path: circle(0% at right);
+}
+
+@media only screen and (max-width: 600px) {
+    #zoom svg {
+        scale: 5;
+    }
+
+    .contenedor-paises {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .pais {
+        width: 150px;
+        height: 75px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .pais img {
+        height: 80%;
+        bottom: 0;
+    }
+
+    .pais p {
+        font-size: 0.5rem;
+    }
+
+    .pais h1 {
+        font-size: 0.8rem;
+    }
+
+    .pais img {
+        height: 80%;
+        pointer-events: none;
+    }
+
+    .boton {
+        font-size: 0.5rem;
+    }
+
+    .container-hechos-texto {
+        width: 250px;
+    }
+
+    .container-hechos-texto .hecho-texto {
+        font-size: 0.8rem;
+    }
+
+    .container-hecho-texto {
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+    }
+
+    .container-hechos-texto h2 {
+        font-size: 1rem;
+    }
+
+    .container-hecho-img {
+        display: none;
+    }
+}

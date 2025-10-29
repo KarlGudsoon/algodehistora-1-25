@@ -1391,7 +1391,7 @@ opacity: 1;
     padding: 0;
     list-style-type: none;
     display: flex;
-    gap: 2rem;
+    gap: 0rem;
 }
 
 .capsula-descriptiva-1 li {
@@ -1399,12 +1399,8 @@ opacity: 1;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    background-color: var(--red);
     padding: 0.5rem;
-    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+    width: 120px;
     text-align: center;
 }
 
@@ -1415,6 +1411,19 @@ opacity: 1;
     object-position: center;
     transition: 0.2s ease;
     margin-bottom: 0.5rem;
+}
+
+.capsula-descriptiva-1 li div {
+    width: 60px;
+    height: 60px;
+    background-color: var(--red);
+    padding: 0.5rem;
+    border-radius: 100%;
+    box-shadow: 0 0 1rem rgb(0, 0, 0, 0.35);
+}
+
+.capsula-descriptiva-1 li span {
+    font: 900 1rem Roboto;
 }
 
 .capsula-descriptiva-1 li img:hover {
