@@ -35,6 +35,17 @@ html, body {
     z-index: -1;
     display: flex;
     justify-content: center;
+    animation: paneo 10s ease-in-out alternate forwards infinite;
+}
+
+@keyframes paneo {
+    0% {
+        transform: scale(1) translate(-500px, -200px);
+    }
+    100% {
+        transform: scale(1) translate(1000px, -200px);
+    }
+    
 }
   
 #zoom svg {
@@ -169,8 +180,91 @@ html, body {
     line-height: 1.2rem;
 }
 
+.container-hechos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    z-index: 1;
+    gap: 1rem;
+}
+
+.container-hechos div {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    background-color: #e92a41;
+    color: white;
+    font: 900 1.5rem Roboto;
+    cursor: no-drop;
+    transition: 0.2s ease;
+    scale: .8;
+    filter: brightness(50%);
+    user-select: none;
+    pointer-events: none;
+    border: 1px solid #fff;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+}
+
+.container-hechos div.activo:hover {
+    scale: 1.2;
+}
+
+.container-hechos div.activo {
+    filter: brightness(100%);
+    cursor: pointer;
+    pointer-events: all;
+    scale: 1;
+}
+
+#start-travel {
+    position: absolute;
+    font: 300 1rem Roboto;
+    line-height: 1;
+    top: 0;
+    opacity: 0;
+    scale: 0;
+    width: 120px;
+    text-align: center;
+    transition: 0.5s ease;
+    z-index: -1;
+    background-color: #e92a41;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #fff;
+}
+
+#start-travel::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 6px;
+    bottom: -6px;
+    background-color: #e92a41;
+    z-index: 2;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+}
+
+#start-travel.activo {
+    top: -70px;
+    opacity: 1;
+    scale: 1;
+    transition: 0.5s ease;
+}
+
 #_0, #_1, #_2, #_3, #_4, #_5, #_6, #_7 {
-    transition: all 1.5s ease-in-out;
+    transition: clip-path 1.5s ease-in-out, opacity 0s ease-in-out;
 }
 
 #_0 {
@@ -183,38 +277,43 @@ html, body {
 
 #_1 {
     clip-path: circle(0% at right top);
-    transition: all 2s ease-in-out;
+    transition: clip-path 2s ease-in-out, opacity 0s ease-in-out;
+    opacity: 1;
 }
 
 #_1.active {
     clip-path: circle(150% at right top);
+    opacity: 1 !important;
 }
 
 #_2 {
     clip-path: circle(0% at top);
-    transition: all 2s ease-in-out;
+    transition: clip-path 2s ease-in-out, opacity 0s ease-in-out;
 }
 
 #_2.active {
     clip-path: circle(200% at right);
+    opacity: 1 !important;
 }
 
 #_3 {
     clip-path: inset(0 0 100% 0);
-    transition: all 1s ease-in-out;
+    transition: clip-path 1s ease-in-out, opacity 0s ease-in-out;
 }
 
 #_3.active {
     clip-path: inset(0 0 0% 0);
+    opacity: 1 !important;
 }
 
 #_4 {
     clip-path: inset(0 0 0 100%);
-    transition: all 4s ease-in-out;
+    transition: clip-path 4s ease-in-out, opacity 0s ease-in-out;
 }
 
 #_4.active {
     clip-path: inset(0 0 0 0);
+    opacity: 1 !important;
 }
 
 #_5 {
@@ -222,25 +321,45 @@ html, body {
 }
 
 #_5.active {
-    opacity: 1;
+    opacity: 1 !important;
+    transition: opacity 1.5s ease-in-out;
 }
 
 #_6 {
     clip-path: inset(0 0 0 100%);
-    transition: all 6s ease-in-out;
+    transition: clip-path 6s ease-in-out, opacity 0s ease-in-out;
 }
 
 #_6.active {
     clip-path: inset(0 0 0 0%);
+    opacity: 1 !important;
 }
 
 #_7 {
     clip-path: circle(0% at right);
-    transition: all 7s ease-in-out;
+    transition: clip-path 7s ease-in-out, opacity 0s ease-in-out;
 }
 
 #_7.active {
     clip-path: circle(150% at right);
+    opacity: 1 !important;
+}
+
+#hecho-1 {
+    animation: float 2.5s infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+    
 }
 
 @media only screen and (max-width: 600px) {
@@ -302,5 +421,11 @@ html, body {
 
     .container-hecho-img {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #zoom svg {
+        scale: 7;
     }
 }

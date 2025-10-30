@@ -135,27 +135,71 @@ document.getElementById("resetZoom").addEventListener("click", function() {
 
 function hecho1() {
     let hecho = document.getElementById("_0");
+    let hechoSiguiente = document.getElementById("hecho-2");
+    hechoSiguiente.classList.add("activo");
 
-    hecho.classList.add("active");
+    
 
-    scale = 1;
-    pointX = 600;
-    pointY = -200;
-    setTransform();
+    zoom.style.animation = "none";
 
-    zoom.style.transition = "transform 0.5s ease-in-out";
-    zoom.style.pointerEvents = "none";
+    setTimeout(()=> {
+        hecho.classList.add("active");
+        scale = 1;
+        pointX = 600;
+        pointY = -200;
+        setTransform();
 
+        zoom.style.transition = "transform 0.5s ease-in-out";
+        zoom.style.pointerEvents = "none";
+    }, 100)
 
-    setTimeout(() => {
-        zoom.style.transition = "none";
+    setTimeout(()=> {
+        zoom.style.transition = "";
         zoom.style.pointerEvents = "auto";
-    }, 4000);    
+    }, 500)
+
+    var startTravel = document.getElementById("start-travel");
+
+    startTravel.classList.remove("activo");
+    this.style.animation = "none";
+
+    
+
+    
+
+    let hecho1 = document.getElementById("_0");
+    let hecho2 = document.getElementById("_1");
+    let hecho3 = document.getElementById("_2");
+    let hecho4 = document.getElementById("_3");
+    let hecho5 = document.getElementById("_4");
+    let hecho6 = document.getElementById("_5");
+    let hecho7 = document.getElementById("_6");
+    let hecho8 = document.getElementById("_7");
+
+    hecho1.style.opacity = "0";
+    hecho2.style.opacity = "0";
+    hecho3.style.opacity = "0";
+    hecho4.style.opacity = "0";
+    hecho5.style.opacity = "0";
+    hecho6.style.opacity = "0";
+    hecho7.style.opacity = "0";
+    hecho8.style.opacity = "0";
+
+    hecho1.classList.remove("active");
+    hecho2.classList.remove("active");
+    hecho3.classList.remove("active");
+    hecho4.classList.remove("active");
+    hecho5.classList.remove("active");
+    hecho6.classList.remove("active");
+    hecho7.classList.remove("active");
+    hecho8.classList.remove("active");
 }
 
 function hecho2() {
     let hecho = document.getElementById("_1");
     let hecho2 = document.getElementById("_2");
+    let hechoSiguiente = document.getElementById("hecho-3");
+    hechoSiguiente.classList.add("activo");
    
     setTimeout(()=> {
         hecho.classList.add("active");
@@ -173,16 +217,18 @@ function hecho2() {
     zoom.style.transition = "transform 0.5s ease-in-out";
     zoom.style.pointerEvents = "none";
 
-    setTimeout(() => {
-        zoom.style.transition = "none";
+    setTimeout(()=> {
+        zoom.style.transition = "";
         zoom.style.pointerEvents = "auto";
-    }, 500); 
+    }, 500)
 }
 
 function hecho3() {
     let hecho = document.getElementById("_3");
     let hecho2 = document.getElementById("_4");
     let hecho3 = document.getElementById("_5");
+    let hechoSiguiente = document.getElementById("hecho-4");
+    hechoSiguiente.classList.add("activo");
    
     setTimeout(()=> {
         hecho.classList.add("active");
@@ -209,11 +255,18 @@ function hecho3() {
 
     zoom.style.pointerEvents = "none";
 
+    setTimeout(()=> {
+        zoom.style.transition = "";
+        zoom.style.pointerEvents = "auto";
+    }, 500)
+
 }
 
 function hecho4() {
     let hecho = document.getElementById("_6");
     let hecho2 = document.getElementById("_2");
+    let hechoSiguiente = document.getElementById("hecho-5");
+    hechoSiguiente.classList.add("activo");
    
     setTimeout(()=> {
         hecho.classList.add("active");
@@ -234,6 +287,11 @@ function hecho4() {
 
     zoom.style.transition = "transform 0.5s ease-in-out";
     zoom.style.pointerEvents = "none";
+
+    setTimeout(()=> {
+        zoom.style.transition = "";
+        zoom.style.pointerEvents = "auto";
+    }, 5000)
 }
 
 function hecho5() {
@@ -254,26 +312,119 @@ function hecho5() {
         pointY = -200;
         setTransform();
         zoom.style.transition = "transform 5s ease-in-out";
-    }, 500)
+    }, 100)
 
     zoom.style.transition = "transform 0.5s ease-in-out";
     zoom.style.pointerEvents = "none";
 
+    setTimeout(()=> {
+        zoom.style.transition = "";
+        zoom.style.pointerEvents = "auto";
+    }, 1000)
+
 }
 
+function hecho0() {
+    let mapa = document.getElementById("world-map");
 
+    scale = 1;
+    pointX = 0;
+    pointY = 0;
+    setTransform();
+
+    zoom.style.transition = "transform 1s ease-in-out";
+    zoom.style.pointerEvents = "auto";
+
+    mapa.style.scale = "2";
+    mapa.style.transition = "transform 0.5s ease-in-out";
+
+    setTimeout(()=> {
+        mapa.style.transition = "";
+        zoom.style.transition = "";
+    }, 500)
+
+}
+
+/*
 setTimeout(hecho1, 500)
-
 setTimeout(hecho2, 6000)
-
 setTimeout(hecho3, 10000)
-
-
-
 setTimeout(hecho4, 18000)
-
-
 setTimeout(hecho5, 25000)
+setTimeout(hecho0, 32000)
+*/
+
+function completarMapa() {
+    let hecho1 = document.getElementById("_0");
+    let hecho2 = document.getElementById("_1");
+    let hecho3 = document.getElementById("_2");
+    let hecho4 = document.getElementById("_3");
+    let hecho5 = document.getElementById("_4");
+    let hecho6 = document.getElementById("_5");
+    let hecho7 = document.getElementById("_6");
+    let hecho8 = document.getElementById("_7");
+
+    hecho1.classList.add("active");
+    hecho2.classList.add("active");
+    hecho3.classList.add("active");
+    hecho4.classList.add("active");
+    hecho5.classList.add("active");
+    hecho6.classList.add("active");
+    hecho7.classList.add("active");
+    hecho8.classList.add("active");
+
+    zoom.style.pointerEvents = "auto";
+}
+
+/*
+function visionPanoramica() {
+    scale = 1;
+    pointX = 1000;
+    pointY = -200;
+    setTransform();
+    zoom.style.transition = "transform 10s ease-in-out";
+    zoom.style.pointerEvents = "auto";
+
+    // Segundo movimiento (tras 10 segundos)
+    setTimeout(() => {
+        scale = 1;
+        pointX = -500;
+        pointY = -200;
+        setTransform();
+        zoom.style.transition = "transform 10s ease-in-out";
+    }, 10000);
+}
+
+// Ejecuta la animación inicial
+visionPanoramica();
+
+// Guarda el ID del intervalo para poder detenerlo después
+let visionInterval = setInterval(visionPanoramica, 20000);
+
+// Llama a completar el mapa
+completarMapa();
+
+// Cuando el usuario haga clic, detenemos la animación automática
+zoom.addEventListener("click", function() {
+    zoom.style.transition = "";
+    zoom.style.pointerEvents = "auto";
+    clearInterval(visionInterval); // ✅ Detiene el movimiento automático
+});
+
+*/
+
+document.getElementById("hecho-1").addEventListener("click", hecho1);
+document.getElementById("hecho-2").addEventListener("click", hecho2);
+document.getElementById("hecho-3").addEventListener("click", hecho3);
+document.getElementById("hecho-4").addEventListener("click", hecho4);
+document.getElementById("hecho-5").addEventListener("click", hecho5);
+
+
+completarMapa();
+
+zoom.addEventListener("click", function() {
+    zoom.style.animation = "none";
+});
 
 
 

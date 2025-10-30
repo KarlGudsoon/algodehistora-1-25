@@ -671,18 +671,21 @@ containers.forEach(function(container) {
 // ABRIR SOBRE (2) / EXIT ANIMATION //
 
 var sobreCarta = document.querySelector('.sobre-carta');
+var sonidoSobre = new Audio("/audio/arrastrar.mp3");
+var sonidoMostrarCarta = new Audio("/audio/reluciente.mp3");
+var sonidoAbrir = new Audio("/audio/romperpapel.mp3");
+
+sonidoAbrir.volume = 0.3;
+sonidoMostrarCarta.volume = 0.3;
+sonidoMostrarCarta.preload = "auto";
+sonidoSobre.volume = 0.5;
+sonidoSobre.preload = "auto";
   
 sobreCarta.addEventListener('click', function() {
-  var sonidoSobre = new Audio("/audio/arrastrar.mp3");
-  var sonidoMostrarCarta = new Audio("/audio/reluciente.mp3");
-  var sonidoAbrir = new Audio("/audio/romperpapel.mp3");
+  
   const msgAbrirCarta = document.getElementById("msg-abrirsobre")
 
-  sonidoAbrir.volume = 0.3;
-  sonidoMostrarCarta.volume = 0.3;
-  sonidoMostrarCarta.preload = "auto";
-  sonidoSobre.volume = 0.5;
-  sonidoSobre.preload = "auto";
+  
 
   sonidoSobre.play();
 

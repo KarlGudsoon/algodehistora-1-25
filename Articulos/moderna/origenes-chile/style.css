@@ -1232,20 +1232,23 @@ opacity: 1;
     justify-self: end;
 }
 
-.magallanes-explicacion-5 img {
-    position: relative;
-    z-index: 9;
-    width: 50%;
+.magallanes-explicacion-5 .contenedor-img-blink {
+    width: 250px;
     align-self: end;
     transition: 0.2s ease;
 }
 
-.magallanes-explicacion-5 img:hover {
+.magallanes-explicacion-5 .contenedor-img-blink img {
+    width: 100%;
+    user-select: none;
+}
+
+.magallanes-explicacion-5 .contenedor-img-blink:hover {
     scale: 1.05;
     filter: drop-shadow(0 0 1rem rgb(0, 0, 0, 0.5)); 
 }
 
-.magallanes-explicacion-5 img:first-child:hover {
+.magallanes-explicacion-5 .contenedor-img-blink:hover {
     filter: drop-shadow(0 0 1rem rgb(0, 0, 0, 0.5)) grayscale(1);
 }
 
@@ -1283,26 +1286,11 @@ opacity: 1;
     align-self: center;
 }
 
-.magallanes-mapa::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+.magallanes-mapa iframe {
     width: 100%;
     height: 100%;
-    border: 0rem solid rgb(255, 255, 255, 0.2);
-    z-index: 9;
-    transition: 0.2s ease;
-    cursor: pointer;
 }
 
-.magallanes-mapa:hover::before  {
-    border: 0.5rem solid rgb(255, 255, 255, 0.2);
-}
-
-.magallanes-mapa object {
-    height: 100%;
-}
 
 .expedicion-magallanes::before {
     content: "";
@@ -1445,8 +1433,62 @@ opacity: 1;
     align-items: center;
 }
 
+.capsula-descriptiva-2 .contenedor-img-blink {
+    width: 350px;
+}
+
+.contenedor-img-blink {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    animation: respirar 8s infinite linear;
+}
+
+@keyframes respirar {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.025);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.contenedor-img-blink .blink-2 {
+    position: absolute;
+    animation: parpadeo 2.5s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes parpadeo {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    35% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    45% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 .capsula-descriptiva-2 img {
-    width: 60%;
+    width: 100%;
     transform: rotateY(-180deg);
 }
 
