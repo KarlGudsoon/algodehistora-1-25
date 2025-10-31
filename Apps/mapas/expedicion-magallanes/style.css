@@ -35,7 +35,7 @@ html, body {
     z-index: -1;
     display: flex;
     justify-content: center;
-    animation: paneo 10s ease-in-out alternate forwards infinite;
+    animation: paneo 15s ease-in-out alternate forwards infinite;
 }
 
 @keyframes paneo {

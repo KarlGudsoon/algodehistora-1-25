@@ -4926,12 +4926,12 @@ a:hover {
   flex-direction: column;
   gap: 0.5rem;
   margin: 2rem;
+  max-width: 400px;
 }
 
 .fecha-periodo {
   position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
   opacity: 0.5;
   transition: 0.2s ease;
@@ -4940,7 +4940,7 @@ a:hover {
 }
 
 .fecha-periodo h1 {
-  font: 900 4rem BreeSerif;
+  font: 900 3rem BreeSerif !important;
   width: fit-content;
   color: white;
   position: relative;
@@ -4986,7 +4986,7 @@ a:hover {
   position: absolute;
   border-radius: 1rem;
   z-index: -1;
-  top: 0;
+  top: -5%;
   opacity: 0;
   transition: .2s ease;
   
@@ -5003,7 +5003,7 @@ a:hover {
   position: absolute;
   border-radius: 1rem;
   z-index: -1;
-  top: 0;
+  top: -5%;
   opacity: 0;
   transition: .2s ease;
 }
