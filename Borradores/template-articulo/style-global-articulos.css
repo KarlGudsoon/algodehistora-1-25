@@ -5512,6 +5512,26 @@ button:hover::before {
 
 /* CAPSULA DESCRIPTIVA GRANDE */
 
+.informacion-extra {
+  width: 35px;
+  height: 35px;
+  background-color: var(--red);
+  border-radius: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font: 600 1.5rem Roboto;
+  transition: 0.2s ease;
+  margin: 0 0.5rem 0 0.5rem;
+}
+
+.informacion-extra:hover {
+  filter: brightness(110%);
+  cursor: pointer;
+  scale: 1.1;
+}
+
 .nieve {
   position: absolute;
   top: 0;
