@@ -1,7 +1,29 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #1d1d1d !important;
+        --secondary-color: #2e2e2e !important;
+        --yellow-color: #e92a41 !important;
+    }
+
+    body {
+        background-color: var(--primary-color-dark) !important;
+        color: white;
+    }
+
+    .logo-dark {
+        display: block !important;
+    }
+
+    .logo {
+        display: none;
+    }
+}
+
 :root {
     --primary-color: #e92a41;
     --secondary-color: #c2283a;
     --yellow-color: #ffff00;
+    --primary-color-dark: #1d1d1d;
 }
 
 @view-transition {
@@ -189,7 +211,7 @@ a:hover {
 .contenedor-logo span::before {
   content: "";
   height: 37%;
-  background-color: #e92a41;
+  background-color: var(--primary-color);
   position: absolute;
   bottom: 14%;
   left: 8%;
@@ -201,13 +223,17 @@ a:hover {
 .contenedor-logo span::after {
   width: 1%;
   height: 37%;
-  background-color: #e92a41;
+  background-color: var(--primary-color);
   position: absolute;
   top: 11%;
   right: 13%;
   z-index: 99999;
   animation: square2 4s ease infinite;
   content: "";
+}
+
+.logo-dark {
+    display: none;
 }
 
   @keyframes square1 {
