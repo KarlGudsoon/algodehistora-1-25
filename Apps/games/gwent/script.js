@@ -47,11 +47,19 @@ function mostrarMano() {
 
     div.innerHTML = `
       <p class="puntaje">${carta.puntaje}</p>
+
+      <div draggable="false" class="especialidad">
+        <img class="icono-especialidad">
+        <span>${carta.especialidad}</span>
+      </div>
+
       <div class="fondo">
         <h1>${carta.categoria[0].nombre}</h1>
         <img src="${carta.fondoFrontal}">
       </div>
+
       <img draggable="false" class="personaje" src="${carta.imagen}">
+      
       <div class="titulo">
         <span>Carta histórica</span>
         <h4>${carta.titulo}</h4>
@@ -59,6 +67,34 @@ function mostrarMano() {
       </div>
     `;
 
+    // 🔥 aplicar ícono correcto
+    const icono = div.querySelector(".icono-especialidad");
+
+    switch (carta.especialidad.trim().toLowerCase()) {
+
+      case "agricultor":
+        icono.src = "/icons/trigo.svg";
+        break;
+
+      case "intrépido":
+      case "intrepido":
+        icono.src = "/icons/arma.svg";
+        break;
+
+      case "pensador":
+        icono.src = "/icons/cerebro.svg";
+        break;
+
+      case "compañero":
+      case "companero":
+        icono.src = "/icons/demografia.svg";
+        break;
+
+      default:
+        icono.src = "/icons/interrogacion.svg";
+    }
+
+    // drag
     div.addEventListener('dragstart', (e) => {
       e.dataTransfer.setData('text/plain', i);
     });
@@ -255,11 +291,26 @@ function aplicarEfectos(carta, quien, zonaDestino, cartaElemento = null) {
             }
         }, 10); 
      }  else {
-        // IA: similar, la IA puede "robar" a su mano (simple)
-        if (manoIA.length < cartasDisponibles.length) {
-          const restanteIA = cartasDisponibles.filter(c => !manoIA.includes(c) && !manoJugador.includes(c));
-          if (restanteIA.length > 0) manoIA.push({ ...restanteIA[Math.floor(Math.random() * restanteIA.length)] });
-        }
+        const nuevaCartaIA = { 
+            ...cartasDisponibles[Math.floor(Math.random() * cartasDisponibles.length)]
+        };
+
+        // 2️⃣ Agregar a la mano IA
+        manoIA.push(nuevaCartaIA);
+
+        // 3️⃣ Dibujar la mano IA
+        mostrarManoIA();
+
+        // 4️⃣ Animación (opcional)
+        setTimeout(() => {
+            const cartasIA = document.querySelectorAll("#mano-ia .carta");
+            const ultimaIA = cartasIA[cartasIA.length - 1];
+
+            if (ultimaIA) {
+                ultimaIA.classList.add("carta-nueva");
+                setTimeout(() => ultimaIA.classList.remove("carta-nueva"), 500);
+            }
+        }, 10);
       }
       break;
     }
@@ -421,6 +472,10 @@ function agregarCartaCampo(zonaDestino, carta, owner = 'jugador') {
 
   div.innerHTML = `
     <p class="puntaje">${carta.puntaje}</p>
+    <div draggable="false" class="especialidad">
+      <img class="icono-especialidad">
+      <span>${carta.especialidad}</span>
+    </div>
     <div class="fondo">
       <h1>${carta.categoria[0].nombre}</h1>
       <img class="fondo-img" src="${carta.fondoFrontal}">
@@ -433,13 +488,31 @@ function agregarCartaCampo(zonaDestino, carta, owner = 'jugador') {
     </div>
   `;
 
-  if (carta.especialidad) {
-    const span = document.createElement('span');
-    span.textContent = carta.especialidad;
-    span.style.display = 'block';
-    span.style.fontSize = '0.8em';
-    span.style.color = 'darkgreen';
-    div.appendChild(span);
+  // 🔥 aplicar ícono correcto
+  const icono = div.querySelector(".icono-especialidad");
+
+  switch (carta.especialidad.trim().toLowerCase()) {
+
+    case "agricultor":
+      icono.src = "/icons/trigo.svg";
+      break;
+
+    case "intrépido":
+    case "intrepido":
+      icono.src = "/icons/arma.svg";
+      break;
+
+    case "pensador":
+      icono.src = "/icons/cerebro.svg";
+      break;
+
+    case "compañero":
+    case "companero":
+      icono.src = "/icons/demografia.svg";
+      break;
+
+    default:
+      icono.src = "/icons/interrogacion.svg";
   }
 
   zona.appendChild(div);

@@ -213,10 +213,15 @@ body {
   color: lightyellow;
 }
 
-.carta span {
-  font-size: 0.8em;
-  color: silver;
+.carta .especialidad {
+  z-index: 9999;
+  position: absolute;
 }
+
+.carta .especialidad img {
+  height: 20px;
+}
+
 
 #resultado {
   font-size: 1.5em;
