@@ -1,3 +1,19 @@
+@font-face {
+font-family: BreeSerif;
+src: url("/fonts/BreeSerif-Regular.ttf")
+  format("truetype");
+}
+
+@view-transition {
+navigation: auto;
+}
+
+@font-face {
+font-family: Roboto;
+src: url("/fonts/RobotoSlab-Regular.ttf")
+  format("truetype");
+}
+
 body {
     font-family: 'UnifrakturCook', serif;
     background: radial-gradient(ellipse at center, #1a1a1a 0%, #0d0d0d 100%);
@@ -5,137 +21,314 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-  }
-  
-  h1, h2 {
-    margin: 10px;
-    color: gold;
-    text-shadow: 2px 2px 2px #000;
-  }
-  
-  .mano, .jugadas {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px;
-    min-height: 150px;
-  }
-  
-  .carta {
-    background: linear-gradient(145deg, #333, #111);
-    border: 3px solid gold;
-    border-radius: 12px;
-    padding: 10px;
-    width: 140px;
-    height: 230px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(255,215,0,0.7);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .carta:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255,215,0,1);
-  }
-  
-  .carta img {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 5px;
-  }
-  
-  .carta h4 {
-    font-size: 1.1em;
-    margin: 5px 0;
-    color: white;
-  }
-  
-  .carta p {
-    font-weight: bold;
-    margin: 2px 0;
-    color: lightyellow;
-  }
-  
-  .carta span {
-    font-size: 0.8em;
-    color: silver;
-  }
-  
-  #resultado {
-    font-size: 1.5em;
-    margin: 20px 0;
-    color: white;
-    text-shadow: 1px 1px black;
-  }
+}
 
-  @keyframes entrar {
-    from {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
+.mano, .jugadas {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+  min-height: 150px;
+}
+
+.carta {
+  width: 150px;
+  height: 200px;
+  border-radius: 1.5rem;
+  user-select: none;
+  left: 1rem;
+  border: 1px solid red;
+  opacity: 1;
+  scale: 1;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .2s ease
+}
+
+.carta:hover {
+  scale: 1.2;
+  transform: translateY(-5%);
+}
+
+.carta .fondo {
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  height: 100%;
+  position: absolute;
+  border-radius: 1rem;
+}
+
+.carta .fondo h1 {
+  font-size: 1em;
+  margin: 0;
+  color: #0d0d0d;
+  opacity: .5;
+  font-family: BreeSerif;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.carta .fondo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.carta .puntaje {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 1rem;
+}
+
+.carta .titulo {
+  font-size: 1em;
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  z-index: 99999;
+}
+
+.carta .titulo h4 {
+  margin: 0;
+}
+
+.carta p {
+  font-weight: bold;
+  margin: 2px 0;
+  color: lightyellow;
+}
+
+.carta span {
+  font-size: 0.8em;
+  color: silver;
+}
+
+#resultado {
+  font-size: 1.5em;
+  margin: 20px 0;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+@keyframes entrar {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
   }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
 @keyframes temblor {
-  0% { transform: translateX(0); }
-  20% { transform: translateX(-5px); }
-  40% { transform: translateX(5px); }
-  60% { transform: translateX(-5px); }
-  80% { transform: translateX(5px); }
-  100% { transform: translateX(0); }
+0% { transform: translateX(0); }
+20% { transform: translateX(-5px); }
+40% { transform: translateX(5px); }
+60% { transform: translateX(-5px); }
+80% { transform: translateX(5px); }
+100% { transform: translateX(0); }
 }
 
 .temblor-daño {
-  animation: temblor 0.8s ease;
+animation: temblor 0.8s ease;
 }
 
 .mano-ia {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 10px;
+display: flex;
+gap: 10px;
+justify-content: center;
+margin-bottom: 10px;
 }
 
 .carta.ia {
-  width: 80px;
-  height: 120px;
-  background: url('/ruta/al/reverso.png') center/cover no-repeat;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+width: 80px;
+height: 120px;
+background: url('/ruta/al/reverso.png') center/cover no-repeat;
+border: 1px solid #ccc;
+border-radius: 8px;
 }
 
 .campo.jugador {
-  border: 2px dashed rgba(255, 255, 255, 0.5);
-  min-height: 150px;
-  transition: border 0.3s ease;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+border: 2px dashed rgba(255, 255, 255, 0.5);
+min-height: 150px;
+transition: border 0.3s ease;
+display: flex;
+justify-content: center;
+gap: 1rem;
 }
 
 .campo.jugador.over {
-  border-color: green;
+border-color: green;
 }
 
 .sumar-puntos {
-  color: green !important;
-  transition: 0.5s ease;
+color: green !important;
+transition: 0.5s ease;
 }
 
 .brillo-bonus {
-  animation: brillo 1s ease;
-  animation-delay: 0.2s ;
+animation: brillo 1s ease;
+animation-delay: 0.2s ;
 }
 
 @keyframes brillo {
-  0% { box-shadow: 0 0 5px gold; }
-  100% { box-shadow: none; }
+0% { box-shadow: 0 0 5px gold; }
+100% { box-shadow: none; }
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.legendario::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  scale: 1.035;
+  background: linear-gradient(133deg,#603512,#c89629,#faf290,#c89629,#603512, #603512,#c89629,#faf290,#c89629,#603512, #603512,#c89629,#faf290,#c89629,#603512);
+  background-size: 400% 400%;
+  animation: gradient-animation 5s linear infinite;
+  filter: blur(0px) saturate(1.2);
+  position: absolute;
+  border-radius: 1rem;
+  z-index: 0;
+  border: 1px solid rgb(163 163 163 / 50%);
+}
+
+.epico::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  scale: 1.02;
+  background: linear-gradient(
+  133deg,
+  #3e0066,
+  #7e3ff2,
+  #d1a4ff,
+  #7e3ff2,
+  #3e0066,
+  #3e0066,
+  #7e3ff2,
+  #d1a4ff,
+  #7e3ff2,
+  #3e0066,
+  #3e0066,
+  #7e3ff2,
+  #d1a4ff,
+  #7e3ff2,
+  #3e0066
+);
+  background-size: 400% 400%;
+  animation: gradient-animation 5s linear infinite;
+  filter: blur(5px);
+  position: absolute;
+  border-radius: 1rem;
+  z-index: 0;
+  
+}
+
+.raro::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  scale: 1.02;
+  background: linear-gradient(133deg, #1e3a8a, #3b82f6, #93c5fd, #3b82f6, #1e3a8a);
+  background-size: 400% 400%;
+  animation: gradient-animation 5s linear infinite;
+  filter: blur(10px) saturate(1);
+  position: absolute;
+  border-radius: 1rem;
+  z-index: 0;
+}
+
+.bronce::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  scale: 1.035;
+  background: linear-gradient(133deg, #603512,#603512, #603512, #603512, #d37528,  #603512, #603512, #603512, #603512);
+  background-size: 400% 400%;
+  animation: gradient-animation 5s linear infinite;
+  filter: blur(0px) saturate(1);
+  position: absolute;
+  border-radius: 1rem;
+  z-index: 0;
+  border: 1px solid rgb(163 163 163 / 50%);
+}
+
+.comun::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  scale: 1.035;
+  background: linear-gradient(
+  133deg,
+  #707070,
+  #dcdcdc,
+  #f5f5f5,
+  #dcdcdc,
+  #707070,
+  #707070,
+  #dcdcdc,
+  #f5f5f5,
+  #dcdcdc,
+  #707070,
+  #707070,
+  #dcdcdc,
+  #f5f5f5,
+  #dcdcdc,
+  #707070
+);
+  background-size: 400% 400%;
+  animation: gradient-animation 5s linear infinite;
+  filter: blur(0px) saturate(1);
+  position: absolute;
+  border-radius: 1rem;
+  z-index: 0;
+  border: 1px solid rgb(163 163 163 / 50%);
+}
+
+.basico::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  scale: 1.02;
+  background: inherit;
+  background-size: 400% 400%;
+  animation: gradient-animation 5s linear infinite;
+  filter: blur(10px) saturate(1);
+  position: absolute;
+  border-radius: 1rem;
+  z-index: 0;
+}
+
+.personaje {
+  height: 100%;
+  position: absolute;
+  z-index: 9;
+
 }

@@ -37,13 +37,26 @@ function mostrarMano() {
   manoJugador.forEach((carta, i) => {
     const div = document.createElement('div');
     div.className = 'carta';
+    div.classList.add(carta.rareza)
     div.draggable = true;
     div.dataset.index = i;
 
     div.innerHTML = `
-      <img src="${carta.imagen}" alt="${carta.titulo}">
-      <h4>${carta.titulo}</h4>
-      <p>${carta.puntaje} pts</p>
+      <span class="puntaje">${carta.puntaje}</span>
+      
+      <div class="fondo">
+        <h1>${carta.categoria[0].nombre}</h1>
+        <img src="${carta.fondoFrontal}">
+      </div>
+      <img class="personaje" src="${carta.imagen}" alt="${carta.titulo}">
+      <div class="titulo">
+        <span>Carta histórica</span>
+        <h4>${carta.titulo}</h4>
+        <span>${carta.categoria[0].nombre}</span>
+      </div>
+      
+      
+      
     `;
 
     // Cuando empieza a arrastrarse
