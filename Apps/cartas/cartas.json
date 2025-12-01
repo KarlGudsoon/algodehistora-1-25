@@ -123,11 +123,11 @@
       "color": "var(--contemporanea)",
       "especialidad": "Compañero",
       "categoria": [
-        { "nombre": "Edad Moderna", "clase": "etiqueta-moderna" }
+        { "nombre": "Contemporanea", "clase": "etiqueta-moderna" }
       ],
       "imagen": "/img/contemporanea/obrero-siderurgica.png",
-      "fondoFrontal": "/img/moderna/descubrimiento-chile/expedicionmagallanesyelcano.webp",
-      "fondoTrasera": "/img/moderna/descubrimiento-chile/expedicionmagallanesyelcano.webp",
+      "fondoFrontal": "/img/contemporanea/heyenbrock-min%20(2).webp",
+      "fondoTrasera": "/img/contemporanea/heyenbrock-min%20(2).webp",
       "personalidad": [
         { "nombre": "Navegante", "clase": "punto-plata", "img": "/icons/brujula.svg" },
         { "nombre": "Explorador", "clase": "punto-plateado", "img": "/icons/mapa.svg" },

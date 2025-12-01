@@ -14,13 +14,68 @@ src: url("/fonts/RobotoSlab-Regular.ttf")
   format("truetype");
 }
 
+:root {
+  --blue: #1e90ff;
+  --red2: #780618;
+  --red: #e92a41;
+  --yellow: #ffa218;
+  --orange: #f86d31;
+  --green: #66a329;
+
+  --prehistoria: #f86d31;
+  --antigua: #30a5e8;
+  --medieval: #f8b229;
+  --moderna: #f11c35; 
+  --contemporanea: #2e8b57; 
+
+  --paleolitico-inferior: #e86b35;
+  --paleolitico-medio: #d95922;
+  --paleolitico-superior: #c45222;
+}
+
+.etiqueta-periodo {
+  background-color: var(--periodopagina);
+}
+
+.etiqueta-prehistoria {
+  background-color: var(--prehistoria);
+}
+
+.etiqueta-antigua {
+  background-color: var(--antigua);
+}
+
+.etiqueta-medieval {
+  background-color: var(--medieval);
+}
+
+.etiqueta-moderna {
+  background-color: var(--moderna);
+}
+
+.etiqueta-precolombino {
+  background-color: #475936;
+}
+
+.etiqueta-contemporanea {
+  background-color: var(--contemporanea);
+}
+
 body {
-    font-family: 'UnifrakturCook', serif;
-    background: radial-gradient(ellipse at center, #1a1a1a 0%, #0d0d0d 100%);
+    font-family: 'Roboto', serif;
+    background: radial-gradient(ellipse at center, #565656 0%, #0d0d0d 100%);
     color: #f8f4e3;
     margin: 0;
     padding: 0;
     text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.tablero {
+  display: flex;
+  height: 70vh;
 }
 
 .mano, .jugadas {
@@ -32,26 +87,36 @@ body {
   min-height: 150px;
 }
 
+#mano-jugador {
+  border: 1px solid red;
+  flex: 1;
+}
+
 .carta {
   width: 150px;
   height: 200px;
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   user-select: none;
-  left: 1rem;
   border: 1px solid red;
   opacity: 1;
-  scale: 1;
   transform-style: preserve-3d;
   transform: perspective(1000px);
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: .2s ease
+  transition: .2s ease;
+  cursor: pointer;
+  
 }
 
 .carta:hover {
-  scale: 1.2;
-  transform: translateY(-5%);
+  scale: 1.1;
+  transform: translateZ(50px);
+  z-index: 9999999999;
+}
+
+.carta:hover .personaje {
+  scale: 1.1;
 }
 
 .carta .fondo {
@@ -81,10 +146,37 @@ body {
 }
 
 .carta .puntaje {
+  margin: 0.5rem;
+  font: 600 1rem Roboto;
+  z-index: 9;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  transform: translateZ(15px);
+  z-index: 98;
+  background-color: #2e2e2e;
+  border: 2px solid #efb810;
+  border-radius: 100%;
+  box-shadow: inset 0rem 0rem 0.5rem rgba(0, 0, 0, 0.5);
+  transition: 0.2s ease;
+  cursor: pointer;
   position: absolute;
-  top: 0;
   left: 0;
-  margin: 1rem;
+  top: 10%;
+}
+
+.carta .personaje {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  z-index: 9;
+  filter: drop-shadow(0 0 10px rgba(0 0 0 / 75%));
+  transition: 0.2s ease;
 }
 
 .carta .titulo {
@@ -98,10 +190,21 @@ body {
   position: absolute;
   bottom: 0;
   z-index: 99999;
+  margin-bottom: 10px;
+
 }
 
 .carta .titulo h4 {
   margin: 0;
+  font-family: BreeSerif;
+  line-height: 1;
+  text-shadow: 0 0 5px rgba(0 0 0 / 75%);
+}
+
+.carta .titulo span {
+  font: 400 10px Roboto;
+  color: white;
+  text-shadow: 0 0 5px rgba(0 0 0 / 75%);
 }
 
 .carta p {
@@ -133,6 +236,10 @@ body {
   }
 }
 
+.targetable::before {
+  outline: 5px solid var(--red) !important;
+}
+
 @keyframes temblor {
 0% { transform: translateX(0); }
 20% { transform: translateX(-5px); }
@@ -146,38 +253,101 @@ body {
 animation: temblor 0.8s ease;
 }
 
+.temblor-daño::after {
+  content: "";
+  background-color: var(--red);
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.2s;
+  z-index: 999999;
+  scale: 1.05;
+  border-radius: 1rem;
+}
+
 .mano-ia {
 display: flex;
+flex-direction: column;
 gap: 10px;
 justify-content: center;
 margin-bottom: 10px;
 }
 
 .carta.ia {
-width: 80px;
-height: 120px;
+width: 120px;
+height: 80px;
 background: url('/ruta/al/reverso.png') center/cover no-repeat;
 border: 1px solid #ccc;
 border-radius: 8px;
+
 }
 
-.campo.jugador {
-border: 2px dashed rgba(255, 255, 255, 0.5);
-min-height: 150px;
-transition: border 0.3s ease;
-display: flex;
-justify-content: center;
-gap: 1rem;
+.campo {
+  display: flex;
+  flex: 1;
 }
+
+#jugadas-ia {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .campo.jugador.over {
 border-color: green;
 }
 
+.zona {
+  border: 2px dashed white;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  justify-content: center;
+  gap: 0; /* Sin separación natural */
+  flex: 1;
+}
+
+.zona .carta {
+  margin-top: -100px; /* Superposición (ajusta el valor) */
+  transition: transform .25s ease, margin-top .25s ease;
+}
+
+.zona .carta:first-child {
+  margin-top: 0;
+}
+
+.menos-puntos {
+  color: var(--red) !important;
+  transition: 0.5s ease;
+  transition-delay: 0.2s;
+}
+
 .sumar-puntos {
 color: green !important;
 transition: 0.5s ease;
+transition-delay: 0.2s;
 }
+
+.carta-muerta {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: 0.4s ease-out;
+}
+
+.carta-nueva {
+  animation: cartaAparece 0.4s ease-out;
+}
+
+@keyframes cartaAparece {
+  0% { transform: scale(5); opacity: 0; }
+  60% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
 
 .brillo-bonus {
 animation: brillo 1s ease;
@@ -185,8 +355,14 @@ animation-delay: 0.2s ;
 }
 
 @keyframes brillo {
-0% { box-shadow: 0 0 5px gold; }
-100% { box-shadow: none; }
+0% { 
+  background-color: gold;
+  box-shadow: 0 0 10px gold; 
+}
+100% { 
+  background-color: "";
+  box-shadow: none; 
+}
 }
 
 @keyframes gradient-animation {
@@ -212,6 +388,8 @@ animation-delay: 0.2s ;
   border-radius: 1rem;
   z-index: 0;
   border: 1px solid rgb(163 163 163 / 50%);
+  outline: 5px solid transparent;
+  transition: outline 0.2s ease;
 }
 
 .epico::before {
@@ -244,7 +422,8 @@ animation-delay: 0.2s ;
   position: absolute;
   border-radius: 1rem;
   z-index: 0;
-  
+  outline: 5px solid transparent;
+  transition: outline 0.2s ease;
 }
 
 .raro::before {
@@ -276,6 +455,8 @@ animation-delay: 0.2s ;
   border-radius: 1rem;
   z-index: 0;
   border: 1px solid rgb(163 163 163 / 50%);
+  outline: 5px solid transparent;
+  transition: outline 0.2s ease;
 }
 
 .comun::before {
@@ -309,6 +490,8 @@ animation-delay: 0.2s ;
   border-radius: 1rem;
   z-index: 0;
   border: 1px solid rgb(163 163 163 / 50%);
+  outline: 5px solid transparent;
+  transition: outline 0.2s ease;
 }
 
 .basico::before {
@@ -324,11 +507,37 @@ animation-delay: 0.2s ;
   position: absolute;
   border-radius: 1rem;
   z-index: 0;
+  outline: 5px solid transparent;
+  transition: outline 0.2s ease;
 }
 
-.personaje {
-  height: 100%;
-  position: absolute;
-  z-index: 9;
+/* Fondo oscuro */
+#visor-carta {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
 
+#visor-carta.activo {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Carta ampliada */
+#visor-carta-contenido .carta {
+  transform: scale(2.3);     /* tamaño aumentado */
+  transform-origin: center;
+  pointer-events: none;      /* evita clicks sobre la carta */
+}
+
+/* Cerrar al hacer clic fuera */
+#visor-carta-contenido {
+  position: relative;
 }

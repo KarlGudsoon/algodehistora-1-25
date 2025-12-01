@@ -7,24 +7,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="campo-ia" class="campo">
-    <h2>Cartas de la IA</h2>
-    <div id="mano-ia" class="mano-ia"></div>
-    <div id="jugadas-ia" class="jugadas"></div>
-    
-  </div>
-  <div id="campo-jugador" class="campo">
-    <h2>Tus cartas</h2>
-    <div id="jugadas-jugador" class="campo jugador" ondragover="event.preventDefault()" ondrop="soltarCarta(event)"></div>
-    <div id="mano-jugador" class="mano"></div>
-    
+  <div class="tablero">
+    <div id="campo-ia" class="campo">
+      <h2>Cartas de la IA</h2>
+      <div id="mano-ia" class="mano-ia"></div>
+      <div id="jugadas-ia" class="jugadas"></div>
+      
+    </div>
+    <div id="campo-jugador" class="campo">
+      <h2>Tus cartas</h2>
+      <div id="zona-atacante" class="zona" ondragover="event.preventDefault()" ondrop="soltarCarta(event)">
+      
+      </div>
 
+      <div id="zona-defensiva" class="zona" ondragover="event.preventDefault()" ondrop="soltarCarta(event)">
+          
+      </div>
+
+      <div id="zona-recolectora" class="zona" ondragover="event.preventDefault()" ondrop="soltarCarta(event)">
+          
+      </div>
+    </div>
+    <div id="resultado"></div>
   </div>
+  <div id="mano-jugador" class="mano"></div>
+
     
       
     
-      <div id="resultado"></div>
+      
+
   </body>
 </html>
 
+<script type="text/javascript" src="/vanilla-tilt.min.js"></script>
 <script src="script.js"></script>
+
