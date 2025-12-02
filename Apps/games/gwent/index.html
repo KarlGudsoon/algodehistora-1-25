@@ -7,15 +7,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="turno-indicador" class="turno jugador">
+    ⭐ Turno del jugador
+  </div>
+  <div id="oro-hud">
+    Oro jugador: <span id="oro-j">0</span> | Oro IA: <span id="oro-i">0</span>
+  </div>
   <div class="tablero">
     <div id="campo-ia" class="campo">
-      <h2>Cartas de la IA</h2>
-      <div id="mano-ia" class="mano-ia"></div>
-      <div id="jugadas-ia" class="jugadas"></div>
+      <div id="mano-ia" class="mano-ia">
+      </div>
+      <div id="campo-ia" class="campo">
+        <div id="zona-recoleccion-ia" class="zona"></div>
+        <div id="zona-defensa-ia" class="zona"></div>
+        <div id="zona-atacante-ia" class="zona"></div>
+      </div>
       
     </div>
     <div id="campo-jugador" class="campo">
-      <h2>Tus cartas</h2>
       <div id="zona-atacante" class="zona" ondragover="event.preventDefault()" ondrop="soltarCarta(event)">
       
       </div>

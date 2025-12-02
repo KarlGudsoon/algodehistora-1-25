@@ -1,286 +1,247 @@
-// Juego de cartas con tres posiciones: atacante, defensiva y recolectora.
+// script.js - Versión completa (reemplaza tu archivo actual)
 
+/* =========  Estado global ========= */
 let cartasDisponibles = [];
 let manoJugador = [];
 let manoIA = [];
-let turno = 0;
+let turnoActual = "jugador"; // "jugador" | "ia"
 let puedeJugar = true;
 let esperandoObjetivo = false;
+let oroJugador = 0;
+let oroIA = 0;
 
-// Cargar cartas
+/* Zonas (consistente con el HTML que acordamos) */
+const zonasJugador = ['zona-atacante', 'zona-defensiva', 'zona-recolectora'];
+const zonasIA = ['zona-atacante-ia', 'zona-defensa-ia', 'zona-recoleccion-ia'];
+
+/* ========= Cargar cartas (ajusta la ruta si hace falta) ========= */
 fetch('/Apps/cartas/cartas.json')
   .then(res => res.json())
   .then(data => {
     cartasDisponibles = Object.values(data);
     iniciarJuego();
+  })
+  .catch(err => {
+    console.error('Error cargando cartas.json', err);
+    // Si quieres puedes poblar cartasDisponibles con mocks aquí para pruebas.
   });
 
-// Iniciar partida
+/* ========= Inicio de juego ========= */
 function iniciarJuego() {
-  const cantidad = 5; // cartas en mano
-
+  const cantidad = 5;
   const mazoInicial = [];
   for (let i = 0; i < cantidad * 2; i++) {
     const cartaAleatoria = cartasDisponibles[Math.floor(Math.random() * cartasDisponibles.length)];
-    mazoInicial.push({ ...cartaAleatoria });
+    mazoInicial.push({ ...cartaAleatoria }); // clonar
   }
-
   manoJugador = mazoInicial.slice(0, cantidad);
-  manoIA = mazoInicial.slice(cantidad);
-  turno = 0;
+  manoIA = mazoInicial.slice(cantidad, cantidad * 2);
 
   mostrarMano();
   mostrarManoIA();
+  mostrarOro();
+  turnoJugador(); // empieza jugador
 }
 
-// ----------- MANO DEL JUGADOR -------------
-function mostrarMano() {
+/* ========= Render: mano jugador ========= */
+function mostrarMano(highlightIndex = -1) {
   const cont = document.getElementById('mano-jugador');
+  if (!cont) return;
   cont.innerHTML = '';
 
   manoJugador.forEach((carta, i) => {
     const div = document.createElement('div');
     div.className = 'carta';
-    div.classList.add(carta.rareza);
+    if (carta.rareza) div.classList.add(carta.rareza);
     div.draggable = true;
     div.dataset.index = i;
+    div.cartaData = carta;
 
     div.innerHTML = `
       <p class="puntaje">${carta.puntaje}</p>
-
-      <div draggable="false" class="especialidad">
-        <img class="icono-especialidad">
-        <span>${carta.especialidad}</span>
+      <div class="especialidad"><img class="icono-especialidad"/><span>${carta.especialidad || ''}</span></div>
+      <div class="fondo"><h1>${carta.categoria?.[0]?.nombre || ''}</h1><img src="${carta.fondoFrontal || ''}"></div>
+      <img draggable="false" class="personaje" src="${carta.imagen || ''}">
+      <div class="contenedor-habilidades">
+        <div class="fuerza">${carta.habilidades[0].fuerza || ''}</div>
+        <div class="defensa">${carta.habilidades[1].defensa || ''}</div>
+        <div class="recoleccion">${carta.habilidades[2].recoleccion || ''}</div>
       </div>
-
-      <div class="fondo">
-        <h1>${carta.categoria[0].nombre}</h1>
-        <img src="${carta.fondoFrontal}">
-      </div>
-
-      <img draggable="false" class="personaje" src="${carta.imagen}">
-      
       <div class="titulo">
         <span>Carta histórica</span>
-        <h4>${carta.titulo}</h4>
-        <span class="${carta.categoria[0].clase}">${carta.categoria[0].nombre}</span>
+        <h4>${carta.titulo || ''}</h4>
+        <span class="${carta.categoria?.[0]?.clase || ''}">${carta.categoria?.[0]?.nombre || ''}</span>
       </div>
     `;
 
-    // 🔥 aplicar ícono correcto
-    const icono = div.querySelector(".icono-especialidad");
-
-    switch (carta.especialidad.trim().toLowerCase()) {
-
-      case "agricultor":
-        icono.src = "/icons/trigo.svg";
-        break;
-
-      case "intrépido":
-      case "intrepido":
-        icono.src = "/icons/arma.svg";
-        break;
-
-      case "pensador":
-        icono.src = "/icons/cerebro.svg";
-        break;
-
-      case "compañero":
-      case "companero":
-        icono.src = "/icons/demografia.svg";
-        break;
-
-      default:
-        icono.src = "/icons/interrogacion.svg";
+    // icono según especialidad (opcional)
+    const icono = div.querySelector('.icono-especialidad');
+    const esp = (carta.especialidad || '').toLowerCase().trim();
+    if (icono) {
+      if (esp === 'agricultor') icono.src = '/icons/trigo.svg';
+      else if (esp === 'intrépido' || esp === 'intrepido') icono.src = '/icons/arma.svg';
+      else if (esp === 'pensador') icono.src = '/icons/cerebro.svg';
+      else if (esp === 'compañero' || esp === 'companero') icono.src = '/icons/demografia.svg';
+      else icono.src = '/icons/interrogacion.svg';
     }
 
-    // drag
     div.addEventListener('dragstart', (e) => {
       e.dataTransfer.setData('text/plain', i);
     });
 
+    // click para abrir visor si tienes implementación (opcional)
     cont.appendChild(div);
+
+    if (i === highlightIndex) {
+      div.classList.add('carta-nueva');
+      setTimeout(() => div.classList.remove('carta-nueva'), 800);
+    }
   });
 }
 
-
-// ---------- DROP CORRECTO EN UNA DE LAS 3 ZONAS -----------
-
-function soltarCarta(event) {
-  event.preventDefault();
-
-  const indice = parseInt(event.dataTransfer.getData("text/plain"));
-  if (isNaN(indice)) return;
-
-  // Buscar zona válida EXACTA
-  const zona = event.target.closest("#zona-atacante, #zona-defensiva, #zona-recolectora");
-  if (!zona) {
-    console.log("Zona inválida");
-    return;
-  }
-
-  // Jugar carta en la zona real
-  jugarCarta(indice, zona.id);
-}
-
-
-// ----------- MANO IA -----------
-
+/* ========= Render: mano IA (reversos) ========= */
 function mostrarManoIA() {
   const cont = document.getElementById('mano-ia');
+  if (!cont) return;
   cont.innerHTML = '';
-
   manoIA.forEach(() => {
     const reverso = document.createElement('div');
-    reverso.className = 'carta ia';
+    reverso.className = 'carta ia'; // estilo reverso vía CSS
     cont.appendChild(reverso);
   });
 }
 
+/* ========= Drag & Drop: soltarCarta (usado por ondrop en HTML) ========= */
+function soltarCarta(event) {
+  event.preventDefault();
+  if (!puedeJugar || turnoActual !== "jugador" || esperandoObjetivo) return;
 
-// ------------ JUGAR CARTA (ahora acepta zonaDestino real) -------------
+  const indice = parseInt(event.dataTransfer.getData('text/plain'));
+  if (isNaN(indice)) return;
 
+  // Determinar la zona destino (puede venir del ondrop en la zona; aseguramos selector)
+  const zona = event.target.closest('#zona-atacante, #zona-defensiva, #zona-recolectora');
+  if (!zona) {
+    // rebote visual de la carta en la mano si suelta fuera
+    const cartas = document.querySelectorAll('#mano-jugador .carta');
+    const carta = cartas[indice];
+    if (carta) {
+      carta.classList.add('rebote');
+      setTimeout(() => carta.classList.remove('rebote'), 350);
+    }
+    return;
+  }
+
+  jugarCarta(indice, zona.id);
+}
+
+/* ========= Jugar carta (Jugador) ========= */
 function jugarCarta(indice, zonaDestino) {
-  if (!puedeJugar) return;
-  puedeJugar = false;
+  if (!puedeJugar || turnoActual !== "jugador" || esperandoObjetivo) return;
 
-  const cartaJugador = manoJugador.splice(indice, 1)[0];
+  puedeJugar = false; // bloquear mientras resolvemos
 
-  // Agrega la carta a la zona donde se soltó y obten el elemento creado
-  const cartaElemento = agregarCartaCampo(zonaDestino, cartaJugador, 'jugador');
+  const carta = manoJugador.splice(indice, 1)[0];
+  if (!carta) {
+    puedeJugar = true;
+    return;
+  }
 
-  // aplicar efectos: le pasamos la carta, el dueño, la zona y el elemento creado
-  aplicarEfectos(cartaJugador, 'jugador', zonaDestino, cartaElemento);
+  // agregar a zona y aplicar efectos
+  const el = agregarCartaCampo(zonaDestino, carta, 'jugador');
+  aplicarEfectos(carta, 'jugador', zonaDestino, el);
+
   mostrarMano();
 
-  // Turno IA
-  setTimeout(() => {
-
-    if (esperandoObjetivo) return; // 🔥 IA espera sin hacer nada
-
-    continuarTurnoIA(); // 👈 ahora el turno IA está separado y limpio
-
-}, 500);
+  // si intrépido provocó espera de objetivo, NO cambiamos turno aquí.
+  if (!esperandoObjetivo) {
+    // iniciar siguiente turno (IA): usamos flujo centralizado
+    siguienteTurno();
+  } else {
+    // mostrar que ahora la IA está esperando (visual)
+    actualizarIndicadorTurno('ia');
+    // no llamar siguienteTurno hasta elegir objetivo
+  }
 }
 
-function continuarTurnoIA() {
+/* ========= Agregar carta a zona (retorna elemento) ========= */
+function agregarCartaCampo(zonaDestino, carta, owner = 'jugador') {
+  const zona = document.getElementById(zonaDestino);
+  if (!zona) return null;
 
-    if (esperandoObjetivo) return;
+  const div = document.createElement('div');
+  div.className = 'carta';
+  if (carta.rareza) div.classList.add(carta.rareza);
+  div.dataset.owner = owner;
+  div.dataset.titulo = carta.titulo || '';
+  div.cartaData = carta;
 
-    // ⏳ Retraso aleatorio antes de que la IA actúe
-    const delay = Math.floor(Math.random() * 1100) + 400; 
-    // entre 400 ms y 1500 ms
+  div.innerHTML = `
+      <p class="puntaje">${carta.puntaje}</p>
+      <div class="especialidad"><img class="icono-especialidad"/><span>${carta.especialidad || ''}</span></div>
+      <div class="fondo"><h1>${carta.categoria?.[0]?.nombre || ''}</h1><img src="${carta.fondoFrontal || ''}"></div>
+      <img draggable="false" class="personaje" src="${carta.imagen || ''}">
+      <div class="contenedor-habilidades">
+        <div class="fuerza">${carta.habilidades[0].fuerza || ''}</div>
+        <div class="defensa">${carta.habilidades[1].defensa || ''}</div>
+        <div class="recoleccion">${carta.habilidades[2].recoleccion || ''}</div>
+      </div>
+      <div class="titulo">
+        <span>Carta histórica</span>
+        <h4>${carta.titulo || ''}</h4>
+        <span class="${carta.categoria?.[0]?.clase || ''}">${carta.categoria?.[0]?.nombre || ''}</span>
+      </div>
+    `;
 
-    setTimeout(() => {
+  // icono según especialidad (opcional)
+  const icono = div.querySelector('.icono-especialidad');
+  const esp = (carta.especialidad || '').toLowerCase().trim();
+  if (icono) {
+    if (esp === 'agricultor') icono.src = '/icons/trigo.svg';
+    else if (esp === 'intrépido' || esp === 'intrepido') icono.src = '/icons/arma.svg';
+    else if (esp === 'pensador') icono.src = '/icons/cerebro.svg';
+    else if (esp === 'compañero' || esp === 'companero') icono.src = '/icons/demografia.svg';
+    else icono.src = '/icons/interrogacion.svg';
+  }
 
-        const cartaIA = manoIA.shift();
+  if (owner === 'ia') div.classList.add('enemigo');
 
-        if (cartaIA) {
-            const cartaIAEl = agregarCartaCampo('jugadas-ia', cartaIA, 'ia');
-            aplicarEfectos(cartaIA, 'ia', 'jugadas-ia', cartaIAEl);
+  zona.appendChild(div);
 
-            const contIA = document.getElementById('mano-ia');
-            if (contIA.firstChild) contIA.removeChild(contIA.firstChild);
-        }
+  // simple apilamiento vertical centrado: margen negativo para superposición
+  const cartas = zona.querySelectorAll('.carta');
+  cartas.forEach((c, i) => {
+    if (i === 0) c.style.marginTop = '0px';
+    else c.style.marginTop = '-56px'; // ajusta según altura de carta
+  });
 
-        turno++;
-
-        if (manoJugador.length === 0 && manoIA.length === 0) {
-            setTimeout(mostrarResultado, 800);
-        } else {
-            puedeJugar = true;
-            mostrarMano();
-        }
-
-    }, delay);
+  return div;
 }
 
 
-setInterval(() => {
-  console.log("esperandoObjetivo =", esperandoObjetivo);
-}, 1000);
-
-function eliminarCartasEnCero() {
-
-    // Zonas del jugador
-    const zonasJugador = ["zona-atacante", "zona-defensiva", "zona-recolectora"];
-
-    zonasJugador.forEach(z => {
-        const zona = document.getElementById(z);
-        if (!zona) return;
-
-        zona.querySelectorAll(".carta").forEach(carta => {
-            const p = carta.querySelector("p");
-            const puntos = parseInt(p.textContent) || 0;
-
-            if (puntos <= 0) {
-                carta.classList.add("carta-muerta");
-                setTimeout(() => carta.remove(), 400);
-            }
-        });
-    });
-
-    // Zona IA
-    const zonaIA = document.getElementById("jugadas-ia");
-
-    zonaIA.querySelectorAll(".carta").forEach(carta => {
-        const p = carta.querySelector("p");
-        const puntos = parseInt(p.textContent) || 0;
-
-        if (puntos <= 0) {
-            carta.classList.add("carta-muerta");
-            setTimeout(() => carta.remove(), 400);
-        }
-    });
-}
-
-// ----------- EFECTOS -----------
-// aplicarEfectos(carta, quien, zonaDestino, cartaElemento)
+/* ========= Efectos de cartas ========= */
 function aplicarEfectos(carta, quien, zonaDestino, cartaElemento = null) {
   if (!carta || !carta.especialidad) return;
-  const especialidad = carta.especialidad.toLowerCase();
+  const esp = carta.especialidad.toLowerCase().trim();
 
-  // Helper: obtener todas las zonas del jugador (para compañero/pensador)
-  const zonasJugador = ['zona-atacante', 'zona-defensiva', 'zona-recolectora'];
-
-  switch (especialidad) {
-
-    // PENSADOR: da +1 a las cartas que ya estaban en la MISMA zona (antes de jugar esta carta)
-    case "pensador": {
-      // si quien = jugador -> la zonaDestino será una de las zonasJugador
-      // si quien = ia -> la zonaDestino será 'jugadas-ia'
-      let selector;
-      if (quien === 'jugador') selector = `#${zonaDestino} .carta`;
-      else selector = `#jugadas-ia .carta`;
-
-      // Aumentar todas las cartas existentes excepto la cartaElemento (si fue añadida)
-      document.querySelectorAll(selector).forEach(div => {
-        if (cartaElemento && div === cartaElemento) return; // no tocar la carta recién colocada
+  switch (esp) {
+    case 'pensador': {
+      // suma +1 a cartas que ya estaban en la MISMA zona (excepto la recién añadida)
+      document.querySelectorAll(`#${zonaDestino} .carta`).forEach(div => {
+        if (cartaElemento && div === cartaElemento) return;
         const p = div.querySelector('p');
         if (!p) return;
-        let pts = parseInt(p.textContent) || 0;
-        p.textContent = pts + 1;
-        p.classList.add("sumar-puntos")
+        p.textContent = (parseInt(p.textContent || '0') + 1);
       });
+      eliminarCartasEnCero();
       break;
     }
 
-    // AGRICULTOR: agrega una carta extra al jugador (a la mano)
-    case "agricultor": {
-      if (quien === "jugador") {
-
-        // 1️⃣ Tomar carta aleatoria
-        const nuevaCarta = { 
-            ...cartasDisponibles[Math.floor(Math.random() * cartasDisponibles.length)]
-        };
-
-        // 2️⃣ Agregarla a la mano
-        manoJugador.push(nuevaCarta);
-
-        // 3️⃣ Dibujar la mano
-        mostrarMano();
-
-        // 4️⃣ Seleccionar la última carta recién creada
+    case 'agricultor': {
+      if (quien === 'jugador') {
+        const nueva = { ...cartasDisponibles[Math.floor(Math.random() * cartasDisponibles.length)] };
+        manoJugador.push(nueva);
+        mostrarMano(manoJugador.length - 1);
         setTimeout(() => {
             const cartas = document.querySelectorAll("#mano-jugador .carta");
             const ultima = cartas[cartas.length - 1];
@@ -290,17 +251,10 @@ function aplicarEfectos(carta, quien, zonaDestino, cartaElemento = null) {
                 setTimeout(() => ultima.classList.remove("carta-nueva"), 700);
             }
         }, 10); 
-     }  else {
-        const nuevaCartaIA = { 
-            ...cartasDisponibles[Math.floor(Math.random() * cartasDisponibles.length)]
-        };
-
-        // 2️⃣ Agregar a la mano IA
-        manoIA.push(nuevaCartaIA);
-
-        // 3️⃣ Dibujar la mano IA
+      } else {
+        const nuevaIA = { ...cartasDisponibles[Math.floor(Math.random() * cartasDisponibles.length)] };
+        manoIA.push(nuevaIA);
         mostrarManoIA();
-
         // 4️⃣ Animación (opcional)
         setTimeout(() => {
             const cartasIA = document.querySelectorAll("#mano-ia .carta");
@@ -315,229 +269,855 @@ function aplicarEfectos(carta, quien, zonaDestino, cartaElemento = null) {
       break;
     }
 
-    // INTRÉPIDO: ataca una carta que elija el jugador (o la IA elige una al azar)
-    case "intrépido":
-    case "intrepido": {
-      
+    case 'intrépido':
+    case 'intrepido': {
       if (quien === 'jugador') {
-
-        const enemigos = Array.from(document.querySelectorAll('#jugadas-ia .carta'));
+        // marcar cartas enemigas como targetables
+        const enemigos = Array.from(document.querySelectorAll('#zona-atacante-ia .carta, #zona-defensa-ia .carta, #zona-recoleccion-ia .carta'));
         if (enemigos.length === 0) break;
 
-        // 🔒 Bloquear turno IA hasta que el jugador elija objetivo
         esperandoObjetivo = true;
-
-        enemigos.forEach(div => div.classList.add('targetable'));
+        enemigos.forEach(d => d.classList.add('targetable'));
 
         function elegir(ev) {
-
           const objetivo = ev.currentTarget;
           const p = objetivo.querySelector('p');
-          let pts = parseInt(p.textContent) || 0;
+          const pts = parseInt(p.textContent || '0');
           const nuevo = Math.max(0, pts - 2);
-
-          // Aplicar daño
           p.textContent = nuevo;
-          p.classList.add("menos-puntos");
-
+          p.classList.add('menos-puntos');
           objetivo.classList.add('temblor-daño');
-          setTimeout(() => objetivo.classList.remove('temblor-daño'), 500);
+          setTimeout(() => objetivo.classList.remove('temblor-daño'), 400);
 
-          // Quitar selección
           enemigos.forEach(d => {
             d.classList.remove('targetable');
             d.removeEventListener('click', elegir);
           });
 
-          // 🔓 Permitimos el turno IA
-          esperandoObjetivo = false;
-
           eliminarCartasEnCero();
 
-          // 💥 Ahora sí continúa el turno IA
-          continuarTurnoIA();
+          esperandoObjetivo = false;
+          // después de elegir, la IA realiza su turno completo
+          siguienteTurno();
         }
 
         enemigos.forEach(d => d.addEventListener('click', elegir));
 
-      } 
-      else {
-        // ➤ IA usa intrepido: elige carta aleatoria del jugador
-        const objetivoPool = [];
-
+      } else {
+        // IA elige objetivo aleatorio entre cartas del jugador
+        const pool = [];
         zonasJugador.forEach(z => {
-          const zonaEl = document.getElementById(z);
-          if (zonaEl) {
-            objetivoPool.push(...zonaEl.querySelectorAll('.carta'));
-          }
+          const zEl = document.getElementById(z);
+          if (zEl) pool.push(...zEl.querySelectorAll('.carta'));
         });
-
-        if (objetivoPool.length > 0) {
-
-          const objetivo = objetivoPool[Math.floor(Math.random() * objetivoPool.length)];
+        if (pool.length > 0) {
+          const objetivo = pool[Math.floor(Math.random() * pool.length)];
           const p = objetivo.querySelector('p');
-
-          let pts = parseInt(p.textContent) || 0;
-          p.textContent = Math.max(0, pts - 2);
-          p.classList.add("menos-puntos");
-
+          p.textContent = Math.max(0, parseInt(p.textContent || '0') - 2);
           objetivo.classList.add('temblor-daño');
-          setTimeout(() => objetivo.classList.remove('temblor-daño'), 500);
+          p.classList.add('menos-puntos');
+          setTimeout(() => objetivo.classList.remove('temblor-daño'), 400);
+          eliminarCartasEnCero();
         }
-
-        eliminarCartasEnCero();
       }
-
       break;
     }
 
-
-    // COMPAÑERO: si hay 2 o más cartas iguales del mismo dueño (en sus zonas),
-    // sumar +2 a cada una (si ya no tienen el bonus aplicado)
-    case "compañero": {
+    case 'compañero':
+    case 'companero': {
       if (quien === 'jugador') {
-        // buscar en las 3 zonas del jugador
         const todas = zonasJugador.flatMap(z => Array.from(document.querySelectorAll(`#${z} .carta`)));
         const iguales = todas.filter(div => {
           const titulo = div.querySelector('h4')?.textContent?.trim();
           const spans = Array.from(div.querySelectorAll('span'));
-          const tieneComp = spans.some(s => s.textContent.toLowerCase() === 'compañero');
+          const tieneComp = spans.some(s => s.textContent.toLowerCase().includes('compañero') || s.textContent.toLowerCase().includes('companero'));
           return titulo === carta.titulo && tieneComp;
         });
-
         if (iguales.length >= 2) {
           iguales.forEach(div => {
             if (!div.dataset.companeroBonusAplicado) {
               const p = div.querySelector('p');
-              let pts = parseInt(p.textContent) || 0;
-              p.textContent = pts + 2;
-              div.dataset.companeroBonusAplicado = "true";
+              p.textContent = (parseInt(p.textContent || '0') + 2);
+              div.dataset.companeroBonusAplicado = 'true';
               p.classList.add('brillo-bonus');
               setTimeout(() => p.classList.remove('brillo-bonus'), 800);
             }
           });
         }
       } else {
-        // IA: buscar en su tablero (jugadas-ia)
-        const todas = Array.from(document.querySelectorAll('#jugadas-ia .carta'));
+        const todas = zonasIA.flatMap(z => Array.from(document.querySelectorAll(`#${z} .carta`)));
         const iguales = todas.filter(div => {
           const titulo = div.querySelector('h4')?.textContent?.trim();
           const spans = Array.from(div.querySelectorAll('span'));
-          const tieneComp = spans.some(s => s.textContent.toLowerCase() === 'compañero');
+          const tieneComp = spans.some(s => s.textContent.toLowerCase().includes('compañero') || s.textContent.toLowerCase().includes('companero'));
           return titulo === carta.titulo && tieneComp;
         });
-
         if (iguales.length >= 2) {
           iguales.forEach(div => {
             if (!div.dataset.companeroBonusAplicado) {
               const p = div.querySelector('p');
-              let pts = parseInt(p.textContent) || 0;
-              p.textContent = pts + 2;
-              div.dataset.companeroBonusAplicado = "true";
+              p.textContent = (parseInt(p.textContent || '0') + 2);
+              div.dataset.companeroBonusAplicado = 'true';
               p.classList.add('brillo-bonus');
               setTimeout(() => p.classList.remove('brillo-bonus'), 800);
             }
           });
         }
       }
+      eliminarCartasEnCero();
       break;
     }
 
     default:
-      // otras especialidades (si hay) no hacen nada aquí
       break;
   }
 }
 
-
-
-
-
-
-
-
-
-// ----------- AGREGAR CARTA A UNA ZONA -----------
-// ahora retorna el elemento creado y marca owner y zone
-function agregarCartaCampo(zonaDestino, carta, owner = 'jugador') {
-  const zona = document.getElementById(zonaDestino);
-  if (!zona) return null;
-
-  const div = document.createElement('div');
-  div.className = 'carta';
-  div.classList.add(carta.rareza);
-  // metadata
-  div.dataset.owner = owner;
-  div.dataset.titulo = carta.titulo;
-
-  div.innerHTML = `
-    <p class="puntaje">${carta.puntaje}</p>
-    <div draggable="false" class="especialidad">
-      <img class="icono-especialidad">
-      <span>${carta.especialidad}</span>
-    </div>
-    <div class="fondo">
-      <h1>${carta.categoria[0].nombre}</h1>
-      <img class="fondo-img" src="${carta.fondoFrontal}">
-    </div>
-    <img class="personaje" src="${carta.imagen}">
-    <div class="titulo">
-      <span>Carta histórica</span>
-      <h4>${carta.titulo}</h4>
-      <span class="${carta.categoria[0].clase}">${carta.categoria[0].nombre}</span>
-    </div>
-  `;
-
-  // 🔥 aplicar ícono correcto
-  const icono = div.querySelector(".icono-especialidad");
-
-  switch (carta.especialidad.trim().toLowerCase()) {
-
-    case "agricultor":
-      icono.src = "/icons/trigo.svg";
-      break;
-
-    case "intrépido":
-    case "intrepido":
-      icono.src = "/icons/arma.svg";
-      break;
-
-    case "pensador":
-      icono.src = "/icons/cerebro.svg";
-      break;
-
-    case "compañero":
-    case "companero":
-      icono.src = "/icons/demografia.svg";
-      break;
-
-    default:
-      icono.src = "/icons/interrogacion.svg";
+/* ========= Helpers para habilidades ========= */
+function tieneRecoleccion(carta) {
+  if (!carta || !carta.habilidades) return false;
+  return carta.habilidades.some(h => typeof h.recoleccion === 'number' && h.recoleccion > 0);
+}
+function obtenerNivelRecoleccion(carta) {
+  if (!carta || !carta.habilidades) return 0;
+  for (const h of carta.habilidades) {
+    if (h.recoleccion) return Number(h.recoleccion) || 0;
   }
-
-  zona.appendChild(div);
-
-  return div;
+  return 0;
+}
+function tieneDefensa(carta) {
+  if (!carta || !carta.habilidades) return false;
+  return carta.habilidades.some(h => typeof h.defensa === 'number' && h.defensa > 0);
 }
 
+/* ========= Eliminar cartas que llegan a 0 ========= */
+function eliminarCartasEnCero() {
+  // jugador
+  zonasJugador.forEach(z => {
+    const zEl = document.getElementById(z);
+    if (!zEl) return;
+    zEl.querySelectorAll('.carta').forEach(c => {
+      const p = c.querySelector('p');
+      if (!p) return;
+      const pts = parseInt(p.textContent || '0');
+      if (pts <= 0) {
+        c.classList.add('carta-muerta');
+        setTimeout(() => c.remove(), 350);
+      }
+    });
+  });
 
-// ----------- RESULTADO -----------
+  // IA
+  zonasIA.forEach(z => {
+    const zEl = document.getElementById(z);
+    if (!zEl) return;
+    zEl.querySelectorAll('.carta').forEach(c => {
+      const p = c.querySelector('p');
+      if (!p) return;
+      const pts = parseInt(p.textContent || '0');
+      if (pts <= 0) {
+        c.classList.add('carta-muerta');
+        setTimeout(() => c.remove(), 350);
+      }
+    });
+  });
+}
 
+/* ========= Recolección con delay por carta (async) ========= */
+async function generarOro(quien) {
+  let zona = (quien === 'jugador') ? document.getElementById('zona-recolectora') : document.getElementById('zona-recoleccion-ia');
+  if (!zona) return;
+
+  const cartas = Array.from(zona.querySelectorAll('.carta'));
+  let total = 0;
+
+  // bloquear acciones mientras se recolecta
+  puedeJugar = false;
+
+  for (let el of cartas) {
+    // asegurar cartaData
+    let carta = el.cartaData;
+    if (!carta) {
+      const titulo = el.querySelector('h4')?.textContent;
+      carta = cartasDisponibles.find(c => c.titulo === titulo);
+      el.cartaData = carta;
+    }
+    if (!carta) continue;
+
+    const nivel = obtenerNivelRecoleccion(carta);
+    if (!nivel || nivel <= 0) continue;
+
+    // anim y delay
+    el.classList.add('recolecta-efecto');
+
+    // mostrar flotante +n (opcional)
+    mostrarFlotante(el, `+${nivel}💰`);
+
+    const coin = new Audio('/audio/drop-coin.mp3');
+    coin.play();
+    coin.volume = 0.2;
+
+    await new Promise(res => setTimeout(res, 500));
+
+    el.classList.remove('recolecta-efecto');
+    total += nivel;
+  }
+
+  if (quien === 'jugador') oroJugador += total;
+  else oroIA += total;
+
+  if (total > 0) mostrarOro();
+
+  // desbloquear (se desbloqueará en el flujo de turnos también)
+  puedeJugar = true;
+}
+
+/* helper: pequeño texto flotante sobre la carta */
+function mostrarFlotante(el, texto) {
+  try {
+    const span = document.createElement('div');
+    span.className = 'float-oro';
+    span.textContent = texto;
+    span.style.position = 'absolute';
+    span.style.left = '50%';
+    span.style.top = '8%';
+    span.style.transform = 'translateX(-50%)';
+    span.style.pointerEvents = 'none';
+    span.style.fontWeight = '700';
+    span.style.color = '#ffd700';
+    el.style.position = 'relative';
+    el.appendChild(span);
+
+
+    setTimeout(() => {
+      span.style.transition = 'transform 700ms ease, opacity 1.5s ease';
+      span.style.transform = 'translate(-50%, -40px)';
+      span.style.opacity = '0';
+    }, 20);
+    setTimeout(() => span.remove(), 820);
+  } catch (e) { /* safe */ }
+}
+
+/* ========= Mostrar HUD de oro ========= */
+function mostrarOro() {
+  const j = document.getElementById('oro-j');
+  const i = document.getElementById('oro-i');
+  if (j) j.textContent = oroJugador;
+  if (i) i.textContent = oroIA;
+}
+
+/* ========= SISTEMA DE COMBATE ========= */
+
+/* ========= Fase de combate (las cartas atacantes luchan) ========= */
+async function faseDeCombate() {
+  const zonaAtacanteJugador = document.getElementById('zona-atacante');
+  const zonaAtacanteIA = document.getElementById('zona-atacante-ia');
+  
+  if (!zonaAtacanteJugador || !zonaAtacanteIA) return;
+  
+  const atacantesJugador = Array.from(zonaAtacanteJugador.querySelectorAll('.carta'));
+  const atacantesIA = Array.from(zonaAtacanteIA.querySelectorAll('.carta'));
+  
+  // Si ningún bando tiene atacantes, no hay combate
+  if (atacantesJugador.length === 0 && atacantesIA.length === 0) return;
+  
+  puedeJugar = false; // Bloquear durante el combate
+  
+  // Mostrar indicador de combate
+  mostrarIndicadorCombate();
+  await new Promise(res => setTimeout(res, 800));
+  
+  // Las cartas del jugador atacan (buscarán objetivos con prioridad)
+  if (atacantesJugador.length > 0) {
+    await ejecutarAtaques(atacantesJugador, null, 'jugador');
+  }
+  
+  // Las cartas de la IA atacan (buscarán objetivos con prioridad)
+  if (atacantesIA.length > 0) {
+    await ejecutarAtaques(atacantesIA, null, 'ia');
+  }
+  
+  // Limpiar cartas muertas después del combate
+  eliminarCartasEnCero();
+  
+  puedeJugar = true;
+}
+
+/* ========= Ejecutar ataques de un bando (con prioridades) ========= */
+async function ejecutarAtaques(atacantes, objetivos, bandoAtacante) {
+  for (let atacante of atacantes) {
+    // Verificar que el atacante sigue vivo
+    const puntosAtacante = parseInt(atacante.querySelector('p')?.textContent || '0');
+    if (puntosAtacante <= 0) continue;
+    
+    // Buscar objetivos con prioridad: Atacante > Defensa > Recolección
+    const objetivo = buscarObjetivoConPrioridad(bandoAtacante);
+    
+    if (!objetivo) break; // No hay más objetivos
+    
+    // Calcular daño (fuerza del atacante)
+    const cartaData = atacante.cartaData || obtenerCartaDataDeElemento(atacante);
+    let danio = calcularDanioAtaque(cartaData);
+    
+    // Animación de ataque
+    await animarAtaque(atacante, objetivo, bandoAtacante);
+    
+    // Aplicar daño
+    const pObjetivo = objetivo.querySelector('p');
+    const puntosActuales = parseInt(pObjetivo.textContent || '0');
+    const nuevoPuntaje = Math.max(0, puntosActuales - danio);
+    pObjetivo.textContent = nuevoPuntaje;
+    pObjetivo.classList.add('menos-puntos');
+    objetivo.classList.add('temblor-daño');
+    
+    // Mostrar daño flotante
+    mostrarFlotante(objetivo, `-${danio}⚔️`);
+    
+    // Pequeña pausa entre ataques
+    await new Promise(res => setTimeout(res, 400));
+    
+    objetivo.classList.remove('temblor-daño');
+  }
+}
+
+/* ========= Buscar objetivo con sistema de prioridades ========= */
+function buscarObjetivoConPrioridad(bandoAtacante) {
+  // Determinar las zonas enemigas según quién ataca
+  let zonasEnemigas;
+  if (bandoAtacante === 'jugador') {
+    // El jugador ataca a la IA
+    zonasEnemigas = [
+      'zona-atacante-ia',    // Prioridad 1
+      'zona-defensa-ia',     // Prioridad 2
+      'zona-recoleccion-ia'  // Prioridad 3
+    ];
+  } else {
+    // La IA ataca al jugador
+    zonasEnemigas = [
+      'zona-atacante',       // Prioridad 1
+      'zona-defensiva',      // Prioridad 2
+      'zona-recolectora'     // Prioridad 3
+    ];
+  }
+  
+  // Buscar en orden de prioridad
+  for (let zonaId of zonasEnemigas) {
+    const zona = document.getElementById(zonaId);
+    if (!zona) continue;
+    
+    // Filtrar solo cartas vivas
+    const cartasVivas = Array.from(zona.querySelectorAll('.carta')).filter(carta => {
+      const pts = parseInt(carta.querySelector('p')?.textContent || '0');
+      return pts > 0;
+    });
+    
+    // Si hay cartas vivas en esta zona, elegir una aleatoriamente
+    if (cartasVivas.length > 0) {
+      return cartasVivas[Math.floor(Math.random() * cartasVivas.length)];
+    }
+  }
+  
+  // No hay objetivos disponibles
+  return null;
+}
+
+/* ========= Calcular daño de ataque ========= */
+function calcularDanioAtaque(carta) {
+  if (!carta || !carta.habilidades) return 1;
+  
+  // Buscar valor de fuerza
+  for (const hab of carta.habilidades) {
+    if (hab.fuerza && hab.fuerza > 0) {
+      return hab.fuerza;
+    }
+  }
+  
+  // Si no tiene fuerza definida, usar 1 de daño base
+  return 1;
+}
+
+/* ========= Obtener carta data de elemento DOM ========= */
+function obtenerCartaDataDeElemento(elemento) {
+  if (elemento.cartaData) return elemento.cartaData;
+  
+  const titulo = elemento.querySelector('h4')?.textContent?.trim();
+  if (titulo) {
+    const carta = cartasDisponibles.find(c => c.titulo === titulo);
+    if (carta) {
+      elemento.cartaData = carta;
+      return carta;
+    }
+  }
+  
+  return null;
+}
+
+/* ========= Animación de ataque ========= */
+async function animarAtaque(atacante, objetivo, bandoAtacante) {
+  // Resaltar atacante
+  atacante.classList.add('atacando');
+  await new Promise(res => setTimeout(res, 200));
+  
+  // Crear proyectil visual
+  crearProyectil(atacante, objetivo, bandoAtacante);
+  
+  await new Promise(res => setTimeout(res, 300));
+  atacante.classList.remove('atacando');
+}
+
+/* ========= Crear proyectil visual ========= */
+function crearProyectil(desde, hacia, bando) {
+  const proyectil = document.createElement('div');
+  proyectil.className = 'proyectil-ataque';
+  proyectil.textContent = '⚔️';
+  
+  const rectDesde = desde.getBoundingClientRect();
+  const rectHacia = hacia.getBoundingClientRect();
+  
+  proyectil.style.position = 'fixed';
+  proyectil.style.left = rectDesde.left + rectDesde.width / 2 + 'px';
+  proyectil.style.top = rectDesde.top + rectDesde.height / 2 + 'px';
+  proyectil.style.fontSize = '24px';
+  proyectil.style.zIndex = '10000';
+  proyectil.style.pointerEvents = 'none';
+  proyectil.style.transition = 'all 0.3s ease-out';
+  
+  document.body.appendChild(proyectil);
+  
+  setTimeout(() => {
+    proyectil.style.left = rectHacia.left + rectHacia.width / 2 + 'px';
+    proyectil.style.top = rectHacia.top + rectHacia.height / 2 + 'px';
+    proyectil.style.opacity = '0';
+    proyectil.style.transform = 'scale(1.5)';
+  }, 10);
+  
+  setTimeout(() => proyectil.remove(), 350);
+}
+
+/* ========= Indicadores de combate ========= */
+function mostrarIndicadorCombate() {
+  const indicador = document.getElementById('turno-indicador');
+  if (indicador) {
+    indicador.textContent = '⚔️ FASE DE COMBATE ⚔️';
+    indicador.classList.remove('jugador', 'ia');
+    indicador.classList.add('combate');
+  }
+}
+
+function ocultarIndicadorCombate() {
+  actualizarIndicadorTurno(turnoActual);
+}
+
+/* ========= Fase de curación (las cartas defensivas curan a las atacantes) ========= */
+async function faseDeCuracion() {
+  const zonaDefensivaJugador = document.getElementById('zona-defensiva');
+  const zonaDefensivaIA = document.getElementById('zona-defensa-ia');
+  const zonaAtacanteJugador = document.getElementById('zona-atacante');
+  const zonaAtacanteIA = document.getElementById('zona-atacante-ia');
+  
+  if (!zonaDefensivaJugador || !zonaDefensivaIA || !zonaAtacanteJugador || !zonaAtacanteIA) return;
+  
+  const defensoresJugador = Array.from(zonaDefensivaJugador.querySelectorAll('.carta'));
+  const defensoresIA = Array.from(zonaDefensivaIA.querySelectorAll('.carta'));
+  
+  // Si no hay defensores, no hay curación
+  if (defensoresJugador.length === 0 && defensoresIA.length === 0) return;
+  
+  puedeJugar = false;
+  
+  // Mostrar indicador de curación
+  mostrarIndicadorCuracion();
+  await new Promise(res => setTimeout(res, 600));
+  
+  // Curar atacantes del jugador
+  if (defensoresJugador.length > 0) {
+    const atacantesJugador = Array.from(zonaAtacanteJugador.querySelectorAll('.carta'));
+    if (atacantesJugador.length > 0) {
+      await ejecutarCuraciones(defensoresJugador, atacantesJugador);
+    }
+  }
+  
+  // Curar atacantes de la IA
+  if (defensoresIA.length > 0) {
+    const atacantesIA = Array.from(zonaAtacanteIA.querySelectorAll('.carta'));
+    if (atacantesIA.length > 0) {
+      await ejecutarCuraciones(defensoresIA, atacantesIA);
+    }
+  }
+  
+  puedeJugar = true;
+}
+
+/* ========= Ejecutar curaciones ========= */
+async function ejecutarCuraciones(defensores, atacantes) {
+  for (let defensor of defensores) {
+    // Verificar que el defensor está vivo
+    const puntosDefensor = parseInt(defensor.querySelector('p')?.textContent || '0');
+    if (puntosDefensor <= 0) continue;
+    
+    // Verificar que hay atacantes para curar
+    const atacantesVivos = atacantes.filter(atc => {
+      const pts = parseInt(atc.querySelector('p')?.textContent || '0');
+      return pts > 0;
+    });
+    
+    if (atacantesVivos.length === 0) break;
+    
+    // Elegir atacante aleatorio para curar (priorizar los más dañados)
+    const atacanteObjetivo = elegirAtacanteParaCurar(atacantesVivos);
+    
+    // Calcular curación (basado en defensa)
+    const cartaData = defensor.cartaData || obtenerCartaDataDeElemento(defensor);
+    let curacion = calcularCuracion(cartaData);
+    
+    // Animación de curación
+    await animarCuracion(defensor, atacanteObjetivo);
+    
+    // Aplicar curación
+    const pObjetivo = atacanteObjetivo.querySelector('p');
+    const puntosActuales = parseInt(pObjetivo.textContent || '0');
+    const nuevoPuntaje = puntosActuales + curacion;
+    pObjetivo.textContent = nuevoPuntaje;
+    pObjetivo.classList.add('sumar-puntos');
+    atacanteObjetivo.classList.add('brillo-curacion');
+    
+    // Mostrar curación flotante
+    mostrarFlotante(atacanteObjetivo, `+${curacion}💚`);
+    
+    // Pequeña pausa entre curaciones
+    await new Promise(res => setTimeout(res, 450));
+    
+    setTimeout(() => {
+      pObjetivo.classList.remove('sumar-puntos');
+      atacanteObjetivo.classList.remove('brillo-curacion');
+    }, 400);
+  }
+}
+
+/* ========= Elegir atacante para curar (prioriza más dañados) ========= */
+function elegirAtacanteParaCurar(atacantes) {
+  // Calcular el puntaje original de cada carta (aproximado por rareza o un valor fijo)
+  const atacantesConInfo = atacantes.map(atc => {
+    const cartaData = atc.cartaData || obtenerCartaDataDeElemento(atc);
+    const puntajeOriginal = cartaData ? parseInt(cartaData.puntaje || 10) : 10;
+    const puntajeActual = parseInt(atc.querySelector('p')?.textContent || '0');
+    const dañoRecibido = Math.max(0, puntajeOriginal - puntajeActual);
+    
+    return { elemento: atc, dañoRecibido, puntajeActual };
+  });
+  
+  // Filtrar solo los que tienen daño
+  const dañados = atacantesConInfo.filter(a => a.dañoRecibido > 0);
+  
+  if (dañados.length > 0) {
+    // 70% de probabilidad de curar al más dañado
+    if (Math.random() < 0.7) {
+      dañados.sort((a, b) => b.dañoRecibido - a.dañoRecibido);
+      return dañados[0].elemento;
+    }
+  }
+  
+  // Si no hay dañados o el 30% restante, elegir aleatorio
+  return atacantes[Math.floor(Math.random() * atacantes.length)];
+}
+
+/* ========= Calcular curación ========= */
+function calcularCuracion(carta) {
+  if (!carta || !carta.habilidades) return 1;
+  
+  // Buscar valor de defensa
+  for (const hab of carta.habilidades) {
+    if (hab.defensa && hab.defensa > 0) {
+      return hab.defensa;
+    }
+  }
+  
+  // Si no tiene defensa definida, curar 1 punto
+  return 1;
+}
+
+/* ========= Animación de curación ========= */
+async function animarCuracion(defensor, atacante) {
+  // Resaltar defensor
+  defensor.classList.add('curando');
+  await new Promise(res => setTimeout(res, 200));
+  
+  // Crear partícula de curación
+  crearParticulaCuracion(defensor, atacante);
+  
+  await new Promise(res => setTimeout(res, 350));
+  defensor.classList.remove('curando');
+}
+
+/* ========= Crear partícula de curación ========= */
+function crearParticulaCuracion(desde, hacia) {
+  const particula = document.createElement('div');
+  particula.className = 'particula-curacion';
+  particula.textContent = '💚';
+  
+  const rectDesde = desde.getBoundingClientRect();
+  const rectHacia = hacia.getBoundingClientRect();
+  
+  particula.style.position = 'fixed';
+  particula.style.left = rectDesde.left + rectDesde.width / 2 + 'px';
+  particula.style.top = rectDesde.top + rectDesde.height / 2 + 'px';
+  particula.style.fontSize = '24px';
+  particula.style.zIndex = '10000';
+  particula.style.pointerEvents = 'none';
+  particula.style.transition = 'all 0.4s ease-out';
+  
+  document.body.appendChild(particula);
+  
+  setTimeout(() => {
+    particula.style.left = rectHacia.left + rectHacia.width / 2 + 'px';
+    particula.style.top = rectHacia.top + rectHacia.height / 2 + 'px';
+    particula.style.opacity = '0';
+    particula.style.transform = 'scale(1.5)';
+  }, 10);
+  
+  setTimeout(() => particula.remove(), 450);
+}
+
+/* ========= Indicador de curación ========= */
+function mostrarIndicadorCuracion() {
+  const indicador = document.getElementById('turno-indicador');
+  if (indicador) {
+    indicador.textContent = '💚 FASE DE CURACIÓN 💚';
+    indicador.className = 'turno curacion';
+  }
+}
+
+/* ========= Turnos: indicador y flujo ========= */
+function actualizarIndicadorTurno(quien) {
+  const ind = document.getElementById('turno-indicador');
+  if (!ind) return;
+  if (quien === 'jugador') {
+    ind.textContent = '⭐ Turno del jugador';
+    ind.classList.remove('ia');
+    ind.classList.remove('combate');
+    ind.classList.add('jugador');
+  } else {
+    ind.textContent = '🤖 Turno de la IA';
+    ind.classList.remove('jugador');
+    ind.classList.remove('combate');
+    ind.classList.add('ia');
+  }
+}
+
+/* inicia turno del jugador (recolección primero) */
+async function turnoJugador() {
+  turnoActual = 'jugador';
+  actualizarIndicadorTurno('jugador');
+  // esperar recolección
+  await generarOro('jugador');
+  // permitir jugar
+  puedeJugar = true;
+}
+
+/* inicia turno de la IA (recolección + jugar) */
+async function turnoIA() {
+  turnoActual = 'ia';
+  actualizarIndicadorTurno('ia');
+  puedeJugar = false;
+  await generarOro('ia');
+
+  // retraso aleatorio antes de jugar para simular pensamiento
+  const delay = Math.floor(Math.random() * 1100) + 800;
+  setTimeout(() => {
+    iaJugarCarta();
+  }, delay);
+}
+
+/* avanzar al siguiente turno */
+async function siguienteTurno() {
+  // Ejecutar fase de combate
+  await faseDeCombate();
+  
+  // Ejecutar fase de curación (después del combate)
+  await faseDeCuracion();
+  
+  // Cambiar de turno
+  if (turnoActual === 'jugador') {
+    turnoIA();
+  } else {
+    turnoJugador();
+  }
+}
+
+/* ========= IA juega carta (con lógica mejorada) ========= */
+function iaJugarCarta() {
+  if (manoIA.length === 0) {
+    siguienteTurno();
+    return;
+  }
+
+  // Evaluar todas las cartas y elegir la mejor jugada
+  const mejorJugada = evaluarMejorJugada();
+  
+  if (!mejorJugada) {
+    siguienteTurno();
+    return;
+  }
+
+  const { indice, zona } = mejorJugada;
+  const cartaIA = manoIA.splice(indice, 1)[0];
+
+  const el = agregarCartaCampo(zona, cartaIA, 'ia');
+  aplicarEfectos(cartaIA, 'ia', zona, el);
+
+  mostrarManoIA();
+
+  setTimeout(() => {
+    eliminarCartasEnCero();
+    siguienteTurno();
+  }, 350);
+}
+
+/* ========= Evaluar mejor jugada para la IA ========= */
+function evaluarMejorJugada() {
+  if (manoIA.length === 0) return null;
+
+  let mejorPuntuacion = -Infinity;
+  let mejorJugada = null;
+
+  // Evaluar cada carta en la mano
+  manoIA.forEach((carta, indice) => {
+    const evaluaciones = evaluarCartaParaZonas(carta);
+    
+    // Encontrar la mejor zona para esta carta
+    let mejorZonaLocal = null;
+    let mejorPuntosLocal = -Infinity;
+
+    for (const [zona, puntos] of Object.entries(evaluaciones)) {
+      if (puntos > mejorPuntosLocal) {
+        mejorPuntosLocal = puntos;
+        mejorZonaLocal = zona;
+      }
+    }
+
+    // Comparar con la mejor jugada general
+    if (mejorPuntosLocal > mejorPuntuacion) {
+      mejorPuntuacion = mejorPuntosLocal;
+      mejorJugada = { indice, zona: mejorZonaLocal };
+    }
+  });
+
+  return mejorJugada;
+}
+
+/* ========= Evaluar carta para cada zona ========= */
+function evaluarCartaParaZonas(carta) {
+  if (!carta || !carta.habilidades) {
+    return {
+      'zona-atacante-ia': carta.puntaje || 0,
+      'zona-defensa-ia': carta.puntaje || 0,
+      'zona-recoleccion-ia': carta.puntaje || 0
+    };
+  }
+
+  const habs = carta.habilidades;
+  let fuerza = 0, defensa = 0, recoleccion = 0;
+
+  habs.forEach(h => {
+    if (h.fuerza) fuerza = h.fuerza;
+    if (h.defensa) defensa = h.defensa;
+    if (h.recoleccion) recoleccion = h.recoleccion;
+  });
+
+  const puntajeBase = parseInt(carta.puntaje) || 0;
+  const especialidad = (carta.especialidad || '').toLowerCase().trim();
+
+  // Calcular puntuación para cada zona
+  const evaluaciones = {
+    'zona-atacante-ia': calcularPuntuacionAtaque(puntajeBase, fuerza, especialidad),
+    'zona-defensa-ia': calcularPuntuacionDefensa(puntajeBase, defensa, especialidad),
+    'zona-recoleccion-ia': calcularPuntuacionRecoleccion(puntajeBase, recoleccion, especialidad)
+  };
+
+  return evaluaciones;
+}
+
+/* ========= Cálculo de puntuación por zona ========= */
+function calcularPuntuacionAtaque(puntaje, fuerza, especialidad) {
+  let puntos = puntaje * 1.5; // Base: el puntaje importa en ataque
+  puntos += fuerza * 15; // Fuerza es muy valiosa aquí
+  
+  if (especialidad === 'intrépido' || especialidad === 'intrepido') {
+    puntos += 25; // Bonus por habilidad ofensiva
+  }
+  
+  // Añadir algo de aleatoriedad (±20%)
+  puntos *= (0.9 + Math.random() * 0.2);
+  
+  return puntos;
+}
+
+function calcularPuntuacionDefensa(puntaje, defensa, especialidad) {
+  let puntos = puntaje * 1.2; // El puntaje importa moderadamente
+  puntos += defensa * 18; // Defensa es crucial aquí
+  
+  if (especialidad === 'pensador') {
+    puntos += 20; // Pensador fortalece la zona
+  }
+  
+  // Considerar estado actual: si tengo pocas defensas, priorizar
+  const cartasEnDefensa = document.querySelectorAll('#zona-defensa-ia .carta').length;
+  if (cartasEnDefensa < 2) {
+    puntos *= 1.3;
+  }
+  
+  puntos *= (0.9 + Math.random() * 0.2);
+  
+  return puntos;
+}
+
+function calcularPuntuacionRecoleccion(puntaje, recoleccion, especialidad) {
+  let puntos = puntaje * 0.8; // El puntaje importa menos aquí
+  puntos += recoleccion * 25; // Recolección es lo más importante
+  
+  if (especialidad === 'agricultor') {
+    puntos += 30; // Bonus significativo por especialidad
+  }
+  
+  if (especialidad === 'compañero' || especialidad === 'companero') {
+    puntos += 15; // Bonus moderado
+  }
+  
+  // Estrategia: priorizar recolección al inicio
+  const turnosJugados = 10 - manoIA.length; // Aproximación
+  if (turnosJugados < 3 && recoleccion > 0) {
+    puntos *= 1.4; // Invertir en economía temprana
+  }
+  
+  puntos *= (0.9 + Math.random() * 0.2);
+  
+  return puntos;
+}
+
+/* ========= Resultado final ========= */
 function mostrarResultado() {
+  // sumar puntajes de todas las zonas
   const cartasJugador = [
     ...document.querySelectorAll('#zona-atacante .carta p'),
     ...document.querySelectorAll('#zona-defensiva .carta p'),
     ...document.querySelectorAll('#zona-recolectora .carta p')
   ];
-  const cartasIA = Array.from(document.querySelectorAll('#jugadas-ia .carta p'));
+  const cartasIAp = [
+    ...document.querySelectorAll('#zona-atacante-ia .carta p'),
+    ...document.querySelectorAll('#zona-defensa-ia .carta p'),
+    ...document.querySelectorAll('#zona-recoleccion-ia .carta p')
+  ];
 
   const puntajeJugador = cartasJugador.reduce((a, el) => a + parseInt(el.textContent || 0), 0);
-  const puntajeIA = cartasIA.reduce((a, el) => a + parseInt(el.textContent || 0), 0);
+  const puntajeIA = cartasIAp.reduce((a, el) => a + parseInt(el.textContent || 0), 0);
 
   const res = document.getElementById('resultado');
+  if (!res) return;
   if (puntajeJugador > puntajeIA) res.textContent = `¡Ganaste! (${puntajeJugador} vs ${puntajeIA})`;
   else if (puntajeJugador < puntajeIA) res.textContent = `Perdiste... (${puntajeJugador} vs ${puntajeIA})`;
   else res.textContent = `Empate. (${puntajeJugador} vs ${puntajeIA})`;
 }
 
-
+/* ========= Utilidades / debug ========= */
+// Descomenta si quieres ver el estado periódicamente
+// setInterval(() => console.log('estado:', { turnoActual, puedeJugar, esperandoObjetivo, oroJugador, oroIA, manoJugador: manoJugador.length, manoIA: manoIA.length }), 2500);

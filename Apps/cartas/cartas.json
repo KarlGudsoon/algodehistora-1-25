@@ -18,7 +18,12 @@
         { "nombre": "Agricultor", "clase": "punto-dorado", "img": "/icons/trigo.svg" },
         { "nombre": "Intrépido", "clase": "punto-bronce", "img": "/icons/prehistoria/stone-tablet.svg" }
       ],
-      "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
+      "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas.",
+      "habilidades": [
+        {"fuerza": 2},
+        {"defensa": 2},
+        {"recoleccion": 3}
+      ]
     },
     "neandertal": {
       "puntaje": "7",
@@ -39,7 +44,12 @@
         { "nombre": "Cazador", "clase": "punto-dorado", "img": "/icons/prehistoria/stone-spear.svg" },
         { "nombre": "Resistente", "clase": "punto-bronce" }
       ],
-      "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
+      "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas.",
+      "habilidades": [
+        {"fuerza": 2},
+        {"defensa": 1},
+        {"recoleccion": 2}
+      ]
     },
 
     "aymara": {
@@ -61,7 +71,12 @@
         { "nombre": "Cultista", "clase": "punto-dorado" },
         { "nombre": "Andino", "clase": "punto-bronce" }
       ],
-      "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas."
+      "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas.",
+      "habilidades": [
+        {"fuerza": 1},
+        {"defensa": 1},
+        {"recoleccion": 2}
+      ]
     },
     "colon": {
       "puntaje": "8",
@@ -86,7 +101,12 @@
         { "nombre": "Explorador", "clase": "punto-plata", "img": "/icons/mapa.svg" },
         { "nombre": "Visionario", "clase": "punto-dorado", "img": "/icons/telescopio.svg" }
       ],
-      "descripcion": "Cristóbal Colón fue un navegante genovés conocido por realizar el viaje que llevó al descubrimiento de América en 1492, bajo el auspicio de los Reyes Católicos de España."
+      "descripcion": "Cristóbal Colón fue un navegante genovés conocido por realizar el viaje que llevó al descubrimiento de América en 1492, bajo el auspicio de los Reyes Católicos de España.",
+      "habilidades": [
+        {"fuerza": 1},
+        {"defensa": 2},
+        {"recoleccion": 2}
+      ]
     },
     "magallanes": {
       "puntaje": "5",
@@ -112,11 +132,16 @@
         { "nombre": "Explorador", "clase": "punto-basico", "img": "/icons/mapa.svg" },
         { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
       ],
-      "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes."
+      "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes.",
+      "habilidades": [
+        {"fuerza": 2},
+        {"defensa": 1},
+        {"recoleccion": 1}
+      ]
     },
     "obrero": {
       "puntaje": "5",
-      "rareza": "comun",
+      "rareza": "basico",
       "colorCarta": "punto-plata",
       "imgSobre": "url(/img/moderna/fondo.webp)",
       "titulo": "OBRERO INDUSTRIAL",
@@ -133,7 +158,12 @@
         { "nombre": "Explorador", "clase": "punto-plateado", "img": "/icons/mapa.svg" },
         { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
       ],
-      "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes."
+      "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes.",
+      "habilidades": [
+        {"fuerza": 1},
+        {"defensa": 1},
+        {"recoleccion": 3}
+      ]
     }
 }
   
