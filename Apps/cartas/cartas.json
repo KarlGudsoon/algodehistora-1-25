@@ -26,7 +26,7 @@
       ]
     },
     "neandertal": {
-      "puntaje": "7",
+      "puntaje": "3",
       "rareza": "comun",
       "colorCarta": "punto-plata",
       "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
@@ -46,9 +46,9 @@
       ],
       "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas.",
       "habilidades": [
-        {"fuerza": 2},
+        {"fuerza": 3},
         {"defensa": 1},
-        {"recoleccion": 2}
+        {"recoleccion": 1}
       ]
     },
 
@@ -163,6 +163,30 @@
         {"fuerza": 1},
         {"defensa": 1},
         {"recoleccion": 3}
+      ]
+    },
+    "sanador": {
+      "puntaje": "2",
+      "rareza": "raro",
+      "colorCarta": "punto-plata",
+      "imgSobre": "url(/img/contemporanea/fondo.webp)",
+      "titulo": "MÉDICO DE GUERRA",
+      "color": "var(--contemporanea)",
+      "especialidad": "Sanador",
+      "categoria": [
+        { "nombre": "Contemporánea", "clase": "etiqueta-contemporanea" }
+      ],
+      "imagen": "/img/contemporanea/medico.png",
+      "fondoFrontal": "/img/contemporanea/hospital.webp",
+      "fondoTrasera": "/img/contemporanea/hospital.webp",
+      "personalidad": [
+        { "nombre": "Sanador", "clase": "punto-dorado", "img": "/icons/cruz.svg" }
+      ],
+      "descripcion": "Un médico que cura a sus aliados en el campo de batalla.",
+      "habilidades": [
+        {"fuerza": 0},
+        {"defensa": 1},
+        {"recoleccion": 1}
       ]
     }
 }

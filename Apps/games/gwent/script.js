@@ -26,22 +26,82 @@ fetch('/Apps/cartas/cartas.json')
     // Si quieres puedes poblar cartasDisponibles con mocks aquí para pruebas.
   });
 
+// Configuración del juego
+const CONFIG_JUEGO = {
+  cartasPorMano: 5,
+  especialidadIA: 'intrépido', // Puedes cambiar esto fácilmente
+  jugadorUsaCartasAleatorias: true,
+  iaUsaEspecialidadExclusiva: true
+};
+
 /* ========= Inicio de juego ========= */
 function iniciarJuego() {
-  const cantidad = 5;
+  const { cartasPorMano, especialidadIA } = CONFIG_JUEGO;
   const mazoInicial = [];
-  for (let i = 0; i < cantidad * 2; i++) {
+  
+  // Cartas para el jugador
+  for (let i = 0; i < cartasPorMano; i++) {
     const cartaAleatoria = cartasDisponibles[Math.floor(Math.random() * cartasDisponibles.length)];
-    mazoInicial.push({ ...cartaAleatoria }); // clonar
+    mazoInicial.push({ ...cartaAleatoria });
   }
-  manoJugador = mazoInicial.slice(0, cantidad);
-  manoIA = mazoInicial.slice(cantidad, cantidad * 2);
+  
+  // Cartas para la IA
+  if (CONFIG_JUEGO.iaUsaEspecialidadExclusiva) {
+    const cartasEspecialidad = obtenerCartasDeEspecialidad(especialidadIA);
+    repartirCartasParaIA(cartasEspecialidad, cartasPorMano, mazoInicial);
+  } else {
+    // IA con cartas aleatorias
+    for (let i = 0; i < cartasPorMano; i++) {
+      const cartaAleatoria = cartasDisponibles[Math.floor(Math.random() * cartasDisponibles.length)];
+      mazoInicial.push({ ...cartaAleatoria });
+    }
+  }
+  
+  manoJugador = mazoInicial.slice(0, cartasPorMano);
+  manoIA = mazoInicial.slice(cartasPorMano, cartasPorMano * 2);
 
   mostrarMano();
   mostrarManoIA();
   mostrarOro();
-  turnoJugador(); // empieza jugador
+  turnoJugador();
 }
+
+function obtenerCartasDeEspecialidad(especialidad) {
+  return cartasDisponibles.filter(carta => {
+    if (!carta.especialidad) return false;
+    return carta.especialidad.toLowerCase().includes(especialidad.toLowerCase());
+  });
+}
+
+function repartirCartasParaIA(cartasFiltradas, cantidad, mazoInicial) {
+  if (cartasFiltradas.length === 0) {
+    console.warn(`No hay cartas con especialidad "${CONFIG_JUEGO.especialidadIA}". Usando cartas aleatorias.`);
+    for (let i = 0; i < cantidad; i++) {
+      const cartaAleatoria = cartasDisponibles[Math.floor(Math.random() * cartasDisponibles.length)];
+      mazoInicial.push({ ...cartaAleatoria });
+    }
+    return;
+  }
+  
+  // Si hay suficientes cartas únicas
+  if (cartasFiltradas.length >= cantidad) {
+    const copia = [...cartasFiltradas];
+    for (let i = 0; i < cantidad; i++) {
+      const randomIndex = Math.floor(Math.random() * copia.length);
+      mazoInicial.push({ ...copia[randomIndex] });
+      copia.splice(randomIndex, 1);
+    }
+  } else {
+    // Usar todas las disponibles y completar con repetidas
+    cartasFiltradas.forEach(carta => mazoInicial.push({ ...carta }));
+    const faltantes = cantidad - cartasFiltradas.length;
+    for (let i = 0; i < faltantes; i++) {
+      const randomIndex = Math.floor(Math.random() * cartasFiltradas.length);
+      mazoInicial.push({ ...cartasFiltradas[randomIndex] });
+    }
+  }
+}
+
 
 /* ========= Render: mano jugador ========= */
 function mostrarMano(highlightIndex = -1) {
@@ -480,7 +540,7 @@ function mostrarFlotante(el, texto) {
     span.textContent = texto;
     span.style.position = 'absolute';
     span.style.left = '50%';
-    span.style.top = '8%';
+    span.style.top = '5%';
     span.style.transform = 'translateX(-50%)';
     span.style.pointerEvents = 'none';
     span.style.fontWeight = '700';
@@ -490,11 +550,11 @@ function mostrarFlotante(el, texto) {
 
 
     setTimeout(() => {
-      span.style.transition = 'transform 700ms ease, opacity 1.5s ease';
+      span.style.transition = 'transform 1s ease, opacity 2s ease';
       span.style.transform = 'translate(-50%, -40px)';
-      span.style.opacity = '0';
+      span.style.opacity = '1';
     }, 20);
-    setTimeout(() => span.remove(), 820);
+    setTimeout(() => span.remove(), 2000);
   } catch (e) { /* safe */ }
 }
 
@@ -521,63 +581,146 @@ async function faseDeCombate() {
   // Si ningún bando tiene atacantes, no hay combate
   if (atacantesJugador.length === 0 && atacantesIA.length === 0) return;
   
-  puedeJugar = false; // Bloquear durante el combate
+  puedeJugar = false;
   
-  // Mostrar indicador de combate
   mostrarIndicadorCombate();
   await new Promise(res => setTimeout(res, 800));
   
-  // Las cartas del jugador atacan (buscarán objetivos con prioridad)
+  // Las cartas del jugador atacan
   if (atacantesJugador.length > 0) {
-    await ejecutarAtaques(atacantesJugador, null, 'jugador');
+    await ejecutarAtaques(atacantesJugador, 'jugador', 'ia');
   }
   
-  // Las cartas de la IA atacan (buscarán objetivos con prioridad)
+  // Las cartas de la IA atacan
   if (atacantesIA.length > 0) {
-    await ejecutarAtaques(atacantesIA, null, 'ia');
+    await ejecutarAtaques(atacantesIA, 'ia', 'jugador');
   }
   
-  // Limpiar cartas muertas después del combate
   eliminarCartasEnCero();
   
   puedeJugar = true;
 }
 
-/* ========= Ejecutar ataques de un bando (con prioridades) ========= */
-async function ejecutarAtaques(atacantes, objetivos, bandoAtacante) {
+/* ========= Ejecutar ataques con bloqueo defensivo ========= */
+async function ejecutarAtaques(atacantes, bandoAtacante, bandoDefensor) {
   for (let atacante of atacantes) {
-    // Verificar que el atacante sigue vivo
     const puntosAtacante = parseInt(atacante.querySelector('p')?.textContent || '0');
     if (puntosAtacante <= 0) continue;
     
-    // Buscar objetivos con prioridad: Atacante > Defensa > Recolección
     const objetivo = buscarObjetivoConPrioridad(bandoAtacante);
+    if (!objetivo) break;
     
-    if (!objetivo) break; // No hay más objetivos
-    
-    // Calcular daño (fuerza del atacante)
     const cartaData = atacante.cartaData || obtenerCartaDataDeElemento(atacante);
-    let danio = calcularDanioAtaque(cartaData);
+    let danioOriginal = calcularDanioAtaque(cartaData);
+    
+    // NUEVO: Calcular reducción por defensores
+    const { danioFinal, danioAbsorbido, defensores } = calcularBloqueoDefensivo(danioOriginal, bandoDefensor);
     
     // Animación de ataque
     await animarAtaque(atacante, objetivo, bandoAtacante);
     
-    // Aplicar daño
+    // NUEVO: Si hay defensores, mostrar animación de bloqueo
+    if (danioAbsorbido >= 0 && defensores.length > 0) {
+      await animarBloqueoDefensivo(defensores, danioAbsorbido);
+    }
+    
+    // Aplicar daño reducido
     const pObjetivo = objetivo.querySelector('p');
     const puntosActuales = parseInt(pObjetivo.textContent || '0');
-    const nuevoPuntaje = Math.max(0, puntosActuales - danio);
+    const nuevoPuntaje = Math.max(0, puntosActuales - danioFinal);
     pObjetivo.textContent = nuevoPuntaje;
     pObjetivo.classList.add('menos-puntos');
     objetivo.classList.add('temblor-daño');
     
-    // Mostrar daño flotante
-    mostrarFlotante(objetivo, `-${danio}⚔️`);
+    // Mostrar daño con indicador de bloqueo si aplica
+    if (danioAbsorbido > 0) {
+      mostrarFlotante(objetivo, `-${danioFinal}⚔️ (🛡️-${danioAbsorbido})`);
+    } else {
+      mostrarFlotante(objetivo, `-${danioFinal}⚔️`);
+    }
     
-    // Pequeña pausa entre ataques
-    await new Promise(res => setTimeout(res, 400));
-    
+    await new Promise(res => setTimeout(res, 500));
     objetivo.classList.remove('temblor-daño');
   }
+}
+
+/* ========= Calcular bloqueo defensivo ========= */
+function calcularBloqueoDefensivo(danioOriginal, bandoDefensor) {
+  // Obtener zona defensiva del bando defensor
+  let zonaDefensivaId;
+  if (bandoDefensor === 'jugador') {
+    zonaDefensivaId = 'zona-defensiva';
+  } else {
+    zonaDefensivaId = 'zona-defensa-ia';
+  }
+  
+  const zonaDefensiva = document.getElementById(zonaDefensivaId);
+  if (!zonaDefensiva) {
+    return { danioFinal: danioOriginal, danioAbsorbido: 0, defensores: [] };
+  }
+  
+  const defensores = Array.from(zonaDefensiva.querySelectorAll('.carta')).filter(carta => {
+    const pts = parseInt(carta.querySelector('p')?.textContent || '0');
+    return pts > 0;
+  });
+  
+  if (defensores.length === 0) {
+    return { danioFinal: danioOriginal, danioAbsorbido: 0, defensores: [] };
+  }
+  
+  // Calcular reducción total basada en la defensa de todas las cartas
+  let reduccionTotal = 0;
+  
+  defensores.forEach(defensor => {
+    const cartaData = defensor.cartaData || obtenerCartaDataDeElemento(defensor);
+    if (cartaData && cartaData.habilidades) {
+      for (const hab of cartaData.habilidades) {
+        if (hab.defensa && hab.defensa > 0) {
+          // Cada punto de defensa reduce un 25% del daño
+          reduccionTotal += hab.defensa * 25;
+        }
+      }
+    }
+  });
+  
+  // Limitar reducción al 80% máximo (para que siempre pase algo de daño)
+  reduccionTotal = Math.min(reduccionTotal, 80);
+  
+  // Calcular daño absorbido y daño final
+  const danioAbsorbido = Math.floor((danioOriginal * reduccionTotal) / 100);
+  const danioFinal = Math.max(0, danioOriginal - danioAbsorbido); // Mínimo 0 de daño
+  
+  return { danioFinal, danioAbsorbido, defensores };
+}
+
+/* ========= Animación de bloqueo defensivo ========= */
+async function animarBloqueoDefensivo(defensores, danioAbsorbido) {
+  // Animar todos los defensores que bloquearon
+  defensores.forEach(defensor => {
+    defensor.classList.add('bloqueando');
+    
+    // Mostrar escudo visual
+    const escudo = document.createElement('div');
+    escudo.textContent = '🛡️';
+    escudo.style.position = 'absolute';
+    escudo.style.fontSize = '32px';
+    escudo.style.left = '50%';
+    escudo.style.top = '50%';
+    escudo.style.transform = 'translate(-50%, -50%)';
+    escudo.style.pointerEvents = 'none';
+    escudo.style.animation = 'escudoPulso 0.5s ease-out';
+    escudo.style.zIndex = '999';
+    
+    defensor.style.position = 'relative';
+    defensor.appendChild(escudo);
+    
+    setTimeout(() => {
+      escudo.remove();
+      defensor.classList.remove('bloqueando');
+    }, 500);
+  });
+  
+  await new Promise(res => setTimeout(res, 400));
 }
 
 /* ========= Buscar objetivo con sistema de prioridades ========= */
@@ -708,90 +851,111 @@ function ocultarIndicadorCombate() {
   actualizarIndicadorTurno(turnoActual);
 }
 
-/* ========= Fase de curación (las cartas defensivas curan a las atacantes) ========= */
+/* ========= Fase de curación (solo cartas con especialidad "Sanador") ========= */
 async function faseDeCuracion() {
-  const zonaDefensivaJugador = document.getElementById('zona-defensiva');
-  const zonaDefensivaIA = document.getElementById('zona-defensa-ia');
-  const zonaAtacanteJugador = document.getElementById('zona-atacante');
-  const zonaAtacanteIA = document.getElementById('zona-atacante-ia');
+  const todasLasZonas = [
+    { id: 'zona-atacante', bando: 'jugador' },
+    { id: 'zona-defensiva', bando: 'jugador' },
+    { id: 'zona-recolectora', bando: 'jugador' },
+    { id: 'zona-atacante-ia', bando: 'ia' },
+    { id: 'zona-defensa-ia', bando: 'ia' },
+    { id: 'zona-recoleccion-ia', bando: 'ia' }
+  ];
   
-  if (!zonaDefensivaJugador || !zonaDefensivaIA || !zonaAtacanteJugador || !zonaAtacanteIA) return;
+  let haySanadores = false;
   
-  const defensoresJugador = Array.from(zonaDefensivaJugador.querySelectorAll('.carta'));
-  const defensoresIA = Array.from(zonaDefensivaIA.querySelectorAll('.carta'));
-  
-  // Si no hay defensores, no hay curación
-  if (defensoresJugador.length === 0 && defensoresIA.length === 0) return;
-  
-  puedeJugar = false;
-  
-  // Mostrar indicador de curación
-  mostrarIndicadorCuracion();
-  await new Promise(res => setTimeout(res, 600));
-  
-  // Curar atacantes del jugador
-  if (defensoresJugador.length > 0) {
-    const atacantesJugador = Array.from(zonaAtacanteJugador.querySelectorAll('.carta'));
-    if (atacantesJugador.length > 0) {
-      await ejecutarCuraciones(defensoresJugador, atacantesJugador);
+  // Buscar todas las cartas con especialidad "Sanador"
+  for (let zona of todasLasZonas) {
+    const zonaElemento = document.getElementById(zona.id);
+    if (!zonaElemento) continue;
+    
+    const cartasSanador = Array.from(zonaElemento.querySelectorAll('.carta')).filter(carta => {
+      const pts = parseInt(carta.querySelector('p')?.textContent || '0');
+      if (pts <= 0) return false;
+      
+      const cartaData = carta.cartaData || obtenerCartaDataDeElemento(carta);
+      if (!cartaData) return false;
+      
+      const especialidad = (cartaData.especialidad || '').toLowerCase().trim();
+      return especialidad === 'sanador';
+    });
+    
+    if (cartasSanador.length > 0) {
+      haySanadores = true;
+      
+      // Mostrar indicador solo si hay sanadores
+      if (!document.getElementById('turno-indicador').classList.contains('curacion')) {
+        mostrarIndicadorCuracion();
+        await new Promise(res => setTimeout(res, 600));
+      }
+      
+      // Cada sanador cura cartas de su mismo bando
+      for (let sanador of cartasSanador) {
+        await ejecutarCuracionSanador(sanador, zona.bando);
+      }
     }
   }
   
-  // Curar atacantes de la IA
-  if (defensoresIA.length > 0) {
-    const atacantesIA = Array.from(zonaAtacanteIA.querySelectorAll('.carta'));
-    if (atacantesIA.length > 0) {
-      await ejecutarCuraciones(defensoresIA, atacantesIA);
-    }
+  if (haySanadores) {
+    await new Promise(res => setTimeout(res, 300));
   }
   
   puedeJugar = true;
 }
 
-/* ========= Ejecutar curaciones ========= */
-async function ejecutarCuraciones(defensores, atacantes) {
-  for (let defensor of defensores) {
-    // Verificar que el defensor está vivo
-    const puntosDefensor = parseInt(defensor.querySelector('p')?.textContent || '0');
-    if (puntosDefensor <= 0) continue;
-    
-    // Verificar que hay atacantes para curar
-    const atacantesVivos = atacantes.filter(atc => {
-      const pts = parseInt(atc.querySelector('p')?.textContent || '0');
-      return pts > 0;
-    });
-    
-    if (atacantesVivos.length === 0) break;
-    
-    // Elegir atacante aleatorio para curar (priorizar los más dañados)
-    const atacanteObjetivo = elegirAtacanteParaCurar(atacantesVivos);
-    
-    // Calcular curación (basado en defensa)
-    const cartaData = defensor.cartaData || obtenerCartaDataDeElemento(defensor);
-    let curacion = calcularCuracion(cartaData);
-    
-    // Animación de curación
-    await animarCuracion(defensor, atacanteObjetivo);
-    
-    // Aplicar curación
-    const pObjetivo = atacanteObjetivo.querySelector('p');
-    const puntosActuales = parseInt(pObjetivo.textContent || '0');
-    const nuevoPuntaje = puntosActuales + curacion;
-    pObjetivo.textContent = nuevoPuntaje;
-    pObjetivo.classList.add('sumar-puntos');
-    atacanteObjetivo.classList.add('brillo-curacion');
-    
-    // Mostrar curación flotante
-    mostrarFlotante(atacanteObjetivo, `+${curacion}💚`);
-    
-    // Pequeña pausa entre curaciones
-    await new Promise(res => setTimeout(res, 450));
-    
-    setTimeout(() => {
-      pObjetivo.classList.remove('sumar-puntos');
-      atacanteObjetivo.classList.remove('brillo-curacion');
-    }, 400);
+/* ========= Ejecutar curación de un sanador ========= */
+async function ejecutarCuracionSanador(sanador, bando) {
+  // Obtener zonas del mismo bando
+  let zonasAliadas;
+  if (bando === 'jugador') {
+    zonasAliadas = ['zona-atacante'];
+  } else {
+    zonasAliadas = ['zona-atacante-ia']; 
   }
+  
+  // Recopilar todas las cartas aliadas (excepto el sanador mismo)
+  const cartasAliadas = [];
+  zonasAliadas.forEach(zonaId => {
+    const zona = document.getElementById(zonaId);
+    if (zona) {
+      Array.from(zona.querySelectorAll('.carta')).forEach(carta => {
+        if (carta !== sanador) {
+          const pts = parseInt(carta.querySelector('p')?.textContent || '0');
+          if (pts > 0) cartasAliadas.push(carta);
+        }
+      });
+    }
+  });
+  
+  if (cartasAliadas.length === 0) return;
+  
+  // Elegir objetivo para curar (prioriza más dañados)
+  const objetivo = elegirAtacanteParaCurar(cartasAliadas);
+  if (!objetivo) return;
+  
+  // Calcular curación
+  const cartaData = sanador.cartaData || obtenerCartaDataDeElemento(sanador);
+  let curacion = calcularCuracion(cartaData);
+  
+  // Animación
+  await animarCuracion(sanador, objetivo);
+  
+  // Aplicar curación
+  const pObjetivo = objetivo.querySelector('p');
+  const puntosActuales = parseInt(pObjetivo.textContent || '0');
+  const nuevoPuntaje = puntosActuales + curacion;
+  pObjetivo.textContent = nuevoPuntaje;
+  pObjetivo.classList.add('sumar-puntos');
+  objetivo.classList.add('brillo-curacion');
+  
+  mostrarFlotante(objetivo, `+${curacion}💚`);
+  
+  await new Promise(res => setTimeout(res, 350));
+  
+  setTimeout(() => {
+    pObjetivo.classList.remove('sumar-puntos');
+    objetivo.classList.remove('brillo-curacion');
+  }, 400);
 }
 
 /* ========= Elegir atacante para curar (prioriza más dañados) ========= */
