@@ -12,12 +12,13 @@ app.listen(3000, () => {
 
 const pool = require("./db");
 
-(async () => {
+app.get("/api/articulos", async (req, res) => {
   try {
-    const conn = await pool.getConnection();
-    console.log("MySQL conectado ✅");
-    conn.release();
-  } catch (err) {
-    console.error("Error MySQL ❌", err);
+    const [rows] = await pool.query(
+      "SELECT * FROM estudiantes"
+    );
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener estudiantes" });
   }
-})();
+});
