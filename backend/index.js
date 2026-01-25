@@ -12,7 +12,7 @@ app.listen(3000, () => {
 
 const pool = require("./db");
 
-app.get("/api/articulos", async (req, res) => {
+app.get("/api/estudiantes", async (req, res) => {
   try {
     const [rows] = await pool.query(
       "SELECT * FROM estudiantes"
