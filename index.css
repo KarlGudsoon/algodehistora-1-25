@@ -24,6 +24,12 @@
     --secondary-color: #c2283a;
     --yellow-color: #ffff00;
     --primary-color-dark: #1d1d1d;
+
+    --prehistoria: #f86d31;
+    --antigua: #30a5e8;
+    --medieval: #f8b229;
+    --moderna: #f11c35; 
+    --contemporanea: #2e8b57; 
 }
 
 @view-transition {
@@ -76,7 +82,7 @@ button {
 
 header {
   height: 75px;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: blur(15px); /* Para compatibilidad con Safari */
   backdrop-filter: blur(15px);
@@ -84,14 +90,15 @@ header {
   align-items: center;
   justify-content: space-between;
   position: sticky;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   top: 0;
   gap: 2rem;
   padding: 0 2rem;
-  z-index: 99999999999999;
+  z-index: 9999;
 }
 
 button:hover {
-  scale: 1.05;
+  scale: 1.025;
 }
 
 button:active {
@@ -140,11 +147,24 @@ nav ul {
     width: 100%;
     padding: 0;
     margin: 0;
+    gap: 0.5rem;
 }
 
 nav ul li {
     list-style: none;
-    padding: 1rem;
+    padding: 0.25rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(233, 42, 65, 0.75);
+    border-radius: 1rem;
+    transition: .2s ease;
+}
+
+nav ul li:hover {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+nav ul li:active {
+  scale: 0.95;
 }
 
 a {
@@ -155,6 +175,8 @@ a {
 a:hover {
     color: white;
 }
+
+
 
 .contenedor-portada {
   display: flex;
@@ -216,7 +238,7 @@ a:hover {
   position: absolute;
   bottom: 14%;
   left: 8%;
-  z-index: 99999;
+  z-index: 9;
   animation: square1 4s ease infinite;
   width: 1%;
 }
@@ -228,7 +250,7 @@ a:hover {
   position: absolute;
   top: 11%;
   right: 13%;
-  z-index: 99999;
+  z-index: 9;
   animation: square2 4s ease infinite;
   content: "";
 }
@@ -309,8 +331,9 @@ a:hover {
   animation: scrollInfinite 20s linear infinite;
   top: 100%;
   margin: 15px;
-  animation-delay: calc((20s / var(--quantity)) * (var(--position) - 1));
+  animation-delay: calc( -1 *(20s / var(--quantity)) * (var(--position) - 1));
 }
+
 
 @keyframes scrollInfinite {
     0% {
@@ -328,7 +351,7 @@ a:hover {
   animation: scrollInfinite2 20s linear infinite;
   top: 100%;
   margin: 15px;
-  animation-delay: calc((20s / var(--quantity)) * (var(--position) - 1));
+  animation-delay: calc(-1 *(20s / var(--quantity)) * (var(--position) - 1));
 }
 
 @keyframes scrollInfinite2 {
@@ -473,14 +496,47 @@ a:hover {
     width: auto;
     justify-content: center;
     align-items: center;
+    margin: 0 1rem 0rem 1rem;
+    border-radius: 2rem;
     gap: 1rem;
+    overflow: hidden;
     padding-top: 4rem;
     padding: 2rem;
     background-color: var(--secondary-color);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.contenedor-articulos::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(180deg, transparent 0%, var(--backgroundColor) 100%);
+  opacity: 0.25;
+  pointer-events: none;
+
+}
+
+#contenedor-articulos-fondo {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0.1;
+  background-color: rebeccapurple;
+  border-radius: 2rem;
+  pointer-events: none;
 }
 
 .contenedor-periodos {
-    z-index: 9999;
+    z-index: 9;
     display: flex;
     height: auto;
     flex-wrap: wrap;
@@ -488,7 +544,7 @@ a:hover {
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
-    background-color: var(--secondary-color);
+    
 }
 
 .contenedor-periodos button {
@@ -509,13 +565,9 @@ a:hover {
     filter: brightness(75%);
 }
 
-.contenedor-periodos button:hover{
-  filter: brightness(100%);
-}
-
 .contenedor-periodos button.active {
   filter: brightness(100%);
-  scale: 1.05;
+  scale: 1.1;
 }
 
 .contenedor-periodos button p {
@@ -564,7 +616,7 @@ a:hover {
     gap: 1rem;
     padding: 2rem;
     padding-top: 0;
-    background-color: var(--secondary-color);
+    z-index: 999;
 }
 
 .contenedor-cartas.active {

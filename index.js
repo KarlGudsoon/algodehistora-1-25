@@ -1,5 +1,22 @@
 
+// CAMBIO DE FONDO DE CONTENEDOR DE ARTICULOS
 
+function actualizarFondoArticulos() {
+    const fondoContenedorArticulos = document.getElementById("contenedor-articulos-fondo");
+    const contenedorArticulos = document.getElementById("articulos");
+    if (document.getElementById("cardContainer1").classList.contains("active")) {
+    fondoContenedorArticulos.style.background = "url('/img/prehistoria/cueva-manos.webp')";
+    contenedorArticulos.style.setProperty('--backgroundColor', 'var(--prehistoria)');
+    } else if (document.getElementById("cardContainer2").classList.contains("active")) {
+    fondoContenedorArticulos.style.background = "url('/img/antigua/escuela_de_atenas.webp')";
+    contenedorArticulos.style.setProperty('--backgroundColor', 'var(--antigua)');
+    }
+}
+
+setTimeout(actualizarFondoArticulos, 1000); // Llamar a la función al cargar la página
+
+
+// GESTION DE BOTONES Y CONTENEDORES
 
 const toggleButtons = document.querySelectorAll('.toggleButton'); // Todos los botones
 
@@ -18,6 +35,7 @@ toggleButtons.forEach((button) => {
             // Activar el botón y contenedor
             activate(container, this);
         }
+        actualizarFondoArticulos(); // Actualizar el fondo al cambiar de contenedor
     });
 });
 
@@ -215,3 +233,4 @@ function filtrarCuestionarios() {
         }
     });
   }
+
