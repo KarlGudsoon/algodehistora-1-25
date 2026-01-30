@@ -80,23 +80,6 @@ button {
   user-select: none;
 }
 
-header {
-  height: 75px;
-  background-color: rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  -webkit-backdrop-filter: blur(15px); /* Para compatibilidad con Safari */
-  backdrop-filter: blur(15px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  top: 0;
-  gap: 2rem;
-  padding: 0 2rem;
-  z-index: 9999;
-}
-
 button:hover {
   scale: 1.025;
 }
@@ -135,37 +118,7 @@ button:hover::before {
 }
 
 
-header img {
-    height: 50px;
-}
 
-
-nav ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    gap: 0.5rem;
-}
-
-nav ul li {
-    list-style: none;
-    padding: 0.25rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(233, 42, 65, 0.75);
-    border-radius: 1rem;
-    transition: .2s ease;
-}
-
-nav ul li:hover {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-nav ul li:active {
-  scale: 0.95;
-}
 
 a {
     text-decoration: none;
@@ -530,7 +483,10 @@ a:hover {
   left: 0;
   z-index: 0;
   opacity: 0.1;
-  background-color: rebeccapurple;
+  background-color: transparent;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
   border-radius: 2rem;
   pointer-events: none;
 }
@@ -563,11 +519,23 @@ a:hover {
     transition: 0.2s ease;
     overflow: hidden;
     filter: brightness(75%);
+
 }
 
 .contenedor-periodos button.active {
   filter: brightness(100%);
   scale: 1.1;
+  outline: 1px solid white;
+}
+.contenedor-periodos button.active p::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 1s ease;
 }
 
 .contenedor-periodos button p {
@@ -625,25 +593,27 @@ a:hover {
 }
 
 .card-contenido {
-    color: white;
-    scale: 0;
-    box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
-    opacity: 0;
-    transition: opacity 0.3s ease, scale 0.5s ease;
-    width: 250px;
-    height: 300px;
-    background-color: var(--primary-color);
-    border-radius: 2rem;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    transform-style: preserve-3d;
-    transform: perspective(1000px);
-  }
+  color: white;
+  scale: 0;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 0.3s ease, scale 0.5s ease;
+  width: 250px;
+  height: 300px;
+  background-color: var(--primary-color);
+  border-radius: 2rem;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+  outline: 2px solid transparent;
+}
 
 .card-contenido:hover {
   transition: all 0s linear;
+  outline: 3px solid rgba(255, 255, 255, 0.65);
 }
   
   .card-contenido.active {
@@ -698,25 +668,40 @@ a:hover {
   .card-contenido:hover .card-contenido-descripcion {
     opacity: 1;
   }
-  
-  .card-contenido-img {
-    width: 100%;
-    height: 100%;
-    border-radius: 2rem;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
-  
-  .card-contenido-img img {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-    object-position: center;
-  }
 
+
+
+@keyframes scale-infinite {
+  from {
+    transform: scale(1);
+  } to {
+    transform: scale(1.25);
+  }
+}
+  
+.card-contenido-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+  
+.card-contenido-img img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  object-position: center;
+  animation: scale-infinite 10s infinite linear alternate;
+  animation-play-state: paused;
+}
+
+.card-contenido:hover .card-contenido-img img {
+  animation-play-state: running;
+}
   #gif-humo {
     position: absolute;
     width: 150%;

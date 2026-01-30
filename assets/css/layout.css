@@ -1,3 +1,57 @@
+header {
+  height: 75px;
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(15px); /* Para compatibilidad con Safari */
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  top: 0;
+  gap: 2rem;
+  padding: 0 2rem;
+  z-index: 9999;
+}
+
+header img {
+    height: 50px;
+}
+
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    gap: 0.5rem;
+}
+
+nav ul li {
+    list-style: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(233, 42, 65, 0.75);
+    border-radius: 1rem;
+    transition: .2s ease;
+}
+
+nav ul li a {
+    width: 100%;
+    padding: 0.25rem 1rem;
+    display: block;
+}
+
+nav ul li:hover {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+nav ul li:active {
+  scale: 0.95;
+}
+
 #btn-menu-mobile {
     display: none;
     color: white;
@@ -63,11 +117,17 @@
 
 .menu-mobile ul li {
     list-style: none;
-    padding: 0.25rem 1rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background-color: rgba(233, 42, 65, 0.75);
     border-radius: 1rem;
     transition: .2s ease;
+}
+
+
+.menu-mobile ul li a {
+    width: 100%;
+    display: block;
+    padding: 0.25rem 1rem;
 }
 
 .menu-mobile ul li:hover {

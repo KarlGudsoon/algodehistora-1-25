@@ -5,11 +5,20 @@ function actualizarFondoArticulos() {
     const fondoContenedorArticulos = document.getElementById("contenedor-articulos-fondo");
     const contenedorArticulos = document.getElementById("articulos");
     if (document.getElementById("cardContainer1").classList.contains("active")) {
-    fondoContenedorArticulos.style.background = "url('/img/prehistoria/cueva-manos.webp')";
+    fondoContenedorArticulos.style.backgroundImage = "url('/img/prehistoria/cueva-manos.webp')";
     contenedorArticulos.style.setProperty('--backgroundColor', 'var(--prehistoria)');
     } else if (document.getElementById("cardContainer2").classList.contains("active")) {
-    fondoContenedorArticulos.style.background = "url('/img/antigua/escuela_de_atenas.webp')";
+    fondoContenedorArticulos.style.backgroundImage = "url('/img/antigua/escuela_de_atenas.webp')";
     contenedorArticulos.style.setProperty('--backgroundColor', 'var(--antigua)');
+    } else if (document.getElementById("cardContainer3").classList.contains("active")) {
+    fondoContenedorArticulos.style.backgroundImage = "url('/img/medieval/mercadomedieval.webp')";
+    contenedorArticulos.style.setProperty('--backgroundColor', 'var(--medieval)');
+    } else if (document.getElementById("cardContainer4").classList.contains("active")) {
+    fondoContenedorArticulos.style.backgroundImage = "url('/img/moderna/fondo.webp')";
+    contenedorArticulos.style.setProperty('--backgroundColor', 'var(--moderna)');
+    } else if (document.getElementById("cardContainer5").classList.contains("active")) {
+    fondoContenedorArticulos.style.backgroundImage = "url('/img/contemporanea/Charles_Hermans_masquerade-min.webp')";
+    contenedorArticulos.style.setProperty('--backgroundColor', 'var(--contemporanea)');
     }
 }
 
