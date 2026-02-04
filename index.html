@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
-    <title>Algo de Historia - Inicio</title>
+    <title>Algo de Historia</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,49 +13,83 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/index.css" />
-    <link rel="stylesheet" href="/assets/css/layout.css">
+    <link rel="stylesheet" href="/assets/css/layout.css" />
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
+    <meta
+      name="keywords"
+      content="Historia, Geografía, Ciencias Sociales, Artículos Interactivos, Mapas Interactivos, Cuestionarios, Juegos Educativos, Historia 3D, Recursos Educativos, Educación en Línea, Aprendizaje Interactivo"
+    />
+    <meta
+      name="description"
+      content="Algo de Historia es una página web interactiva para aprender Historia, Geografía y Ciencias Sociales a través de artículos interactivos, mapas, cuestionarios y juegos educativos."
+    />
   </head>
-  <body >
-    <header id="header">
-      
-    </header>
+  <body>
+    <header id="header"></header>
     <div id="navbarmobile"></div>
     <section class="contenedor-portada">
-      <div class="contenedor-lateral-cartas" >
-        <div class="inner-contenedor-cartas-lateral-1" id="cardContainer6" style="--width: 250px ; --height: 1000px; --quantity: 6;"></div>
+      <div class="contenedor-lateral-cartas">
+        <div
+          class="inner-contenedor-cartas-lateral-1"
+          id="cardContainer6"
+          style="--width: 250px; --height: 1000px; --quantity: 6"
+        ></div>
       </div>
       <div class="contenedor-titulo">
         <div class="contenedor-logo" id="portada">
-          <span><img class="logo" src="/svg/logo.svg"><img class="logo-dark" src="/svg/logo-dark.svg"></span>
+          <span
+            ><img class="logo" src="/svg/logo.svg" /><img
+              class="logo-dark"
+              src="/svg/logo-dark.svg"
+          /></span>
         </div>
         <span id="version">V 1.0</span>
         <p>
-          Pagina web interactiva para aprender Historia, Geografía y Ciencias Sociales
+          Pagina web interactiva para aprender Historia, Geografía y Ciencias
+          Sociales
         </p>
         <div class="carousel-container">
           <div class="carousel-wrapper">
             <div class="carousel" id="carousel">
               <div>
                 <h1>ARTICULOS INTERACTIVOS</h1>
-                <p>Aprende de diferentes temas historicos con articulos interactivos totalmente personalizados.</p>
+                <p>
+                  Aprende de diferentes temas historicos con articulos
+                  interactivos totalmente personalizados.
+                </p>
                 <a href="#articulos">Ver articulos</a>
-                <img src="/img/contemporanea/inicio-revolucion-industrial.jpg" alt="1">
+                <img
+                  src="/img/contemporanea/inicio-revolucion-industrial.jpg"
+                  alt="1"
+                />
               </div>
               <div>
                 <h1>MAPAS INTERACTIVOS</h1>
-                <p>Complementa tu aprendizaje con una visión espacial de los sucesos históricos, con diferentes epocas observando los cambios geográficos.</p>
+                <p>
+                  Complementa tu aprendizaje con una visión espacial de los
+                  sucesos históricos, con diferentes epocas observando los
+                  cambios geográficos.
+                </p>
                 <a href="#articulos">Ver articulos</a>
-                <img src="/img/contemporanea/1267px-Claude_Monet_-_The_Gare_Saint-Lazare,_Arrival_of_a_Train-min.jpg" alt="2">
+                <img
+                  src="/img/contemporanea/1267px-Claude_Monet_-_The_Gare_Saint-Lazare,_Arrival_of_a_Train-min.jpg"
+                  alt="2"
+                />
               </div>
               <div>
                 <h1>CUESTIONARIOS</h1>
-                <p>Demuestra lo aprendido con cuestionarios en diferentes niveles.</p>
+                <p>
+                  Demuestra lo aprendido con cuestionarios en diferentes
+                  niveles.
+                </p>
                 <a href="#articulos">Ver articulos</a>
-                <img src="/img/contemporanea/'The_Munitions_Girls'_oil_painting,_England,_1918_Wellcome_L0059548-min.jpg" alt="3">
+                <img
+                  src="/img/contemporanea/'The_Munitions_Girls'_oil_painting,_England,_1918_Wellcome_L0059548-min.jpg"
+                  alt="3"
+                />
               </div>
             </div>
           </div>
@@ -63,52 +97,102 @@
         </div>
       </div>
       <div class="contenedor-lateral-cartas">
-        <div class="inner-contenedor-cartas-lateral-2" id="cardContainer7" style="--width: 250px ; --height: 1000px; --quantity: 6;"></div>
+        <div
+          class="inner-contenedor-cartas-lateral-2"
+          id="cardContainer7"
+          style="--width: 250px; --height: 1000px; --quantity: 6"
+        ></div>
       </div>
     </section>
     <main>
-      <section class="contenedor-articulos" id="articulos" style="--backgroundColor: #333"> 
+      <section
+        class="contenedor-articulos"
+        id="articulos"
+        style="--backgroundColor: #333"
+      >
+        <div class="contenedor-titulo-articulos">
+          <h1>Artículos interactivos</h1>
+          <p>
+            Aprende de diferentes temas historicos con articulos interactivos
+            totalmente personalizados.
+          </p>
+        </div>
         <div id="contenedor-articulos-fondo"></div>
-        <div class="contenedor-periodos"> 
-          <button class="toggleButton active" style="--color: var(--prehistoria);" data-container="cardContainer1" id="prehistoria"><img src="/icons/prehistoria/stone-tablet.svg"><p>PREHISTORIA</p></button>
-          <button class="toggleButton" style="--color: var(--antigua);" data-container="cardContainer2" id="edad-antigua"><img src="/icons/antigua/building-columns.svg"><p>EDAD ANTIGUA</p></button>
-          <button class="toggleButton" style="--color: var(--medieval);" data-container="cardContainer3" id="edad-medieval"><img src="/icons/medieval/stone-tower.svg"><p>EDAD MEDIA</p></button>
-          <button class="toggleButton" style="--color: var(--moderna);" data-container="cardContainer4" id="edad-moderna"><img src="/icons/moderna/game-ship-wheel.svg"><p>EDAD MODERNA</p></button>
-          <button class="toggleButton" style="--color: var(--contemporanea);" data-container="cardContainer5" id="contemporanea"><img src="/icons/contemporanea/factory.svg"><p>EDAD CONTEMPORANEA</p></button>
+        <div class="contenedor-periodos">
+          <button
+            class="toggleButton active"
+            style="--color: var(--prehistoria)"
+            data-container="cardContainer1"
+            id="prehistoria"
+          >
+            <img src="/icons/prehistoria/stone-tablet.svg" />
+            <p>PREHISTORIA</p>
+          </button>
+          <button
+            class="toggleButton"
+            style="--color: var(--antigua)"
+            data-container="cardContainer2"
+            id="edad-antigua"
+          >
+            <img src="/icons/antigua/building-columns.svg" />
+            <p>EDAD ANTIGUA</p>
+          </button>
+          <button
+            class="toggleButton"
+            style="--color: var(--medieval)"
+            data-container="cardContainer3"
+            id="edad-medieval"
+          >
+            <img src="/icons/medieval/stone-tower.svg" />
+            <p>EDAD MEDIA</p>
+          </button>
+          <button
+            class="toggleButton"
+            style="--color: var(--moderna)"
+            data-container="cardContainer4"
+            id="edad-moderna"
+          >
+            <img src="/icons/moderna/game-ship-wheel.svg" />
+            <p>EDAD MODERNA</p>
+          </button>
+          <button
+            class="toggleButton"
+            style="--color: var(--contemporanea)"
+            data-container="cardContainer5"
+            id="contemporanea"
+          >
+            <img src="/icons/contemporanea/factory.svg" />
+            <p>EDAD CONTEMPORANEA</p>
+          </button>
         </div>
-        <input type="text" id="buscador" placeholder="Buscar artículo" onkeyup="filtrarCuestionarios()">
-        <div class="contenedor-cartas" id="cardContainer1">
-          
-          
-        </div>
-        <div class="contenedor-cartas" id="cardContainer2">
-            
-        </div>
-        <div class="contenedor-cartas" id="cardContainer3">
-            
-        </div>
-        <div class="contenedor-cartas" id="cardContainer4">
-            
-        </div>
-        <div class="contenedor-cartas" id="cardContainer5">
-            
-        </div>
+        <input
+          type="text"
+          id="buscador"
+          placeholder="Buscar artículo"
+          onkeyup="filtrarCuestionarios()"
+        />
+        <div class="contenedor-cartas" id="cardContainer1"></div>
+        <div class="contenedor-cartas" id="cardContainer2"></div>
+        <div class="contenedor-cartas" id="cardContainer3"></div>
+        <div class="contenedor-cartas" id="cardContainer4"></div>
+        <div class="contenedor-cartas" id="cardContainer5"></div>
         <section class="contenedor-timeline" id="timeline">
           <iframe src="/Apps/timeline/index.html" frameborder="0"></iframe>
         </section>
-
       </section>
-      
-      <section class="contenedor-aplicaciones" id="aplicaciones"> 
+
+      <section class="contenedor-aplicaciones" id="aplicaciones">
         <div class="contenedor-titulo-aplicaciones">
           <h1>Aplicaciones</h1>
-          <p>Aplicaciones para aprender Historia, Geografía y Ciencias Sociales</p>
+          <p>
+            Aplicaciones para aprender Historia, Geografía y Ciencias Sociales
+          </p>
         </div>
         <div class="contenedor-app">
           <a href="/Apps/mapas/mapa-interactivos.html">
             <div class="aplicaciones">
               <div class="app" id="mapas-interactivos">
-                <img src="/icons/paisesdelmundo.png">
+                <img src="/icons/paisesdelmundo.png" />
               </div>
               <h1>Mapas interactivos</h1>
             </div>
@@ -116,7 +200,7 @@
           <a href="/3D/menu3D.html">
             <div class="aplicaciones">
               <div class="app" id="historia-3d">
-                <img src="/icons/historia3d.png">
+                <img src="/icons/historia3d.png" />
               </div>
               <h1>Historia 3D</h1>
             </div>
@@ -124,7 +208,7 @@
           <a href="/Apps/tests/cuestionarios.html">
             <div class="aplicaciones">
               <div class="app" id="cuestionarios">
-                <img src="/icons/eos-icons--master.svg">
+                <img src="/icons/eos-icons--master.svg" />
               </div>
               <h1>Cuestionarios</h1>
             </div>
@@ -132,7 +216,7 @@
           <a href="/Apps/games/">
             <div class="aplicaciones">
               <div class="app" id="juegos">
-                <img src="/icons/juegos.png">
+                <img src="/icons/juegos.png" />
               </div>
               <h1>Juegos</h1>
             </div>
@@ -140,7 +224,7 @@
           <a href="/Apps/tareas/">
             <div class="aplicaciones">
               <div class="app" id="tareas">
-                <img src="/icons/tareas.svg">
+                <img src="/icons/tareas.svg" />
               </div>
               <h1>Tareas</h1>
             </div>
@@ -148,7 +232,7 @@
           <a href="/Apps/guessthehistory/">
             <div class="aplicaciones">
               <div class="app" id="guessgame">
-                <img src="/icons/lupa.svg">
+                <img src="/icons/lupa.svg" />
               </div>
               <h1>Guess Game</h1>
             </div>
@@ -156,7 +240,7 @@
           <a href="/Apps/luminary/">
             <div class="aplicaciones">
               <div class="app" id="luminary">
-                <img src="/icons/master.svg">
+                <img src="/icons/master.svg" />
               </div>
               <h1>Luminary</h1>
             </div>
@@ -164,7 +248,7 @@
           <a>
             <div class="aplicaciones">
               <div class="app" id="album">
-                <img src="">
+                <img src="" />
               </div>
               <h1>Proximamente...</h1>
             </div>
@@ -172,34 +256,38 @@
         </div>
       </section>
       <section class="contenedor-acerca-de" id="acerca-de">
-        <img src="/icons/foto-perfil.jpg">
+        <img src="/icons/foto-perfil.jpg" />
         <div class="acerca-de">
-            <h1>Hola!</h1>
-            <p>Mi nombre es Adrián, soy Profesor de Historia y Geografía creé esta página web, 
-              para facilitar la enseñanza y aprendizaje de las Ciencias Sociales a tráves del uso 
-              de la interactividad que te puede ofrecer los medios tecnológicos. Algo de Historia es 
-              una página web interactiva para aprender Historia, Geografía y Ciencias Sociales. En esta 
-              página encontraras árticulos interactivos, videos educativos, aplicaciones y 
-              juegos para aprender de una forma inmersiva. Sin embargo, muchas de las secciones están
-              en desarrollo, por lo que te podrás encontrar con secciones vacias o cosas sin terminar.
-              Por lo que te invito a visitar la página de vez en cuando.
-            </p>
-            <p>Ademas, te dejo las redes sociales de Algo de Historia, en donde podrás encontrar mi contacto y más contenido educativo.</p>
-            <div class="redes-sociales">
-              <a target="_blank" href="https://www.linkedin.com/in/adri%C3%A1n-maturana-mu%C3%B1oz-3a7b501aa/"><span><img src="/icons/linkedin.svg">Linkedin</span></a>
-              
-            </div>
+          <h1>Hola!</h1>
+          <p>
+            Mi nombre es Adrián, soy Profesor de Historia y Geografía creé esta
+            página web, para facilitar la enseñanza y aprendizaje de las
+            Ciencias Sociales a tráves del uso de la interactividad que te puede
+            ofrecer los medios tecnológicos. Algo de Historia es una página web
+            interactiva para aprender Historia, Geografía y Ciencias Sociales.
+            En esta página encontraras árticulos interactivos, videos
+            educativos, aplicaciones y juegos para aprender de una forma
+            inmersiva. Sin embargo, muchas de las secciones están en desarrollo,
+            por lo que te podrás encontrar con secciones vacias o cosas sin
+            terminar. Por lo que te invito a visitar la página de vez en cuando.
+          </p>
+          <p>
+            Ademas, te dejo las redes sociales de Algo de Historia, en donde
+            podrás encontrar mi contacto y más contenido educativo.
+          </p>
+          <div class="redes-sociales">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/adri%C3%A1n-maturana-mu%C3%B1oz-3a7b501aa/"
+              ><span><img src="/icons/linkedin.svg" />Linkedin</span></a
+            >
+          </div>
         </div>
       </section>
-      
     </main>
     <footer id="footer"></footer>
-    
-  
-    
   </body>
 </html>
 <script src="assets/js/layout.js" defer></script>
 <script src="/index.js"></script>
 <script type="text/javascript" src="/vanilla-tilt.min.js"></script>
-
