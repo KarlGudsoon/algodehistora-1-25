@@ -1,21 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body style="margin: 0;">
-    <main style="width: 100vw; height: 100vh; overflow: hidden; background-color: black;">
+  </head>
+  <body style="margin: 0">
+    <main
+      style="
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background-color: black;
+      "
+    >
       <video
         src="/tv/tv2.mp4"
+        id="tv2"
         muted
         loop
-        playsInline
-        autoPlay
+        playsinline
+        autoplay
         preload="true"
-        style="width:100%; height:100%;"
-        ></video>
+        style="width: 100%; height: 100%"
+      ></video>
     </main>
-</body>
+  </body>
+
+  <script>
+    let tv1 = document.getElementById("tv2");
+    const hoy = new Date();
+    const dia = hoy.getDay();
+
+    if (dia === 1 || dia === 2 || dia === 3) {
+      tv1.src = "/tv/tv2-promo.mp4";
+    } else {
+      tv1.src = "/tv/tv2.mp4";
+    }
+  </script>
 </html>
