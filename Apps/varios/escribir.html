@@ -6,16 +6,30 @@
     <title>Escribir</title>
   </head>
   <style>
+    @font-face {
+      font-family: Roboto;
+      src: url("/fonts/RobotoSlab-Regular.ttf") format("truetype");
+    }
+
     html,
     body {
       margin: 0;
       height: 100vh;
       background-color: transparent;
+      overflow: hidden;
+      font-family: Roboto;
+    }
+
+    button {
+      padding: 8px 15px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 1em;
     }
 
     textarea {
       width: 100%;
-      height: 99%;
+      height: calc(99% - 50px);
       font-size: 1.5em;
       padding: 20px;
       background-color: transparent;
@@ -23,9 +37,41 @@
       border: none;
       outline: none;
       resize: none;
+      font-family: Roboto;
+    }
+
+    .widgets {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 10;
+    }
+
+    .widgets #colorPicker {
+      border: none;
+      outline: none;
+      padding: 0;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
     }
   </style>
   <body>
+    <div class="widgets">
+      <input
+        type="color"
+        id="colorPicker"
+        onchange="cambiarColor(this.value)"
+      />
+    </div>
     <textarea placeholder=""></textarea>
+
+    <script>
+      const textarea = document.querySelector("textarea");
+
+      function cambiarColor(color) {
+        textarea.style.color = color;
+      }
+    </script>
   </body>
 </html>
