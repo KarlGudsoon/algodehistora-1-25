@@ -3,14 +3,14 @@
     "id": 1,
     "name": "Jujutsu Kaisen T-3",
     "image": "../anime/assets/img/jujutsu.webp",
-    "folder": "jututsuT3",
+    "folder": "jujutsuT3",
     "capitulos": 12
   },
   {
     "id": 2,
     "name": "Jujutsu Kaisen T-2",
     "image": "../anime/assets/img/jujutsu2.webp",
-    "folder": "jututsuT2",
+    "folder": "jujutsuT2",
     "capitulos": 24
   }
 ]
