@@ -33,6 +33,28 @@
   }
 }
 
+/* 1. Anchura y altura de la barra completa */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* 2. El riel o fondo de la barra */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* 3. El desplazador que se arrastra */
+::-webkit-scrollbar-thumb {
+  background: hsl(289, 66%, 33%);
+  border-radius: 8px;
+}
+
+/* 4. Efecto hover al pasar el cursor sobre el desplazador */
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(289, 66%, 33%);
+}
+
 main {
   background: transparent;
   background-size: 200% 200%;
@@ -126,15 +148,38 @@ ul li img {
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color: #c2283a;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .reproductor video {
   width: 100%;
   max-width: 800px;
   height: auto;
-  min-height: 400px;
-  max-height: 450px;
+  height: 450px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#lista-capitulos {
+  display: block;
+  list-style: none;
+  max-height: 450px;
+  border-radius: 8px;
+  overflow-y: auto;
+  flex-wrap: nowrap;
+  background-color: hsl(289, 61%, 18%);
+  margin: 0;
+}
+
+#lista-capitulos li {
+  background-color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 200px;
+  height: fit-content;
+  margin: 0.5rem 0.5rem;
+  background-color: hsl(289, 66%, 33%);
 }
