@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anime - Lista completa</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main>
+      <div class="contenedor-titulo">
+        <h1>Biblioteca de Animes</h1>
+        <input
+          type="text"
+          id="search"
+          placeholder="Buscar animes..."
+          onkeyup="filterAnimes()"
+        />
+      </div>
+
+      <ul id="anime-list"></ul>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
