@@ -23,7 +23,7 @@ async function cargarReproductor() {
     const reproductor = document.getElementById("reproductor-anime");
     reproductor.src = videoSrc;
     reproductor.load();
-    reproductor.play();
+    reproductor.play().catch((err) => console.warn("Autoplay bloqueado:", err));
 
     // Generar lista de capítulos automáticamente desde el total
     const lista = document.getElementById("lista-capitulos");
