@@ -100,7 +100,7 @@ $resultado = $stmt->get_result();
   .campo-archivo {
       padding: 1rem;
       border-radius: 10px;
-      border: 2px dotted rgba(255, 255, 255, 0.2);
+      border: 3px dotted rgba(255, 255, 255, 0.2);
       font-size: 0.95rem;
       transition: all 0.2s ease;
       outline: none;
