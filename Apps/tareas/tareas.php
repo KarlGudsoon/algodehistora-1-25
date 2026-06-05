@@ -36,7 +36,15 @@ $resultado = $stmt->get_result();
       <form class="form-entrega" data-id="<?= $tarea['id'] ?>">
         <input type="hidden" name="tarea_id" value="<?= $tarea['id'] ?>">
         <input type="text" name="nombre_estudiante" placeholder="Tu nombre" required>
-        <input type="file" name="archivo" required>
+        
+        <div class="campo-archivo seleccionado" id="campo-archivo">
+            <div class="contenido-campo-archivo">
+              <img src="/icons/upload.svg">
+              <span>Sube tu archivo aquí</span>
+              <span id="file-name">Ningún archivo seleccionado</span>
+            </div>
+            <input type="file" name="archivo" required>
+          </div>
         <button type="submit">Subir Tarea</button>
 
         <!-- Mensaje de respuesta por formulario -->
@@ -73,7 +81,7 @@ $resultado = $stmt->get_result();
     padding: 2rem;
     border-radius: 1rem;
   }
-
+  
   .tabla-tareas li input[type="text"] {
     width: 100%;
     max-width: 300px;
@@ -83,17 +91,51 @@ $resultado = $stmt->get_result();
     display: block;
     padding: 0.8rem;
   }
-  .tabla-tareas li input[type="file"] {
-    margin: 1rem 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: white;
-    display: block;
-    padding: 0.8rem;
-    border: 2px dashed rgba(255, 255, 255, 0.25);
-    border-radius: 1rem;
-  }
+  
+  .campo-archivo {
+      padding: 1rem;
+      border-radius: 10px;
+      border: 2px dotted rgba(255, 255, 255, 0.2);
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      outline: none;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+  .tabla-tareas .campo-archivo input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.tabla-tareas .campo-archivo .contenido-campo-archivo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contenido-campo-archivo img {
+  width: 30px;
+  height: 30px;
+}
+
+.tabla-tareas input[type="file"]::file-selector-button {
+  display: none;
+}
+
+.tabla-tareas .campo-archivo:hover {
+  border: 2px dotted rgba(255, 255, 255, 0.5);
+}
 </style>
 
 <script src="/assets/js/layout.js" defer></script>
