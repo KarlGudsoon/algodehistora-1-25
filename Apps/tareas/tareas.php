@@ -88,7 +88,6 @@ $resultado = $stmt->get_result();
   
   .tabla-tareas li input[type="text"] {
     width: 100%;
-    max-width: 300px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.25);
     color: white;
