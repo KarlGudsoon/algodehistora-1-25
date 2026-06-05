@@ -1,6 +1,16 @@
 <?php
-$conexion = new mysqli("localhost", "algodehi_adrian", "1qa2ws3ed123", "algodehi_tareas");
-$resultado = $conexion->query("SELECT * FROM tareas");
+$conexion = new mysqli("localhost", "algodehi_adrian", "1qa2ws3ed123", "algodehi_luminary");
+// Validar que venga el parámetro
+if (empty($_GET['curso'])) {
+    die(json_encode(['success' => false, 'mensaje' => 'Falta el id del curso.']));
+}
+
+$id_curso = intval($_GET['curso']); // intval protege contra SQL injection
+
+$stmt = $conexion->prepare("SELECT * FROM tareas WHERE curso_id = ?");
+$stmt->bind_param("i", $id_curso);
+$stmt->execute();
+$resultado = $stmt->get_result();
 ?>
 
 <link
@@ -11,7 +21,11 @@ $resultado = $conexion->query("SELECT * FROM tareas");
     />
     <link rel="stylesheet" href="/index.css" />
     <link rel="stylesheet" href="/assets/css/layout.css" />
-<ul>
+
+    <header id="header"></header>
+    <div id="navbarmobile"></div>
+
+<ul class="tabla-tareas">
   <?php while ($tarea = $resultado->fetch_assoc()): ?>
     <li>
       <h3><?= htmlspecialchars($tarea['titulo']) ?></h3>
@@ -35,11 +49,51 @@ $resultado = $conexion->query("SELECT * FROM tareas");
 <a href="login.php">Ingresar</a>
 
 <style>
-  body { margin: 0; padding: 0; }
+  body { margin: 0 auto; padding: 0; }
 
   .mensaje { font-weight: bold; margin-top: 8px; }
   .mensaje.ok    { color: green; }
   .mensaje.error { color: red; }
+
+  .tabla-tareas {
+    list-style: none; 
+    padding: 0;
+    margin: 1rem;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .tabla-tareas li {
+    width: 100%;
+    max-width: 1200px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background-color: rgba(0,0,0, 0.25);
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+
+  .tabla-tareas li input[type="text"] {
+    width: 100%;
+    max-width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    display: block;
+    padding: 0.8rem;
+  }
+  .tabla-tareas li input[type="file"] {
+    margin: 1rem 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    display: block;
+    padding: 0.8rem;
+    border: 2px dashed rgba(255, 255, 255, 0.25);
+    border-radius: 1rem;
+  }
 </style>
 
 <script src="/assets/js/layout.js" defer></script>
