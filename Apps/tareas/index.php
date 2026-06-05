@@ -4,7 +4,14 @@ $resultado = $conexion->query("SELECT * FROM tareas");
 ?>
 
 
-<link rel="stylesheet" href="/index.css">
+<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/assets/css/layout.css" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
