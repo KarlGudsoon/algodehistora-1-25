@@ -8,18 +8,8 @@ $resultado = $conexion->query("SELECT * FROM tareas");
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<header>
-      <nav>
-        <ul>
-        <img src="/icons/logo.svg">
-          <li><a href="/index.html">Inicio</a></li>
-          <li><a href="#articulos">Articulos</a></li>
-          <li><a href="#aplicaciones">Aplicaciones</a></li>
-          <li><a href="#acerca-de">Acerca de</a></li>
-        </ul>
-        <a href="login.php">Ingresar</a>
-      </nav>
-</header>
+<header id="header"></header>
+<div id="navbarmobile"></div>
 
 <main>
     <h1 class="titulo">Todos los cursos</h1>
@@ -219,7 +209,5 @@ $resultado = $conexion->query("SELECT * FROM tareas");
 
 </style>
 
-<script>
+<script src="assets/js/layout.js" defer></script>
 
-
-</script>
