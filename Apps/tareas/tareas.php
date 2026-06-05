@@ -140,7 +140,7 @@ $resultado = $stmt->get_result();
 }
 
 .tabla-tareas .campo-archivo:hover {
-  border: 2px dotted rgba(255, 255, 255, 0.5);
+  border: 3px dotted rgba(255, 255, 255, 0.5);
 }
 </style>
 
