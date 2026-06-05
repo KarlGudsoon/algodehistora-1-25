@@ -209,5 +209,5 @@ $resultado = $conexion->query("SELECT * FROM tareas");
 
 </style>
 
-<script src="assets/js/layout.js" defer></script>
+<script src="/assets/js/layout.js" defer></script>
 
