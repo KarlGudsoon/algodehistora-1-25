@@ -45,7 +45,7 @@ $resultado = $stmt->get_result();
             </div>
             <input type="file" name="archivo" required>
           </div>
-        <button type="submit">Subir Tarea</button>
+        <button class="btn-primary" type="submit">Subir Tarea</button>
 
         <!-- Mensaje de respuesta por formulario -->
         <p class="mensaje"></p>
@@ -62,6 +62,10 @@ $resultado = $stmt->get_result();
   .mensaje { font-weight: bold; margin-top: 8px; }
   .mensaje.ok    { color: green; }
   .mensaje.error { color: red; }
+
+  .btn-primary {
+    background-color: #e92a41;
+  }
 
   .tabla-tareas {
     list-style: none; 
@@ -89,7 +93,8 @@ $resultado = $stmt->get_result();
     border: 1px solid rgba(255, 255, 255, 0.25);
     color: white;
     display: block;
-    padding: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
   }
   
   .campo-archivo {
@@ -105,6 +110,7 @@ $resultado = $stmt->get_result();
       position: relative;
       display: flex;
       justify-content: center;
+      margin: 1rem 0;
     }
   .tabla-tareas .campo-archivo input[type="file"] {
   opacity: 0;
