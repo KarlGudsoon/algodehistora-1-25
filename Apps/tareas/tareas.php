@@ -45,7 +45,7 @@ $resultado = $stmt->get_result();
             </div>
             <input type="file" name="archivo" required>
           </div>
-        <button class="btn-primary" type="submit">Subir Tarea</button>
+        <button type="submit">Subir Tarea</button>
 
         <!-- Mensaje de respuesta por formulario -->
         <p class="mensaje"></p>
@@ -63,8 +63,8 @@ $resultado = $stmt->get_result();
   .mensaje.ok    { color: green; }
   .mensaje.error { color: red; }
 
-  .btn-primary {
-    background-color: #e92a41;
+  button {
+    background-color: #2e8b57;
   }
 
   .tabla-tareas {
