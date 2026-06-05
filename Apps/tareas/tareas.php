@@ -3,20 +3,14 @@ $conexion = new mysqli("localhost", "algodehi_adrian", "1qa2ws3ed123", "algodehi
 $resultado = $conexion->query("SELECT * FROM tareas");
 ?>
 
-<link rel="stylesheet" href="/index.css">
-
-<header>
-  <img src="/icons/logo.svg">
-  <nav>
-    <ul>
-      <li><a href="/index.html">Inicio</a></li>
-      <li><a href="#articulos">Articulos</a></li>
-      <li><a href="#aplicaciones">Aplicaciones</a></li>
-      <li><a href="#acerca-de">Acerca de</a></li>
-    </ul>
-  </nav>
-</header>
-
+<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/assets/css/layout.css" />
 <ul>
   <?php while ($tarea = $resultado->fetch_assoc()): ?>
     <li>
@@ -47,6 +41,8 @@ $resultado = $conexion->query("SELECT * FROM tareas");
   .mensaje.ok    { color: green; }
   .mensaje.error { color: red; }
 </style>
+
+<script src="/assets/js/layout.js" defer></script>
 
 <script>
   document.querySelectorAll('.form-entrega').forEach(form => {
