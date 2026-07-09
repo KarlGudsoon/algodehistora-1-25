@@ -26,7 +26,6 @@ body {
   width: auto;
 }
 .dropdownmenu a {
-  background: ;
   color: white;
   display: block;
   font: 900 16px/20px Century;
@@ -91,9 +90,7 @@ li:hover ul#submenu {
 }
 
 .contenedor {
-  height: ;
   width: 100%;
-  max-width: ;
 }
 
 .titulo {
@@ -114,7 +111,6 @@ li:hover ul#submenu {
   font-size: 20px;
   padding: 20px;
   margin-top: 20px;
-  background-color: ;
   width: 100%;
   text-align: left;
   margin-left: 30px;
@@ -123,7 +119,6 @@ li:hover ul#submenu {
 
 .contenedortextoder {
   position: relative;
-  background-color: ;
   padding: 30px;
   right: 0;
   font-size: 25px;
@@ -137,7 +132,6 @@ li:hover ul#submenu {
 
 .header {
   position: relative;
-  background-color: ;
   height: 60px;
   width: 100%;
   padding-top: 10px;
@@ -330,18 +324,16 @@ li:hover ul#submenu {
   animation: logo1 4s ease infinite;
 }
 
-
-
 @keyframes logo1 {
-  0%{
+  0% {
     border-left-width: 0px;
   }
-  
-   50%{
-      border-left-width: 160px;
-    }
-  
-  100%{
+
+  50% {
+    border-left-width: 160px;
+  }
+
+  100% {
     border-left-width: 0px;
   }
 }
@@ -518,7 +510,6 @@ li:hover ul#submenu {
 }
 
 .contenedor3:hover {
-  background-color: ;
   border: 10px solid white;
   transition: all 1s;
   opacity: 100%;
@@ -541,10 +532,8 @@ li:hover ul#submenu {
 .contenedor4 {
   position: relative;
   opacity: 100%;
-  width:  ;
   height: 50vh;
   background-color: #e92a41;
-  display:;
   padding: 1%;
   clip-path: circle(75% at left);
   border: 0px solid #780618;
@@ -556,7 +545,6 @@ li:hover ul#submenu {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: ;
   height: 100%;
 }
 
@@ -578,18 +566,17 @@ li:hover ul#submenu {
 
 .contenedor4:hover {
   transition: all 1s;
-  background-color:; 
   border: 10px solid white;
   opacity: 100%;
-  clip-path: circle(100% at center)
+  clip-path: circle(100% at center);
 }
-  
+
 .rojoclaro {
   background-color: #780618;
 }
 
 .azulclaro {
-  background-color: #3969af; 
+  background-color: #3969af;
 }
 
 .amarillo {
@@ -607,8 +594,6 @@ li:hover ul#submenu {
   height: 100vh;
   width: 100%;
   animation: circle-in-hesitate 2.5s;
- 
-  
 }
 
 @keyframes circle-in-hesitate {
@@ -626,7 +611,7 @@ li:hover ul#submenu {
 .banner {
   min-height: 500px;
   width: 100%;
-  background-color: white; 
+  background-color: white;
   object-fit: cover;
   display: flex;
   justify-content: center;
@@ -651,9 +636,6 @@ li:hover ul#submenu {
   margin: 5rem;
   box-shadow: 15px 15px 0px 0px white;
   z-index: 1;
-  
-  
-  
 }
 
 .stexto p {
@@ -663,7 +645,6 @@ li:hover ul#submenu {
   font-weight: 900;
   margin: 2rem;
   color: white;
-  
 }
 
 .stexto h1 {
@@ -689,11 +670,11 @@ li:hover ul#submenu {
     transform: translateX(250px);
     opacity: 0%;
   }
-  
+
   10% {
     opacity: 100%;
   }
-  
+
   100% {
     transform: translateY(0);
     opacity: 100%;
@@ -703,7 +684,6 @@ li:hover ul#submenu {
 #hero {
   position: relative;
 }
-
 
 .bannervideo {
   position: absolute;
@@ -739,7 +719,6 @@ li:hover ul#submenu {
 }
 
 .fulloverlay {
-  position: ;
   height: 100vh;
   width: 100%;
   object-fit: cover;
@@ -750,6 +729,4 @@ li:hover ul#submenu {
   .title {
     font-size: 50px;
   }
-  }
 }
-
