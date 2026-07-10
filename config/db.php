@@ -1,9 +1,9 @@
 <?php
 // Config fuera del árbol público si tu hosting lo permite (mejor aún: un nivel atrás de public_html)
 $host = 'localhost';
-$db   = 'tu_basededatos';
-$user = 'tu_usuario';
-$pass = 'tu_password';
+$db   = 'algodehistoria';
+$user = 'root';
+$pass = '';
 
 try {
     $pdo = new PDO(
