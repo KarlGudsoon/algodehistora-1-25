@@ -362,7 +362,7 @@ body {
   background-size: 80%;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("/icons/arma.svg");
+  background-image: url("/assets/icons/arma.svg");
 }
 
 .carta .contenedor-habilidades .defensa {
@@ -380,7 +380,7 @@ body {
   background-size: 80%;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("/icons/health.svg");
+  background-image: url("/assets/icons/health.svg");
 }
 
 .carta .contenedor-habilidades .recoleccion {
@@ -397,7 +397,7 @@ body {
   opacity: 0.2;
   background-size: 80% cover;
   background-position: center;
-  background-image: url("/icons/moneda.svg");
+  background-image: url("/assets/icons/moneda.svg");
 }
 
 .carta .titulo {

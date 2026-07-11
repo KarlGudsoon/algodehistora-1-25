@@ -14,9 +14,9 @@
       "fondoFrontal": "/img/prehistoria/neolitico.webp",
       "fondoTrasera": "/img/prehistoria/dawnofman.jpeg",
       "personalidad": [
-        { "nombre": "Pensador", "clase": "punto-dorado", "img": "/icons/cerebro.svg" },
-        { "nombre": "Agricultor", "clase": "punto-dorado", "img": "/icons/trigo.svg" },
-        { "nombre": "Intrépido", "clase": "punto-bronce", "img": "/icons/prehistoria/stone-tablet.svg" }
+        { "nombre": "Pensador", "clase": "punto-dorado", "img": "/assets/icons/cerebro.svg" },
+        { "nombre": "Agricultor", "clase": "punto-dorado", "img": "/assets/icons/trigo.svg" },
+        { "nombre": "Intrépido", "clase": "punto-bronce", "img": "/assets/icons/prehistoria/stone-tablet.svg" }
       ],
       "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas.",
       "habilidades": [
@@ -41,7 +41,7 @@
       "fondoTrasera": "/img/prehistoria/pixelcut-export (6).jpeg",
       "personalidad": [
         { "nombre": "Agresivo", "clase": "punto-bronce" },
-        { "nombre": "Cazador", "clase": "punto-dorado", "img": "/icons/prehistoria/stone-spear.svg" },
+        { "nombre": "Cazador", "clase": "punto-dorado", "img": "/assets/icons/prehistoria/stone-spear.svg" },
         { "nombre": "Resistente", "clase": "punto-bronce" }
       ],
       "descripcion": "El Homo Sapiens es nuestra especie, caracterizada por su capacidad de pensamiento abstracto, comunicación avanzada y desarrollo de herramientas complejas.",
@@ -97,9 +97,9 @@
       "fondoFrontal": "/img/moderna/fondo.webp",
       "fondoTrasera": "/img/moderna/fondo.webp",
       "personalidad": [
-        { "nombre": "Navegante", "clase": "punto-plata", "img": "/icons/brujula.svg" },
-        { "nombre": "Explorador", "clase": "punto-plata", "img": "/icons/mapa.svg" },
-        { "nombre": "Visionario", "clase": "punto-dorado", "img": "/icons/telescopio.svg" }
+        { "nombre": "Navegante", "clase": "punto-plata", "img": "/assets/icons/brujula.svg" },
+        { "nombre": "Explorador", "clase": "punto-plata", "img": "/assets/icons/mapa.svg" },
+        { "nombre": "Visionario", "clase": "punto-dorado", "img": "/assets/icons/telescopio.svg" }
       ],
       "descripcion": "Cristóbal Colón fue un navegante genovés conocido por realizar el viaje que llevó al descubrimiento de América en 1492, bajo el auspicio de los Reyes Católicos de España.",
       "habilidades": [
@@ -128,9 +128,9 @@
       "fondoFrontal": "/img/moderna/descubrimiento-chile/expedicionmagallanesyelcano.webp",
       "fondoTrasera": "/img/moderna/descubrimiento-chile/expedicionmagallanesyelcano.webp",
       "personalidad": [
-        { "nombre": "Navegante", "clase": "punto-plata", "img": "/icons/brujula.svg" },
-        { "nombre": "Explorador", "clase": "punto-basico", "img": "/icons/mapa.svg" },
-        { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
+        { "nombre": "Navegante", "clase": "punto-plata", "img": "/assets/icons/brujula.svg" },
+        { "nombre": "Explorador", "clase": "punto-basico", "img": "/assets/icons/mapa.svg" },
+        { "nombre": "Visionario", "clase": "punto-bronce", "img": "/assets/icons/telescopio.svg" }
       ],
       "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes.",
       "habilidades": [
@@ -154,9 +154,9 @@
       "fondoFrontal": "/img/contemporanea/heyenbrock-min%20(2).webp",
       "fondoTrasera": "/img/contemporanea/heyenbrock-min%20(2).webp",
       "personalidad": [
-        { "nombre": "Navegante", "clase": "punto-plata", "img": "/icons/brujula.svg" },
-        { "nombre": "Explorador", "clase": "punto-plateado", "img": "/icons/mapa.svg" },
-        { "nombre": "Visionario", "clase": "punto-bronce", "img": "/icons/telescopio.svg" }
+        { "nombre": "Navegante", "clase": "punto-plata", "img": "/assets/icons/brujula.svg" },
+        { "nombre": "Explorador", "clase": "punto-plateado", "img": "/assets/icons/mapa.svg" },
+        { "nombre": "Visionario", "clase": "punto-bronce", "img": "/assets/icons/telescopio.svg" }
       ],
       "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes.",
       "habilidades": [
@@ -180,7 +180,7 @@
       "fondoFrontal": "/img/contemporanea/hospital.webp",
       "fondoTrasera": "/img/contemporanea/hospital.webp",
       "personalidad": [
-        { "nombre": "Sanador", "clase": "punto-dorado", "img": "/icons/cruz.svg" }
+        { "nombre": "Sanador", "clase": "punto-dorado", "img": "/assets/icons/cruz.svg" }
       ],
       "descripcion": "Un médico que cura a sus aliados en el campo de batalla.",
       "habilidades": [

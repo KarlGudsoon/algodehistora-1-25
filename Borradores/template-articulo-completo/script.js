@@ -313,7 +313,7 @@ function Aprobado() {
     const WidgetCuestionario = document.querySelector('.widget-cuestionario');
     const WidgetProgresoPagina = document.querySelector(".widget-progreso-pagina")
     
-    WidgetCuestionario.querySelector("img").src = "/icons/check-white.svg";
+    WidgetCuestionario.querySelector("img").src = "/assets/icons/check-white.svg";
     WidgetProgresoPagina.setAttribute("data-tippy-content", "Artículo completado")
 
     mostrarResumenFinal();

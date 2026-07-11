@@ -711,7 +711,7 @@ button {
     height: 30px;
     border-radius: 1rem 1rem 0rem 0;
     background-color: black;
-    background-image: url("/icons/horizontal.svg");
+    background-image: url("/assets/icons/horizontal.svg");
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: center;

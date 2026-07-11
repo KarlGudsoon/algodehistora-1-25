@@ -39,7 +39,7 @@ $resultado = $stmt->get_result();
         
         <div class="campo-archivo seleccionado" id="campo-archivo">
             <div class="contenido-campo-archivo">
-              <img src="/icons/upload.svg">
+              <img src="/assets/icons/upload.svg">
               <span>Sube tu archivo aquí</span>
               <span id="file-name">Ningún archivo seleccionado</span>
             </div>

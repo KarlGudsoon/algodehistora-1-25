@@ -347,13 +347,13 @@ function actualizarCarta(personaje, idPersonaje) {
 
   if (esp === 'agricultor') {
     especialidad.textContent = personaje.especialidad;
-    especialidadImg.src = "/icons/trigo.svg"; 
+    especialidadImg.src = "/assets/icons/trigo.svg"; 
   } else if (esp === 'intrepido' || esp === 'intrépido') {
     especialidad.textContent = personaje.especialidad;
-    especialidadImg.src = "/icons/game-icons--angry-eyes.svg"; 
+    especialidadImg.src = "/assets/icons/game-icons--angry-eyes.svg"; 
   } else if (esp === 'pensador') {
     especialidad.textContent = personaje.especialidad;
-    especialidadImg.src = "/icons/cerebro.svg";
+    especialidadImg.src = "/assets/icons/cerebro.svg";
   } else {
     especialidad.style.backgroundColor = "";
   }

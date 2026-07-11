@@ -538,7 +538,7 @@ while ($fila = $resultado->fetch_assoc()) {
         </ul>
     </div>
     
-    <a class="icon" href="/Apps/luminary/logout.php"><img src="/Apps/luminary/assets/icons/tabler--logout.svg"></a>
+    <a class="icon" href="/Apps/luminary/logout.php"><img src="/Apps/luminary/assets/assets/icons/tabler--logout.svg"></a>
     
 </aside>
 
@@ -577,7 +577,7 @@ while ($fila = $resultado->fetch_assoc()) {
                                                 </span>
                                             </div>
                                         </div>
-                                        <a onclick="event.stopPropagation(); eliminarTarea(<?= $tarea_id ?>)" style="margin-left:10px; cursor:pointer;"><img src="/icons/check.svg"></a>  
+                                        <a onclick="event.stopPropagation(); eliminarTarea(<?= $tarea_id ?>)" style="margin-left:10px; cursor:pointer;"><img src="/assets/icons/check.svg"></a>  
                                     </div>
                                     
                                     
@@ -694,9 +694,9 @@ function verEntregas(curso, id) {
       <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
           <p><strong>${e.nombre}</strong></p>
           <div style="display: flex; gap: 10px;">
-              <a class="link" href="${e.archivo}" target="_blank"><img src="/icons/view.svg"> Ver entrega</a>
+              <a class="link" href="${e.archivo}" target="_blank"><img src="/assets/icons/view.svg"> Ver entrega</a>
               <span>|</span>
-              <a class="link" href="${e.archivo}" download><img src="/icons/download.svg"> Descargar</a>
+              <a class="link" href="${e.archivo}" download><img src="/assets/icons/download.svg"> Descargar</a>
           </div>
       </div>
       <input 

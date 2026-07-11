@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </style>
 
 <header>
-      <img src="/icons/logo.svg">
+      <img src="/assets/icons/logo.svg">
       <nav>
         <ul>
           <li><a href="/index.html">Inicio</a></li>

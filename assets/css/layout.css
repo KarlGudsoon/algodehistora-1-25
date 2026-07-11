@@ -16,32 +16,31 @@ header {
 }
 
 header img {
-    height: 50px;
+  height: 50px;
 }
 
-
 nav ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    gap: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  gap: 0.5rem;
 }
 
 nav ul li {
-    list-style: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(233, 42, 65, 0.75);
-    border-radius: 1rem;
-    transition: .2s ease;
+  list-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(233, 42, 65, 0.75);
+  border-radius: 1rem;
+  transition: 0.2s ease;
 }
 
 nav ul li a {
-    width: 100%;
-    padding: 0.25rem 1rem;
-    display: block;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  display: block;
 }
 
 nav ul li:hover {
@@ -52,39 +51,81 @@ nav ul li:active {
   scale: 0.95;
 }
 
+#navUserSection {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#navUserSection .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--yellow-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#logoutBtn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 5px;
+  box-shadow: none;
+}
+
+#logoutBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#logoutBtn img {
+  width: 25px;
+  height: 25px;
+}
+
+#logoutBtn::before {
+  content: none;
+}
+
 #btn-menu-mobile {
-    display: none;
-    color: white;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 0;
-    border-radius: 5px;
-    padding: 5px 5px;
+  display: none;
+  color: white;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 0;
+  border-radius: 5px;
+  padding: 5px 5px;
 }
 
 #btn-menu-mobile img {
-    width: 30px;
-    height: 30px;
-    pointer-events: none;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
 }
 
 #btn-cerrar-menu {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: var(--yellow-color);
-    border: 0;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    padding: 10px 10px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--yellow-color);
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 10px;
 }
 
 #btn-cerrar-menu img {
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
-    margin: 0;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  margin: 0;
 }
 
 .menu-mobile {
@@ -97,7 +138,7 @@ nav ul li:active {
   backdrop-filter: blur(10px);
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 999999;
-  transition: .3s ease;
+  transition: 0.3s ease;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 }
 
@@ -107,27 +148,26 @@ nav ul li:active {
 }
 
 .menu-mobile ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: 1rem;
-    padding: 0;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 1rem;
+  padding: 0;
+  gap: 0.5rem;
 }
 
 .menu-mobile ul li {
-    list-style: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(233, 42, 65, 0.75);
-    border-radius: 1rem;
-    transition: .2s ease;
+  list-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(233, 42, 65, 0.75);
+  border-radius: 1rem;
+  transition: 0.2s ease;
 }
 
-
 .menu-mobile ul li a {
-    width: 100%;
-    display: block;
-    padding: 0.25rem 1rem;
+  width: 100%;
+  display: block;
+  padding: 0.25rem 1rem;
 }
 
 .menu-mobile ul li:hover {
@@ -143,22 +183,18 @@ nav ul li:active {
 }
 
 @media screen and (max-width: 768px) {
-    #btn-menu-mobile {
-        display: block;
-    }
-    header nav {
-        display: none;
-    }
+  #btn-menu-mobile {
+    display: block;
+  }
+  header nav {
+    display: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --primary-color: #1d1d1d !important;
-        --secondary-color: #2e2e2e !important;
-        --yellow-color: #e92a41 !important;
-    }
-
-
-
-    
+  :root {
+    --primary-color: #1d1d1d !important;
+    --secondary-color: #2e2e2e !important;
+    --yellow-color: #e92a41 !important;
+  }
 }

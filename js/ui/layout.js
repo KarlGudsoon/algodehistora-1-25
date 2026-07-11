@@ -1,7 +1,14 @@
 async function loadComponent(id, file) {
+  const el = document.getElementById(id);
+  if (!el) {
+    console.warn(
+      `No se encontró el contenedor #${id} en esta página, se omite ${file}`,
+    );
+    return;
+  }
   const res = await fetch(file);
   const html = await res.text();
-  document.getElementById(id).innerHTML = html;
+  el.innerHTML = html;
 }
 
 async function initLayout() {

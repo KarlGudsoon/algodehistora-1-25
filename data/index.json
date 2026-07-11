@@ -1,0 +1,359 @@
+[
+  {
+    "periodo": "cardContainer1",
+    "id": "prehistoria",
+    "url": "/articulos/Prehistoria/template.html",
+    "titulo": "PREHISTORIA",
+    "fondo": "/img/prehistoria/prehistoria-fondo.webp",
+    "personaje": "/img/prehistoria/humano.webp",
+    "fecha": "4 M a.C. - 3300 a.C."
+  },
+  {
+    "periodo": "cardContainer1",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer1",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer1",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer1",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer1",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+
+  {
+    "periodo": "cardContainer2",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer2",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer2",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer2",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer2",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer2",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+
+  {
+    "periodo": "cardContainer3",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer3",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer3",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer3",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer3",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer3",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+
+  {
+    "periodo": "cardContainer4",
+    "id": "descubrimiento-chile",
+    "url": "/articulos/moderna/origenes-chile/",
+    "titulo": "CONQUISTA DE CHILE",
+    "descripcion": "Desde el primer avistamiento de Chile hasta la fundación de Santiago",
+    "fondo": "/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg",
+    "personaje": "/img/moderna/descubrimiento-chile/pedro-valdivia.png",
+    "fecha": "1520 - 1541"
+  },
+  {
+    "periodo": "cardContainer4",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer4",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer4",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer4",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer4",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+
+  {
+    "periodo": "cardContainer5",
+    "url": "/articulos/Contemporanea/revolucion-industrial.html",
+    "titulo": "REVOLUCIÓN INDUSTRIAL",
+    "fondo": "/img/contemporanea/inicio-revolucion-industrial.jpg",
+    "personaje": "/gif/humo.gif",
+    "fecha": "1871 - 1914"
+  },
+  {
+    "periodo": "cardContainer5",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer5",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer5",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer5",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+  {
+    "periodo": "cardContainer5",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": ""
+  },
+
+  {
+    "periodo": "cardContainer6",
+    "url": "/articulos/Contemporanea/revolucion-industrial.html",
+    "titulo": "REVOLUCIÓN INDUSTRIAL",
+    "fondo": "/img/contemporanea/inicio-revolucion-industrial.jpg",
+    "personaje": "/gif/humo.gif",
+    "fecha": "1871 - 1914",
+    "style": "--position: 1;"
+  },
+  {
+    "periodo": "cardContainer6",
+    "url": "/articulos/moderna/origenes-chile/",
+    "titulo": "CONQUISTA DE CHILE",
+    "fondo": "/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg",
+    "personaje": "/img/moderna/descubrimiento-chile/pedro-valdivia.png",
+    "fecha": "1530 - 1541",
+    "style": "--position: 2;"
+  },
+  {
+    "periodo": "cardContainer6",
+    "url": "/articulos/Prehistoria/template.html",
+    "titulo": "PREHISTORIA",
+    "fondo": "/img/prehistoria/prehistoria-fondo.webp",
+    "personaje": "/img/prehistoria/humano.webp",
+    "fecha": "4 M a.C. - 3300 a.C.",
+    "style": "--position: 3;"
+  },
+  {
+    "periodo": "cardContainer6",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": "",
+    "style": "--position: 4;"
+  },
+  {
+    "periodo": "cardContainer6",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": "",
+    "style": "--position: 5;"
+  },
+  {
+    "periodo": "cardContainer6",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": "",
+    "style": "--position: 6;"
+  },
+
+  {
+    "periodo": "cardContainer7",
+    "url": "/articulos/Contemporanea/revolucion-industrial.html",
+    "titulo": "REVOLUCIÓN INDUSTRIAL",
+    "fondo": "/img/contemporanea/inicio-revolucion-industrial.jpg",
+    "personaje": "/gif/humo.gif",
+    "fecha": "1871 - 1914",
+    "style": "--position: 1;"
+  },
+  {
+    "periodo": "cardContainer7",
+    "url": "/articulos/moderna/origenes-chile/",
+    "titulo": "CONQUISTA DE CHILE",
+    "fondo": "/img/moderna/descubrimiento-chile/ONOFRE-JARPA_Araucarias-min.jpg",
+    "personaje": "/img/moderna/descubrimiento-chile/pedro-valdivia.png",
+    "fecha": "1530 - 1541",
+    "style": "--position: 2;"
+  },
+  {
+    "periodo": "cardContainer7",
+    "url": "/articulos/Prehistoria/template.html",
+    "titulo": "PREHISTORIA",
+    "fondo": "/img/prehistoria/prehistoria-fondo.webp",
+    "personaje": "/img/prehistoria/humano.webp",
+    "fecha": "4 M a.C. - 3300 a.C.",
+    "style": "--position: 3;"
+  },
+  {
+    "periodo": "cardContainer7",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": "",
+    "style": "--position: 4;"
+  },
+  {
+    "periodo": "cardContainer7",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": "",
+    "style": "--position: 5;"
+  },
+  {
+    "periodo": "cardContainer7",
+    "url": "",
+    "titulo": "",
+    "fondo": "",
+    "personaje": "",
+    "fecha": "",
+    "style": "--position: 6;"
+  }
+]

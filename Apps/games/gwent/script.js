@@ -138,11 +138,11 @@ function mostrarMano(highlightIndex = -1) {
     const icono = div.querySelector('.icono-especialidad');
     const esp = (carta.especialidad || '').toLowerCase().trim();
     if (icono) {
-      if (esp === 'agricultor') icono.src = '/icons/trigo.svg';
-      else if (esp === 'intrépido' || esp === 'intrepido') icono.src = '/icons/arma.svg';
-      else if (esp === 'pensador') icono.src = '/icons/cerebro.svg';
-      else if (esp === 'compañero' || esp === 'companero') icono.src = '/icons/demografia.svg';
-      else icono.src = '/icons/interrogacion.svg';
+      if (esp === 'agricultor') icono.src = '/assets/icons/trigo.svg';
+      else if (esp === 'intrépido' || esp === 'intrepido') icono.src = '/assets/icons/arma.svg';
+      else if (esp === 'pensador') icono.src = '/assets/icons/cerebro.svg';
+      else if (esp === 'compañero' || esp === 'companero') icono.src = '/assets/icons/demografia.svg';
+      else icono.src = '/assets/icons/interrogacion.svg';
     }
 
     div.addEventListener('dragstart', (e) => {
@@ -257,11 +257,11 @@ function agregarCartaCampo(zonaDestino, carta, owner = 'jugador') {
   const icono = div.querySelector('.icono-especialidad');
   const esp = (carta.especialidad || '').toLowerCase().trim();
   if (icono) {
-    if (esp === 'agricultor') icono.src = '/icons/trigo.svg';
-    else if (esp === 'intrépido' || esp === 'intrepido') icono.src = '/icons/arma.svg';
-    else if (esp === 'pensador') icono.src = '/icons/cerebro.svg';
-    else if (esp === 'compañero' || esp === 'companero') icono.src = '/icons/demografia.svg';
-    else icono.src = '/icons/interrogacion.svg';
+    if (esp === 'agricultor') icono.src = '/assets/icons/trigo.svg';
+    else if (esp === 'intrépido' || esp === 'intrepido') icono.src = '/assets/icons/arma.svg';
+    else if (esp === 'pensador') icono.src = '/assets/icons/cerebro.svg';
+    else if (esp === 'compañero' || esp === 'companero') icono.src = '/assets/icons/demografia.svg';
+    else icono.src = '/assets/icons/interrogacion.svg';
   }
 
   if (owner === 'ia') div.classList.add('enemigo');
