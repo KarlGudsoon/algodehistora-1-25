@@ -1,64 +1,69 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const cardCarousel = document.querySelectorAll('.item');
+  const cardCarousel = document.querySelectorAll(".item");
 
-  cardCarousel.forEach(card => {
-    const etiquetaItem = card.querySelector('.etiqueta');
-    const personajeItem = card.querySelector('.personaje-item');
-    const personajeHistoricoItem = card.querySelector('.img-personaje-frontal');
-    const personajeHistoricoItemTrasera = card.querySelector('.personaje-historico-item-trasera')
-    const descripcionItem = card.querySelector('.descripcion-personaje-trasera')
-    const caracteristicaFrontal = card.querySelector('.contenedor-caracteristicas');
-    const especialidad = card.querySelector('.contenedor-especialidad');
-    
+  cardCarousel.forEach((card) => {
+    const etiquetaItem = card.querySelector(".etiqueta");
+    const personajeItem = card.querySelector(".personaje-item");
+    const personajeHistoricoItem = card.querySelector(".img-personaje-frontal");
+    const personajeHistoricoItemTrasera = card.querySelector(
+      ".personaje-historico-item-trasera",
+    );
+    const descripcionItem = card.querySelector(
+      ".descripcion-personaje-trasera",
+    );
+    const caracteristicaFrontal = card.querySelector(
+      ".contenedor-caracteristicas",
+    );
+    const especialidad = card.querySelector(".contenedor-especialidad");
+
     let startX;
     // Función para voltear la tarjeta
     const flipCard = () => {
-      
       var sonidoCarta = new Audio("/audio/carta.mp3");
       sonidoCarta.volume = 0.3;
       sonidoCarta.preload = "auto";
       sonidoCarta.play();
 
-      card.classList.toggle('flipped');
+      card.classList.toggle("flipped");
 
       if (descripcionItem) {
-        descripcionItem.classList.toggle('flipped');
+        descripcionItem.classList.toggle("flipped");
       }
 
       if (etiquetaItem) {
-        etiquetaItem.classList.toggle('flipped');
+        etiquetaItem.classList.toggle("flipped");
       }
 
       if (caracteristicaFrontal) {
-        caracteristicaFrontal.classList.toggle('flipped');
+        caracteristicaFrontal.classList.toggle("flipped");
       }
 
       if (especialidad) {
-        especialidad.classList.toggle('flipped');
+        especialidad.classList.toggle("flipped");
       }
 
       if (personajeItem) {
-        personajeItem.classList.toggle('flipped');
+        personajeItem.classList.toggle("flipped");
       }
 
       if (personajeHistoricoItem) {
-        personajeHistoricoItem.classList.toggle('flipped');
+        personajeHistoricoItem.classList.toggle("flipped");
       }
 
       if (personajeHistoricoItemTrasera) {
-        personajeHistoricoItemTrasera.classList.toggle('flipped');
+        personajeHistoricoItemTrasera.classList.toggle("flipped");
       }
     };
 
     // Evento de doble clic (para desktop)
-    card.addEventListener('dblclick', flipCard);
+    card.addEventListener("dblclick", flipCard);
 
     // Eventos para dispositivos móviles
-    card.addEventListener('touchstart', (e) => {
+    card.addEventListener("touchstart", (e) => {
       startX = e.touches[0].clientX;
     });
 
-    card.addEventListener('touchend', (e) => {
+    card.addEventListener("touchend", (e) => {
       const endX = e.changedTouches[0].clientX;
       const diffX = endX - startX;
 
@@ -70,16 +75,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-const contenedorPersonajes = document.querySelector('.contenedor-personaje');
-const cartasPersonajes = document.querySelector('.item');
+const contenedorPersonajes = document.querySelector(".contenedor-personaje");
+const cartasPersonajes = document.querySelector(".item");
 
-contenedorPersonajes.addEventListener('click', function(event) {
-  if (!cartasPersonajes.contains(event.target) & !sobreCarta.contains(event.target)) {
+contenedorPersonajes.addEventListener("click", function (event) {
+  if (
+    !cartasPersonajes.contains(event.target) &
+    !sobreCarta.contains(event.target)
+  ) {
     cerrarCarta();
   }
 });
-
-
 
 document.querySelectorAll(".personaje").forEach((personaje, index) => {
   personaje.addEventListener("click", () => {
@@ -87,12 +93,10 @@ document.querySelectorAll(".personaje").forEach((personaje, index) => {
     sonidoSobre.volume = 0.5;
     sonidoSobre.preload = "auto";
     sonidoSobre.play();
-    
-
 
     const sobreCarta = document.querySelector(".sobre-carta");
 
-    sobreCarta.classList.add('active');
+    sobreCarta.classList.add("active");
 
     let canvas = document.createElement("canvas");
     canvas.width = 600;
@@ -111,7 +115,7 @@ document.querySelectorAll(".personaje").forEach((personaje, index) => {
     confetti_button({
       particleCount: 50,
       spread: 50,
-      origin: { y: 1 }
+      origin: { y: 1 },
     });
 
     setTimeout(() => {
@@ -120,23 +124,19 @@ document.querySelectorAll(".personaje").forEach((personaje, index) => {
   });
 });
 
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   // Cargar JSON de personajes
   fetch("/Apps/cartas/cartas.json")
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       precargarImagenes(data);
       inicializarEventos(data);
     })
-    .catch(error => console.error("Error al cargar el JSON:", error));
+    .catch((error) => console.error("Error al cargar el JSON:", error));
 });
 
 function precargarImagenes(personajes) {
-  Object.values(personajes).forEach(personaje => {
+  Object.values(personajes).forEach((personaje) => {
     precargarImagen(personaje.imagen);
     precargarImagen(personaje.fondoFrontal);
     precargarImagen(personaje.fondoTrasera);
@@ -147,7 +147,6 @@ function precargarImagen(url) {
   const img = new Image();
   img.src = url;
 }
-
 
 function blinkPersonaje(blink, personaje) {
   const srcOriginal = blink.src;
@@ -163,20 +162,28 @@ function blinkPersonaje(blink, personaje) {
   if (personaje.blink) {
     setTimeout(() => {
       blink._blinkIntervalId = setInterval(() => {
-        setTimeout(() => { blink.src = srcBlink; }, 500);
-        setTimeout(() => { blink.src = srcOriginal; }, 600);
-        setTimeout(() => { blink.src = srcBlink; }, 700);
-        setTimeout(() => { blink.src = srcOriginal; }, 800);
+        setTimeout(() => {
+          blink.src = srcBlink;
+        }, 500);
+        setTimeout(() => {
+          blink.src = srcOriginal;
+        }, 600);
+        setTimeout(() => {
+          blink.src = srcBlink;
+        }, 700);
+        setTimeout(() => {
+          blink.src = srcOriginal;
+        }, 800);
       }, 2000);
     }, numero);
   }
 }
 
 function inicializarEventos(personajes) {
-  document.querySelectorAll(".personaje").forEach(elemento => {
+  document.querySelectorAll(".personaje").forEach((elemento) => {
     elemento.addEventListener("click", () => {
-      const idPersonaje = elemento.id; 
-      
+      const idPersonaje = elemento.id;
+
       if (personajes[idPersonaje]) {
         actualizarCarta(personajes[idPersonaje], idPersonaje);
         document.getElementById("contenedor-personaje").classList.add("active");
@@ -185,13 +192,7 @@ function inicializarEventos(personajes) {
 
         let imgPersonaje = document.getElementById("imagen-personaje");
 
-        
         blinkPersonaje(imgPersonaje, personajes[idPersonaje]);
-        
-        
-
-        
-
       } else {
         console.error("Personaje no encontrado en JSON:", idPersonaje);
       }
@@ -200,70 +201,117 @@ function inicializarEventos(personajes) {
 }
 
 // Inicializar tooltips al cargar el DOM
-const valoracionTippy = tippy('#puntaje-carta-personaje', { content: "Puntaje de la carta", trigger: "click", allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+const valoracionTippy = tippy("#puntaje-carta-personaje", {
+  content: "Puntaje de la carta",
+  trigger: "click",
+  allowHTML: true,
+  interactive: true,
+  theme: "basico",
+  placement: "top",
+  appendTo: document.body,
+  zIndex: 99999999999,
+});
 
 let tipoEspecialidad = document.querySelector(".especialidad-nombre");
 
 const descripcionesEspecialidad = {
-  'Agricultor': 'Experto en cultivo y manejo de tierras. Al utilizarla obtienes una carta extra de tu mazo.',
-  'Intrépido': 'Intrépido: Valiente y audaz, siempre dispuesto a enfrentar desafíos y explorar lo desconocido con determinación y coraje.',
-  'Pensador': 'Pensador: Intelectual y reflexivo, capaz de analizar problemas complejos y proponer soluciones innovadoras.'
+  Agricultor:
+    "Experto en cultivo y manejo de tierras. Al utilizarla obtienes una carta extra de tu mazo.",
+  Intrépido:
+    "Intrépido: Valiente y audaz, siempre dispuesto a enfrentar desafíos y explorar lo desconocido con determinación y coraje.",
+  Pensador:
+    "Pensador: Intelectual y reflexivo, capaz de analizar problemas complejos y proponer soluciones innovadoras.",
 };
 
-let especialidadTippy = tippy('.especialidad-personaje', {allowHTML: true, interactive: true, theme: 'punto-basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
-
-
+let especialidadTippy = tippy(".especialidad-personaje", {
+  allowHTML: true,
+  interactive: true,
+  theme: "punto-basico",
+  placement: "top",
+  appendTo: document.body,
+  zIndex: 99999999999,
+});
 
 const descripcionesCaracteristicas = {
-  'Agricultor': 'Experto en cultivo y manejo de tierras. Al utilizarla obtienes una carta extra de tu mazo.',
-  'Navegante': 'Hábil en la navegación y exploración marítima, capaz de descubrir nuevas rutas y territorios.',
-  'Visionario': 'Posee una perspectiva única y adelantada a su tiempo, capaz de anticipar tendencias y cambios futuros.',
-  'Guerrero': 'Valiente y hábil en el combate, defensor de su pueblo y sus ideales.',
-  'Líder': 'Carismático y capaz de inspirar y guiar a otros hacia un objetivo común.',
-  'Artista': 'Creativo y expresivo, capaz de plasmar emociones e ideas a través de diversas formas de arte.',
-  'Científico': 'Dedicado a la investigación y el descubrimiento, busca entender el mundo a través del método científico.',
-  'Filósofo': 'Pensador profundo que reflexiona sobre la existencia, el conocimiento y la ética.',
-  'Explorador': 'Aventurero y curioso, siempre en busca de nuevas tierras y experiencias.',
+  Agricultor:
+    "Experto en cultivo y manejo de tierras. Al utilizarla obtienes una carta extra de tu mazo.",
+  Navegante:
+    "Hábil en la navegación y exploración marítima, capaz de descubrir nuevas rutas y territorios.",
+  Visionario:
+    "Posee una perspectiva única y adelantada a su tiempo, capaz de anticipar tendencias y cambios futuros.",
+  Guerrero:
+    "Valiente y hábil en el combate, defensor de su pueblo y sus ideales.",
+  Líder:
+    "Carismático y capaz de inspirar y guiar a otros hacia un objetivo común.",
+  Artista:
+    "Creativo y expresivo, capaz de plasmar emociones e ideas a través de diversas formas de arte.",
+  Científico:
+    "Dedicado a la investigación y el descubrimiento, busca entender el mundo a través del método científico.",
+  Filósofo:
+    "Pensador profundo que reflexiona sobre la existencia, el conocimiento y la ética.",
+  Explorador:
+    "Aventurero y curioso, siempre en busca de nuevas tierras y experiencias.",
 };
 
 const spans = document.querySelectorAll(".carta-personalidad span");
 
 // Creamos los tooltips y los guardamos en un array para poder actualizar su contenido
-const tippies = Array.from(spans).map(span => 
-  tippy(span, { 
-    allowHTML: true, 
-    interactive: true, 
-    theme: 'basico', 
-    placement: 'top', 
-    appendTo: document.body, 
-    zIndex: 99999999999
-  })
+const tippies = Array.from(spans).map((span) =>
+  tippy(span, {
+    allowHTML: true,
+    interactive: true,
+    theme: "basico",
+    placement: "top",
+    appendTo: document.body,
+    zIndex: 99999999999,
+  }),
 );
 
-
-const lugarTippy = tippy('.lugar-personaje', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
-const reconocimientoTippy = tippy('.reconocimiento-personaje', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
-const tiempoTippy = tippy('.tiempo-personaje', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
-
+const lugarTippy = tippy(".lugar-personaje", {
+  allowHTML: true,
+  interactive: true,
+  theme: "basico",
+  placement: "top",
+  appendTo: document.body,
+  zIndex: 99999999999,
+});
+const reconocimientoTippy = tippy(".reconocimiento-personaje", {
+  allowHTML: true,
+  interactive: true,
+  theme: "basico",
+  placement: "top",
+  appendTo: document.body,
+  zIndex: 99999999999,
+});
+const tiempoTippy = tippy(".tiempo-personaje", {
+  allowHTML: true,
+  interactive: true,
+  theme: "basico",
+  placement: "top",
+  appendTo: document.body,
+  zIndex: 99999999999,
+});
 
 function actualizarCarta(personaje, idPersonaje) {
   const rarezas = ["basico", "bronce", "comun", "raro", "epico", "legendario"];
-  const colorCarta = ["punto-dorado", "punto-plata", "punto-bronce"]
-  
-  document.getElementById("titulo-sobre").textContent = personaje.categoria[0].nombre;
-  document.getElementById("sobre-carta").style.backgroundImage = personaje.imgSobre;
+  const colorCarta = ["punto-dorado", "punto-plata", "punto-bronce"];
+
+  document.getElementById("titulo-sobre").textContent =
+    personaje.categoria[0].nombre;
+  document.getElementById("sobre-carta").style.backgroundImage =
+    personaje.imgSobre;
 
   document.getElementById("face-frontal").classList.remove(...rarezas);
   document.getElementById("face-trasera").classList.remove(...rarezas);
 
-
   document.getElementById("face-frontal").classList.add(personaje.rareza);
   document.getElementById("face-trasera").classList.add(personaje.rareza);
 
-  document.getElementById("etiqueta-fondo-frontal").textContent = personaje.categoria[0].nombre;
+  document.getElementById("etiqueta-fondo-frontal").textContent =
+    personaje.categoria[0].nombre;
 
-  document.getElementById("etiqueta-fondo-trasera").textContent = personaje.titulo;
-
+  document.getElementById("etiqueta-fondo-trasera").textContent =
+    personaje.titulo;
 
   document.getElementById("nombre-personaje").textContent = personaje.titulo;
 
@@ -271,16 +319,22 @@ function actualizarCarta(personaje, idPersonaje) {
   categoriaElemento.textContent = personaje.categoria[0].nombre;
   categoriaElemento.style.background = personaje.color;
 
-  document.getElementById("descripcion-personaje-texto").classList.remove(...colorCarta);
-  document.getElementById("descripcion-personaje").textContent = personaje.descripcion;
-  document.getElementById("descripcion-personaje-texto").classList.add(personaje.colorCarta);
+  document
+    .getElementById("descripcion-personaje-texto")
+    .classList.remove(...colorCarta);
+  document.getElementById("descripcion-personaje").textContent =
+    personaje.descripcion;
+  document
+    .getElementById("descripcion-personaje-texto")
+    .classList.add(personaje.colorCarta);
 
   // Asignar imágenes ya precargadas
   document.getElementById("imagen-personaje").src = personaje.imagen;
-  
 
   if (personaje.blink) {
-    document.getElementById("imagen-personaje").setAttribute("data-blink", personaje.blink);
+    document
+      .getElementById("imagen-personaje")
+      .setAttribute("data-blink", personaje.blink);
     document.getElementById("imagen-personaje").classList.add("blink");
   } else {
     document.getElementById("imagen-personaje").classList.remove("blink");
@@ -295,15 +349,20 @@ function actualizarCarta(personaje, idPersonaje) {
   document.getElementById("fondo-frontal").src = personaje.fondoFrontal;
   document.getElementById("fondo-trasera").src = personaje.fondoTrasera;
 
-  document.getElementById("puntaje-carta-personaje").textContent = personaje.puntaje;
+  document.getElementById("puntaje-carta-personaje").textContent =
+    personaje.puntaje;
 
-  if (personaje.puntaje < 8 ) {
-    document.getElementById("puntaje-carta-personaje").style.borderColor = "#e2e0dd";
+  if (personaje.puntaje < 8) {
+    document.getElementById("puntaje-carta-personaje").style.borderColor =
+      "#e2e0dd";
   } else {
-    document.getElementById("puntaje-carta-personaje").style.borderColor = "#efb810";
+    document.getElementById("puntaje-carta-personaje").style.borderColor =
+      "#efb810";
   }
 
-  const caracteristicasSpans = document.querySelectorAll(".caracteristicas-personaje-frontal");
+  const caracteristicasSpans = document.querySelectorAll(
+    ".caracteristicas-personaje-frontal",
+  );
   personaje.personalidad.forEach((caracteristica, index) => {
     if (caracteristicasSpans[index]) {
       // Actualizar imagen
@@ -312,21 +371,24 @@ function actualizarCarta(personaje, idPersonaje) {
         img.src = caracteristica.img;
         img.alt = caracteristica.nombre;
       }
-      
+
       // Actualizar texto
-      const p = caracteristicasSpans[index].querySelector("p.caracteristica-frontal");
+      const p = caracteristicasSpans[index].querySelector(
+        "p.caracteristica-frontal",
+      );
       if (p) {
         p.textContent = caracteristica.nombre;
       }
-      
+
       // Actualizar clases
-      caracteristicasSpans[index].className = "caracteristicas-personaje-frontal";
+      caracteristicasSpans[index].className =
+        "caracteristicas-personaje-frontal";
     }
   });
 
   const spans = document.querySelectorAll(".carta-personalidad span");
 
-// Recorremos spans y el array de personalidad al mismo tiempo
+  // Recorremos spans y el array de personalidad al mismo tiempo
   spans.forEach((span, index) => {
     const caracteristica = personaje.personalidad[index];
 
@@ -342,16 +404,16 @@ function actualizarCarta(personaje, idPersonaje) {
   });
 
   const esp = personaje.especialidad.toLowerCase();
-  const especialidad = document.querySelector(".especialidad-nombre")
-  const especialidadImg = document.querySelector(".especialidad-personaje img")
+  const especialidad = document.querySelector(".especialidad-nombre");
+  const especialidadImg = document.querySelector(".especialidad-personaje img");
 
-  if (esp === 'agricultor') {
+  if (esp === "agricultor") {
     especialidad.textContent = personaje.especialidad;
-    especialidadImg.src = "/assets/icons/trigo.svg"; 
-  } else if (esp === 'intrepido' || esp === 'intrépido') {
+    especialidadImg.src = "/assets/icons/trigo.svg";
+  } else if (esp === "intrepido" || esp === "intrépido") {
     especialidad.textContent = personaje.especialidad;
-    especialidadImg.src = "/assets/icons/game-icons--angry-eyes.svg"; 
-  } else if (esp === 'pensador') {
+    especialidadImg.src = "/assets/icons/game-icons--angry-eyes.svg";
+  } else if (esp === "pensador") {
     especialidad.textContent = personaje.especialidad;
     especialidadImg.src = "/assets/icons/cerebro.svg";
   } else {
@@ -360,19 +422,22 @@ function actualizarCarta(personaje, idPersonaje) {
 
   // especialidad
   let especialidadTexto = tipoEspecialidad.textContent.trim();
-  let descripcionEspecialidad = descripcionesEspecialidad[especialidadTexto] || "Sin descripción disponible.";
+  let descripcionEspecialidad =
+    descripcionesEspecialidad[especialidadTexto] ||
+    "Sin descripción disponible.";
 
   especialidadTippy[0].setContent(descripcionEspecialidad);
 
   // características
-  
+
   spans.forEach((span, index) => {
     const caracteristicaClase = personaje.personalidad[index];
 
     let texto = span.textContent.trim();
-    let descripcion = descripcionesCaracteristicas[texto] || "Sin descripción disponible.";
+    let descripcion =
+      descripcionesCaracteristicas[texto] || "Sin descripción disponible.";
     tippies[index].setContent(descripcion);
-    tippies[index].setProps({theme: caracteristicaClase.clase || 'basico'});
+    tippies[index].setProps({ theme: caracteristicaClase.clase || "basico" });
     console.log(caracteristicaClase);
   });
 
@@ -381,13 +446,14 @@ function actualizarCarta(personaje, idPersonaje) {
   lugarTippy[0].setProps({ theme: personaje.rareza });
 
   // reconocimiento
-  const listaReconocimiento = personaje.reconocimiento && personaje.reconocimiento.length > 0
-    ? `
+  const listaReconocimiento =
+    personaje.reconocimiento && personaje.reconocimiento.length > 0
+      ? `
       <ul style="margin:0; padding:0 20px; list-style:disc;">
-        ${personaje.reconocimiento.map(item => `<li>${item}</li>`).join('')}
+        ${personaje.reconocimiento.map((item) => `<li>${item}</li>`).join("")}
       </ul>
     `
-    : `<p style="margin:0; padding:0;">Sin información</p>`;
+      : `<p style="margin:0; padding:0;">Sin información</p>`;
 
   reconocimientoTippy[0].setContent(listaReconocimiento);
   reconocimientoTippy[0].setProps({ theme: personaje.rareza });
@@ -397,48 +463,46 @@ function actualizarCarta(personaje, idPersonaje) {
   tiempoTippy[0].setProps({ theme: personaje.rareza });
 
   const banderaCarta = document.getElementById("img-lugar-personaje");
-    if(personaje.bandera) {
-      banderaCarta.src = personaje.bandera;
-      banderaCarta.style.display = "block"
-    } else {
-      banderaCarta.style.display = "none"
-    }
+  if (personaje.bandera) {
+    banderaCarta.src = personaje.bandera;
+    banderaCarta.style.display = "block";
+  } else {
+    banderaCarta.style.display = "none";
+  }
 
   document.querySelector(".lugar-personaje").classList.remove(...colorCarta);
-  document.querySelector(".reconocimiento-personaje").classList.remove(...colorCarta);
+  document
+    .querySelector(".reconocimiento-personaje")
+    .classList.remove(...colorCarta);
   document.querySelector(".tiempo-personaje").classList.remove(...colorCarta);
 
-  document.querySelector(".lugar-personaje").classList.add(personaje.colorCarta);
-  document.querySelector(".reconocimiento-personaje").classList.add(personaje.colorCarta);
-  document.querySelector(".tiempo-personaje").classList.add(personaje.colorCarta);
+  document
+    .querySelector(".lugar-personaje")
+    .classList.add(personaje.colorCarta);
+  document
+    .querySelector(".reconocimiento-personaje")
+    .classList.add(personaje.colorCarta);
+  document
+    .querySelector(".tiempo-personaje")
+    .classList.add(personaje.colorCarta);
 }
-
-
-
-
-
-
-
-
 
 var hitosCerrar = document.querySelectorAll(".widget-hitos-cerrar");
 var hitos = document.querySelectorAll(".container-widget-hitos");
-
 
 var hitosCerrar = document.querySelectorAll(".widget-hitos-cerrar");
 var hitos = document.querySelectorAll(".container-widget-hitos");
 
 function manejaCierre(event) {
+  var contenedor = event.target.closest(".container-widget-hitos");
 
-    var contenedor = event.target.closest(".container-widget-hitos");
+  var estaArriba = contenedor.style.transform === "translateY(-240px)";
 
-    var estaArriba = contenedor.style.transform === "translateY(-240px)";
-
-    contenedor.style.transform = estaArriba ? "" : "translateY(-240px)";
+  contenedor.style.transform = estaArriba ? "" : "translateY(-240px)";
 }
 
-hitosCerrar.forEach(function(cerrar) {
-    cerrar.addEventListener("click", manejaCierre);
+hitosCerrar.forEach(function (cerrar) {
+  cerrar.addEventListener("click", manejaCierre);
 });
 
 // Seleccionar los elementos del widget del mapa y del mapa interactivo
@@ -446,50 +510,51 @@ var widgetMapa = document.querySelectorAll(".widget-mapa");
 var mapaInteractivo = document.querySelectorAll(".mapa-interactivo");
 
 // Iterar sobre cada elemento del widget del mapa
-widgetMapa.forEach(function(widget) {
-    // Agregar un event listener para el evento click a cada widget
-    widget.addEventListener("click", function() {
-        // Verificar si el mapa interactivo está escalado actualmente
-        var escalado = this.dataset.escalado === "true";
-        
-        // Alternar entre la escala normal y la escala aumentada del mapa interactivo
-        mapaInteractivo.forEach(function(mapa) {
-            if (escalado) {
-                mapa.style.clipPath = "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)";
-            } else {
-                mapa.style.clipPath = "polygon(100% 0, 0 0, 0 100%, 100% 100%)";
-            }
-        });
+widgetMapa.forEach(function (widget) {
+  // Agregar un event listener para el evento click a cada widget
+  widget.addEventListener("click", function () {
+    // Verificar si el mapa interactivo está escalado actualmente
+    var escalado = this.dataset.escalado === "true";
 
-        // Actualizar el atributo data-escalado del widget mapa
-        this.dataset.escalado = escalado ? "false" : "true";
+    // Alternar entre la escala normal y la escala aumentada del mapa interactivo
+    mapaInteractivo.forEach(function (mapa) {
+      if (escalado) {
+        mapa.style.clipPath = "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)";
+      } else {
+        mapa.style.clipPath = "polygon(100% 0, 0 0, 0 100%, 100% 100%)";
+      }
     });
+
+    // Actualizar el atributo data-escalado del widget mapa
+    this.dataset.escalado = escalado ? "false" : "true";
+  });
 });
 
 var widgetTimeline = document.querySelectorAll(".widget-timeline");
 var timelineInteractivo = document.querySelectorAll(".timeline-interactivo");
 
 // Iterar sobre cada elemento del widget del mapa
-widgetTimeline.forEach(function(widgetTime) {
-    // Agregar un event listener para el evento click a cada widget
-    widgetTime.addEventListener("click", function() {
-        // Verificar si el mapa interactivo está escalado actualmente
-        var escalado = this.dataset.escalado === "true";
-        
-        // Alternar entre la escala normal y la escala aumentada del mapa interactivo
-        timelineInteractivo.forEach(function(timeline) {
-            if (escalado) {
-                timeline.style.clipPath = "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)";
-                timeline.style.opacity = "0";
-            } else {
-                timeline.style.clipPath = "polygon(0 100%, 100% 100%, 100% 0, 0 0)";
-                timeline.style.opacity = "1";
-            }
-        });
+widgetTimeline.forEach(function (widgetTime) {
+  // Agregar un event listener para el evento click a cada widget
+  widgetTime.addEventListener("click", function () {
+    // Verificar si el mapa interactivo está escalado actualmente
+    var escalado = this.dataset.escalado === "true";
 
-        // Actualizar el atributo data-escalado del widget mapa
-        this.dataset.escalado = escalado ? "false" : "true";
+    // Alternar entre la escala normal y la escala aumentada del mapa interactivo
+    timelineInteractivo.forEach(function (timeline) {
+      if (escalado) {
+        timeline.style.clipPath =
+          "polygon(0 100%, 100% 100%, 100% 100%, 0% 100%)";
+        timeline.style.opacity = "0";
+      } else {
+        timeline.style.clipPath = "polygon(0 100%, 100% 100%, 100% 0, 0 0)";
+        timeline.style.opacity = "1";
+      }
     });
+
+    // Actualizar el atributo data-escalado del widget mapa
+    this.dataset.escalado = escalado ? "false" : "true";
+  });
 });
 
 /*HITOS DRAGGABLE*/
@@ -562,42 +627,42 @@ document.addEventListener("DOMContentLoaded", function () {
 var marcadoConcepto = document.querySelectorAll(".marcado");
 
 function manejarMouse(event) {
-    var idMarcado = this.id;
-    var marcado = document.getElementById("marcado-" + idMarcado);
+  var idMarcado = this.id;
+  var marcado = document.getElementById("marcado-" + idMarcado);
 
-    if (marcado) {
-        var rect = this.getBoundingClientRect();
-        var marcadoRect = marcado.getBoundingClientRect();
-        
-        // Calculamos la posición horizontal del marcadoConcepto
-        var centerX = rect.left + rect.width / 2;
+  if (marcado) {
+    var rect = this.getBoundingClientRect();
+    var marcadoRect = marcado.getBoundingClientRect();
 
-        // Calculamos la posición horizontal del marcado (centrado debajo del marcadoConcepto)
-        var marcadoX = centerX - marcadoRect.width / 2;
+    // Calculamos la posición horizontal del marcadoConcepto
+    var centerX = rect.left + rect.width / 2;
 
-        // Si el evento es mouseenter, posicionamos el marcado y aplicamos el clip-path
-        if (event.type === "mouseenter") {
-            marcado.style.top = rect.bottom + "px";
-            marcado.style.left = marcadoX + "px";
-            marcado.style.clipPath = "circle(100% at 50% 0)";
-            marcado.style.background = "#cd1c38";
-            marcado.style.color = "white";
-            marcado.style.transition = "";
-        }
-        // Si el evento es mouseleave, restauramos la posición y eliminamos el clip-path
-        else if (event.type === "mouseleave") {
-            // Restaurar la posición original
-            marcado.style.clipPath = "circle(0% at 50% 0)"; 
-            marcado.style.background = "";
-            marcado.style.color = "";
-            marcado.style.transition = ".5s ease";
-        }
+    // Calculamos la posición horizontal del marcado (centrado debajo del marcadoConcepto)
+    var marcadoX = centerX - marcadoRect.width / 2;
+
+    // Si el evento es mouseenter, posicionamos el marcado y aplicamos el clip-path
+    if (event.type === "mouseenter") {
+      marcado.style.top = rect.bottom + "px";
+      marcado.style.left = marcadoX + "px";
+      marcado.style.clipPath = "circle(100% at 50% 0)";
+      marcado.style.background = "#cd1c38";
+      marcado.style.color = "white";
+      marcado.style.transition = "";
     }
-} 
+    // Si el evento es mouseleave, restauramos la posición y eliminamos el clip-path
+    else if (event.type === "mouseleave") {
+      // Restaurar la posición original
+      marcado.style.clipPath = "circle(0% at 50% 0)";
+      marcado.style.background = "";
+      marcado.style.color = "";
+      marcado.style.transition = ".5s ease";
+    }
+  }
+}
 
-marcadoConcepto.forEach(function(marcadoConcepto) {
-    marcadoConcepto.addEventListener("mouseenter", manejarMouse);
-    marcadoConcepto.addEventListener("mouseleave", manejarMouse);
+marcadoConcepto.forEach(function (marcadoConcepto) {
+  marcadoConcepto.addEventListener("mouseenter", manejarMouse);
+  marcadoConcepto.addEventListener("mouseleave", manejarMouse);
 });
 
 /* WIDGET CARD PAIS */
@@ -606,50 +671,46 @@ var paises = document.querySelectorAll(".pais");
 var conceptoCerrar = document.querySelectorAll(".concepto-cerrar");
 
 paises.forEach((pais) => {
-    pais.addEventListener("click", function () {
-        var idPais = this.id; // Obtener el ID del país clickeado
-        var card = document.querySelector("#card-" + idPais);
-      
+  pais.addEventListener("click", function () {
+    var idPais = this.id; // Obtener el ID del país clickeado
+    var card = document.querySelector("#card-" + idPais);
 
-        if (card) {
-            card.classList.toggle("active"); // Agregar clase 'active' al card
-        }
-
-       
-    });
+    if (card) {
+      card.classList.toggle("active"); // Agregar clase 'active' al card
+    }
+  });
 });
 
 function manejarCierre(event) {
-    var concepto = event.target.parentElement;
-    var contenedorPadre = concepto.parentElement;
+  var concepto = event.target.parentElement;
+  var contenedorPadre = concepto.parentElement;
 
-    if (concepto) {
-        concepto.classList.remove("active");  
-    }
+  if (concepto) {
+    concepto.classList.remove("active");
+  }
 
-    if (contenedorPadre) {
-        contenedorPadre.classList.remove("active");
-    }
+  if (contenedorPadre) {
+    contenedorPadre.classList.remove("active");
+  }
 
-    document.body.classList.remove("no-scroll");
-
+  document.body.classList.remove("no-scroll");
 }
 
-conceptoCerrar.forEach(function(cerrar) {
-    cerrar.addEventListener("click", manejarCierre);
+conceptoCerrar.forEach(function (cerrar) {
+  cerrar.addEventListener("click", manejarCierre);
 });
 
-var containers = document.querySelectorAll('.widget-personaje-flip');
+var containers = document.querySelectorAll(".widget-personaje-flip");
 
-containers.forEach(function(container) {
-  container.addEventListener('click', function() {
-    var carta = container.querySelector('.carta');
-    carta.classList.toggle('flipped');
-    
+containers.forEach(function (container) {
+  container.addEventListener("click", function () {
+    var carta = container.querySelector(".carta");
+    carta.classList.toggle("flipped");
+
     // Obtener el elemento .personaje-historico dentro del contenedor
-    var personaje = container.querySelector('.personaje-historico');
+    var personaje = container.querySelector(".personaje-historico");
     var titulo = container.querySelector(".container-titulo-personaje");
-   
+
     if (personaje.style.transform === "rotateY(180deg)") {
       personaje.style.transform = "";
       personaje.style.opacity = "";
@@ -670,7 +731,7 @@ containers.forEach(function(container) {
 
 // ABRIR SOBRE (2) / EXIT ANIMATION //
 
-var sobreCarta = document.querySelector('.sobre-carta');
+var sobreCarta = document.querySelector(".sobre-carta");
 var sonidoSobre = new Audio("/audio/arrastrar.mp3");
 var sonidoMostrarCarta = new Audio("/audio/reluciente.mp3");
 var sonidoAbrir = new Audio("/audio/romperpapel.mp3");
@@ -680,12 +741,9 @@ sonidoMostrarCarta.volume = 0.3;
 sonidoMostrarCarta.preload = "auto";
 sonidoSobre.volume = 0.5;
 sonidoSobre.preload = "auto";
-  
-sobreCarta.addEventListener('click', function() {
-  
-  const msgAbrirCarta = document.getElementById("msg-abrirsobre")
 
-  
+sobreCarta.addEventListener("click", function () {
+  const msgAbrirCarta = document.getElementById("msg-abrirsobre");
 
   sonidoSobre.play();
 
@@ -695,36 +753,37 @@ sobreCarta.addEventListener('click', function() {
     sonidoMostrarCarta.play();
   }, 200);
 
-  sobreCarta.classList.remove('active');
-  msgAbrirCarta.classList.remove('active');
+  sobreCarta.classList.remove("active");
+  msgAbrirCarta.classList.remove("active");
 
-  const card = document.querySelector('.item');
+  const card = document.querySelector(".item");
 
-  card.classList.add('animate__tada');
+  card.classList.add("animate__tada");
 });
 
-  
 // ABRIR SOBRE (2) / EXIT ANIMATION //
 
 function expandirCarta() {
-  var Card = document.querySelector(".item")
-  Card.classList.toggle('expanded');
+  var Card = document.querySelector(".item");
+  Card.classList.toggle("expanded");
 }
 
 function cerrarCarta() {
   var containerCard = document.getElementById("contenedor-personaje");
-  var Card = document.querySelector(".item")
-  var sobreCarta = document.querySelector('.sobre-carta');
-  const msgAbrirCarta = document.getElementById("msg-abrirsobre")
+  var Card = document.querySelector(".item");
+  var sobreCarta = document.querySelector(".sobre-carta");
+  const msgAbrirCarta = document.getElementById("msg-abrirsobre");
 
-  Card.classList.remove('flipped');
-  Card.querySelectorAll('.flipped').forEach(el => el.classList.remove('flipped'));
-  Card.classList.remove('active');
-  Card.classList.remove('animate__tada');
-  Card.classList.remove('expanded');
+  Card.classList.remove("flipped");
+  Card.querySelectorAll(".flipped").forEach((el) =>
+    el.classList.remove("flipped"),
+  );
+  Card.classList.remove("active");
+  Card.classList.remove("animate__tada");
+  Card.classList.remove("expanded");
   containerCard.classList.remove("active");
-  sobreCarta.classList.remove('active');
-  msgAbrirCarta.classList.remove('active');
+  sobreCarta.classList.remove("active");
+  msgAbrirCarta.classList.remove("active");
   document.body.classList.remove("no-scroll");
 
   var imgPersonaje = document.getElementById("imagen-personaje");
@@ -733,22 +792,22 @@ function cerrarCarta() {
     imgPersonaje._blinkIntervalId = null;
     imgPersonaje.removeAttribute("data-blink");
   }
-
-
 }
 
-document.getElementById("carta-cerrar").addEventListener("click", function() {
+document.getElementById("carta-cerrar").addEventListener("click", function () {
   var sonidoSobre = new Audio("/audio/arrastrar.mp3");
   sonidoSobre.volume = 0.5;
   sonidoSobre.preload = "auto";
   sonidoSobre.play();
 
-  cerrarCarta()
+  cerrarCarta();
 });
 
-document.getElementById("carta-expandir").addEventListener("click", function() {
-  expandirCarta()
-});
+document
+  .getElementById("carta-expandir")
+  .addEventListener("click", function () {
+    expandirCarta();
+  });
 
 /*
 
@@ -884,45 +943,48 @@ zoom.addEventListener("touchend", function (e) {
 
 /// VISOR DE IMAGENES 🎞️
 
-document.querySelectorAll(".img-view").forEach(function(elemento) {
-  elemento.addEventListener("click", function() {
-      var containerImgViewer = document.querySelector(".container-img-viewer");
-      var imgViewer = document.getElementById("img-viewer");
-      var srcImg = this.src;
-      var altImg = this.alt;
-      var altImgViewer = document.getElementById("alt-img-viewer");
+document.querySelectorAll(".img-view").forEach(function (elemento) {
+  elemento.addEventListener("click", function () {
+    var containerImgViewer = document.querySelector(".container-img-viewer");
+    var imgViewer = document.getElementById("img-viewer");
+    var srcImg = this.src;
+    var altImg = this.alt;
+    var altImgViewer = document.getElementById("alt-img-viewer");
 
-      containerImgViewer.classList.add("activo");
-      imgViewer.src = srcImg;
-      altImgViewer.style.display = altImg ? "block" : "none";
-      altImgViewer.textContent = altImg || "";
+    containerImgViewer.classList.add("activo");
+    imgViewer.src = srcImg;
+    altImgViewer.style.display = altImg ? "block" : "none";
+    altImgViewer.textContent = altImg || "";
 
-      document.querySelector(".container-img-viewer").addEventListener("click", function(e) {
-        if (e.target === this) { // Cierra solo si se hace clic fuera de la imagen
-            this.classList.remove("activo");
-            document.body.classList.remove("no-scroll");
-        }
-    });
-
-      if (containerImgViewer.classList.contains("activo")) {
-          document.body.classList.add("no-scroll");
-      } else {
+    document
+      .querySelector(".container-img-viewer")
+      .addEventListener("click", function (e) {
+        if (e.target === this) {
+          // Cierra solo si se hace clic fuera de la imagen
+          this.classList.remove("activo");
           document.body.classList.remove("no-scroll");
-      }
-  });
-})
+        }
+      });
 
-document.querySelectorAll(".close-icon").forEach(closeIcon => {
-  closeIcon.addEventListener("click", function() {
-      this.parentElement.classList.remove("activo");
+    if (containerImgViewer.classList.contains("activo")) {
+      document.body.classList.add("no-scroll");
+    } else {
       document.body.classList.remove("no-scroll");
+    }
+  });
+});
+
+document.querySelectorAll(".close-icon").forEach((closeIcon) => {
+  closeIcon.addEventListener("click", function () {
+    this.parentElement.classList.remove("activo");
+    document.body.classList.remove("no-scroll");
   });
 });
 
 /// VISOR DE IMAGENES 🎞️
 
-particlesJS.load('particles-js', 'particles.json', function() {
-  console.log('¡Partículas cargadas!');
+particlesJS.load("particles-js", "particles.json", function () {
+  console.log("¡Partículas cargadas!");
 });
 
 /*
@@ -1272,54 +1334,61 @@ function crearPasoPeriodo({ era, tipo, ancho, color, inicio, siglo, periodo, ima
 
 /// TOOLTIP CON TIPPY.JS
 
-document.querySelectorAll('[data-tippy-content]').forEach(el => {
-  const followCursorAttr = el.getAttribute('data-follow-cursor');
-  const themeAttr = el.getAttribute('data-theme');
+document.querySelectorAll("[data-tippy-content]").forEach((el) => {
+  const followCursorAttr = el.getAttribute("data-follow-cursor");
+  const themeAttr = el.getAttribute("data-theme");
 
   let followCursor = false;
-  if (followCursorAttr === 'true') {
+  if (followCursorAttr === "true") {
     followCursor = true;
-  } else if (followCursorAttr === 'horizontal' || followCursorAttr === 'vertical' || followCursorAttr === 'initial') {
+  } else if (
+    followCursorAttr === "horizontal" ||
+    followCursorAttr === "vertical" ||
+    followCursorAttr === "initial"
+  ) {
     followCursor = followCursorAttr;
   }
 
   tippy(el, {
-    content: el.getAttribute('data-tippy-content'),
+    content: el.getAttribute("data-tippy-content"),
     followCursor: followCursor,
-    theme: themeAttr || 'default',
+    theme: themeAttr || "default",
   });
 });
 
 /// TOOLTIP CON TIPPY.JS
 
-// WIDGET UP 
+// WIDGET UP
 
-const widgetUp = document.querySelector('.widget-up');
+const widgetUp = document.querySelector(".widget-up");
 
-widgetUp.addEventListener('click', function() {
-  const scrollToTop = document.documentElement.scrollTop || document.body.scrollTop;
+widgetUp.addEventListener("click", function () {
+  const scrollToTop =
+    document.documentElement.scrollTop || document.body.scrollTop;
   if (scrollToTop > 0) {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   }
 });
 
-// CUESTIONARIO FINAL DEL ARTICULO 
+// CUESTIONARIO FINAL DEL ARTICULO
 
 let cerrarCuestionario = document.querySelector(".cerrar-contenedor");
 
-cerrarCuestionario.addEventListener("click", function() {
+cerrarCuestionario.addEventListener("click", function () {
   this.parentElement.classList.remove("active");
   document.body.classList.remove("no-scroll");
 });
 
-let enviarCuestionario = document.getElementById("finalizar-cuestionario-final");
+let enviarCuestionario = document.getElementById(
+  "finalizar-cuestionario-final",
+);
 
 enviarCuestionario.addEventListener("click", function () {
   const preguntas = document.querySelector(".container-preguntas");
-  const resultado = document.querySelector(".resultado-cuestionario-final")
+  const resultado = document.querySelector(".resultado-cuestionario-final");
 
   preguntas.style.display = "none";
   resultado.classList.add("active");
@@ -1329,82 +1398,105 @@ enviarCuestionario.addEventListener("click", function () {
 
 // CAPSULA DESCRIPTIVA GRANDE
 
-let containerCapsula = document.querySelector('.container-capsula-descriptiva-grande');
+let containerCapsula = document.querySelector(
+  ".container-capsula-descriptiva-grande",
+);
 
-document.querySelectorAll('.capsula').forEach(TriggerCapsula => {
-  TriggerCapsula.addEventListener('click', function() {
-    document.body.classList.add('no-scroll');
-    containerCapsula.classList.add('active');
+document.querySelectorAll(".capsula").forEach((TriggerCapsula) => {
+  TriggerCapsula.addEventListener("click", function () {
+    document.body.classList.add("no-scroll");
+    containerCapsula.classList.add("active");
 
-    let capsula = this.getAttribute('data-capsula');
+    let capsula = this.getAttribute("data-capsula");
     let capsulaDescriptiva = document.getElementById(`${capsula}`);
-    let imgCapsula = capsulaDescriptiva.querySelector('.descripcion-grande-2 img');
-    let descripcionCapsula1 = capsulaDescriptiva.querySelector('.descripcion-grande-1');
-    descripcionCapsula1.classList.add('active');
-    imgCapsula.classList.add('active');
+    let imgCapsula = capsulaDescriptiva.querySelector(
+      ".descripcion-grande-2 img",
+    );
+    let descripcionCapsula1 = capsulaDescriptiva.querySelector(
+      ".descripcion-grande-1",
+    );
+    descripcionCapsula1.classList.add("active");
+    imgCapsula.classList.add("active");
 
-    capsulaDescriptiva.querySelectorAll('.descripcion-grande-3 .contenedor-img').forEach(img => {
-      img.classList.add('active');
-    });
-    
-    capsulaDescriptiva.classList.add('active');
+    capsulaDescriptiva
+      .querySelectorAll(".descripcion-grande-3 .contenedor-img")
+      .forEach((img) => {
+        img.classList.add("active");
+      });
+
+    capsulaDescriptiva.classList.add("active");
   });
 });
 
-containerCapsula.addEventListener('click', function(e) {
-  if (e.target === this) { // Cierra solo si se hace clic fuera de la cápsula
-    this.classList.remove('active');
-    document.body.classList.remove('no-scroll');
+containerCapsula.addEventListener("click", function (e) {
+  if (e.target === this) {
+    // Cierra solo si se hace clic fuera de la cápsula
+    this.classList.remove("active");
+    document.body.classList.remove("no-scroll");
 
-    let capsulaActiva = this.querySelector('.capsula-descriptiva-grande.active');
+    let capsulaActiva = this.querySelector(
+      ".capsula-descriptiva-grande.active",
+    );
     if (capsulaActiva) {
-      capsulaActiva.classList.remove('active');
-      capsulaActiva.querySelector('.descripcion-grande-2 img').classList.remove('active');
-      capsulaActiva.querySelector('.descripcion-grande-1').classList.remove('active');
+      capsulaActiva.classList.remove("active");
+      capsulaActiva
+        .querySelector(".descripcion-grande-2 img")
+        .classList.remove("active");
+      capsulaActiva
+        .querySelector(".descripcion-grande-1")
+        .classList.remove("active");
 
-      capsulaActiva.querySelectorAll('.descripcion-grande-3 .contenedor-img').forEach(img => {
-        img.classList.remove('active');
-      });
+      capsulaActiva
+        .querySelectorAll(".descripcion-grande-3 .contenedor-img")
+        .forEach((img) => {
+          img.classList.remove("active");
+        });
     }
   }
 });
 
 // Selecciona todos los botones de cerrar dentro de capsulaGrande
-document.querySelectorAll('.cerrar-capsula').forEach(botonCerrar => {
-  botonCerrar.addEventListener('click', function() {
-    containerCapsula.classList.remove('active');
-    document.body.classList.remove('no-scroll');
+document.querySelectorAll(".cerrar-capsula").forEach((botonCerrar) => {
+  botonCerrar.addEventListener("click", function () {
+    containerCapsula.classList.remove("active");
+    document.body.classList.remove("no-scroll");
     let capsulaGrandeActiva = this.parentElement;
 
-    capsulaGrandeActiva.querySelector('.descripcion-grande-1').classList.remove('active');
-    capsulaGrandeActiva.querySelector('.descripcion-grande-2 img').classList.remove('active');
-    capsulaGrandeActiva.querySelectorAll('.descripcion-grande-3 .contenedor-img').forEach(img => {
-      img.classList.remove('active');
-    });
+    capsulaGrandeActiva
+      .querySelector(".descripcion-grande-1")
+      .classList.remove("active");
+    capsulaGrandeActiva
+      .querySelector(".descripcion-grande-2 img")
+      .classList.remove("active");
+    capsulaGrandeActiva
+      .querySelectorAll(".descripcion-grande-3 .contenedor-img")
+      .forEach((img) => {
+        img.classList.remove("active");
+      });
 
-    containerCapsula.querySelectorAll('.capsula-descriptiva-grande.active').forEach(capsulaActiva => {
-      capsulaActiva.classList.remove('active');
-    });
+    containerCapsula
+      .querySelectorAll(".capsula-descriptiva-grande.active")
+      .forEach((capsulaActiva) => {
+        capsulaActiva.classList.remove("active");
+      });
   });
 });
-
-
 
 // CAPSULA DE PAÍS
 
 document.addEventListener("DOMContentLoaded", () => {
   // Cargar JSON de paises
   fetch("/Apps/cartas/paises.json")
-    .then(response => response.json())
-    .then(data => {
+    .then((response) => response.json())
+    .then((data) => {
       cargarPaises(data);
       precargarImagenesPais(data);
     })
-    .catch(error => console.error("Error al cargar el JSON:", error));
+    .catch((error) => console.error("Error al cargar el JSON:", error));
 });
 
 function precargarImagenesPais(paises) {
-  Object.values(paises).forEach(pais => {
+  Object.values(paises).forEach((pais) => {
     precargarImagen(pais.bandera);
     precargarImagen(pais.logro1[1]);
     precargarImagen(pais.logro2[1]);
@@ -1415,16 +1507,17 @@ function precargarImagenesPais(paises) {
 }
 
 function cargarPaises(paises) {
-  document.querySelectorAll(".paises").forEach(elemento => {
+  document.querySelectorAll(".paises").forEach((elemento) => {
     elemento.addEventListener("click", () => {
-      const idPais = elemento.getAttribute("data-pais"); 
-      
+      const idPais = elemento.getAttribute("data-pais");
+
       if (paises[idPais]) {
         actualizarPais(paises[idPais], idPais);
-        document.querySelector(".contenedor-capsula-pais").classList.add("active");
+        document
+          .querySelector(".contenedor-capsula-pais")
+          .classList.add("active");
         document.querySelector(".capsula-pais").classList.add("active");
         sonidoSeleccion();
-      
       } else {
         console.error("Pais no encontrado en JSON:", idPais);
       }
@@ -1432,48 +1525,151 @@ function cargarPaises(paises) {
   });
 }
 
-const fechaInicio = tippy('#capsula-pais-fecha-inicio', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
-const fechaTermino = tippy('#capsula-pais-fecha-termino', { allowHTML: true, interactive: true, theme: 'basico', placement: 'top', appendTo: document.body, zIndex: 99999999999 });
+const fechaInicio = tippy("#capsula-pais-fecha-inicio", {
+  allowHTML: true,
+  interactive: true,
+  theme: "basico",
+  placement: "top",
+  appendTo: document.body,
+  zIndex: 99999999999,
+});
+const fechaTermino = tippy("#capsula-pais-fecha-termino", {
+  allowHTML: true,
+  interactive: true,
+  theme: "basico",
+  placement: "top",
+  appendTo: document.body,
+  zIndex: 99999999999,
+});
+
+const economiaPais = tippy("#capsula-economia-pais", {
+  allowHTML: true,
+  interactive: false,
+  theme: "basico",
+  placement: "top",
+  appendTo: document.body,
+  zIndex: 99999999999,
+});
+
+const politicaPais = tippy("#capsula-gobierno-pais", {
+  allowHTML: true,
+  interactive: false,
+  theme: "basico",
+  placement: "top",
+  appendTo: document.body,
+  zIndex: 99999999999,
+});
+
+const territorioPais = tippy("#capsula-territorio-pais", {
+  allowHTML: true,
+  interactive: false,
+  theme: "basico",
+  placement: "top",
+  appendTo: document.body,
+  zIndex: 99999999999,
+});
 
 function actualizarPais(pais, idPais) {
-  document.querySelector(".capsula-pais").style.backgroundColor = pais.colorFondo || "rgba(105, 105, 105, 0.562)";
+  document.querySelector(".capsula-pais").style.backgroundColor =
+    pais.colorFondo || "rgba(105, 105, 105, 0.562)";
   document.getElementById("capsula-pais-nombre").textContent = pais.nombre;
-  document.getElementById("capsula-pais-descripcion").textContent = pais.descripcion;
+  document.getElementById("capsula-pais-descripcion").textContent =
+    pais.descripcion;
 
   let etiqueta = document.getElementById("capsula-pais-etiqueta");
-  etiqueta.className = ""; 
+  etiqueta.className = "";
   etiqueta.textContent = pais.etiqueta[0];
   etiqueta.classList.add(pais.etiqueta[1]);
 
-  document.getElementById("capsula-pais-fecha-inicio").textContent = pais.tiempo[0];
-  document.getElementById("capsula-pais-fecha-termino").textContent = pais.tiempo[1];
+  document.getElementById("capsula-pais-fecha-inicio").textContent =
+    pais.tiempo[0];
+  document.getElementById("capsula-pais-fecha-termino").textContent =
+    pais.tiempo[1];
 
-  let bandera= document.getElementById("capsula-pais-bandera");
+  const economia = document.getElementById("capsula-economia-pais");
+  const gobierno = document.getElementById("capsula-gobierno-pais");
+  const territorio = document.getElementById("capsula-territorio-pais");
+
+  economia.textContent = pais.economia;
+  gobierno.textContent = pais.politica;
+  territorio.textContent = pais.territorio;
+  pais.territorio;
+
+  if (pais.economia.trim().split(/\s+/).length < 12) {
+    economiaPais[0].disable();
+  } else {
+    economiaPais[0].enable();
+    economiaPais[0].setContent(pais.economia);
+  }
+
+  if (pais.politica.trim().split(/\s+/).length < 12) {
+    politicaPais[0].disable();
+  } else {
+    politicaPais[0].enable();
+    politicaPais[0].setContent(pais.politica);
+  }
+
+  if (pais.territorio.trim().split(/\s+/).length < 12) {
+    territorioPais[0].disable();
+  } else {
+    territorioPais[0].enable();
+    territorioPais[0].setContent(pais.territorio);
+  }
+
+  document.querySelectorAll(".caracteristicas-pais li span").forEach((span) => {
+    if (span.textContent.trim().split(/\s+/).length > 12) {
+      span.textContent =
+        span.textContent.trim().split(" ").slice(0, 10).join(" ") + "…";
+    }
+  });
+
+  let bandera = document.getElementById("capsula-pais-bandera");
   bandera.src = pais.bandera;
   bandera.alt = `Bandera de ${pais.nombre}`;
 
   document.getElementById("capsula-pais-fondo").src = pais.fondo;
   document.getElementById("capsula-pais-personaje").src = pais.personaje;
 
-  document.querySelectorAll(".logros-pais li").forEach(li => li.style.backgroundColor = pais.colorFondo || "rgba(105, 105, 105, 0.562)");
-  document.querySelector("#logros-pais-1").setAttribute("data-logro-pais-exp", pais.logro1[0]);
-  document.querySelector("#logros-pais-2").setAttribute("data-logro-pais-exp", pais.logro2[0]);
-  document.querySelector("#logros-pais-3").setAttribute("data-logro-pais-exp", pais.logro3[0]);
+  document
+    .querySelectorAll(".logros-pais li")
+    .forEach(
+      (li) =>
+        (li.style.backgroundColor =
+          pais.colorFondo || "rgba(105, 105, 105, 0.562)"),
+    );
+  document
+    .querySelector("#logros-pais-1")
+    .setAttribute("data-logro-pais-exp", pais.logro1[0]);
+  document
+    .querySelector("#logros-pais-2")
+    .setAttribute("data-logro-pais-exp", pais.logro2[0]);
+  document
+    .querySelector("#logros-pais-3")
+    .setAttribute("data-logro-pais-exp", pais.logro3[0]);
   document.querySelector("#logros-pais-1 img").src = pais.logro1[1];
   document.querySelector("#logros-pais-2 img").src = pais.logro2[1];
   document.querySelector("#logros-pais-3 img").src = pais.logro3[1];
+  document.querySelector("#capsula-pais-img1").src = pais.logro1[2];
+  document.querySelector("#capsula-pais-img2").src = pais.logro2[2];
+  document.querySelector("#capsula-pais-img3").src = pais.logro3[2];
 
-  fechaInicio[0].setContent(pais.acontecimientos ? pais.acontecimientos[0] : "Sin información");
-  fechaTermino[0].setContent(pais.acontecimientos ? pais.acontecimientos[1] : "Sin información");
+  fechaInicio[0].setContent(
+    pais.acontecimientos ? pais.acontecimientos[0] : "Sin información",
+  );
+  fechaTermino[0].setContent(
+    pais.acontecimientos ? pais.acontecimientos[1] : "Sin información",
+  );
 }
 
 // Hover logros pais
 
-document.querySelectorAll(".logros-pais li").forEach(li => {
+document.querySelectorAll(".logros-pais li").forEach((li) => {
   li.addEventListener("mouseenter", () => {
     let logro = li.getAttribute("data-logro-pais");
     let logroExp = li.getAttribute("data-logro-pais-exp");
-    let imgLogro = document.querySelector(`.capsula-pais-img img[data-logro-pais="${logro}"]`);
+    let imgLogro = document.querySelector(
+      `.capsula-pais-img img[data-logro-pais="${logro}"]`,
+    );
     let imgFondo = document.getElementById("capsula-pais-fondo");
     let logrosExp = document.getElementById("capsula-pais-logros-exp");
     logrosExp.textContent = logroExp;
@@ -1487,7 +1683,9 @@ document.querySelectorAll(".logros-pais li").forEach(li => {
 
   li.addEventListener("mouseleave", () => {
     let logro = li.getAttribute("data-logro-pais");
-    let imgLogro = document.querySelector(`.capsula-pais-img img[data-logro-pais="${logro}"]`);
+    let imgLogro = document.querySelector(
+      `.capsula-pais-img img[data-logro-pais="${logro}"]`,
+    );
     let imgFondo = document.getElementById("capsula-pais-fondo");
     let logrosExp = document.getElementById("capsula-pais-logros-exp");
     logrosExp.style.opacity = "0";
@@ -1506,36 +1704,37 @@ document.getElementById("capsula-pais-cerrar").addEventListener("click", () => {
   sonidoSeleccion();
 });
 
-document.querySelector(".contenedor-capsula-pais").addEventListener("click", function(e) {
-  if (e.target === this) { // Cierra solo si se hace clic fuera de la cápsula
-    this.classList.remove("active");
-    document.querySelector(".capsula-pais").classList.remove("active");
-    sonidoSeleccion();
-  }
-});
+document
+  .querySelector(".contenedor-capsula-pais")
+  .addEventListener("click", function (e) {
+    if (e.target === this) {
+      // Cierra solo si se hace clic fuera de la cápsula
+      this.classList.remove("active");
+      document.querySelector(".capsula-pais").classList.remove("active");
+      sonidoSeleccion();
+    }
+  });
 
 // Carta paises
 
-document.querySelector('.item-pais').addEventListener('dblclick', function() {
-  this.classList.toggle('flipped');
-  this.querySelector(".frontal").classList.toggle('flipped');
-  this.querySelector(".trasera").classList.toggle('flipped');
-  this.querySelector(".etiqueta").classList.toggle('flipped');
-  this.querySelector(".personaje-historico-item").classList.toggle('flipped');
+document.querySelector(".item-pais").addEventListener("dblclick", function () {
+  this.classList.toggle("flipped");
+  this.querySelector(".frontal").classList.toggle("flipped");
+  this.querySelector(".trasera").classList.toggle("flipped");
+  this.querySelector(".etiqueta").classList.toggle("flipped");
+  this.querySelector(".personaje-historico-item").classList.toggle("flipped");
 });
 
-
-
-// NIEVE 
+// NIEVE
 
 function copoNieve() {
-  let contenedorNieve = document.querySelector('.nieve');
+  let contenedorNieve = document.querySelector(".nieve");
   const copo = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   copo.setAttribute("class", "copo");
   copo.setAttribute("viewBox", "0 0 24 24");
 
   copo.style.left = Math.random() * contenedorNieve.offsetWidth + "px";
-  copo.style.animationDuration = (10 + Math.random() * 10) + "s";
+  copo.style.animationDuration = 10 + Math.random() * 10 + "s";
   copo.style.animationDelay = Math.random() * 10 + "s";
   copo.style.translate = `translateZ(${Math.random() * 100}px)`;
 
@@ -1544,12 +1743,10 @@ function copoNieve() {
 `;
   contenedorNieve.appendChild(copo);
 
-  copo.addEventListener("animationend", function() {
+  copo.addEventListener("animationend", function () {
     copo.remove();
     copoNieve();
-  }
-  );
-
+  });
 }
 
 for (let i = 0; i < 75; i++) {
@@ -1557,13 +1754,13 @@ for (let i = 0; i < 75; i++) {
 }
 
 function caerHojas() {
-  let contenedorHojas = document.querySelector('.hojas');
+  let contenedorHojas = document.querySelector(".hojas");
   const hoja = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   hoja.setAttribute("class", "hoja");
   hoja.setAttribute("viewBox", "0 0 24 24");
 
   hoja.style.left = Math.random() * contenedorHojas.offsetWidth + "px";
-  hoja.style.animationDuration = (10 + Math.random() * 10) + "s";
+  hoja.style.animationDuration = 10 + Math.random() * 10 + "s";
   hoja.style.animationDelay = Math.random() * 10 + "s";
   hoja.style.translate = `translateZ(${Math.random() * 100}px)`;
 
@@ -1572,12 +1769,10 @@ function caerHojas() {
 `;
   contenedorHojas.appendChild(hoja);
 
-  hoja.addEventListener("animationend", function() {
+  hoja.addEventListener("animationend", function () {
     hoja.remove();
     caerHojas();
-  }
-  );
-
+  });
 }
 
 for (let i = 0; i < 15; i++) {
@@ -1609,38 +1804,40 @@ function sonidoSeleccion() {
 
 // PESTAÑEO DE PERSONAJE
 
-document.querySelectorAll(".blink").forEach(blink => {
+document.querySelectorAll(".blink").forEach((blink) => {
   const srcOriginal = blink.src;
-  const srcBlink = blink.getAttribute("data-blink")
-  let numero = Math.floor(Math.random() * 2001)
+  const srcBlink = blink.getAttribute("data-blink");
+  let numero = Math.floor(Math.random() * 2001);
 
   setTimeout(() => {
     setInterval(() => {
       setTimeout(() => {
         blink.src = srcBlink;
-      }, 500)
+      }, 500);
       setTimeout(() => {
         blink.src = srcOriginal;
-      }, 600)
+      }, 600);
       setTimeout(() => {
         blink.src = srcBlink;
-      }, 700)
+      }, 700);
       setTimeout(() => {
         blink.src = srcOriginal;
-      }, 800)
-    }, 2000)
-  }, numero)
-})
+      }, 800);
+    }, 2000);
+  }, numero);
+});
 
 // ACTIVADOR DE MAPA INTERACTIVO
 
-document.querySelectorAll(".button-map").forEach(boton => {
-  boton.addEventListener("click", function() {
+document.querySelectorAll(".button-map").forEach((boton) => {
+  boton.addEventListener("click", function () {
     const mapa = this.parentElement;
     if (!mapa) return;
 
     // Buscar activador dentro del mismo contenedor; si no existe, usar el global como fallback
-    const activador = mapa.querySelector(".capa-activador-mapa") || document.querySelector(".capa-activador-mapa");
+    const activador =
+      mapa.querySelector(".capa-activador-mapa") ||
+      document.querySelector(".capa-activador-mapa");
     if (activador) activador.classList.toggle("activo");
 
     mapa.classList.toggle("mapa-activo");
@@ -1648,21 +1845,18 @@ document.querySelectorAll(".button-map").forEach(boton => {
   });
 });
 
-document.querySelectorAll(".capa-activador-mapa").forEach(activador => {
-    activador.addEventListener("click", function() {
-    var mapaNombre = this.getAttribute("data-mapa")
-    var mapa = document.getElementById(mapaNombre)
+document.querySelectorAll(".capa-activador-mapa").forEach((activador) => {
+  activador.addEventListener("click", function () {
+    var mapaNombre = this.getAttribute("data-mapa");
+    var mapa = document.getElementById(mapaNombre);
 
     if (this.classList.contains("activo")) {
-        this.classList.remove("activo");
+      this.classList.remove("activo");
     } else {
-        this.classList.add("activo");
+      this.classList.add("activo");
     }
-        
 
     mapa.classList.add("mapa-activo");
     document.body.classList.add("no-scroll"); // Agregar o quitar la clase "no-scroll" al body
+  });
 });
-
-})
-
