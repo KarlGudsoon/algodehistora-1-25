@@ -4418,7 +4418,7 @@ a:hover {
 
 .widget-progreso-pagina {
   position: fixed;
-  top: 6%;
+  top: 75px;
   right: 0;
   width: 60px;
   height: 60px;
