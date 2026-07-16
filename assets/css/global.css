@@ -1,0 +1,41 @@
+:root {
+  --primary-color: #e92a41;
+  --secondary-color: #c2283a;
+  --yellow-color: #ffff00;
+  --primary-color-dark: #1d1d1d;
+
+  --prehistoria: #f86d31;
+  --antigua: #30a5e8;
+  --medieval: #f8b229;
+  --moderna: #f11c35;
+  --contemporanea: #2e8b57;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+@font-face {
+  font-family: BreeSerif;
+  src: url("/fonts/BreeSerif-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: HatschSans;
+  src: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/HatschSans.otf?v=1679725680887")
+    format("truetype");
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("/fonts/RobotoSlab-Regular.ttf") format("truetype");
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: white;
+}

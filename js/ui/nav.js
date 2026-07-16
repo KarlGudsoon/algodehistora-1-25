@@ -7,7 +7,7 @@ async function inicializarNav() {
   if (user) {
     const inicialUser = user.name.charAt(0).toUpperCase();
     navUserSection.innerHTML = `
-      <span class="avatar">${inicialUser}</span>
+      <a href="/dashboard" class="avatar">${inicialUser}</a>
       <button id="logoutBtn"><img src="/assets/icons/logout.svg" alt="Cerrar sesión" /></button>
     `;
     document.getElementById("logoutBtn").addEventListener("click", logout);

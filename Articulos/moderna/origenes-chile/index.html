@@ -1223,99 +1223,14 @@
           
           
           <div class="container-preguntas">
-            
             <div class="containerNavigation">
-              <div class="markerQuestion">
-                <span id="c-p0"><p>1</p></span>
-                <span id="c-p1"><p>2</p></span>
-                <span id="c-p2"><p>3</p></span>
-                <span id="c-p3"><p>4</p></span>
-                <span id="c-p4"><p>5</p></span>
-                <span id="currentQuestion" hidden></span>
-              </div>
+              <div class="markerQuestion"></div>
               <div class="container-navButton">
                 <div class="navButton" id="prev"><img src="/assets/icons/up.svg"></div>
                 <div class="navButton" id="next"><img src="/assets/icons/up.svg"></div>
               </div>
             </div>
-          
-            <section class="question" id="p0">
-                <h2>¿Cuales son los períodos de la Prehistoria?</h2>
-                <label>
-                    <input type="radio" value="1" name="p0" onclick="respuesta(0, this)"> Paleolítico, Mesolítico y Neolítico
-                </label>
-                <label>
-                    <input type="radio" value="2" name="p0" onclick="respuesta(0, this)"> Paleolítico y Neolítico
-                </label>
-                <label>
-                    <input type="radio" value="3" name="p0" onclick="respuesta(0, this)"> Paleolítico inferior, medio y superior
-                </label>
-                <label>
-                    <input type="radio" value="4" name="p0" onclick="respuesta(0, this)"> Ninguna de las anteriores
-                </label>
-                
-            </section>
-            <section class="question" id="p1">
-                <h2>Es la progresiva adquisición de las características que acabaron diferenciando a los homínidos del resto de primates.
-                </h2>
-                <label>
-                    <input type="radio" value="1" name="p1" onclick="respuesta(1, this)"> Evolución
-                </label>
-                <label>
-                    <input type="radio" value="2" name="p1" onclick="respuesta(1, this)"> Hominización
-                </label>
-                <label>
-                    <input type="radio" value="3" name="p1" onclick="respuesta(1, this)"> Humanización
-                </label>
-                <label>
-                    <input type="radio" value="4" name="p1" onclick="respuesta(1, this)"> Adaptación
-                </label>
-            </section>
-            <section class="question" id="p2">
-                <h2>¿Qué habilidad permite a los Homo Sapiens realizar cosas como rituales, enterramientos, arte, lenguaje, etc.?</h2>
-                <label>
-                    <input type="radio" value="1" name="p2" onclick="respuesta(2, this)"> Abstracción
-                </label>
-                <label>
-                    <input type="radio" value="2" name="p2" onclick="respuesta(2, this)"> Herramientas
-                </label>
-                <label>
-                    <input type="radio" value="3" name="p2" onclick="respuesta(2, this)"> Bipedismo
-                </label>
-                <label>
-                    <input type="radio" value="4" name="p2" onclick="respuesta(2, this)"> Adaptación
-                </label>
-            </section>
-            <section class="question" id="p3">
-                <h2>¿Por qué se caracterizó la especie humana Homo Habilis?</h2>
-                <label>
-                    <input type="radio" value="1" name="p3" onclick="respuesta(3, this)"> Descubrimiento del fuego
-                </label>
-                <label>
-                    <input type="radio" value="2" name="p3" onclick="respuesta(3, this)"> Vivir en cuevas
-                </label>
-                <label>
-                    <input type="radio" value="3" name="p3" onclick="respuesta(3, this)"> Creación de herramientas
-                </label>
-                <label>
-                    <input type="radio" value="4" name="p3" onclick="respuesta(3, this)"> Ninguna de las anteriores
-                </label>
-            </section>
-            <section class="question" id="p4">
-                <h2>¿Cuál fue la primera de las especies de Homos de emigrar de África hacia otros continentes?</h2>
-                <label>
-                    <input type="radio" value="1" name="p4" onclick="respuesta(4, this)"> Homo Habilis
-                </label>
-                <label>
-                    <input type="radio" value="2" name="p4" onclick="respuesta(4, this)"> Homo Erectus
-                </label>
-                <label>
-                    <input type="radio" value="3" name="p4" onclick="respuesta(4, this)"> Homo Sapiens
-                </label>
-                <label>
-                    <input type="radio" value="4" name="p4" onclick="respuesta(4, this)"> Homo Neanderthal
-                </label>
-            </section>
+            <!-- las .question se insertan aquí dinámicamente -->
           </div>
           <div class="resultado-cuestionario-final" style="overflow: auto;">
             <div id="grafico-cuestionario"></div>
@@ -1337,6 +1252,9 @@
     <script src="/js/services/cartasService.js"></script>
     <script src="/js/ui/articulos/cartas.js"></script>
     <script src="/js/ui/articulos/progreso.js"></script>
+    <script src="/js/services/articuloService.js"></script>
+    <script src="/js/services/cuestionarioService.js"></script>
+    <script src="/js/ui/articulos/cuestionario.js"></script>
     <script src="/Borradores/template-articulo/script.js" defer></script>
     <script src="/Apps/glosario/script.js"></script>
     <script src="/Articulos/moderna/origenes-chile/script.js"></script>
@@ -1349,6 +1267,8 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+
+      inicializarCuestionario('conquistadechile');
 
     const tituloArticulo = "Conquista de Chile";
     const elementostituloArticulo = document.querySelectorAll('.titulo-articulo');
