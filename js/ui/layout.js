@@ -33,4 +33,4 @@ async function initLayout() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initLayout);
+initLayout();

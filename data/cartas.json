@@ -157,13 +157,15 @@
   },
   "obrero": {
     "puntaje": "5",
-    "rareza": "basico",
+    "rareza": "comun",
     "colorCarta": "punto-plata",
     "imgSobre": "url(/img/moderna/fondo.webp)",
     "titulo": "OBRERO INDUSTRIAL",
     "color": "var(--contemporanea)",
     "especialidad": "Compañero",
-    "categoria": [{ "nombre": "Contemporanea", "clase": "etiqueta-moderna" }],
+    "categoria": [
+      { "nombre": "Contemporanea", "clase": "etiqueta-contemporanea" }
+    ],
     "imagen": "/img/contemporanea/obrero-siderurgica.png",
     "fondoFrontal": "/img/contemporanea/heyenbrock-min%20(2).webp",
     "fondoTrasera": "/img/contemporanea/heyenbrock-min%20(2).webp",

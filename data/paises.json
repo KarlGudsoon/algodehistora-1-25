@@ -1,0 +1,57 @@
+{
+  "imperioinca": {
+    "nombre": "Imperio Inca",
+    "colorFondo": "rgba(32, 102, 5, 0.6)",
+    "descripcion": "El Imperio Inca, llamado Tahuantinsuyo, fue el imperio más grande de la América precolombina, que se extendió desde Ecuador hasta Chile y Argentina entre los siglos XV y XVI, con su centro en la ciudad de Cusco.",
+    "etiqueta": ["Imperio Precolombino", "etiqueta-precolombino"],
+    "bandera": "/img/banderas/estandarte-inca.svg",
+    "economia": "Economía basada en la agricultura, el comercio y el tributo.",
+    "politica": "Sistema de gobierno centralizado con un emperador (Sapa Inca)",
+    "territorio": "Ubicación: Región andina de América del Sur, principalmente en Perú, Ecuador, Bolivia y partes de Chile y Argentina.",
+    "logro1": [
+      "Construcción de una vasta red de caminos y puentes.",
+      "/assets/icons/recorrido.svg"
+    ],
+    "logro2": [
+      "Desarrollo de técnicas agrícolas avanzadas, como las terrazas.",
+      "/assets/icons/trigo.svg"
+    ],
+    "logro3": [
+      "Sistema de administración eficiente y centralizada.",
+      "/assets/icons/inca.svg"
+    ],
+    "tiempo": ["Siglo XV", "1533"],
+
+    "personaje": "",
+    "fondo": "/img/moderna/descubrimiento-chile/9c7cecfd-5b8a-4916-82f4-34e3fb119004.webp"
+  },
+  "imperioespañol": {
+    "nombre": "Imperio Español",
+    "colorFondo": "rgba(188, 22, 42, 0.6)",
+    "descripcion": "El Imperio Español fue uno de los imperios más grandes de la historia, abarcando territorios en Europa, América, Asia y África desde el siglo XV hasta el siglo XIX.",
+    "etiqueta": ["Imperio Colonial", "etiqueta-moderna"],
+    "bandera": "/img/banderas/bandera-imperio-español.webp",
+    "economia": "Economía basada en la explotación de metales preciosos como oro y plata, el comercio transatlántico, la agricultura de plantación en América y el sistema de encomiendas.",
+    "politica": "Monarquía absoluta con un sistema de virreinatos y gobernadores para administrar los territorios coloniales.",
+    "territorio": "Territorios en Europa (España, Portugal por unión dinástica), gran parte de América (desde México hasta el Cono Sur, además del Caribe), Filipinas y otras islas en Asia, así como enclaves en África.",
+    "logro1": [
+      "Primer imperio global con territorios en los cinco continentes.",
+      "/assets/icons/subway--world-1.svg",
+      "/img/moderna/1423px-F0087_Louvre_Gellee_port_au_soleil_couchant-_INV4715_rwk.webp"
+    ],
+    "logro2": [
+      "Desarrollo del comercio transatlántico y la ruta de Manila-Acapulco.",
+      "/assets/icons/moneda.svg",
+      "/img/moderna/fondo.webp"
+    ],
+    "logro3": [
+      "Difusión de la lengua española, el cristianismo y la cultura europea en América y Asia.",
+      "/assets/icons/corona.png",
+      "/img/moderna/Lorrain.seaport.webp"
+    ],
+    "tiempo": ["1492", "1898"],
+    "acontecimientos": ["Origen", "Termino"],
+    "personaje": "",
+    "fondo": "/img/moderna/fondo.webp"
+  }
+}

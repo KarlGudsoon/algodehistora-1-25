@@ -16,3 +16,77 @@ main {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem 2rem;
 }
+
+h1 {
+  font-family: BreeSerif;
+  text-transform: uppercase;
+}
+
+.nav-interno {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-interno ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  margin: 0;
+  gap: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.nav-interno ul li {
+  list-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  transition: 0.2s ease;
+}
+
+.nav-interno ul li button {
+  padding: 0.25rem 1rem;
+  display: block;
+  border-radius: 1rem;
+  background: none;
+  font-family: Roboto;
+  border: 0;
+  background-color: #eee;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.nav-interno ul li:hover {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.nav-interno ul li:active {
+  scale: 0.95;
+}
+
+#contenedor-principal {
+  flex: 1;
+}
+
+#coleccionCartas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.carta-placeholder {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 270px;
+  height: 360px;
+  border-radius: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    margin: 0 0 0 0;
+  }
+}

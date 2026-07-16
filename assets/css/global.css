@@ -11,6 +11,30 @@
   --contemporanea: #2e8b57;
 }
 
+.etiqueta-prehistoria {
+  background-color: var(--prehistoria);
+}
+
+.etiqueta-antigua {
+  background-color: var(--antigua);
+}
+
+.etiqueta-medieval {
+  background-color: var(--medieval);
+}
+
+.etiqueta-moderna {
+  background-color: var(--moderna);
+}
+
+.etiqueta-precolombino {
+  background-color: #475936;
+}
+
+.etiqueta-contemporanea {
+  background-color: var(--contemporanea);
+}
+
 @view-transition {
   navigation: auto;
 }
