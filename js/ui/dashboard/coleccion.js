@@ -48,9 +48,9 @@ function renderizarColeccionCartas(cartasUsuario, catalogo) {
                 </div>
                 <div class="contenedor-caracteristicas">
                     <span id="puntaje-carta-personaje">${carta.puntaje}</span>
-                    <span class="caracteristicas-personaje-frontal"><img src="${carta.personalidad[0]?.img || ""}"><p class="caracteristica-frontal" id="caracteristica-1">${carta.personalidad[0]?.nombre || ""}</p></span>
-                    <span class="caracteristicas-personaje-frontal"><img src="${carta.personalidad[1]?.img || ""}"><p class="caracteristica-frontal" id="caracteristica-2">${carta.personalidad[1]?.nombre || ""}</p></span>
-                    <span class="caracteristicas-personaje-frontal"><img src="${carta.personalidad[2]?.img || ""}"><p class="caracteristica-frontal" id="caracteristica-3">${carta.personalidad[2]?.nombre || ""}</p></span>
+                    <span class="caracteristicas-personaje-frontal" data-content="${carta.personalidad[0]?.nombre || ""}"><img src="${carta.personalidad[0]?.img || ""}"></span>
+                    <span class="caracteristicas-personaje-frontal" data-content="${carta.personalidad[1]?.nombre || ""}"><img src="${carta.personalidad[1]?.img || ""}"></span>
+                    <span class="caracteristicas-personaje-frontal" data-content="${carta.personalidad[2]?.nombre || ""}"><img src="${carta.personalidad[2]?.img || ""}"></span>
                 </div>
                 <div class="contenedor-especialidad">
                     <div class="especialidad-personaje">
@@ -77,7 +77,7 @@ function renderizarColeccionCartas(cartasUsuario, catalogo) {
                         <p id="descripcion-personaje">${carta.descripcion}</p>
                     </div>
                     <div class="descripcion-personaje-caracteristicas" id="iconos-personaje">
-                        <span class="lugar-personaje ${carta.colorCarta}" data-tippy-content="${carta.lugar ? carta.lugar : "Sin información"}"><img src="/svg/mundo.svg"><img src="" id="img-lugar-personaje"></span>
+                        <span class="lugar-personaje ${carta.colorCarta}" data-tippy-content="${carta.lugar ? carta.lugar : "Sin información"}"><img src="/svg/mundo.svg"><img src="${carta.bandera}" id="img-lugar-personaje"></span>
                         <span class="reconocimiento-personaje ${carta.colorCarta}" data-reconocimiento='${JSON.stringify(carta.reconocimiento || [])}'><img src="/svg/ribbon.svg"></span>
                         <span class="tiempo-personaje ${carta.colorCarta}" data-tippy-content="${carta.tiempo ? carta.tiempo : "Sin información"}"><img draggable="false" src="/svg/tiempo.svg"></span>
                     </div>
@@ -100,8 +100,8 @@ function renderizarColeccionCartas(cartasUsuario, catalogo) {
     .join("");
 
   activarTiltEnNuevasCartas();
-  activarFlipEnNuevasCartas();
   activarTippyEnNuevasCartas();
+  activarExpandirEnNuevasCartas();
 }
 
 function renderizarColeccionPaises(paisesUsuario) {
@@ -118,10 +118,17 @@ function activarTiltEnNuevasCartas() {
 }
 
 function activarTippyEnNuevasCartas() {
-  tippy("#coleccionCartas [data-tippy-content]");
+  tippy("#carta-expandida-contenedor [data-tippy-content]", {
+    allowHTML: true,
+    interactive: true,
+    theme: "punto-basico",
+    placement: "top",
+  });
 
   document
-    .querySelectorAll("#coleccionCartas .reconocimiento-personaje")
+    .querySelectorAll(
+      "#carta-expandida-contenedor .item .reconocimiento-personaje",
+    )
     .forEach((el) => {
       const reconocimientos = el.dataset.reconocimiento
         ? JSON.parse(decodeURIComponent(el.dataset.reconocimiento))
@@ -138,69 +145,177 @@ function activarTippyEnNuevasCartas() {
       tippy(el, {
         content: contenido,
         allowHTML: true,
-        theme: "light",
         interactive: true,
+        theme: "punto-basico",
+        placement: "top",
       });
     });
 }
 
-function activarFlipEnNuevasCartas() {
+function activarExpandirEnNuevasCartas() {
   const cardCarousel = document.querySelectorAll("#coleccionCartas .item");
 
   cardCarousel.forEach((card) => {
-    // Evita duplicar el listener si esta función se llama más de una vez
-    if (card.dataset.flipListo === "true") return;
-    card.dataset.flipListo = "true";
+    if (card.dataset.expandirListo === "true") return;
+    card.dataset.expandirListo = "true";
 
-    const etiquetaItem = card.querySelector(".etiqueta");
-    const personajeItem = card.querySelector(".personaje-item");
-    const personajeHistoricoItem = card.querySelector(".img-personaje-frontal");
-    const personajeHistoricoItemTrasera = card.querySelector(
-      ".personaje-historico-item-trasera",
-    );
-    const descripcionItem = card.querySelector(
-      ".descripcion-personaje-trasera",
-    );
-    const caracteristicaFrontal = card.querySelector(
-      ".contenedor-caracteristicas",
-    );
-    const especialidad = card.querySelector(".contenedor-especialidad");
-
-    let startX;
-
-    const flipCard = () => {
-      const sonidoCarta = new Audio("/audio/carta.mp3");
-      sonidoCarta.volume = 0.3;
-      sonidoCarta.preload = "auto";
-      sonidoCarta.play();
-
-      card.classList.toggle("flipped");
-      if (descripcionItem) descripcionItem.classList.toggle("flipped");
-      if (etiquetaItem) etiquetaItem.classList.toggle("flipped");
-      if (caracteristicaFrontal)
-        caracteristicaFrontal.classList.toggle("flipped");
-      if (especialidad) especialidad.classList.toggle("flipped");
-      if (personajeItem) personajeItem.classList.toggle("flipped");
-      if (personajeHistoricoItem)
-        personajeHistoricoItem.classList.toggle("flipped");
-      if (personajeHistoricoItemTrasera)
-        personajeHistoricoItemTrasera.classList.toggle("flipped");
-    };
-
-    // Click simple (desktop)
-    card.addEventListener("dblclick", flipCard);
-
-    // Swipe para móviles (se mantiene igual)
-    card.addEventListener("touchstart", (e) => {
-      startX = e.touches[0].clientX;
-    });
-
-    card.addEventListener("touchend", (e) => {
-      const endX = e.changedTouches[0].clientX;
-      const diffX = endX - startX;
-      if (Math.abs(diffX) > 50) {
-        flipCard();
-      }
-    });
+    card.addEventListener("click", () => expandirCarta(card));
   });
+}
+
+function expandirCarta(cardOriginal) {
+  const overlay = document.getElementById("overlay-carta-expandida");
+  const contenedor = document.getElementById("carta-expandida-contenedor");
+
+  // 1. FIRST: posición actual de la carta en pantalla
+  const rectInicial = cardOriginal.getBoundingClientRect();
+
+  // 2. Clonamos la carta para no mover la original del grid
+  const clon = cardOriginal.cloneNode(true);
+  clon.classList.add("carta-clon-expandida");
+
+  contenedor.innerHTML = "";
+  contenedor.appendChild(clon);
+
+  overlay.classList.remove("oculto");
+
+  // --- El CONTENEDOR controla posición y tamaño (top/left/width/height) ---
+  contenedor.style.position = "fixed";
+  contenedor.style.top = `${rectInicial.top}px`;
+  contenedor.style.left = `${rectInicial.left}px`;
+  contenedor.style.width = `${rectInicial.width}px`;
+  contenedor.style.height = `${rectInicial.height}px`;
+  contenedor.style.margin = "0";
+  contenedor.style.zIndex = "1001";
+  contenedor.style.transition =
+    "top 0.4s cubic-bezier(0.22, 1, 0.36, 1), " +
+    "left 0.4s cubic-bezier(0.22, 1, 0.36, 1), " +
+    "width 0.4s cubic-bezier(0.22, 1, 0.36, 1), " +
+    "height 0.4s cubic-bezier(0.22, 1, 0.36, 1)";
+
+  // --- El CLON solo ocupa el 100% del contenedor, sin transition propia ---
+  // (así el tilt puede escribir su propia transition sin afectar nada más)
+  clon.style.width = "100%";
+  clon.style.height = "100%";
+  clon.style.position = "relative";
+  clon.style.margin = "0";
+
+  // Forzamos reflow para que el navegador registre la posición inicial
+  // antes de aplicar la posición final (si no, no anima)
+  contenedor.offsetHeight;
+
+  requestAnimationFrame(() => {
+    overlay.classList.add("activo");
+
+    // 3. LAST + PLAY: animamos el contenedor hacia el centro, más grande
+    //
+    // En pantallas chicas (móvil) usamos un porcentaje mayor del ancho,
+    // porque un 40% de 375px es casi el mismo tamaño que ya tenía la carta.
+    // En pantallas grandes (desktop) con un 40% ya se nota bien el crecimiento.
+    const esMovil = window.innerWidth < 640;
+    const porcentajeAncho = esMovil ? 0.85 : 0.4;
+    const topeMaximo = esMovil ? window.innerWidth * 0.85 : 400;
+
+    const anchoFinal = Math.min(
+      window.innerWidth * porcentajeAncho,
+      topeMaximo,
+    );
+    const altoFinal = anchoFinal * (rectInicial.height / rectInicial.width);
+
+    contenedor.style.top = `${(window.innerHeight - altoFinal) / 2}px`;
+    contenedor.style.left = `${(window.innerWidth - anchoFinal) / 2}px`;
+    contenedor.style.width = `${anchoFinal}px`;
+    contenedor.style.height = `${altoFinal}px`;
+  });
+
+  activarTippyEnNuevasCartas();
+
+  // --- Voltear la carta: doble click (desktop) o swipe horizontal (móvil) ---
+  let startX = 0;
+
+  clon.addEventListener("dblclick", (e) => {
+    e.stopPropagation();
+    flipCardGenerico(clon);
+  });
+
+  clon.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  clon.addEventListener("touchend", (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const diffX = endX - startX;
+    if (Math.abs(diffX) > 50) {
+      flipCardGenerico(clon);
+    }
+  });
+
+  // Click simple en el clon: no debe cerrar el overlay
+  clon.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  // Cerrar al hacer click en el fondo oscuro del overlay
+  overlay.onclick = (e) => {
+    if (e.target === overlay) {
+      cerrarCartaExpandida(contenedor, clon, rectInicial);
+    }
+  };
+
+  // --- Inicializar Vanilla-Tilt en el CLON, cuando termine de moverse ---
+  contenedor.addEventListener(
+    "transitionend",
+    function alTerminarEntrada(e) {
+      contenedor.removeEventListener("transitionend", alTerminarEntrada);
+      VanillaTilt.init(clon);
+    },
+    { once: true },
+  );
+}
+
+function cerrarCartaExpandida(contenedor, clon, rectInicial) {
+  const overlay = document.getElementById("overlay-carta-expandida");
+
+  // Destruir tilt antes de cerrar (vive en el clon, no en el contenedor,
+  // así que esto no afecta la transition del contenedor)
+  if (clon.vanillaTilt) {
+    clon.vanillaTilt.destroy();
+  }
+
+  // Animamos el CONTENEDOR de vuelta a la posición y tamaño original.
+  // Su "transition" nunca fue tocada por el tilt, así que esto SÍ anima.
+  contenedor.style.top = `${rectInicial.top}px`;
+  contenedor.style.left = `${rectInicial.left}px`;
+  contenedor.style.width = `${rectInicial.width}px`;
+  contenedor.style.height = `${rectInicial.height}px`;
+
+  overlay.classList.remove("activo");
+
+  setTimeout(() => {
+    overlay.classList.add("oculto");
+    contenedor.innerHTML = "";
+  }, 400); // debe coincidir con la duración del transition
+}
+
+// ============================================================
+// Flip genérico, reutilizable tanto en el grid como en el clon
+// ============================================================
+function flipCardGenerico(card) {
+  const sonidoCarta = new Audio("/audio/carta.mp3");
+  sonidoCarta.volume = 0.3;
+  sonidoCarta.play();
+
+  card.classList.toggle("flipped");
+  card
+    .querySelector(".descripcion-personaje-trasera")
+    ?.classList.toggle("flipped");
+  card.querySelector(".etiqueta")?.classList.toggle("flipped");
+  card
+    .querySelector(".contenedor-caracteristicas")
+    ?.classList.toggle("flipped");
+  card.querySelector(".contenedor-especialidad")?.classList.toggle("flipped");
+  card.querySelector(".img-personaje-frontal")?.classList.toggle("flipped");
+  card
+    .querySelector(".personaje-historico-item-trasera")
+    ?.classList.toggle("flipped");
 }

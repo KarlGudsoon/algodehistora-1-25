@@ -80,9 +80,38 @@ h1 {
 
 .carta-placeholder {
   background-color: rgba(0, 0, 0, 0.2);
-  width: 270px;
-  height: 360px;
-  border-radius: 2rem;
+  width: 180px;
+  height: 240px;
+  scale: 1;
+  border-radius: 1rem;
+}
+
+.overlay-carta {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.overlay-carta.activo {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.overlay-carta.oculto {
+  display: none;
+}
+
+#carta-expandida-contenedor {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  container-type: inline-size;
+  container-name: carta;
 }
 
 @media screen and (max-width: 768px) {
