@@ -1,3 +1,7 @@
+// Variables a nivel de módulo, para reutilizar sin volver a pedir la API
+let catalogoCartasActual = {};
+let slugsObtenidosActual = [];
+
 async function inicializarColeccion() {
   try {
     const datos = await obtenerColeccionDashboard();
@@ -5,106 +9,124 @@ async function inicializarColeccion() {
       r.json(),
     );
 
-    renderizarEspaciosCartas();
+    catalogoCartasActual = catalogoCartas;
+    slugsObtenidosActual = datos.cartas.map((c) => c.carta_slug);
 
     renderizarColeccionCartas(datos.cartas, catalogoCartas);
     renderizarColeccionPaises(datos.paises);
+
+    activarBuscadorCartas(); // <-- nuevo
   } catch (error) {
     console.error("Error al cargar la colección:", error);
   }
 }
 
-function renderizarEspaciosCartas() {}
-
 function renderizarColeccionCartas(cartasUsuario, catalogo) {
   const contenedor = document.getElementById("coleccionCartas");
   const slugsObtenidos = cartasUsuario.map((c) => c.carta_slug);
 
-  contenedor.innerHTML = Object.entries(catalogo)
-    .map(([slug, carta]) => {
-      const obtenida = slugsObtenidos.includes(slug);
-      const esp = carta.especialidad.toLowerCase();
-      let especialidadImg = "";
+  const entradasOrdenadas = Object.entries(catalogo).sort((a, b) => {
+    const periodoA = a[1].periodo ?? 0;
+    const periodoB = b[1].periodo ?? 0;
+    return periodoA - periodoB;
+  });
 
-      if (esp === "agricultor") {
-        especialidadImg = "/assets/icons/trigo.svg";
-      } else if (esp === "intrepido" || esp === "intrépido") {
-        especialidadImg = "/assets/icons/game-icons--angry-eyes.svg";
-      } else if (esp === "pensador") {
-        especialidadImg = "/assets/icons/cerebro.svg";
-      }
+  if (entradasOrdenadas.length === 0) {
+    contenedor.innerHTML = `<p class="sin-resultados">No se encontraron personajes.</p>`;
+    activarTiltEnNuevasCartas();
+    activarTippyEnNuevasCartas();
+    activarExpandirEnNuevasCartas();
+    return;
+  }
 
-      return `
-      <div class="carta-placeholder">
-        ${
-          obtenida
-            ? `
-            <div class="item " id="personaje-historico" data-tilt>
-                <div id="carta-expandir">«»</div>
-                <div class="etiqueta">
-                    <span>Personaje Histórico</span>
-                    <h1 id="nombre-personaje">${carta.titulo}</h1>
-                    <span id="categoria-personaje" class="${carta.categoria[0].clase}">${carta.categoria[0].nombre}</span>
-                </div>
-                <div class="contenedor-caracteristicas">
-                    <span id="puntaje-carta-personaje">${carta.puntaje}</span>
-                    <span class="conector"></span>
-                    <span class="caracteristicas-personaje-frontal ${carta.personalidad[0]?.clase || "punto-basico"}" data-content="${carta.personalidad[0]?.nombre || ""}"><img src="${carta.personalidad[0]?.img || ""}"></span>
-                    <span class="conector"></span>
-                    <span class="caracteristicas-personaje-frontal ${carta.personalidad[1]?.clase || "punto-basico"}" data-content="${carta.personalidad[1]?.nombre || ""}"><img src="${carta.personalidad[1]?.img || ""}"></span>
-                    <span class="conector"></span>
-                    <span class="caracteristicas-personaje-frontal ${carta.personalidad[2]?.clase || "punto-basico"}" data-content="${carta.personalidad[2]?.nombre || ""}"><img src="${carta.personalidad[2]?.img || ""}"></span>
-                </div>
-                <div class="contenedor-especialidad">
-                    <div class="especialidad-personaje">
-                        <img src="${especialidadImg}">
-                    </div>
-                    <span class="especialidad-nombre">${carta.especialidad}</span>
-                </div>
-                <div class="img-personaje-frontal">
-                    <img id="imagen-personaje" class="personaje-historico-item" src="${carta.imagen}" draggable="false">
-                </div>
-                <div id="face-frontal" class="face frontal ${carta.rareza}">
-                    <div class="fondo-frontal">
-                        <h1 class="etiqueta-fondo" id="etiqueta-fondo-frontal">${carta.categoria[0].nombre}</h1>
-                        <img id="fondo-frontal" src="${carta.fondoFrontal}" draggable="false">      
-                    </div>
-                </div>
-                <div class="descripcion-personaje-trasera">
-                    <div class="carta-personalidad" id="personalidad-personaje">
-                        <span class="${carta.personalidad[0]?.clase || ""}">${carta.personalidad[0]?.nombre || ""}</span>
-                        <span class="${carta.personalidad[1]?.clase || ""}">${carta.personalidad[1]?.nombre || ""}</span>
-                        <span class="${carta.personalidad[2]?.clase || ""}">${carta.personalidad[2]?.nombre || ""}</span>
-                    </div>
-                    <div class="descripcion-personaje-texto ${carta.colorCarta}" id="descripcion-personaje-texto">
-                        <p id="descripcion-personaje">${carta.descripcion}</p>
-                    </div>
-                    <div class="descripcion-personaje-caracteristicas" id="iconos-personaje">
-                        <span class="lugar-personaje ${carta.colorCarta}" data-tippy-content="${carta.lugar ? carta.lugar : "Sin información"}"><img src="/svg/mundo.svg"><img src="${carta.bandera}" id="img-lugar-personaje"></span>
-                        <span class="reconocimiento-personaje ${carta.colorCarta}" data-reconocimiento='${JSON.stringify(carta.reconocimiento || [])}'><img src="/svg/ribbon.svg"></span>
-                        <span class="tiempo-personaje ${carta.colorCarta}" data-tippy-content="${carta.tiempo ? carta.tiempo : "Sin información"}"><img draggable="false" src="/svg/tiempo.svg"></span>
-                    </div>
-                </div>
-                <img id="imagen-personaje-trasera" class="personaje-historico-item-trasera" src="${carta.imagen}" draggable="false">
-                <div id="face-trasera" class="face trasera ${carta.rareza}">
-                    <div class="img-personaje-trasera">
-                        <h1 class="etiqueta-fondo" id="etiqueta-fondo-trasera">${carta.titulo}</h1>
-                        <img id="fondo-trasera" src="${carta.fondoTrasera}">
-                    </div>
-                </div>
-            </div>
-            `
-            : ""
-        }
-        
-      </div>
-    `;
-    })
+  contenedor.innerHTML = entradasOrdenadas
+    .map(([slug, carta]) => renderizarCartaHtml(slug, carta, slugsObtenidos))
     .join("");
 
   activarTiltEnNuevasCartas();
   activarTippyEnNuevasCartas();
   activarExpandirEnNuevasCartas();
+}
+
+// Extraje el template de una sola carta a su propia función,
+// para no duplicar el bloque gigante de HTML dentro del .map() de categorías
+function renderizarCartaHtml(slug, carta, slugsObtenidos) {
+  const obtenida = slugsObtenidos.includes(slug);
+  const esp = carta.especialidad.toLowerCase();
+  let especialidadImg = "";
+
+  if (esp === "agricultor") {
+    especialidadImg = "/assets/icons/trigo.svg";
+  } else if (esp === "intrepido" || esp === "intrépido") {
+    especialidadImg = "/assets/icons/game-icons--angry-eyes.svg";
+  } else if (esp === "pensador") {
+    especialidadImg = "/assets/icons/cerebro.svg";
+  }
+
+  return `
+    <div class="carta-placeholder">
+      ${
+        obtenida
+          ? `
+          <div class="item " id="personaje-historico" data-tilt>
+              <div id="carta-expandir">«»</div>
+              <div class="etiqueta">
+                  <span>Personaje Histórico</span>
+                  <h1 id="nombre-personaje">${carta.titulo}</h1>
+                  <span id="categoria-personaje" class="${carta.categoria[0].clase}">${carta.categoria[0].nombre}</span>
+              </div>
+              <div class="contenedor-caracteristicas">
+                  <span id="puntaje-carta-personaje">${carta.puntaje}</span>
+                  <span class="conector"></span>
+                  <span class="caracteristicas-personaje-frontal ${carta.personalidad[0]?.clase || "punto-basico"}" data-content="${carta.personalidad[0]?.nombre || ""}"><img src="${carta.personalidad[0]?.img || ""}"></span>
+                  <span class="conector"></span>
+                  <span class="caracteristicas-personaje-frontal ${carta.personalidad[1]?.clase || "punto-basico"}" data-content="${carta.personalidad[1]?.nombre || ""}"><img src="${carta.personalidad[1]?.img || ""}"></span>
+                  <span class="conector"></span>
+                  <span class="caracteristicas-personaje-frontal ${carta.personalidad[2]?.clase || "punto-basico"}" data-content="${carta.personalidad[2]?.nombre || ""}"><img src="${carta.personalidad[2]?.img || ""}"></span>
+              </div>
+              <div class="contenedor-especialidad">
+                  <div class="especialidad-personaje">
+                      <img src="${especialidadImg}">
+                  </div>
+                  <span class="especialidad-nombre">${carta.especialidad}</span>
+              </div>
+              <div class="img-personaje-frontal">
+                  <img id="imagen-personaje" class="personaje-historico-item" src="${carta.imagen}" draggable="false">
+              </div>
+              <div id="face-frontal" class="face frontal ${carta.rareza}">
+                  <div class="fondo-frontal">
+                      <h1 class="etiqueta-fondo" id="etiqueta-fondo-frontal">${carta.categoria[0].nombre}</h1>
+                      <img id="fondo-frontal" src="${carta.fondoFrontal}" draggable="false">      
+                  </div>
+              </div>
+              <div class="descripcion-personaje-trasera">
+                  <div class="carta-personalidad" id="personalidad-personaje">
+                      <span class="${carta.personalidad[0]?.clase || ""}">${carta.personalidad[0]?.nombre || ""}</span>
+                      <span class="${carta.personalidad[1]?.clase || ""}">${carta.personalidad[1]?.nombre || ""}</span>
+                      <span class="${carta.personalidad[2]?.clase || ""}">${carta.personalidad[2]?.nombre || ""}</span>
+                  </div>
+                  <div class="descripcion-personaje-texto ${carta.colorCarta}" id="descripcion-personaje-texto">
+                      <p id="descripcion-personaje">${carta.descripcion}</p>
+                  </div>
+                  <div class="descripcion-personaje-caracteristicas" id="iconos-personaje">
+                      <span class="lugar-personaje ${carta.colorCarta}" data-tippy-content="${carta.lugar ? carta.lugar : "Sin información"}"><img src="/svg/mundo.svg"><img src="${carta.bandera}" id="img-lugar-personaje"></span>
+                      <span class="reconocimiento-personaje ${carta.colorCarta}" data-reconocimiento='${JSON.stringify(carta.reconocimiento || [])}'><img src="/svg/ribbon.svg"></span>
+                      <span class="tiempo-personaje ${carta.colorCarta}" data-tippy-content="${carta.tiempo ? carta.tiempo : "Sin información"}"><img draggable="false" src="/svg/tiempo.svg"></span>
+                  </div>
+              </div>
+              <img id="imagen-personaje-trasera" class="personaje-historico-item-trasera" src="${carta.imagen}" draggable="false">
+              <div id="face-trasera" class="face trasera ${carta.rareza}">
+                  <div class="img-personaje-trasera">
+                      <h1 class="etiqueta-fondo" id="etiqueta-fondo-trasera">${carta.titulo}</h1>
+                      <img id="fondo-trasera" src="${carta.fondoTrasera}">
+                  </div>
+              </div>
+          </div>
+          `
+          : ""
+      }
+    </div>
+  `;
 }
 
 function renderizarColeccionPaises(paisesUsuario) {
@@ -331,4 +353,24 @@ function sonidoSeleccion() {
   sonido.volume = 0.3;
   sonido.preload = "auto";
   sonido.play();
+}
+
+function activarBuscadorCartas() {
+  const input = document.getElementById("buscadorCartas");
+  if (!input) return;
+
+  input.addEventListener("input", () => {
+    const termino = input.value.trim().toLowerCase();
+
+    const catalogoFiltrado = Object.fromEntries(
+      Object.entries(catalogoCartasActual).filter(([slug, carta]) =>
+        carta.titulo.toLowerCase().includes(termino),
+      ),
+    );
+
+    renderizarColeccionCartas(
+      slugsObtenidosActual.map((slug) => ({ carta_slug: slug })), // mismo formato que espera la función
+      catalogoFiltrado,
+    );
+  });
 }
