@@ -48,9 +48,12 @@ function renderizarColeccionCartas(cartasUsuario, catalogo) {
                 </div>
                 <div class="contenedor-caracteristicas">
                     <span id="puntaje-carta-personaje">${carta.puntaje}</span>
-                    <span class="caracteristicas-personaje-frontal" data-content="${carta.personalidad[0]?.nombre || ""}"><img src="${carta.personalidad[0]?.img || ""}"></span>
-                    <span class="caracteristicas-personaje-frontal" data-content="${carta.personalidad[1]?.nombre || ""}"><img src="${carta.personalidad[1]?.img || ""}"></span>
-                    <span class="caracteristicas-personaje-frontal" data-content="${carta.personalidad[2]?.nombre || ""}"><img src="${carta.personalidad[2]?.img || ""}"></span>
+                    <span class="conector"></span>
+                    <span class="caracteristicas-personaje-frontal ${carta.personalidad[0]?.clase || "punto-basico"}" data-content="${carta.personalidad[0]?.nombre || ""}"><img src="${carta.personalidad[0]?.img || ""}"></span>
+                    <span class="conector"></span>
+                    <span class="caracteristicas-personaje-frontal ${carta.personalidad[1]?.clase || "punto-basico"}" data-content="${carta.personalidad[1]?.nombre || ""}"><img src="${carta.personalidad[1]?.img || ""}"></span>
+                    <span class="conector"></span>
+                    <span class="caracteristicas-personaje-frontal ${carta.personalidad[2]?.clase || "punto-basico"}" data-content="${carta.personalidad[2]?.nombre || ""}"><img src="${carta.personalidad[2]?.img || ""}"></span>
                 </div>
                 <div class="contenedor-especialidad">
                     <div class="especialidad-personaje">
@@ -160,6 +163,7 @@ function activarExpandirEnNuevasCartas() {
     card.dataset.expandirListo = "true";
 
     card.addEventListener("click", () => expandirCarta(card));
+    card.addEventListener("click", sonidoSeleccion);
   });
 }
 
@@ -276,6 +280,8 @@ function expandirCarta(cardOriginal) {
 function cerrarCartaExpandida(contenedor, clon, rectInicial) {
   const overlay = document.getElementById("overlay-carta-expandida");
 
+  sonidoSeleccion();
+
   // Destruir tilt antes de cerrar (vive en el clon, no en el contenedor,
   // así que esto no afecta la transition del contenedor)
   if (clon.vanillaTilt) {
@@ -318,4 +324,11 @@ function flipCardGenerico(card) {
   card
     .querySelector(".personaje-historico-item-trasera")
     ?.classList.toggle("flipped");
+}
+
+function sonidoSeleccion() {
+  let sonido = new Audio("/audio/seleccion2.mp3");
+  sonido.volume = 0.3;
+  sonido.preload = "auto";
+  sonido.play();
 }
