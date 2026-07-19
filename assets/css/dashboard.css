@@ -1,19 +1,14 @@
 body {
   height: 100vh;
   font-family: Roboto;
-  background-color: var(--primary-color);
+  background-color: #fafafa;
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: column;
 }
 
 main {
   flex: 1;
-  border-radius: 2rem;
-  background-color: #eee;
-  margin: 0 1rem 1rem 1rem;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem 2rem;
   overflow: auto;
 }
@@ -23,46 +18,116 @@ h1 {
   text-transform: uppercase;
 }
 
-.nav-interno {
+.contenedor-logo {
   width: 100%;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
   display: flex;
+}
+
+.contenedor-logo span {
+  position: relative;
+  height: 100%;
+}
+
+.contenedor-logo span img {
+  height: 100%;
+}
+
+.contenedor-logo span::before {
+  content: "";
+  height: 37%;
+  background-color: var(--primary-color);
+  position: absolute;
+  bottom: 14%;
+  left: 8%;
+  z-index: 9;
+  animation: square1 4s ease infinite;
+  width: 1%;
+}
+
+.contenedor-logo span::after {
+  width: 1%;
+  height: 37%;
+  background-color: var(--primary-color);
+  position: absolute;
+  top: 11%;
+  right: 13%;
+  z-index: 9;
+  animation: square2 4s ease infinite;
+  content: "";
+}
+
+.logo-dark {
+  display: none;
+}
+
+@keyframes square1 {
+  0% {
+  }
+
+  50% {
+    left: 23%;
+  }
+
+  100% {
+  }
+}
+
+@keyframes square2 {
+  0% {
+  }
+
+  50% {
+    right: 28%;
+  }
+
+  100% {
+  }
+}
+
+.nav-interno {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  padding: 2rem 2rem;
 }
 
 .nav-interno ul {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
+  width: 100%;
+  flex-direction: column;
   flex-wrap: wrap;
+  flex: 1;
   gap: 1rem;
-  border-radius: 2rem;
-  padding: 0.5rem;
+  padding: 1rem 0;
   margin: 0;
   gap: 0.5rem;
-  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 9;
 }
 
 .nav-interno ul li {
   list-style: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 1rem;
   transition: 0.2s ease;
 }
 
 .nav-interno ul li button {
-  padding: 0.25rem 1rem;
+  padding: 0.5rem 1rem;
   display: block;
+  width: 100%;
   border-radius: 1rem;
+  text-align: left;
   font-size: 1rem;
   background: none;
   font-family: Roboto;
+  color: white;
   border: 0;
-  background-color: #eee;
+  background-color: transparent;
+  border: 0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.nav-interno ul li:hover {
-  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .nav-interno ul li:active {

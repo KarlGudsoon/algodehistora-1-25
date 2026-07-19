@@ -10,16 +10,22 @@
     <link rel="stylesheet" href="/assets/css/cartas.css" />
   </head>
   <body>
-    <header id="header"></header>
-
+    <div class="nav-interno">
+      <a class="contenedor-logo" href="/">
+        <span
+          ><img class="logo" src="/svg/logo.svg" /><img
+            class="logo-dark"
+            src="/svg/logo-dark.svg"
+        /></span>
+      </a>
+      <ul>
+        <li><button data-vista="estadisticas">Inicio</button></li>
+        <li><button data-vista="coleccion">Colección</button></li>
+        <li><button data-vista="perfil">Perfil</button></li>
+      </ul>
+      <div id="navUserSection"></div>
+    </div>
     <main>
-      <div class="nav-interno">
-        <ul>
-          <li><button data-vista="estadisticas">Estadísticas</button></li>
-          <li><button data-vista="coleccion">Colección</button></li>
-          <li><button data-vista="perfil">Perfil</button></li>
-        </ul>
-      </div>
       <section id="contenedor-principal"></section>
       <div id="overlay-carta-expandida" class="overlay-carta oculto">
         <div id="carta-expandida-contenedor"></div>
