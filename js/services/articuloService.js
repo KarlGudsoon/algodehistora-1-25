@@ -21,5 +21,5 @@ async function obtenerResultadoCuestionario(articuloSlug) {
   if (res.status === 401) throw new Error("No autenticado");
   const data = await res.json();
   if (!res.ok) throw new Error(data.error || "Error al obtener el resultado");
-  return data.resultado; // null si no existe, o { nota, aprobado, fecha_completado, respuestas_correctas }
+  return data;
 }

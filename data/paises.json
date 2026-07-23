@@ -53,5 +53,60 @@
     "acontecimientos": ["Origen", "Termino"],
     "personaje": "",
     "fondo": "/img/moderna/fondo.webp"
+  },
+  "reinodechile": {
+    "nombre": "Imperio Español",
+    "colorFondo": "rgba(188, 22, 42, 0.6)",
+    "descripcion": "El Imperio Español fue uno de los imperios más grandes de la historia, abarcando territorios en Europa, América, Asia y África desde el siglo XV hasta el siglo XIX.",
+    "etiqueta": ["Imperio Colonial", "etiqueta-moderna"],
+    "bandera": "/img/banderas/bandera-imperio-español.webp",
+    "economia": "Economía basada en la explotación de metales preciosos como oro y plata, el comercio transatlántico, la agricultura de plantación en América y el sistema de encomiendas.",
+    "politica": "Monarquía absoluta con un sistema de virreinatos y gobernadores para administrar los territorios coloniales.",
+    "territorio": "Territorios en Europa (España, Portugal por unión dinástica), gran parte de América (desde México hasta el Cono Sur, además del Caribe), Filipinas y otras islas en Asia, así como enclaves en África.",
+    "logro1": [
+      "Primer imperio global con territorios en los cinco continentes.",
+      "/assets/icons/subway--world-1.svg",
+      "/img/moderna/1423px-F0087_Louvre_Gellee_port_au_soleil_couchant-_INV4715_rwk.webp"
+    ],
+    "logro2": [
+      "Desarrollo del comercio transatlántico y la ruta de Manila-Acapulco.",
+      "/assets/icons/moneda.svg",
+      "/img/moderna/fondo.webp"
+    ],
+    "logro3": [
+      "Difusión de la lengua española, el cristianismo y la cultura europea en América y Asia.",
+      "/assets/icons/corona.png",
+      "/img/moderna/Lorrain.seaport.webp"
+    ],
+    "tiempo": ["1492", "1898"],
+    "acontecimientos": ["Origen", "Termino"],
+    "personaje": "",
+    "fondo": "/img/moderna/fondo.webp"
+  },
+  "chile": {
+    "nombre": "Chile",
+    "colorFondo": "rgba(188, 22, 42, 0.6)",
+    "descripcion": "Chile es un país que históricamente fue parte del Imperio Inca y posteriormente fue colonizado por los españoles, logrando su independencia en 1818.",
+    "etiqueta": ["País moderno", "etiqueta-moderna"],
+    "bandera": "/img/banderas/bandera-chile.webp",
+    "economia": "Economía basada en la minería (especialmente cobre), la agricultura, la pesca y el comercio exterior.",
+    "politica": "República democrática con un presidente como jefe de Estado y de gobierno.",
+    "territorio": "Ubicación: Litoral del Pacífico en el extremo suroeste de América del Sur, bordeando Perú, Bolivia y Argentina.",
+    "logro1": ["Gran productor mundial de cobre.", "/assets/icons/mina.svg"],
+    "logro2": [
+      "Diversidad geográfica y recursos naturales únicos.",
+      "/assets/icons/mountain.svg"
+    ],
+    "logro3": [
+      "Desarrollo de una exportación agrícola competitiva.",
+      "/assets/icons/trigo.svg"
+    ],
+    "tiempo": ["Siglo XVI", "1818"],
+    "acontecimientos": [
+      "Independencia (1818)",
+      "Guerra del Pacífico (1879–1884)"
+    ],
+    "personaje": "Bernardo O'Higgins",
+    "fondo": "/img/moderna/descubrimiento-chile/9c7cecfd-5b8a-4916-82f4-34e3fb119004.webp"
   }
 }

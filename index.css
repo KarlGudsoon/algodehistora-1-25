@@ -1,7 +1,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary-color: #1d1d1d !important;
-    --secondary-color: #2e2e2e !important;
+    --primary-color: #181818 !important;
+    --secondary-color: #1f1f1f !important;
     --yellow-color: #e92a41 !important;
   }
 
@@ -23,7 +23,7 @@
   --primary-color: #e92a41;
   --secondary-color: #c2283a;
   --yellow-color: #ffff00;
-  --primary-color-dark: #1d1d1d;
+  --primary-color-dark: #181818;
 
   --prehistoria: #f86d31;
   --antigua: #30a5e8;

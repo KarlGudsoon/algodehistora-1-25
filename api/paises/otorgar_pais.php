@@ -2,6 +2,7 @@
 require __DIR__ . '/../config/session_config.php';
 require __DIR__ . '/../config/db.php';
 require __DIR__ . '/../middlewares/auth_check.php';
+require __DIR__ . '/../includes/xp_helper.php'; 
 
 header('Content-Type: application/json');
 
@@ -24,4 +25,10 @@ if ($stmt->fetch()) {
 $stmt = $pdo->prepare('INSERT INTO usuario_paises (user_id, pais_slug) VALUES (?, ?)');
 $stmt->execute([$_SESSION['user_id'], $slug]);
 
-echo json_encode(['message' => 'País obtenido', 'nueva' => true]);
+$xpGanado = otorgarXP($pdo, $_SESSION['user_id'], 'pais_obtenido', $slug);
+
+echo json_encode([
+    'message' => 'País obtenido', 
+    'nueva' => true,
+    'xp_ganado' => $xpGanado,
+]);

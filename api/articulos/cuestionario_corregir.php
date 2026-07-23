@@ -2,6 +2,7 @@
 require __DIR__ . '/../config/session_config.php';
 require __DIR__ . '/../config/db.php';
 require __DIR__ . '/../middlewares/auth_check.php';
+require __DIR__ . '/../includes/xp_helper.php'; 
 
 header('Content-Type: application/json');
 
@@ -75,9 +76,19 @@ foreach ($preguntasCorrectas as $p) {
     $correctasPorOrden[$p['orden']] = $p['respuesta_correcta'];
 }
 
+$xpGanado = 0;
+if ($aprobado) {
+    $xpGanado = otorgarXP($pdo, $_SESSION['user_id'], 'articulo_completado', (string) $articuloId);
+
+    if ($nota == 7) {
+        $xpGanado += otorgarXP($pdo, $_SESSION['user_id'], 'articulo_completado_nota_perfecta', (string) $articuloId);
+    }
+}
+
 echo json_encode([
     'cantidad_correctas' => $cantidadCorrectas,
     'nota' => $nota,
     'aprobado' => (bool) $aprobado,
     'respuestas_correctas' => $correctasPorOrden,
+    'xp_ganado' => $xpGanado
 ]);

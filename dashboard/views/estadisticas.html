@@ -1,5 +1,66 @@
+<div class="header">
+  <div class="usuarioAvatar"></div>
+  <div class="bienvenida">
+    <h2>¡Hola, <span id="nombreUsuario"></span>!</h2>
+    <span class="nombreNivel">Explorador histórico</span>
+    <p>Sigue aprendiendo sobre historia y ve tus estadisticas</p>
+  </div>
+  <div class="contenedor-nivel">
+    <div></div>
+    <div class="info-nivel">
+      <div class="texto-nivel">
+        <span id="nivelUsuario"></span>
+        <div class="xp">
+          <span id="xpActual"></span>/<span id="xpSiguiente"></span>
+        </div>
+      </div>
+      <div class="progreso-nivel">
+        <div id="barraNivel"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contenedor-infocards">
+  <div class="infocards skeleton">
+    <img class="icon" src="/assets/icons/cards.svg" alt="" />
+    <div class="contenido">
+      <h3>Articulos</h3>
+      <div class="infocards-progreso">
+        <span id="articulosCompletados" class="bold"></span>/<span
+          id="articulosTotales"
+        ></span>
+      </div>
+      <small>Completados</small>
+    </div>
+  </div>
+  <div class="infocards skeleton">
+    <img class="icon" src="/assets/icons/cards.svg" alt="" />
+    <div class="contenido">
+      <h3>Cartas</h3>
+      <div class="infocards-progreso">
+        <span id="cartasObtenidas" class="bold"></span>/<span
+          id="cartasTotales"
+        ></span>
+      </div>
+      <small>Obtenidas</small>
+    </div>
+  </div>
+  <div class="infocards skeleton">
+    <img class="icon" src="/assets/icons/cards.svg" alt="" />
+    <div class="contenido">
+      <h3>Países</h3>
+      <div class="infocards-progreso">
+        <span id="paisesDescubiertos" class="bold"></span>/<span
+          id="paisesTotales"
+        ></span>
+      </div>
+      <small>Descubiertos</small>
+    </div>
+  </div>
+  <div class="infocards skeleton"></div>
+</div>
 <div class="vista-estadisticas">
-  <h1>Estadísticas</h1>
   <div id="resumenProgreso"></div>
   <div id="historialArticulos"></div>
 </div>

@@ -89,6 +89,7 @@ async function inicializarCuestionario(articuloSlug) {
           articuloSlug,
           opcion_elegida,
         );
+        mostrarNotificacionXP(resultado.xp_ganado, "¡Artículo completado!");
         document.getElementById("grafico-cuestionario").innerHTML =
           generarMedidor(resultado.nota);
 

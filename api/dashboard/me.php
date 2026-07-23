@@ -36,11 +36,9 @@ $paisesDescubiertos = $stmtPaises->fetch()['paises_descubiertos'];
 
 
 echo json_encode([
-    'progreso' => [
-        'articulos_completados' => (int) $completados,
-        'articulos_totales' => (int) $totalArticulos,
-        'cartas_obtenidas' => (int) $cartasObtenidas,
-        'paises_descubiertos' => (int) $paisesDescubiertos
-    ],
-    'historial_articulos' => $historial,
+    'user' => [
+        'id' => $_SESSION['user_id'],
+        'email' => $_SESSION['email'],
+        'name' => $_SESSION['name'],
+    ]
 ]);

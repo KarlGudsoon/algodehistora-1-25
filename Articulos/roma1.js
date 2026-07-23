@@ -17,13 +17,11 @@ function mostrarRoma3D() {
 }
 
 // Agregar event listener para sietecolinas2
-sietecolinas2.addEventListener("click", function() {
+sietecolinas2.addEventListener("click", function () {
   mostrarColinas3D();
 });
 
 // Agregar event listener para sietecolinas3
-sietecolinas3.addEventListener("click", function() {
+sietecolinas3.addEventListener("click", function () {
   mostrarRoma3D();
 });
-
-

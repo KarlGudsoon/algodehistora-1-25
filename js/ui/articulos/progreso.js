@@ -111,6 +111,7 @@ Paises.forEach((element) => {
 
     try {
       const resultado = await otorgarPais(slug);
+      mostrarNotificacionXP(resultado.xp_ganado, "¡Nuevo país descubierto!");
 
       element.classList.add("open");
       if (resultado.nueva) {
@@ -142,6 +143,7 @@ Cartas.forEach((element) => {
 
     try {
       const resultado = await otorgarCarta(slug);
+      mostrarNotificacionXP(resultado.xp_ganado, "¡Nueva carta desbloqueada!");
 
       element.classList.add("open");
       if (resultado.nueva) {

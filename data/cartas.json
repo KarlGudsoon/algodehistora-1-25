@@ -1,7 +1,7 @@
 {
   "sapiens": {
     "puntaje": "10",
-    "rareza": "legendario",
+    "rareza": "oro",
     "origen": -4000000,
     "colorCarta": "punto-dorado",
     "imgSobre": "url(/img/prehistoria/sobreprehistoria.webp)",
@@ -85,7 +85,7 @@
   },
   "colon": {
     "puntaje": "8",
-    "rareza": "legendario",
+    "rareza": "oro",
     "colorCarta": "punto-dorado",
     "imgSobre": "url(/img/moderna/fondo.webp)",
     "titulo": "CRISTÓBAL COLÓN",
@@ -166,14 +166,14 @@
     "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes.",
     "habilidades": [{ "fuerza": 2 }, { "defensa": 1 }, { "recoleccion": 1 }]
   },
-  "obrero": {
-    "puntaje": "5",
+  "soldado": {
+    "puntaje": "6",
     "rareza": "plata",
     "colorCarta": "punto-plata",
     "imgSobre": "url(/img/moderna/fondo.webp)",
-    "titulo": "OBRERO INDUSTRIAL",
+    "titulo": "SOLDADO DE SEGUNDA GUERRA MUNDIAL",
     "color": "var(--contemporanea)",
-    "especialidad": "Compañero",
+    "especialidad": "Defensor",
     "categoria": [
       {
         "nombre": "Contemporánea",
@@ -181,37 +181,37 @@
         "periodo": 5
       }
     ],
-    "imagen": "/img/contemporanea/obrero-siderurgica.png",
-    "fondoFrontal": "/img/contemporanea/heyenbrock-min%20(2).webp",
-    "fondoTrasera": "/img/contemporanea/heyenbrock-min%20(2).webp",
+    "imagen": "/img/contemporanea/soldado-ww2.png",
+    "fondoFrontal": "/img/contemporanea/soldado-ww2.jpg",
+    "fondoTrasera": "/img/contemporanea/soldado-ww2.jpg",
     "personalidad": [
       {
-        "nombre": "Navegante",
+        "nombre": "Luchador",
         "clase": "punto-plata",
         "img": "/assets/icons/brujula.svg"
       },
       {
-        "nombre": "Explorador",
-        "clase": "punto-plateado",
-        "img": "/assets/icons/mapa.svg"
+        "nombre": "Defensor",
+        "clase": "punto-dorado",
+        "img": "/assets/icons/defensor.svg"
       },
       {
-        "nombre": "Visionario",
-        "clase": "punto-bronce",
-        "img": "/assets/icons/telescopio.svg"
+        "nombre": "Disciplinado",
+        "clase": "punto-plata",
+        "img": "/assets/icons/disciplina.svg"
       }
     ],
-    "descripcion": "Fue un navegante y explorador portugués al servicio de España, comandó la primera expedición en circunnavegar el globo y descubrió el Estrecho de Magallanes.",
-    "habilidades": [{ "fuerza": 1 }, { "defensa": 1 }, { "recoleccion": 3 }]
+    "descripcion": "Soldado de la Segunda Guerra Mundial, conocido por su participación en batallas clave y su compromiso con la defensa nacional.",
+    "habilidades": [{ "fuerza": 3 }, { "defensa": 2 }, { "recoleccion": 1 }]
   },
-  "sanador": {
-    "puntaje": "2",
-    "rareza": "raro",
+  "primeraGuerraMundialSoldado": {
+    "puntaje": "5",
+    "rareza": "plata",
     "colorCarta": "punto-plata",
-    "imgSobre": "url(/img/contemporanea/fondo.webp)",
-    "titulo": "MÉDICO DE GUERRA",
+    "imgSobre": "url(/img/moderna/fondo.webp)",
+    "titulo": "SOLDADO DE PRIMERA GUERRA MUNDIAL",
     "color": "var(--contemporanea)",
-    "especialidad": "Sanador",
+    "especialidad": "Luchador",
     "categoria": [
       {
         "nombre": "Contemporánea",
@@ -219,17 +219,27 @@
         "periodo": 5
       }
     ],
-    "imagen": "/img/contemporanea/medico.png",
-    "fondoFrontal": "/img/contemporanea/hospital.webp",
-    "fondoTrasera": "/img/contemporanea/hospital.webp",
+    "imagen": "/img/contemporanea/soldado-guerra-mundial.jpg",
+    "fondoFrontal": "/img/contemporanea/guerra-primera-batalla.webp",
+    "fondoTrasera": "/img/contemporanea/frente-trinchera.jpg",
     "personalidad": [
       {
-        "nombre": "Sanador",
+        "nombre": "Guerrero",
         "clase": "punto-dorado",
-        "img": "/assets/icons/cruz.svg"
+        "img": "/assets/icons/hacha.svg"
+      },
+      {
+        "nombre": "Defensor",
+        "clase": "punto-plata",
+        "img": "/assets/icons/defensor.svg"
+      },
+      {
+        "nombre": "Disciplinado",
+        "clase": "punto-bronce",
+        "img": "/assets/icons/disciplina.svg"
       }
     ],
-    "descripcion": "Un médico que cura a sus aliados en el campo de batalla.",
-    "habilidades": [{ "fuerza": 0 }, { "defensa": 1 }, { "recoleccion": 1 }]
+    "descripcion": "Soldado de la Primera Guerra Mundial, conocido por su participación en las trincheras y batallas del frente occidental.",
+    "habilidades": [{ "fuerza": 2 }, { "defensa": 3 }, { "recoleccion": 1 }]
   }
 }

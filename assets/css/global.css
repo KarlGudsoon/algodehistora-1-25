@@ -2,7 +2,7 @@
   --primary-color: #e92a41;
   --secondary-color: #c2283a;
   --yellow-color: #ffff00;
-  --primary-color-dark: #1d1d1d;
+  --primary-color-dark: #181818;
 
   --prehistoria: #f86d31;
   --antigua: #30a5e8;
@@ -235,14 +235,8 @@
 }
 
 @font-face {
-  font-family: HatschSans;
-  src: url("https://cdn.glitch.global/9a357997-c721-4619-8b51-c5bb42844312/HatschSans.otf?v=1679725680887")
-    format("truetype");
-}
-
-@font-face {
   font-family: Roboto;
-  src: url("/fonts/RobotoSlab-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/RobotoSlab-Regular.woff2") format("truetype");
 }
 
 a {
@@ -251,5 +245,58 @@ a {
 }
 
 a:hover {
+  color: white;
+}
+
+.bold {
+  font-weight: 900;
+}
+
+/* Notificación de XP */
+
+.notificacion-xp {
+  position: fixed;
+  bottom: 0px;
+  left: 50%;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: 0.3s ease;
+  z-index: 999999999999999;
+}
+
+.notificacion-xp.activa {
+  transform: translateX(-50%);
+  bottom: 20px;
+  opacity: 1;
+}
+
+.notificacion-xp-icono {
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.notificacion-xp-icono img {
+  height: 40px;
+}
+
+.notificacion-xp-texto {
+  display: flex;
+  flex-direction: column;
+}
+
+.notificacion-xp-texto strong {
+  font-size: 1rem;
+}
+
+.notificacion-xp-texto small {
   color: white;
 }

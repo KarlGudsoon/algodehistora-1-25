@@ -354,7 +354,7 @@
   }
 }
 
-.legendario::before {
+.oro::before {
   content: "";
   width: 100%;
   height: 100%;
@@ -375,7 +375,7 @@
   border: 1px solid rgb(163 163 163 / 50%);
 }
 
-.legendario::after {
+.oro::after {
   content: "";
   position: absolute;
   inset: 0;
